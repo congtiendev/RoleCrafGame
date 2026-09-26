@@ -204,15 +204,16 @@ def attach_lines(script, path):
 
 
 def clean_markers(im, drop_bare=False):
-    """To lai cham neo magenta/cyan/xanh la (diem cam, diem ngoi, man hinh) bang mau diem anh xung quanh.
-    drop_bare: cham nam tren nen trong suot (chan do vat) thi xoa han."""
+    """Xoa cham neo magenta/cyan/xanh la (diem cam, diem ngoi, man hinh): moi diem trong cham (no rong 2px de an ca vien mo)
+    lay mau diem anh duc GAN NHAT ben ngoai – lan dan tu mep vao (nhu inpaint cua docs/PM/.../tools/extract_anchors.py),
+    khong lay mau trung binh (de lai vet xam / xanh ngoc). drop_bare: cham nam tren nen trong suot (chan do vat) thi xoa han."""
     px = im.load(); w, h = im.size
-    # cham neo: magenta/cyan/xanh la thuan + vien khu rang cua ngả magenta; cyan/xanh la giu nguong chat (tablet teal)
+    # loi cham: mau thuan; vien khu rang: ngả magenta / xanh ngoc sang (tablet teal toi hon nen khong bi bat)
     def mk(p):
         r, g, b, a = p
         return a > 0 and ((r > 100 and b > 100 and g < 0.75 * min(r, b)) or
-                          (r < 90 and g > 200 and b > 200) or (r < 90 and g > 200 and b < 90))
-    seen = set()
+                          (r < 120 and g > 170 and b > 170 and g - r > 70) or (r < 90 and g > 200 and b < 90))
+    seen, area = set(), set()
     for j0 in range(h):
         for i0 in range(w):
             if (i0, j0) in seen or not mk(px[i0, j0]): continue
@@ -224,17 +225,26 @@ def clean_markers(im, drop_bare=False):
                     if 0 <= q[0] < w and 0 <= q[1] < h and q not in seen and mk(px[q]):
                         seen.add(q); stack.append(q)
             if len(comp) < 4 or max(px[q][3] for q in comp) < 230: continue   # vien mo o mep nhan vat, khong phai cham
-            area = {(a + da, b + db) for a, b in comp for da in range(-2, 3) for db in range(-2, 3)
-                    if 0 <= a + da < w and 0 <= b + db < h}             # no rong 2px de xoa ca vien
-            ring = [px[a + da, b + db] for a, b in area for da, db in ((3, 0), (-3, 0), (0, 3), (0, -3))
-                    if (a + da, b + db) not in area and 0 <= a + da < w and 0 <= b + db < h and px[a + da, b + db][3] > 200]
-            if not ring:
-                if drop_bare:
-                    for q in area: px[q] = (0, 0, 0, 0)
+            blob = {(a + da, b + db) for a, b in comp for da in range(-2, 3) for db in range(-2, 3)
+                    if 0 <= a + da < w and 0 <= b + db < h and px[a + da, b + db][3] > 0}
+            ring = [q for q in blob if any((q[0] + da, q[1] + db) not in blob and 0 <= q[0] + da < w and 0 <= q[1] + db < h
+                                         and px[q[0] + da, q[1] + db][3] > 200 for da, db in ((1, 0), (-1, 0), (0, 1), (0, -1)))]
+            if not ring and drop_bare:
+                for q in blob: px[q] = (0, 0, 0, 0)
                 continue
-            med = tuple(sorted(c[k] for c in ring)[len(ring) // 2] for k in range(4))
-            for q in area:
-                if px[q][3] > 0: px[q] = med[:3] + (px[q][3],)          # giu do trong suot goc
+            area |= blob
+    # lan mau tu ngoai vao: moi vong lay mau cua lang gieng da co mau (ngoai vung cham hoac da lap o vong truoc)
+    todo = set(area)
+    while todo:
+        done = {}
+        for q in todo:
+            for da, db in ((1, 0), (-1, 0), (0, 1), (0, -1), (1, 1), (-1, -1), (1, -1), (-1, 1)):
+                n = (q[0] + da, q[1] + db)
+                if 0 <= n[0] < w and 0 <= n[1] < h and n not in todo and px[n][3] > 200:
+                    done[q] = px[n][:3] + (px[q][3],); break
+        if not done: break                                          # cham tach roi, khong co lang gieng duc
+        for q, c in done.items(): px[q] = c
+        todo -= done.keys()
     return im
 
 
@@ -268,11 +278,15 @@ GAME_ANIMS = ['idle', 'walk', 'greet', 'talk', 'nod', 'sigh', 'good',
               'tab_present', 'count', 'thumbs']                                                     # S04
 # Do vat / noi that ma hoa si DA VE SAN trong sprite nhan vat (trai voi quy uoc "tach roi") -> khong ghep them, tranh ve trung.
 DRAWN_IN_SPRITE = {('tablet_back', 'grip'), ('tablet_edge', 'grip'), ('tablet_screen_34', 'grip'), ('notebook_open', 'grip'),
-                   ('office_chair', 'seat'), ('meeting_chair', 'seat')}
+                   ('office_chair', 'seat'), ('meeting_chair', 'seat'),
+                   ('pen', 'grip')}   # but bi: sprite tay khong co dang cam but ro rang, ghep vao trong nhu que xam vo ly -> bo
 BESIDE_GAP = 0.02           # nhu docs/PM/.../tools/pm_compose.js
 # Ban ve nhin thang ma nhan vat ngoi nghieng: khop diem ngoi + dat truoc nguoi thi ban che gan het nhan vat.
-# Trong game dat ban lech phai, SAU nguoi (mep trai ban o tam hong + SIDE_DX * chieu cao), chan ban cham san.
-SIDE_FURNITURE = {'desk_monitor': 0.18, 'meeting_table': 0.12}
+# Trong game dat ban lech phai (mep trai ban o tam hong + dx * chieu cao), chan ban cham san:
+# - ban hop: SAU nguoi, thu nho de vanh ban ngang tam tay (hoa si ve san thanh mep ban o tay -> trung vanh ban that)
+# - ban lam viec (co man hinh cao): SAU nguoi, khong che mat
+# (dx theo chieu cao nhan vat, z, he so co them so voi ratio trong manifest)
+SIDE_FURNITURE = {'desk_monitor': (0.18, -1, 1), 'meeting_table': (0.06, -1, 0.72)}
 
 
 def find_dots(im):
@@ -346,6 +360,7 @@ def game_atlas(anims, rects, files, names, manifest, out_img, out_js):
         if (kind, name) not in obj_cache:
             s, r, c = names[name]
             ratio = manifest['objects'][('prop/' if kind == 'prop' else 'furn/') + name]['ratio']
+            if kind == 'furn' and name in SIDE_FURNITURE: ratio *= SIDE_FURNITURE[name][2]
             obj_cache[(kind, name)] = load_object(sheet(s), rects[s][f'{r},{c}'], ratio, ref_h)
         return obj_cache[(kind, name)]
 
@@ -377,7 +392,8 @@ def game_atlas(anims, rects, files, names, manifest, out_img, out_js):
                 im, p = obj('furn', b['furniture'])
                 z = 1 if b['z'] == 'front' else -1
                 if b['furniture'] in SIDE_FURNITURE and 'seat' in f['pts']:
-                    fx, fy, z = f['pts']['seat'][0] + SIDE_FURNITURE[b['furniture']] * ref_h, -im.height, -1
+                    dx, z, _ = SIDE_FURNITURE[b['furniture']]
+                    fx, fy = f['pts']['seat'][0] + dx * ref_h, -im.height
                 elif b['at'] == 'seat' and 'seat' in f['pts'] and 'seat' in p:
                     fx, fy = f['pts']['seat'][0] - p['seat'][0], f['pts']['seat'][1] - p['seat'][1]
                 else:
@@ -443,7 +459,7 @@ def find_surface(name, manifest, names, rects, sheet, ref_h):
             px = im.load()
             for q in d['screen'][4]: px[q] = (31, 42, 48, 255)
         x0, y0, x1, y1 = clean_markers(im, drop_bare=True).getbbox()
-        f = manifest['objects']['furn/' + name]['ratio'] * ref_h / max(x1 - x0, y1 - y0)
+        f = manifest['objects']['furn/' + name]['ratio'] * (SIDE_FURNITURE[name][2] if name in SIDE_FURNITURE else 1) * ref_h / max(x1 - x0, y1 - y0)
         _surface[name] = ((d['magenta'][0] - x0) * f, (d['magenta'][1] - y0) * f) if 'magenta' in d else None
     return _surface[name]
 

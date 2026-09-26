@@ -50,9 +50,10 @@ const template = () => `
         </div>
 
         <div class="mt-7 grid grid-cols-[auto_1fr] items-center gap-8 max-sm:mt-5 max-sm:grid-cols-1 max-sm:justify-items-center max-sm:gap-5">
-          <div class="grid h-[260px] w-[200px] place-items-end justify-center bg-[#1c2b60] pb-3 shadow-[0_-4px_0_0_var(--color-px-ink),0_4px_0_0_var(--color-px-ink),-4px_0_0_0_var(--color-px-ink),4px_0_0_0_var(--color-px-ink),inset_0_-40px_0_0_#17244f] max-sm:h-[170px] max-sm:w-[140px]">
+          <!-- khung = the .gm-plate: long cao = khung - vien 4 - le 6 - day 10 -> vua PM fitPm 225/145px -->
+          <div class="gm-plate h-[250px] w-[196px] max-sm:h-[172px] max-sm:w-[134px]"><div data-in class="place-items-end justify-center bg-[linear-gradient(#1c2b60_0_84%,#17244f_84%)]">
             <canvas id="nameAvatar" aria-hidden="true"></canvas>
-          </div>
+          </div></div>
 
           <div class="w-full">
             <label for="playerName" class="text-lg leading-none font-bold tracking-wide text-brand-red">HỌ VÀ TÊN</label>
@@ -82,9 +83,10 @@ const template = () => `
         <p class="font-pixel text-[1.6rem] leading-none tracking-[0.2em] text-brand-red">MỞ ĐẦU</p>
         <div class="mt-5 grid grid-cols-[auto_1fr] items-start gap-7 max-sm:grid-cols-1 max-sm:justify-items-center max-sm:gap-4">
           <figure class="flex flex-col items-center gap-2">
-            <div class="bg-px-ink p-1 shadow-[0_-4px_0_0_var(--color-px-ink),0_4px_0_0_var(--color-px-ink),-4px_0_0_0_var(--color-px-ink),4px_0_0_0_var(--color-px-ink)]">
+            <!-- khung = the .gm-plate: long = khung - vien/le -> vua faceSize 140/104 -->
+            <div class="gm-plate h-[162px] w-[156px] max-sm:h-[126px] max-sm:w-[120px]"><div data-in class="place-items-center">
               <canvas id="introFace" class="block" aria-hidden="true"></canvas>
-            </div>
+            </div></div>
             <figcaption id="introName" class="max-w-[170px] text-center text-sm font-semibold text-brand-red"></figcaption>
           </figure>
           <div id="introText" class="min-h-[13rem] space-y-3 text-[1.1rem] leading-relaxed max-sm:min-h-0 max-sm:text-base"></div>
@@ -94,7 +96,7 @@ const template = () => `
           <p id="introHint" class="animate-blink text-sm font-bold tracking-wider text-px-panel/55">
             <span class="pointer-coarse:hidden">NHẤN ENTER ĐỂ BỎ QUA</span><span class="hidden pointer-coarse:inline">CHẠM ĐỂ BỎ QUA</span>
           </p>
-          <button type="button" id="enterBtn" hidden class="px-btn px-btn-primary w-auto px-8 max-sm:w-full max-sm:px-3">Vào ngày đầu tiên${icon('arrowRight', 'size-6', { stroke: 2.25 })}</button>
+          <button type="button" id="enterBtn" hidden class="px-btn px-btn-primary px-btn-hint w-auto px-8 max-sm:w-full max-sm:px-3">Vào ngày đầu tiên${icon('arrowRight', 'size-6', { stroke: 2.25 })}</button>
         </div>
         <p id="introNote" hidden class="mt-4 text-center text-sm font-semibold text-brand-red" role="status"></p>
       </section>
@@ -130,7 +132,7 @@ export function mountName(root, { onBack, onEnter }) {
     setFace(INTRO_FACE[0][0]);
   };
   // Bieu cam doi theo cau dang hien
-  const faceSize = () => (innerWidth < 640 ? 120 : 168);
+  const faceSize = () => (innerWidth < 640 ? 104 : 140);      // vua long khung .gm-plate ben tren
   const setFace = f => { if (intro.face !== f) { intro.face = f; drawFace($('introFace'), f, faceSize()); } };
   const finishIntro = () => {
     intro.done = true; $('introPanel').toggleAttribute('data-tap', false);

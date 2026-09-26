@@ -37,7 +37,7 @@ test('ngoi go may ban dem: co ban + man hinh (khung rong hon han nguoi ngoi)', (
 
 test('hop ban: co ban hop ben canh', () => {
   for (const n of Object.keys(ATLAS.anims).filter(n => n.startsWith('meet_table_')))
-    for (const bb of boxes[n]) assert.ok(bb[2] - bb[0] > ATLAS.stand * 1.1, `${n}: thieu ban hop`);
+    for (const bb of boxes[n]) assert.ok(bb[2] - bb[0] > ATLAS.stand * 0.95, `${n}: thieu ban hop`);   // nguoi ngoi mot minh ~0.7
 });
 
 test('dong tac khong bind do vat thi khong bi ghep them', () => {

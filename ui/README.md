@@ -33,22 +33,27 @@ Tên, kích thước và vị trí trên sheet gốc của từng asset nằm tr
 
 ## Con trỏ chuột (`cursors/`)
 
-Con trỏ trong `cursors/` không cắt từ sheet. Chúng được vẽ lại từ bản vector SVG của [Kenney Cursor Pack](https://kenney.nl/assets/cursor-pack) (giấy phép CC0, cho phép chỉnh sửa; bản gốc trong `cursors/LICENSE_kenney.txt`), theo phong cách công nghệ và màu Innocom:
+Con trỏ trong `cursors/` không cắt từ sheet. Chúng lấy từ một họ hình của [Kenney Cursor Pack](https://kenney.nl/assets/cursor-pack) (giấy phép CC0, cho phép chỉnh sửa; bản gốc trong `cursors/LICENSE_kenney.txt`), vẽ lại từ SVG theo màu Innocom:
 
-- viền navy `#081033`, thân xanh `#1d8bff` hoặc đỏ `#ff3b44`;
+- tất cả dùng chung một mũi tên gốc và cùng nét viền navy `#081033`;
+- thân màu xanh bóng, chuyển từ `#6ebeff` sang `#146eeb` theo đường chéo;
+- các ký hiệu trạng thái (dấu hỏi, đồng hồ cát, biển cấm) màu đỏ;
 - quầng trắng mỏng bên ngoài để nổi trên cả nền tối lẫn nền sáng.
 
 Mỗi con trỏ có bản 32 px (`<tên>.png`) và bản 64 px cho màn retina (`<tên>@2x.png`). Con trỏ để định dạng PNG, không đổi sang WebP, vì một số trình duyệt không nhận WebP làm con trỏ.
 
-| File | Hình gốc (Kenney) | Màu | Dùng khi | Điểm nóng (trên bản 32 px) |
-|---|---|---|---|---|
-| `arrow` | `pointer_scifi_a` | thân xanh, lõi đỏ | Mặc định | 4, 4 |
-| `link` | `pointer_scifi_a` | thân đỏ, lõi trắng | Hover nút hoặc link | 4, 4 |
-| `press` | `pointer_scifi_a` | thân đỏ, lõi tối | Đang bấm nút | 4, 4 |
-| `disabled` | `cursor_disabled` | xám | Phần tử bị khoá | 2, 1 |
-| `text` | `bracket_a_vertical` | xanh | Ô nhập chữ | 16, 16 |
+| File | Hình gốc (Kenney) | Dùng khi | Điểm nóng (trên bản 32 px) |
+|---|---|---|---|
+| `arrow` | `pointer_a` | Mặc định | 10, 6 |
+| `link` | `hand_small_point` | Hover chỗ bấm được: nút, link, standee nhân vật, vùng `[data-tap]` | 11, 5 |
+| `press` | `hand_small_closed` | Đang nhấn giữ nút | 16, 16 |
+| `text` | `bracket_a_vertical` | Ô nhập chữ | 16, 16 |
+| `help` | `cursor_help` | Phần tử có tooltip nhưng không bấm được (ô chỉ số HUD) | 5, 2 |
+| `busy` | `cursor_busy` | Lúc chuyển cảnh (`#lv[aria-busy]`) | 4, 2 |
+| `disabled` | `cursor_disabled` | Phần tử bị khoá | 3, 2 |
+| `point_e` | `hand_small_point_e` | Không phải con trỏ chuột. Đây là hình bàn tay chỉ sang phải, đặt cạnh nút `.px-btn-hint` để dẫn người chơi | — |
 
-Các quy tắc CSS nằm cuối `src/styles/components.css` và chỉ có hiệu lực khi `<body>` có class `px-cursors`. Hiện chỉ trang game (`src/game.html`) bật class này.
+Các quy tắc CSS nằm cuối `src/styles/components.css` và chỉ có hiệu lực khi `<body>` có class `px-cursors`. Hiện chỉ trang game (`src/game.html`) bật class này. Hình `link@2x` còn được dùng làm bàn tay gõ ở góc hộp thoại (`#dlgNext`).
 
 ## Lưu ý khi dùng
 

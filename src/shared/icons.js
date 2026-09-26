@@ -7,6 +7,9 @@ import arrowPath from 'heroicons/24/outline/arrow-path.svg?raw';
 import arrowRight from 'heroicons/24/outline/arrow-right.svg?raw';
 import arrowUp from 'heroicons/24/outline/arrow-up.svg?raw';
 import chatBubbleLeft from 'heroicons/24/outline/chat-bubble-left.svg?raw';
+import clock from 'heroicons/24/outline/clock.svg?raw';
+import arrowTrendingDown from 'heroicons/24/outline/arrow-trending-down.svg?raw';
+import arrowTrendingUp from 'heroicons/24/outline/arrow-trending-up.svg?raw';
 import bellAlert from 'heroicons/24/outline/bell-alert.svg?raw';
 import bookOpen from 'heroicons/24/outline/book-open.svg?raw';
 import chevronDown from 'heroicons/24/outline/chevron-down.svg?raw';
@@ -20,9 +23,13 @@ import questionMarkCircle from 'heroicons/24/outline/question-mark-circle.svg?ra
 import sparkles from 'heroicons/24/outline/sparkles.svg?raw';
 import user from 'heroicons/24/outline/user.svg?raw';
 import xMark from 'heroicons/24/outline/x-mark.svg?raw';
+import trophy from 'heroicons/24/outline/trophy.svg?raw';
+import academicCap from 'heroicons/24/outline/academic-cap.svg?raw';
+import exclamationTriangle from 'heroicons/24/outline/exclamation-triangle.svg?raw';
+import checkCircle from 'heroicons/24/outline/check-circle.svg?raw';
 
-const SVG = { arrowDown, arrowLeft, arrowPath, arrowRight, arrowUp, bellAlert, bookOpen, chatBubbleLeft, chevronDown, chevronLeft, chevronRight,
-  lightBulb, pause, play, playPause, questionMarkCircle, sparkles, user, xMark };
+const SVG = { arrowDown, arrowLeft, arrowPath, arrowRight, arrowTrendingDown, arrowTrendingUp, arrowUp, bellAlert, bookOpen, chatBubbleLeft, chevronDown, clock, chevronLeft, chevronRight,
+  lightBulb, pause, play, playPause, questionMarkCircle, sparkles, user, xMark, trophy, academicCap, exclamationTriangle, checkCircle };
 
 // icon('play', 'size-6') -> chuoi <svg>. cls = class Tailwind (co, mau); stroke = do day net (Heroicons mac dinh 1.5,
 // UI pixel chu to nen dung 2 cho ro). Icon trang tri -> aria-hidden; nut chi co icon thi dat aria-label cho nut.

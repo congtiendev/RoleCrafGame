@@ -26,7 +26,7 @@ const template = () => `
 
     <!-- ten game -->
     <header id="startTitle" class="absolute inset-x-0 top-[4vh] flex animate-rise flex-col items-center px-4 text-center [@media(max-height:560px)]:top-[2vh]">
-      <span class="px-bubble mb-5 px-4 pt-1 pb-0.5 !font-pixel text-[1.5rem] !leading-none tracking-[0.3em] !text-white !bg-brand-red portrait:mb-4 portrait:text-[1.3rem] [@media(max-height:560px)]:mb-3 [@media(max-height:560px)]:text-[1.2rem]">ROLECRAFT</span>
+      <span class="art-btn art-red mb-5 px-4 pt-1.5 pb-2 font-pixel text-[1.5rem] leading-none tracking-[0.3em] [--bw:16px] [--bw2:18px] portrait:mb-4 portrait:text-[1.3rem] [@media(max-height:560px)]:mb-3 [@media(max-height:560px)]:text-[1.2rem]">ROLECRAFT</span>
       <!-- PC: mot dong, nam tron tren vung tran nha (khong de logo Innocom); mobile: hai dong -->
       <h1 class="px-title text-[clamp(3.4rem,6.2vw,7rem)] portrait:text-[clamp(2.6rem,13vw,4.6rem)] [@media(max-height:560px)]:text-[2.6rem]">
         PM 60 NGÀY <span class="text-px-hi portrait:mt-2 portrait:block">THỬ VIỆC</span>
@@ -36,7 +36,7 @@ const template = () => `
     <canvas id="startPm" class="pointer-events-none absolute [image-rendering:pixelated]" aria-hidden="true"></canvas>
     <div id="startBubble" class="px-bubble pointer-events-none absolute w-max max-w-[19em] animate-bob px-3.5 py-2 portrait:hidden">
       Tiếp quản dự án dở dang, dẫn dắt team qua 4 giai đoạn và bảo vệ kết quả trước hội đồng.
-      <span id="bubbleTail" class="absolute -bottom-[12px] left-6 h-2 w-4 bg-white shadow-[-4px_0_0_0_var(--color-px-ink),4px_0_0_0_var(--color-px-ink),0_4px_0_0_var(--color-px-ink)]"></span>
+      <span id="bubbleTail" class="px-bubble-tail left-6"></span>
     </div>
 
     <!-- khung menu -->
@@ -44,7 +44,7 @@ const template = () => `
          [@media(max-height:560px)]:top-auto [@media(max-height:560px)]:bottom-[9vh] [@media(max-height:560px)]:w-[min(760px,92vw)] [@media(max-height:560px)]:px-8 [@media(max-height:560px)]:py-4
          portrait:top-auto portrait:bottom-[4vh]">
       <div class="flex flex-col gap-5 [@media(max-height:560px)]:flex-row [@media(max-height:560px)]:gap-7 [@media(max-height:560px)]:pl-7">
-        <button id="startBtn" class="px-btn px-btn-primary">${icon('play', 'size-6', { stroke: 2.25 })}Bắt đầu</button>
+        <button id="startBtn" class="px-btn px-btn-primary px-btn-hint">${icon('play', 'size-6', { stroke: 2.25 })}Bắt đầu</button>
         <button id="contBtn" class="px-btn px-btn-blue" disabled title="Chưa có bản lưu">${icon('playPause', 'size-6', { stroke: 2.25 })}Tiếp tục</button>
         <button id="guideBtn" class="px-btn px-btn-blue">${icon('bookOpen', 'size-6', { stroke: 2.25 })}Hướng dẫn</button>
       </div>

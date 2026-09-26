@@ -73,10 +73,27 @@ export function drawStage(cv, pm, view, now) {
   ctx.drawImage(PM_IMG, i * fw, a.y, fw, fh, -ox * s, -oy * s, fw * s, fh * s);
   ctx.restore();
 
-  if (view.emo && ready('F') && EMO[view.emo]) {         // emote noi tren dau PM, nhun 2 buoc kieu pixel
-    const [x, y, w, h] = EMO[view.emo], size = view.ch * 0.3, bob = Math.floor(now / 400) % 2 ? -4 : 0;
-    const sc = size / Math.max(w, h);
-    ctx.drawImage(IMG.F, x, y, w, h, cx + view.ch * 0.18, view.foot - view.ch * 1.22 + bob, w * sc, h * sc);
+  // Emote = PM dang nghi: icon trong bong bong suy nghi (mat kinh vien muc nhu .px-bubble) + 2 cham tron dan xuong dau,
+  // nhun em. Khong co bong bong thi icon (vd ly ca phe) trong nhu do vat lo lung trong canh.
+  if (view.emo && ready('F') && EMO[view.emo]) {
+    const [x, y, w, h] = EMO[view.emo], size = view.ch * 0.26, sc = size / Math.max(w, h);
+    const bob = Math.sin(now / 320) * 3, pad = size * 0.22, bw = size + 2 * pad, bh = size + 2 * pad;
+    const bx = cx + view.ch * 0.16, by = view.foot - view.ch * 1.34 + bob;
+    const lw = Math.max(2, view.ch * 0.012);
+    const bubble = path => {
+      const g = ctx.createLinearGradient(0, by, 0, by + bh);
+      g.addColorStop(0, '#ffffff'); g.addColorStop(1, '#e4f0ff');
+      ctx.fillStyle = g; ctx.fill(path);
+      ctx.lineWidth = lw; ctx.strokeStyle = '#0b1d4d'; ctx.stroke(path);
+    };
+    ctx.save();
+    ctx.shadowColor = 'rgba(8,16,51,.3)'; ctx.shadowOffsetY = 3;
+    const dot = (px, py, r) => { const p = new Path2D(); p.arc(px, py, r, 0, Math.PI * 2); bubble(p); };
+    dot(bx + bw * 0.12, by + bh + size * 0.2, size * 0.1);          // cham lon gan bong bong
+    dot(bx - size * 0.06, by + bh + size * 0.46, size * 0.065);     // cham nho gan dau
+    const box = new Path2D(); box.roundRect(bx, by, bw, bh, bw * 0.3); bubble(box);
+    ctx.restore();
+    ctx.drawImage(IMG.F, x, y, w, h, bx + (bw - w * sc) / 2, by + (bh - h * sc) / 2, w * sc, h * sc);
   }
 }
 
