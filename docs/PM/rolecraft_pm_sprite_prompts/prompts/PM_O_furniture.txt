@@ -1,0 +1,16 @@
+TASK: create a 4x3 sheet of separate furniture and scene items for a chibi pixel-art office game. Sheet content: separate office furniture and scene items the character sits on or stands next to.
+
+ATTACHED IMAGE: the approved master sprite sheet of the game character. Use it ONLY as the style and scale reference; do not draw the character.
+
+ART STYLE: exactly the same soft high-resolution pixel-art style as the attached sheet: clean dark-brown pixel outline, soft cel shading, warm natural colors, top-left light. Everything is seen in the same 3/4 view as a character facing right.
+
+LAYOUT: square 1:1, pure solid white background (#FFFFFF). Exactly 4 columns x 3 rows = 12 cells, one item per cell, centered, never touching another item. Draw every item at its correct real size relative to the chibi character in the attached sheet (for example the tablet is about as wide as the character's torso, a chair seat is at the character's knee height). No shadows under items.
+
+MARKERS: CYAN #00FFFF dot at the seat point (top-center of the seat cushion) of chairs and the sofa, and for the desk and meeting table at the point where the seated person's hips would be; MAGENTA #FF00FF dot at the placement point on the top surface of the desk and table, and at the bottom-center floor/wall contact point of every other item. Screens are flat solid GREEN #00FF00. Never use these colors elsewhere.
+
+CELLS:
+Row 1 - Seating and tables: (1) grey office swivel chair seen from the side-left 3/4, so a character facing right sits on it; (2) simple grey meeting chair, same orientation; (3) small grey two-seat office sofa, same orientation; (4) light-wood office desk with a monitor, keyboard and mouse, seen so a seated character on its left faces it; monitor screen flat solid GREEN #00FF00.
+Row 2 - Meeting and boards: (5) small round light-wood meeting table, seen so a seated character on its left faces it; (6) mobile whiteboard on wheels with a simple boxes-and-arrows doodle (no text), seen from the left 3/4; (7) presentation screen on a stand; the screen area is flat solid GREEN #00FF00; (8) wall kanban board with a few colorful sticky notes in columns (no text).
+Row 3 - Scene states: (9) the same kanban board overloaded with many red sticky notes; (10) wall poster showing a checklist with green ticks (no readable text); (11) computer monitor showing a red alert dashboard with warning icons (no text); (12) tall potted office plant.
+
+DO NOT: draw any character or hands; add text, letters, numbers or watermark; draw grid lines, borders, floors or backgrounds.

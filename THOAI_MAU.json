@@ -1,0 +1,1209 @@
+{
+ "_ghi_chu": "L1, L2, L3: thoại RÚT GỌN (mở cảnh ≤3 câu, nhánh ≤2 câu) — game là chính; ý giữ theo docs/KICH_BAN_ROLECRAFT_PM60.md. L4, END: thoại ngắn theo docs/KICH_BAN_ROLECRAFT_PM60.md (câu phản ứng của PM ở END là thêm cho sprite). FLAG: vẫn là THOẠI MẪU tự suy. Khoá = 'Level | Tình huống | Nhánh'. Mỗi dòng [người nói, câu]; các câu chia đều theo nhịp hành động của cảnh. 'PM' dùng chân dung face_* của nhịp đó; 'Dẫn truyện' hiện chữ nghiêng, không chân dung. Sửa xong chạy lại: python3 build_preview.py Khoá \"… | Câu hỏi\" = {hoi, A, B, C}: câu hỏi quyết định và tên lựa chọn, theo docs/KICH_BAN_ROLECRAFT_PM60.md — trang test scenario-test.html hiện sau Mở cảnh. Chị Hà (HR) thay cho \"Hội đồng đánh giá\" (REVIEW_PANEL) ở S16 và kết thúc — nhân vật thêm mới, docs không có.",
+ "L1 | Intro nhận việc | Mở cảnh": [
+  [
+   "Dẫn truyện",
+   "LEVEL 1 · KHỞI ĐỘNG — Ngày 1 đến 15."
+  ],
+  [
+   "Dẫn truyện",
+   "Bạn vừa nhận vị trí PM thử việc. 60 ngày tới quyết định bạn có ở lại hay không."
+  ],
+  [
+   "Anh Minh",
+   "Dự án xong 40%, PM cũ nghỉ, tài liệu thiếu. Khách muốn demo sau 7 ngày."
+  ],
+  [
+   "Anh Minh",
+   "Em có team 3 người và 100 điểm ngân sách. Quyết định là của em."
+  ],
+  [
+   "PM",
+   "Em hiểu rồi ạ. Để em gặp team trước."
+  ]
+ ],
+ "L1 | S01 Tiếp quản | Mở cảnh": [
+  [
+   "Dẫn truyện",
+   "Ngày 1 · Khu vực làm việc của team."
+  ],
+  [
+   "Huy",
+   "Cứ chạy tiếp thì một tuần nữa demo được."
+  ],
+  [
+   "Lan",
+   "Nhưng tài liệu chưa phản ánh hết những gì team đang làm."
+  ],
+  [
+   "PM",
+   "Mình cần quyết định việc đầu tiên..."
+  ]
+ ],
+ "L1 | S01 Tiếp quản | Câu hỏi": {
+  "hoi": "Việc đầu tiên bạn sẽ làm là gì?",
+  "A": "Review toàn bộ dự án",
+  "B": "Tiếp tục làm theo task cũ",
+  "C": "PM tự đọc tài liệu ngoài giờ"
+ },
+ "L1 | S01 Tiếp quản | Nhánh A": [
+  [
+   "PM",
+   "Dừng team một ngày để review toàn bộ dự án."
+  ],
+  [
+   "Huy",
+   "Mất một ngày, nhưng cả team thống nhất được hiện trạng."
+  ]
+ ],
+ "L1 | S01 Tiếp quản | Nhánh B": [
+  [
+   "PM",
+   "Không dừng, cứ tiếp tục để kịp demo."
+  ],
+  [
+   "Lan",
+   "Em vẫn lo vài giả định cũ chưa được kiểm tra."
+  ]
+ ],
+ "L1 | S01 Tiếp quản | Nhánh C": [
+  [
+   "PM",
+   "Mọi người cứ code tiếp, tối nay mình tự đọc hết tài liệu."
+  ],
+  [
+   "Huy",
+   "Có gì cần làm rõ thì báo anh."
+  ]
+ ],
+ "L1 | S02 Senior tự quyết | Mở cảnh": [
+  [
+   "Dẫn truyện",
+   "Ngày 5 · Bàn làm việc của Huy."
+  ],
+  [
+   "Hệ thống",
+   "Huy vừa đổi cách xử lý một requirement mà chưa báo BA/QA."
+  ],
+  [
+   "Huy",
+   "Thay đổi nhỏ thôi, không cần review đâu."
+  ],
+  [
+   "PM",
+   "Nhỏ hay không thì BA/QA cũng chưa biết..."
+  ]
+ ],
+ "L1 | S02 Senior tự quyết | Câu hỏi": {
+  "hoi": "Bạn sẽ quản lý quyền tự quyết của Senior Developer như thế nào?",
+  "A": "Yêu cầu tuân thủ nghiêm quy trình",
+  "B": "Cho Senior toàn quyền",
+  "C": "Thiết lập phạm vi tự quyết"
+ },
+ "L1 | S02 Senior tự quyết | Nhánh A": [
+  [
+   "PM",
+   "Mọi thay đổi phải được PM và BA/QA duyệt trước."
+  ],
+  [
+   "Huy",
+   "Việc gì cũng chờ duyệt thì tiến độ sẽ chậm."
+  ]
+ ],
+ "L1 | S02 Senior tự quyết | Nhánh B": [
+  [
+   "PM",
+   "Anh hiểu hệ thống nhất, anh cứ tự quyết."
+  ],
+  [
+   "Huy",
+   "Vậy anh sẽ chủ động xử lý cho kịp tiến độ."
+  ]
+ ],
+ "L1 | S02 Senior tự quyết | Nhánh C": [
+  [
+   "PM",
+   "Mình thống nhất: việc nào anh tự quyết, việc nào phải review."
+  ],
+  [
+   "Huy",
+   "Hợp lý. Việc ảnh hưởng requirement anh sẽ đưa ra review."
+  ]
+ ],
+ "L1 | S03 Thay đổi phạm vi | Mở cảnh": [
+  [
+   "Dẫn truyện",
+   "Ngày 10 · Phòng họp kickoff."
+  ],
+  [
+   "Chị Mai",
+   "Chị muốn thêm hai chức năng vào bản demo. Chắc chỉ vài ngày thôi nhỉ?"
+  ],
+  [
+   "Lan",
+   "Hai chức năng này nằm ngoài phạm vi đã xác nhận."
+  ],
+  [
+   "PM",
+   "Hai chức năng... mà demo chỉ còn vài ngày."
+  ]
+ ],
+ "L1 | S03 Thay đổi phạm vi | Câu hỏi": {
+  "hoi": "Bạn sẽ phản hồi yêu cầu của khách hàng như thế nào?",
+  "A": "Đồng ý ngay",
+  "B": "Từ chối vì ngoài hợp đồng",
+  "C": "Tạo Change Request"
+ },
+ "L1 | S03 Thay đổi phạm vi | Nhánh A": [
+  [
+   "PM",
+   "Được ạ, team sẽ thêm vào."
+  ],
+  [
+   "Huy",
+   "Team phải điều chỉnh lại kế hoạch ngay."
+  ]
+ ],
+ "L1 | S03 Thay đổi phạm vi | Nhánh B": [
+  [
+   "PM",
+   "Yêu cầu này ngoài hợp đồng, team không làm được."
+  ],
+  [
+   "Chị Mai",
+   "Chị hiểu, nhưng cách xử lý này hơi cứng nhắc."
+  ]
+ ],
+ "L1 | S03 Thay đổi phạm vi | Nhánh C": [
+  [
+   "PM",
+   "Team sẽ estimate và gửi chị phương án: lùi deadline, giảm phạm vi hoặc thêm ngân sách."
+  ],
+  [
+   "Chị Mai",
+   "Được, chị cần biết rõ tác động trước."
+  ]
+ ],
+ "L1 | S04 Quỹ công cụ | Mở cảnh": [
+  [
+   "Dẫn truyện",
+   "Ngày 15 · Khu vực làm việc của team."
+  ],
+  [
+   "Lan",
+   "Team đang quản lý test case thủ công. Em đề xuất mua bộ công cụ."
+  ],
+  [
+   "Hệ thống",
+   "Đầy đủ: 15 điểm · Licence dùng chung: 5 điểm · Miễn phí: 0 điểm"
+  ],
+  [
+   "PM",
+   "100 điểm phải dùng cho cả 60 ngày... tính sao đây."
+  ]
+ ],
+ "L1 | S04 Quỹ công cụ | Câu hỏi": {
+  "hoi": "Bạn sẽ phân bổ quỹ công cụ như thế nào?",
+  "A": "Mua đầy đủ",
+  "B": "Chỉ sử dụng công cụ miễn phí",
+  "C": "Mua một licence dùng chung"
+ },
+ "L1 | S04 Quỹ công cụ | Nhánh A": [
+  [
+   "PM",
+   "Mua đủ bộ công cụ cho team."
+  ],
+  [
+   "Dẫn truyện",
+   "Team có đủ công cụ quản lý, kiểm thử và giám sát."
+  ]
+ ],
+ "L1 | S04 Quỹ công cụ | Nhánh B": [
+  [
+   "PM",
+   "Tạm thời dùng công cụ miễn phí thôi."
+  ],
+  [
+   "Dẫn truyện",
+   "Giữ được ngân sách, nhưng team mất nhiều thời gian làm tay."
+  ]
+ ],
+ "L1 | S04 Quỹ công cụ | Nhánh C": [
+  [
+   "PM",
+   "Mua một licence, cả team dùng chung."
+  ],
+  [
+   "Dẫn truyện",
+   "Tiết kiệm ngân sách, nhưng licence dùng chung dễ thành điểm nghẽn."
+  ]
+ ],
+ "L1 | Tổng kết Level 1 (tốt) | Mở cảnh": [
+  [
+   "Anh Minh",
+   "Em đã bắt đầu kiểm soát được dự án. Giai đoạn tới sẽ khó hơn."
+  ],
+  [
+   "PM",
+   "Em cảm ơn anh. Em sẵn sàng rồi ạ."
+  ],
+  [
+   "Dẫn truyện",
+   "Hết 15 ngày đầu. Giai đoạn Hòa nhập bắt đầu."
+  ]
+ ],
+ "L1 | Tổng kết Level 1 (trung bình) | Mở cảnh": [
+  [
+   "Anh Minh",
+   "Dự án vẫn chạy, nhưng vài quyết định đang tạo ra rủi ro. Theo dõi kỹ nhé."
+  ],
+  [
+   "PM",
+   "Em sẽ theo dõi kỹ những rủi ro đó."
+  ],
+  [
+   "Dẫn truyện",
+   "Hết 15 ngày đầu. Giai đoạn Hòa nhập bắt đầu."
+  ]
+ ],
+ "L1 | Tổng kết Level 1 (rủi ro) | Mở cảnh": [
+  [
+   "Anh Minh",
+   "Tiến độ trước mắt ổn, nhưng nền tảng chưa vững. Vấn đề sẽ quay lại."
+  ],
+  [
+   "PM",
+   "Em hiểu... em sẽ xử lý dần các vấn đề tồn đọng."
+  ],
+  [
+   "Dẫn truyện",
+   "Hết 15 ngày đầu. Giai đoạn Hòa nhập bắt đầu."
+  ]
+ ],
+ "L2 | Intro | Mở cảnh": [
+  [
+   "Dẫn truyện",
+   "LEVEL 2 · HÒA NHẬP — Ngày 16 đến 30."
+  ],
+  [
+   "Dẫn truyện",
+   "Dự án A chưa ổn định thì dự án B đã tới. Mọi yêu cầu đều được gọi là ưu tiên."
+  ],
+  [
+   "Anh Minh",
+   "Công ty có thêm dự án B. Từ giờ em không chỉ quản lý một deadline."
+  ],
+  [
+   "PM",
+   "Em cần biết phạm vi dự án B trước khi đưa ra phương án."
+  ]
+ ],
+ "L2 | S05 Hai dự án | Mở cảnh": [
+  [
+   "Dẫn truyện",
+   "Ngày 18 · Phòng họp nội bộ."
+  ],
+  [
+   "Anh Minh",
+   "Dự án B cần demo sau hai tuần, dự án A vẫn giữ mốc release."
+  ],
+  [
+   "Huy",
+   "Anh mà chuyển sang B thì backend của A thiếu người review."
+  ],
+  [
+   "PM",
+   "Hai dự án, vẫn chỉ ba người..."
+  ]
+ ],
+ "L2 | S05 Hai dự án | Câu hỏi": {
+  "hoi": "Bạn sẽ xử lý xung đột nguồn lực giữa hai dự án như thế nào?",
+  "A": "Thuê Freelancer hỗ trợ",
+  "B": "Cho team OT trong hai tuần",
+  "C": "Đàm phán lại mức ưu tiên với quản lý"
+ },
+ "L2 | S05 Hai dự án | Nhánh A": [
+  [
+   "PM",
+   "Thuê một Freelancer cho các việc độc lập của dự án B."
+  ],
+  [
+   "Huy",
+   "Được, nhưng team vẫn mất thời gian onboarding và review."
+  ]
+ ],
+ "L2 | S05 Hai dự án | Nhánh B": [
+  [
+   "PM",
+   "Hai tuần tới cả team chia ca và OT để giữ cả hai deadline."
+  ],
+  [
+   "Linh",
+   "Em sẽ cố, nhưng team đã căng từ đợt demo trước."
+  ]
+ ],
+ "L2 | S05 Hai dự án | Nhánh C": [
+  [
+   "PM",
+   "Ưu tiên release A. Dự án B bắt đầu bằng discovery và backlog."
+  ],
+  [
+   "Anh Minh",
+   "Vậy B sẽ không có demo đầy đủ sau hai tuần."
+  ]
+ ],
+ "L2 | S06 Deadline/chất lượng | Mở cảnh": [
+  [
+   "Dẫn truyện",
+   "Ngày 22 · Phòng họp release. Dự án A đang chậm 3 ngày."
+  ],
+  [
+   "Huy",
+   "Muốn release đúng ngày thì phải bỏ vòng regression cuối."
+  ],
+  [
+   "Chị Mai",
+   "Lùi ba ngày thì bên chị phải đổi lịch đào tạo. Chị cần phương án ngay."
+  ],
+  [
+   "PM",
+   "Deadline hay chất lượng... phải chọn thôi."
+  ]
+ ],
+ "L2 | S06 Deadline/chất lượng | Câu hỏi": {
+  "hoi": "Bạn sẽ quyết định phương án release nào?",
+  "A": "Bỏ regression test và release đúng hạn",
+  "B": "Xin delay ba ngày để test đầy đủ",
+  "C": "Test luồng critical và release từng phần"
+ },
+ "L2 | S06 Deadline/chất lượng | Nhánh A": [
+  [
+   "PM",
+   "Release đúng hạn, regression bổ sung ở bản sau."
+  ],
+  [
+   "Huy",
+   "Lỗi ở luồng cũ mà lọt lên production thì tốn hơn nhiều."
+  ]
+ ],
+ "L2 | S06 Deadline/chất lượng | Nhánh B": [
+  [
+   "PM",
+   "Team cần thêm ba ngày để chạy đủ regression."
+  ],
+  [
+   "Chị Mai",
+   "Chị cần chắc ba ngày này thực sự giảm được rủi ro."
+  ]
+ ],
+ "L2 | S06 Deadline/chất lượng | Nhánh C": [
+  [
+   "PM",
+   "Release trước các luồng critical, phần chưa đủ tin cậy thì tắt tạm."
+  ],
+  [
+   "Huy",
+   "Anh sẽ dùng feature flag để kiểm soát phạm vi mở."
+  ]
+ ],
+ "L2 | S07 Giữ Huy | Mở cảnh": [
+  [
+   "Dẫn truyện",
+   "Ngày 26 · Phòng họp 1-1. Huy xin nói chuyện riêng."
+  ],
+  [
+   "Huy",
+   "Anh vừa nhận offer mới, thu nhập cao hơn khoảng 30%."
+  ],
+  [
+   "Huy",
+   "Việc critical dồn hết vào anh, mà lộ trình thì chưa rõ."
+  ],
+  [
+   "PM",
+   "Mất Huy lúc này thì cả dự án chao đảo..."
+  ]
+ ],
+ "L2 | S07 Giữ Huy | Câu hỏi": {
+  "hoi": "Bạn sẽ xử lý đề nghị nghỉ việc của Huy như thế nào?",
+  "A": "Dùng ngân sách retention",
+  "B": "Chấp nhận cho nghỉ và tuyển người mới",
+  "C": "Thương lượng career path và technical ownership"
+ },
+ "L2 | S07 Giữ Huy | Nhánh A": [
+  [
+   "PM",
+   "Em đề xuất dùng ngân sách retention để điều chỉnh quyền lợi cho Huy."
+  ],
+  [
+   "Huy",
+   "Nếu khối lượng việc cũng được kiểm soát, anh sẽ ở lại."
+  ]
+ ],
+ "L2 | S07 Giữ Huy | Nhánh B": [
+  [
+   "PM",
+   "Em tôn trọng lựa chọn của anh. Team sẽ lên kế hoạch bàn giao."
+  ],
+  [
+   "Anh Minh",
+   "Rủi ro ngắn hạn rất cao. Dự án phải chạy được khi chưa có người mới."
+  ]
+ ],
+ "L2 | S07 Giữ Huy | Nhánh C": [
+  [
+   "PM",
+   "Em đề xuất lộ trình Technical Lead ba tháng: anh sở hữu kiến trúc và mentor team."
+  ],
+  [
+   "Huy",
+   "Anh quan tâm, nhưng team không được tiếp tục sống bằng OT."
+  ]
+ ],
+ "L2 | S07 C1 thương lượng thành công | Mở cảnh": [
+  [
+   "Huy",
+   "Anh ở lại và thử lộ trình này."
+  ],
+  [
+   "PM",
+   "Cảm ơn anh. Mình cùng làm cho lộ trình này thành thật nhé."
+  ]
+ ],
+ "L2 | S07 C2 thương lượng thất bại | Mở cảnh": [
+  [
+   "Huy",
+   "Anh trân trọng đề xuất, nhưng anh quyết định nhận offer mới."
+  ],
+  [
+   "PM",
+   "Em tôn trọng quyết định của anh. Mình lên kế hoạch bàn giao nhé."
+  ]
+ ],
+ "L2 | S07 kết cảnh | Mở cảnh": [
+  [
+   "Hệ thống",
+   "Giữ người không chỉ là quyết định về tiền."
+  ],
+  [
+   "PM",
+   "Bài học đắt giá..."
+  ],
+  [
+   "Dẫn truyện",
+   "Bốn ngày sau, khách hàng gửi phản hồi về chức năng mới."
+  ]
+ ],
+ "L2 | S08 Complain | Mở cảnh": [
+  [
+   "Dẫn truyện",
+   "Ngày 30 · Cuộc họp với khách hàng."
+  ],
+  [
+   "Chị Mai",
+   "Kết quả không giống cách bên chị hiểu. Bên em giải quyết thế nào?"
+  ],
+  [
+   "Lan",
+   "Requirement có một câu hiểu được theo hai cách."
+  ],
+  [
+   "PM",
+   "Không phải lúc tranh luận ai đúng ai sai..."
+  ]
+ ],
+ "L2 | S08 Complain | Câu hỏi": {
+  "hoi": "Bạn sẽ xử lý tranh chấp trách nhiệm này như thế nào?",
+  "A": "Khẳng định team đã làm đúng tài liệu",
+  "B": "Nhận toàn bộ lỗi và sửa miễn phí",
+  "C": "Làm rõ kỳ vọng và chia sẻ trách nhiệm"
+ },
+ "L2 | S08 Complain (biến thể 1) | Mở cảnh": [
+  [
+   "Dẫn truyện",
+   "Ngày 30 · Cuộc họp với khách hàng."
+  ],
+  [
+   "Chị Mai",
+   "Chức năng này chạy khác với cách bên chị đã yêu cầu."
+  ],
+  [
+   "Huy",
+   "Team đổi cách xử lý để kịp demo nhưng chưa ghi nhận thành requirement."
+  ],
+  [
+   "PM",
+   "Không phải lúc tranh luận ai đúng ai sai..."
+  ]
+ ],
+ "L2 | S08 Complain | Nhánh A": [
+  [
+   "PM",
+   "Team đã làm đúng tài liệu. Yêu cầu này là thay đổi mới."
+  ],
+  [
+   "Chị Mai",
+   "Chị không chấp nhận việc đẩy hết trách nhiệm sang khách hàng."
+  ]
+ ],
+ "L2 | S08 Complain | Nhánh B": [
+  [
+   "PM",
+   "Bên em nhận lỗi và sửa miễn phí theo ý chị."
+  ],
+  [
+   "Lan",
+   "Không làm rõ requirement thì lần sau vẫn sẽ hiểu sai."
+  ]
+ ],
+ "L2 | S08 Complain | Nhánh C": [
+  [
+   "PM",
+   "Phần làm rõ tài liệu team chịu. Phần mở rộng mình làm change request."
+  ],
+  [
+   "Chị Mai",
+   "Chị đồng ý, miễn là trách nhiệm hai bên rõ ràng."
+  ]
+ ],
+ "L2 | Tổng kết Level 2 (tốt) | Mở cảnh": [
+  [
+   "Anh Minh",
+   "Em đã biết quản lý đánh đổi thay vì chỉ phản ứng với từng yêu cầu."
+  ],
+  [
+   "PM",
+   "Em sẽ giữ cách làm này khi áp lực tăng lên."
+  ],
+  [
+   "Dẫn truyện",
+   "Hết 30 ngày. Giai đoạn Bứt phá bắt đầu — khủng hoảng thật sự đang tới."
+  ]
+ ],
+ "L2 | Tổng kết Level 2 (trung bình) | Mở cảnh": [
+  [
+   "Anh Minh",
+   "Dự án vẫn chạy, nhưng đang dựa nhiều vào nỗ lực cá nhân."
+  ],
+  [
+   "PM",
+   "Em sẽ giảm bớt phụ thuộc vào nỗ lực cá nhân."
+  ],
+  [
+   "Dẫn truyện",
+   "Hết 30 ngày. Giai đoạn Bứt phá bắt đầu — khủng hoảng thật sự đang tới."
+  ]
+ ],
+ "L2 | Tổng kết Level 2 (rủi ro) | Mở cảnh": [
+  [
+   "Anh Minh",
+   "Tiến độ tăng, nhưng team và chất lượng đang phải trả giá."
+  ],
+  [
+   "PM",
+   "Em hiểu. Em phải xử lý trước khi thành sự cố."
+  ],
+  [
+   "Dẫn truyện",
+   "Hết 30 ngày. Giai đoạn Bứt phá bắt đầu — khủng hoảng thật sự đang tới."
+  ]
+ ],
+ "L3 | S09 Production Incident | Mở cảnh": [
+  [
+   "Dẫn truyện",
+   "LEVEL 3 · BỨT PHÁ — Ngày 31 đến 45. Những quyết định cũ bắt đầu quay lại."
+  ],
+  [
+   "Dẫn truyện",
+   "Ngày 33 · 14:00."
+  ],
+  [
+   "Hệ thống",
+   "14:00 — Production lỗi, khách hàng bị ảnh hưởng."
+  ],
+  [
+   "PM",
+   "Release vẫn đang chờ... xử lý thế nào đây?"
+  ]
+ ],
+ "L3 | S09 Production Incident | Câu hỏi": {
+  "hoi": "Bạn điều phối sự cố như thế nào?",
+  "A": "Cho toàn team dừng việc để xử lý",
+  "B": "Chỉ cử một developer xử lý",
+  "C": "Rollback trước, lập nhóm incident riêng rồi điều tra"
+ },
+ "L3 | S09 Production Incident | Nhánh A": [
+  [
+   "PM",
+   "Cả team dừng việc, dồn hết vào sự cố!"
+  ],
+  [
+   "Dẫn truyện",
+   "Sự cố được ưu tiên, nhưng mọi kế hoạch khác dừng lại."
+  ]
+ ],
+ "L3 | S09 Production Incident | Nhánh B": [
+  [
+   "PM",
+   "Giao một dev xử lý, những người khác giữ tiến độ."
+  ],
+  [
+   "Dẫn truyện",
+   "Việc khác vẫn chạy, nhưng phục hồi kéo dài."
+  ]
+ ],
+ "L3 | S09 Production Incident | Nhánh C": [
+  [
+   "PM",
+   "Rollback trước, lập nhóm incident rồi mới điều tra."
+  ],
+  [
+   "Dẫn truyện",
+   "Downtime được khống chế, trách nhiệm được phân rõ."
+  ]
+ ],
+ "L3 | S09 sau mọi nhánh | Mở cảnh": [
+  [
+   "PM",
+   "Chị Mai ơi, em báo về sự cố chiều nay và cách bên em đã xử lý ạ."
+  ]
+ ],
+ "L3 | S10 Sales hứa 10 ngày | Mở cảnh": [
+  [
+   "Dẫn truyện",
+   "Ngày 37 · Nam ghé qua bàn PM."
+  ],
+  [
+   "Nam",
+   "Anh chốt với khách rồi: tính năng AI xong trong mười ngày!"
+  ],
+  [
+   "PM",
+   "Mười ngày? Team còn chưa được hỏi!"
+  ]
+ ],
+ "L3 | S10 Sales hứa 10 ngày | Câu hỏi": {
+  "hoi": "Bạn sẽ xử lý cam kết này như thế nào?",
+  "A": "Nhận deadline và tìm cách hoàn thành",
+  "B": "Nói với khách hàng rằng Sales đã hứa sai",
+  "C": "Đề xuất MVP 10 ngày và phase 2 có estimate"
+ },
+ "L3 | S10 Sales hứa 10 ngày | Nhánh A": [
+  [
+   "PM",
+   "Nhận. Cả team chạy nước rút mười ngày."
+  ],
+  [
+   "Dẫn truyện",
+   "Cam kết được giữ, nhưng áp lực dồn hết lên team."
+  ]
+ ],
+ "L3 | S10 Sales hứa 10 ngày | Nhánh B": [
+  [
+   "PM",
+   "Chị Mai, bên Sales đã hứa sai, mười ngày là không khả thi."
+  ],
+  [
+   "Dẫn truyện",
+   "Sự thật được nói ra, nhưng tạo thêm xung đột."
+  ]
+ ],
+ "L3 | S10 Sales hứa 10 ngày | Nhánh C": [
+  [
+   "PM",
+   "Mười ngày bên em giao MVP, phase 2 có estimate cụ thể."
+  ],
+  [
+   "Dẫn truyện",
+   "Kỳ vọng thành cam kết có giới hạn và lộ trình rõ ràng."
+  ]
+ ],
+ "L3 | S11 Junior gây lỗi | Mở cảnh": [
+  [
+   "Dẫn truyện",
+   "Ngày 41 · Sáng sớm."
+  ],
+  [
+   "Linh",
+   "Em xin lỗi... em push nhầm code, dữ liệu test mất hết rồi."
+  ],
+  [
+   "Lan",
+   "Team sẽ mất gần một ngày để khôi phục."
+  ],
+  [
+   "PM",
+   "Xử lý thế nào cho đúng đây..."
+  ]
+ ],
+ "L3 | S11 Junior gây lỗi | Câu hỏi": {
+  "hoi": "Bạn phản hồi với nhân sự và team thế nào?",
+  "A": "Phê bình nhân sự trước team",
+  "B": "PM tự xử lý và bỏ qua để giữ hòa khí",
+  "C": "1-1, phân tích nguyên nhân và bổ sung checklist review/deploy"
+ },
+ "L3 | S11 Junior gây lỗi | Nhánh A": [
+  [
+   "PM",
+   "Mọi người nghe đây: lỗi lần này là do Linh!"
+  ],
+  [
+   "Dẫn truyện",
+   "Team bắt đầu phòng thủ và ngại báo sai sót."
+  ]
+ ],
+ "L3 | S11 Junior gây lỗi | Nhánh B": [
+  [
+   "PM",
+   "Để mình xử lý nốt. Chuyện này bỏ qua nhé."
+  ],
+  [
+   "Dẫn truyện",
+   "Không khí tạm ổn, nhưng nguyên nhân chưa được giải quyết."
+  ]
+ ],
+ "L3 | S11 Junior gây lỗi | Nhánh C": [
+  [
+   "PM",
+   "Linh, mình nói chuyện riêng, cùng tìm nguyên nhân rồi thêm checklist deploy."
+  ],
+  [
+   "Dẫn truyện",
+   "Lỗi được biến thành cải tiến quy trình."
+  ]
+ ],
+ "L3 | S12 Cơ hội dự án lớn | Mở cảnh": [
+  [
+   "Dẫn truyện",
+   "Ngày 45 · Anh Minh gọi PM lên phòng."
+  ],
+  [
+   "Anh Minh",
+   "Ban giám đốc muốn team nhận thêm một dự án lớn. Làm tốt thì rất có lợi cho em."
+  ],
+  [
+   "PM",
+   "Nhưng nguồn lực team đang có hạn..."
+  ]
+ ],
+ "L3 | S12 Cơ hội dự án lớn | Câu hỏi": {
+  "hoi": "Bạn đề xuất phương án nào?",
+  "A": "Nhận ngay bằng nguồn lực hiện tại",
+  "B": "Từ chối để bảo vệ team hiện tại",
+  "C": "Nhận có điều kiện, yêu cầu thêm người và ngân sách triển khai"
+ },
+ "L3 | S12 Cơ hội dự án lớn | Nhánh A": [
+  [
+   "PM",
+   "Em nhận ngay ạ!"
+  ],
+  [
+   "Dẫn truyện",
+   "Công ty ghi nhận, nhưng tải của team vượt mức an toàn."
+  ]
+ ],
+ "L3 | S12 Cơ hội dự án lớn | Nhánh B": [
+  [
+   "PM",
+   "Em xin từ chối để bảo vệ team hiện tại."
+  ],
+  [
+   "Dẫn truyện",
+   "Team được bảo vệ, nhưng cơ hội bị bỏ lỡ."
+  ]
+ ],
+ "L3 | S12 Cơ hội dự án lớn | Nhánh C": [
+  [
+   "PM",
+   "Em nhận, nếu có thêm một người và ngân sách triển khai."
+  ],
+  [
+   "Dẫn truyện",
+   "Cơ hội được nhận kèm điều kiện để làm được."
+  ]
+ ],
+ "L4 | Intro | Mở cảnh": [
+  [
+   "Dẫn truyện",
+   "LEVEL 4 · THU HOẠCH — Ngày 46 đến 60. Mười lăm ngày cuối."
+  ],
+  [
+   "Anh Minh",
+   "Em còn 15 ngày trước buổi đánh giá cuối kỳ."
+  ],
+  [
+   "Anh Minh",
+   "Hãy để các quyết định 15 ngày cuối thành bằng chứng cho năng lực của em."
+  ],
+  [
+   "PM",
+   "Em sẽ chuẩn bị báo cáo bằng dữ liệu thực tế ạ."
+  ]
+ ],
+ "L4 | S13 Hệ thống vận hành | Mở cảnh": [
+  [
+   "Dẫn truyện",
+   "Ngày 48 · Phòng họp nội bộ của team."
+  ],
+  [
+   "Anh Minh",
+   "Nếu Huy nghỉ hoặc Lan chuyển dự án, team có tự vận hành được không?"
+  ],
+  [
+   "Lan",
+   "Checklist và quy trình deploy vẫn nằm rải rác, có bước chỉ nhắc trong nhóm chat."
+  ],
+  [
+   "PM",
+   "Làm thêm việc, hay xây lại cách team vận hành?"
+  ]
+ ],
+ "L4 | S13 Hệ thống vận hành | Câu hỏi": {
+  "hoi": "Bạn sẽ sử dụng thời gian còn lại như thế nào?",
+  "A": "Tập trung chạy deadline, chưa cải tiến quy trình",
+  "B": "Chuẩn hóa quy trình và checklist vận hành",
+  "C": "Trao quyền để team cùng xây dựng cách vận hành"
+ },
+ "L4 | S13 Hệ thống vận hành | Nhánh A": [
+  [
+   "PM",
+   "Chỉ còn 15 ngày. Tập trung chạy deadline, quy trình để sau."
+  ],
+  [
+   "Huy",
+   "Output tăng trước mắt, nhưng điểm nghẽn cũ sẽ quay lại."
+  ]
+ ],
+ "L4 | S13 Hệ thống vận hành | Nhánh B": [
+  [
+   "PM",
+   "Dành hai ngày chuẩn hóa quy trình: mỗi bước có người chịu trách nhiệm."
+  ],
+  [
+   "Lan",
+   "Em sẽ gộp test checklist và tiêu chí nghiệm thu về một chỗ."
+  ]
+ ],
+ "L4 | S13 Hệ thống vận hành | Nhánh C": [
+  [
+   "PM",
+   "Mỗi người sở hữu một phần: Huy kỹ thuật, Lan chất lượng, Linh onboarding."
+  ],
+  [
+   "Linh",
+   "Em muốn phụ trách checklist cho thành viên mới."
+  ]
+ ],
+ "L4 | S14 Phát triển team | Mở cảnh": [
+  [
+   "Dẫn truyện",
+   "Ngày 52 · Phòng họp 1-1."
+  ],
+  [
+   "Anh Minh",
+   "Đánh giá từng người theo kết quả, năng lực và tiềm năng phát triển."
+  ],
+  [
+   "Huy",
+   "Anh muốn lên Technical Lead, không muốn ôm mọi vấn đề khó nữa."
+  ],
+  [
+   "PM",
+   "Mỗi người một mong muốn... đánh giá sao cho công bằng?"
+  ]
+ ],
+ "L4 | S14 Phát triển team | Câu hỏi": {
+  "hoi": "Bạn sẽ đánh giá và phát triển đội ngũ theo cách nào?",
+  "A": "Chỉ đánh giá theo output hiện tại",
+  "B": "Xây dựng Individual Development Plan cho từng người",
+  "C": "Giao ownership và quyền quyết định theo vai trò"
+ },
+ "L4 | S14 Phát triển team | Nhánh A": [
+  [
+   "PM",
+   "Đánh giá theo số task, tỷ lệ đúng hạn và số lỗi."
+  ],
+  [
+   "Lan",
+   "Việc QA ngăn được lỗi sẽ không có ticket nào ghi nhận."
+  ]
+ ],
+ "L4 | S14 Phát triển team | Nhánh B": [
+  [
+   "PM",
+   "Mỗi người có một kế hoạch phát triển 90 ngày với tiêu chí đo rõ ràng."
+  ],
+  [
+   "Linh",
+   "Em đồng ý. Có tiêu chí em sẽ tự theo dõi được tiến bộ."
+  ]
+ ],
+ "L4 | S14 Phát triển team | Nhánh C": [
+  [
+   "PM",
+   "Huy quyết kiến trúc, Lan được chặn release, Linh sở hữu một module."
+  ],
+  [
+   "Huy",
+   "Anh đồng ý nếu phạm vi quyết định được ghi rõ."
+  ]
+ ],
+ "L4 | S15 Mở rộng hợp tác | Mở cảnh": [
+  [
+   "Dẫn truyện",
+   "Ngày 56 · Phòng họp với khách hàng."
+  ],
+  [
+   "Chị Mai",
+   "Bên chị muốn mở rộng thêm module báo cáo và luồng phê duyệt."
+  ],
+  [
+   "Nam",
+   "Cơ hội tốt! Team xác nhận để anh làm báo giá nhé."
+  ],
+  [
+   "Lan",
+   "Phạm vi mới chỉ là mong muốn, chưa có tiêu chí nghiệm thu."
+  ],
+  [
+   "PM",
+   "Cơ hội lớn, nhưng nhận thế nào cho an toàn?"
+  ]
+ ],
+ "L4 | S15 Mở rộng hợp tác | Câu hỏi": {
+  "hoi": "Bạn sẽ phản hồi đề nghị mở rộng như thế nào?",
+  "A": "Nhận toàn bộ phạm vi để giữ cơ hội",
+  "B": "Khảo sát lại và gửi roadmap sau",
+  "C": "Chia phase và chốt phạm vi ưu tiên"
+ },
+ "L4 | S15 Mở rộng hợp tác | Nhánh A": [
+  [
+   "PM",
+   "Bên em nhận toàn bộ, chi tiết làm rõ dần trong lúc triển khai."
+  ],
+  [
+   "Huy",
+   "Mình đang cam kết khi chưa biết hết phạm vi tích hợp."
+  ]
+ ],
+ "L4 | S15 Mở rộng hợp tác | Nhánh B": [
+  [
+   "PM",
+   "Bên em đề xuất khảo sát ba ngày, sau đó gửi roadmap và estimate."
+  ],
+  [
+   "Chị Mai",
+   "Được, nhưng chị cần mốc cụ thể để trình ngân sách."
+  ]
+ ],
+ "L4 | S15 Mở rộng hợp tác | Nhánh C": [
+  [
+   "PM",
+   "Chia hai phase: Phase 1 làm luồng báo cáo ưu tiên, Phase 2 mở rộng sau nghiệm thu."
+  ],
+  [
+   "Nam",
+   "Anh tách báo giá theo từng phase cho khách dễ duyệt."
+  ]
+ ],
+ "L4 | S16 Final Review | Mở cảnh": [
+  [
+   "Dẫn truyện",
+   "Ngày 60 · Phòng họp đánh giá. Anh Minh và Chị Hà bên nhân sự ngồi ở bàn đánh giá."
+  ],
+  [
+   "Chị Hà (HR)",
+   "Chị bên nhân sự, sẽ cùng anh Minh đánh giá kết quả thử việc của em."
+  ],
+  [
+   "Anh Minh",
+   "PM tốt không phải người không gặp vấn đề, mà là người biết chịu trách nhiệm."
+  ],
+  [
+   "Anh Minh",
+   "Em có 10 phút cho kết quả, quyết định quan trọng và kế hoạch 90 ngày."
+  ],
+  [
+   "PM",
+   "Em xin bắt đầu ạ."
+  ]
+ ],
+ "L4 | S16 Final Review | Câu hỏi": {
+  "hoi": "Bạn sẽ trình bày báo cáo thử việc theo cách nào?",
+  "A": "Chỉ tập trung vào thành tích",
+  "B": "Báo cáo thẳng toàn bộ vấn đề và sai sót",
+  "C": "Báo cáo bằng dữ liệu, bài học và roadmap 90 ngày"
+ },
+ "L4 | S16 Final Review | Nhánh A": [
+  [
+   "PM",
+   "Team hoàn thành phần lớn kế hoạch, mọi vấn đề đều đã được xử lý."
+  ],
+  [
+   "Chị Hà (HR)",
+   "Báo cáo chưa nói gì về sự cố production và tải của team."
+  ]
+ ],
+ "L4 | S16 Final Review | Nhánh B": [
+  [
+   "PM",
+   "Dự án có sự cố, áp lực nguồn lực và vài quyết định chưa tốt. Em nhận trách nhiệm."
+  ],
+  [
+   "Anh Minh",
+   "Minh bạch là tốt, nhưng em cần biến nó thành kế hoạch hành động."
+  ]
+ ],
+ "L4 | S16 Final Review | Nhánh C": [
+  [
+   "PM",
+   "Em báo cáo bốn phần: kết quả, quyết định lớn, rủi ro còn lại và roadmap 90 ngày."
+  ],
+  [
+   "Anh Minh",
+   "Đây là cách một PM chịu trách nhiệm."
+  ]
+ ],
+ "L4 | S16 phản biện | Mở cảnh": [
+  [
+   "Chị Hà (HR)",
+   "Quyết định nào trong 60 ngày tạo ra ảnh hưởng lớn nhất, và vì sao?"
+  ],
+  [
+   "PM",
+   "Quyết định chia phase với khách hàng: giữ được cơ hội mà team không quá tải."
+  ],
+  [
+   "Chị Hà (HR)",
+   "Nếu được làm lại một quyết định, em sẽ thay đổi điều gì?"
+  ],
+  [
+   "PM",
+   "Em sẽ làm rõ phạm vi sớm hơn, trước khi hứa với khách hàng."
+  ],
+  [
+   "Chị Hà (HR)",
+   "Team hiện tại có vận hành được mà không cần em không?"
+  ],
+  [
+   "PM",
+   "Đã có quy trình và người phụ trách từng phần, team có thể tự vận hành."
+  ],
+  [
+   "Chị Hà (HR)",
+   "Ba ưu tiên của em trong 90 ngày tới là gì?"
+  ],
+  [
+   "PM",
+   "Ổn định Phase 1, chuyển giao review cho team, và đo chất lượng sau mỗi release."
+  ],
+  [
+   "Dẫn truyện",
+   "Chị Hà và Anh Minh trao đổi với nhau..."
+  ]
+ ],
+ "END | Pass xuất sắc | Trình tự dùng sheet": [
+  [
+   "Anh Minh",
+   "Em không chỉ qua thử việc mà còn giúp team vận hành tốt hơn. Công ty sẽ giao em phạm vi lớn hơn."
+  ],
+  [
+   "Chị Hà (HR)",
+   "Phòng nhân sự sẽ gửi em hợp đồng chính thức và lộ trình phát triển quản lý."
+  ],
+  [
+   "PM",
+   "Em cảm ơn ạ!!"
+  ]
+ ],
+ "END | Pass | Trình tự dùng sheet": [
+  [
+   "Anh Minh",
+   "Chúc mừng em đã trở thành PM chính thức. Vẫn còn vài năng lực cần cải thiện."
+  ],
+  [
+   "Chị Hà (HR)",
+   "Phòng nhân sự sẽ gửi em hợp đồng chính thức trong tuần này."
+  ],
+  [
+   "PM",
+   "Phù... em cảm ơn anh ạ."
+  ]
+ ],
+ "END | Gia hạn thử việc | Trình tự dùng sheet": [
+  [
+   "Anh Minh",
+   "Em có tiềm năng, nhưng kết quả chưa đủ ổn định. Công ty gia hạn thử việc."
+  ],
+  [
+   "Chị Hà (HR)",
+   "Chị sẽ gửi em mục tiêu và tiêu chí đánh giá cho giai đoạn gia hạn."
+  ],
+  [
+   "PM",
+   "Dạ... em sẽ tập trung vào những điểm còn thiếu."
+  ]
+ ],
+ "END | Không đạt | Trình tự dùng sheet": [
+  [
+   "Anh Minh",
+   "Công ty chưa thể giao em vai trò PM chính thức ở thời điểm này."
+  ],
+  [
+   "Chị Hà (HR)",
+   "Chị sẽ hỗ trợ em các thủ tục kết thúc thử việc."
+  ],
+  [
+   "PM",
+   "Em hiểu ạ. Cảm ơn anh đã cho em cơ hội."
+  ],
+  [
+   "Dẫn truyện",
+   "Ôm thùng đồ ra cửa..."
+  ]
+ ],
+ "FLAG | Chuyển ngày bình thường | Cách dùng": [
+  [
+   "Dẫn truyện",
+   "Một ngày mới bắt đầu."
+  ]
+ ],
+ "FLAG | pm_overloaded | Cách dùng": [
+  [
+   "Dẫn truyện",
+   "Lại ngủ gục trên bàn..."
+  ],
+  [
+   "PM",
+   "Mấy giờ rồi... lại phải bắt đầu rồi."
+  ],
+  [
+   "PM",
+   "Mệt quá..."
+  ]
+ ],
+ "FLAG | team_ot_14_days | Cách dùng": [
+  [
+   "Dẫn truyện",
+   "Hai tuần OT liên tục. Cả team kiệt sức."
+  ]
+ ],
+ "FLAG | Incident đã khắc phục | Cách dùng": [
+  [
+   "PM",
+   "Xong rồi... đứng dậy thôi, còn việc khác."
+  ]
+ ],
+ "FLAG | Chỉ số tăng | Cách dùng": [
+  [
+   "PM",
+   "Tốt lắm!"
+  ]
+ ],
+ "FLAG | Chỉ số giảm | Cách dùng": [
+  [
+   "PM",
+   "Không ổn rồi..."
+  ]
+ ]
+}

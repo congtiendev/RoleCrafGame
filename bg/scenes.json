@@ -1,0 +1,117 @@
+{
+  "project": "RoleCraft PM60",
+  "brand": "Innocom",
+  "format": "webp (lossless)",
+  "resolution": {
+    "pc": [
+      1672,
+      941
+    ],
+    "mobile": [
+      941,
+      1672
+    ]
+  },
+  "scenes": {
+    "lobby": {
+      "pc": "lobby_pc.webp",
+      "mobile": "lobby_mobile.webp",
+      "scenarioIds": [
+        "P1_INTRO",
+        "P2_INTRO",
+        "P4_INTRO"
+      ]
+    },
+    "team_floor": {
+      "pc": "team_floor_pc.webp",
+      "mobile": "team_floor_mobile.webp",
+      "scenarioIds": [
+        "P1_S01_PROJECT_TAKEOVER",
+        "P1_S04_TOOL_BUDGET",
+        "P4_S14_TEAM_DEVELOPMENT"
+      ]
+    },
+    "senior_desk": {
+      "pc": "senior_desk_pc.webp",
+      "mobile": "senior_desk_mobile.webp",
+      "scenarioIds": [
+        "P1_S02_SENIOR_AUTONOMY",
+        "P2_S07_KEY_PERSON_RETENTION",
+        "P4_S14_TEAM_DEVELOPMENT"
+      ]
+    },
+    "internal_meeting": {
+      "pc": "internal_meeting_pc.webp",
+      "mobile": "internal_meeting_mobile.webp",
+      "scenarioIds": [
+        "P2_S05_DUAL_DEADLINE",
+        "P2_S06_DEADLINE_QUALITY",
+        "P3_S12_BIG_PROJECT",
+        "P4_S13_OPERATING_SYSTEM"
+      ]
+    },
+    "client_meeting": {
+      "pc": "client_meeting_pc.webp",
+      "mobile": "client_meeting_mobile.webp",
+      "scenarioIds": [
+        "P1_S03_SCOPE_CHANGE",
+        "P2_S08_CUSTOMER_COMPLAINT",
+        "P3_S10_SALES_OVERCOMMIT",
+        "P4_S15_CLIENT_EXPANSION"
+      ]
+    },
+    "incident_ops": {
+      "pc": "incident_ops_pc.webp",
+      "mobile": "incident_ops_mobile.webp",
+      "scenarioIds": [
+        "P3_S09_PRODUCTION_INCIDENT",
+        "P3_S11_JUNIOR_MISTAKE"
+      ]
+    },
+    "final_review": {
+      "pc": "final_review_pc.webp",
+      "mobile": "final_review_mobile.webp",
+      "scenarioIds": [
+        "P4_S16_FINAL_REVIEW"
+      ]
+    },
+    "team_huddle": {
+      "pc": "team_huddle_pc.webp",
+      "mobile": "team_huddle_mobile.webp",
+      "scenarioIds": [],
+      "note": "Bàn họp nhanh ở khu mở, cạnh pantry"
+    },
+    "lounge": {
+      "pc": "lounge_pc.webp",
+      "mobile": "lounge_mobile.webp",
+      "scenarioIds": [],
+      "note": "Góc nghỉ / pantry: sofa, tủ lạnh, cây nước"
+    },
+    "manager_office": {
+      "pc": "manager_office_pc.webp",
+      "mobile": "manager_office_mobile.webp",
+      "scenarioIds": [],
+      "note": "Phòng Anh Minh: bàn quản lý, kệ cúp, bàn tròn 1-1"
+    },
+    "dev_corner": {
+      "pc": "dev_corner_pc.webp",
+      "mobile": "dev_corner_mobile.webp",
+      "scenarioIds": [],
+      "note": "Khu bàn dev cạnh vách kính, bảng kế hoạch"
+    }
+  },
+  "layoutHints": {
+    "walkableFootlineY": 0.82,
+    "pcWalkableX": [
+      0.06,
+      0.94
+    ],
+    "mobileWalkableX": [
+      0.12,
+      0.88
+    ],
+    "hud": "top overlay",
+    "dialogue": "bottom overlay",
+    "spritesAndUIBakedIn": false
+  }
+}

@@ -1,0 +1,4762 @@
+{
+ "version": 3,
+ "markers": {
+  "grip": "#FF00FF",
+  "grip2": "#00FF00",
+  "seat": "#00FFFF",
+  "screen": "#00FF00"
+ },
+ "sheets": [
+  {
+   "id": "A",
+   "key": "master",
+   "kind": "pm",
+   "file": "PM_A_master.png",
+   "attach": "photo",
+   "cols": 8,
+   "rows": 7,
+   "cells": [
+    {
+     "index": 1,
+     "row": 1,
+     "col": 1,
+     "name": "portrait",
+     "key": "pm/portrait"
+    },
+    {
+     "index": 2,
+     "row": 1,
+     "col": 2,
+     "name": "idle_01",
+     "key": "pm/idle_01",
+     "bind": [
+      {
+       "prop": "tablet_back",
+       "at": "grip",
+       "z": "front",
+       "rot": 0
+      }
+     ]
+    },
+    {
+     "index": 3,
+     "row": 1,
+     "col": 3,
+     "name": "idle_02",
+     "key": "pm/idle_02",
+     "bind": [
+      {
+       "prop": "tablet_back",
+       "at": "grip",
+       "z": "front",
+       "rot": 0
+      }
+     ]
+    },
+    {
+     "index": 4,
+     "row": 1,
+     "col": 4,
+     "name": "idle_03",
+     "key": "pm/idle_03",
+     "bind": [
+      {
+       "prop": "tablet_back",
+       "at": "grip",
+       "z": "front",
+       "rot": 0
+      }
+     ]
+    },
+    {
+     "index": 5,
+     "row": 1,
+     "col": 5,
+     "name": "idle_back_01",
+     "key": "pm/idle_back_01",
+     "bind": [
+      {
+       "prop": "tablet_edge",
+       "at": "grip",
+       "z": "front",
+       "rot": 0
+      }
+     ]
+    },
+    {
+     "index": 6,
+     "row": 1,
+     "col": 6,
+     "name": "idle_04",
+     "key": "pm/idle_04",
+     "bind": [
+      {
+       "prop": "tablet_back",
+       "at": "grip",
+       "z": "front",
+       "rot": 0
+      }
+     ]
+    },
+    {
+     "index": 7,
+     "row": 1,
+     "col": 7,
+     "name": "greet_01",
+     "key": "pm/greet_01"
+    },
+    {
+     "index": 8,
+     "row": 1,
+     "col": 8,
+     "name": "greet_02",
+     "key": "pm/greet_02",
+     "bind": [
+      {
+       "prop": "tablet_back",
+       "at": "grip",
+       "z": "front",
+       "rot": 0
+      }
+     ]
+    },
+    {
+     "index": 9,
+     "row": 2,
+     "col": 1,
+     "name": "walk_01",
+     "key": "pm/walk_01",
+     "bind": [
+      {
+       "prop": "tablet_edge",
+       "at": "grip",
+       "z": "back",
+       "rot": 0
+      }
+     ]
+    },
+    {
+     "index": 10,
+     "row": 2,
+     "col": 2,
+     "name": "walk_02",
+     "key": "pm/walk_02",
+     "bind": [
+      {
+       "prop": "tablet_edge",
+       "at": "grip",
+       "z": "back",
+       "rot": 0
+      }
+     ]
+    },
+    {
+     "index": 11,
+     "row": 2,
+     "col": 3,
+     "name": "walk_03",
+     "key": "pm/walk_03",
+     "bind": [
+      {
+       "prop": "tablet_edge",
+       "at": "grip",
+       "z": "back",
+       "rot": 0
+      }
+     ]
+    },
+    {
+     "index": 12,
+     "row": 2,
+     "col": 4,
+     "name": "walk_04",
+     "key": "pm/walk_04",
+     "bind": [
+      {
+       "prop": "tablet_edge",
+       "at": "grip",
+       "z": "back",
+       "rot": 0
+      }
+     ]
+    },
+    {
+     "index": 13,
+     "row": 2,
+     "col": 5,
+     "name": "walk_05",
+     "key": "pm/walk_05",
+     "bind": [
+      {
+       "prop": "tablet_edge",
+       "at": "grip",
+       "z": "back",
+       "rot": 0
+      }
+     ]
+    },
+    {
+     "index": 14,
+     "row": 2,
+     "col": 6,
+     "name": "walk_06",
+     "key": "pm/walk_06",
+     "bind": [
+      {
+       "prop": "tablet_edge",
+       "at": "grip",
+       "z": "back",
+       "rot": 0
+      }
+     ]
+    },
+    {
+     "index": 15,
+     "row": 2,
+     "col": 7,
+     "name": "walk_07",
+     "key": "pm/walk_07",
+     "bind": [
+      {
+       "prop": "tablet_edge",
+       "at": "grip",
+       "z": "back",
+       "rot": 0
+      }
+     ]
+    },
+    {
+     "index": 16,
+     "row": 2,
+     "col": 8,
+     "name": "walk_08",
+     "key": "pm/walk_08",
+     "bind": [
+      {
+       "prop": "tablet_edge",
+       "at": "grip",
+       "z": "back",
+       "rot": 0
+      }
+     ]
+    },
+    {
+     "index": 17,
+     "row": 3,
+     "col": 1,
+     "name": "run_01",
+     "key": "pm/run_01",
+     "bind": [
+      {
+       "prop": "tablet_back",
+       "at": "grip",
+       "z": "front",
+       "rot": 0
+      }
+     ]
+    },
+    {
+     "index": 18,
+     "row": 3,
+     "col": 2,
+     "name": "run_02",
+     "key": "pm/run_02",
+     "bind": [
+      {
+       "prop": "tablet_back",
+       "at": "grip",
+       "z": "front",
+       "rot": 0
+      }
+     ]
+    },
+    {
+     "index": 19,
+     "row": 3,
+     "col": 3,
+     "name": "run_03",
+     "key": "pm/run_03",
+     "bind": [
+      {
+       "prop": "tablet_back",
+       "at": "grip",
+       "z": "front",
+       "rot": 0
+      }
+     ]
+    },
+    {
+     "index": 20,
+     "row": 3,
+     "col": 4,
+     "name": "run_04",
+     "key": "pm/run_04",
+     "bind": [
+      {
+       "prop": "tablet_back",
+       "at": "grip",
+       "z": "front",
+       "rot": 0
+      }
+     ]
+    },
+    {
+     "index": 21,
+     "row": 3,
+     "col": 5,
+     "name": "run_05",
+     "key": "pm/run_05",
+     "bind": [
+      {
+       "prop": "tablet_back",
+       "at": "grip",
+       "z": "front",
+       "rot": 0
+      }
+     ]
+    },
+    {
+     "index": 22,
+     "row": 3,
+     "col": 6,
+     "name": "run_06",
+     "key": "pm/run_06",
+     "bind": [
+      {
+       "prop": "tablet_back",
+       "at": "grip",
+       "z": "front",
+       "rot": 0
+      }
+     ]
+    },
+    {
+     "index": 23,
+     "row": 3,
+     "col": 7,
+     "name": "run_07",
+     "key": "pm/run_07",
+     "bind": [
+      {
+       "prop": "tablet_back",
+       "at": "grip",
+       "z": "front",
+       "rot": 0
+      }
+     ]
+    },
+    {
+     "index": 24,
+     "row": 3,
+     "col": 8,
+     "name": "run_08",
+     "key": "pm/run_08",
+     "bind": [
+      {
+       "prop": "tablet_back",
+       "at": "grip",
+       "z": "front",
+       "rot": 0
+      }
+     ]
+    },
+    {
+     "index": 25,
+     "row": 4,
+     "col": 1,
+     "name": "jump_01",
+     "key": "pm/jump_01"
+    },
+    {
+     "index": 26,
+     "row": 4,
+     "col": 2,
+     "name": "jump_02",
+     "key": "pm/jump_02"
+    },
+    {
+     "index": 27,
+     "row": 4,
+     "col": 3,
+     "name": "jump_03",
+     "key": "pm/jump_03"
+    },
+    {
+     "index": 28,
+     "row": 4,
+     "col": 4,
+     "name": "jump_04",
+     "key": "pm/jump_04"
+    },
+    {
+     "index": 29,
+     "row": 4,
+     "col": 5,
+     "name": "jump_05",
+     "key": "pm/jump_05"
+    },
+    {
+     "index": 30,
+     "row": 4,
+     "col": 6,
+     "name": "jump_06",
+     "key": "pm/jump_06"
+    },
+    {
+     "index": 31,
+     "row": 4,
+     "col": 7,
+     "name": "startle_01",
+     "key": "pm/startle_01",
+     "bind": [
+      {
+       "prop": "tablet_back",
+       "at": "grip",
+       "z": "front",
+       "rot": 0
+      }
+     ]
+    },
+    {
+     "index": 32,
+     "row": 4,
+     "col": 8,
+     "name": "startle_02",
+     "key": "pm/startle_02"
+    },
+    {
+     "index": 33,
+     "row": 5,
+     "col": 1,
+     "name": "crouch_01",
+     "key": "pm/crouch_01",
+     "bind": [
+      {
+       "prop": "papers_scattered",
+       "at": "ground_front",
+       "z": "back",
+       "rot": 0
+      }
+     ]
+    },
+    {
+     "index": 34,
+     "row": 5,
+     "col": 2,
+     "name": "crouch_02",
+     "key": "pm/crouch_02",
+     "bind": [
+      {
+       "prop": "paper_stack",
+       "at": "grip",
+       "z": "front",
+       "rot": 0
+      },
+      {
+       "prop": "papers_scattered",
+       "at": "ground_front",
+       "z": "back",
+       "rot": 0
+      }
+     ]
+    },
+    {
+     "index": 35,
+     "row": 5,
+     "col": 3,
+     "name": "crouch_03",
+     "key": "pm/crouch_03",
+     "bind": [
+      {
+       "prop": "paper_stack",
+       "at": "grip",
+       "z": "front",
+       "rot": 0
+      }
+     ]
+    },
+    {
+     "index": 36,
+     "row": 5,
+     "col": 4,
+     "name": "sit_01",
+     "key": "pm/sit_01",
+     "bind": [
+      {
+       "furniture": "office_chair",
+       "at": "beside_right",
+       "z": "back"
+      }
+     ]
+    },
+    {
+     "index": 37,
+     "row": 5,
+     "col": 5,
+     "name": "sit_02",
+     "key": "pm/sit_02",
+     "bind": [
+      {
+       "furniture": "office_chair",
+       "at": "seat",
+       "z": "back"
+      }
+     ]
+    },
+    {
+     "index": 38,
+     "row": 5,
+     "col": 6,
+     "name": "sit_03",
+     "key": "pm/sit_03",
+     "bind": [
+      {
+       "furniture": "office_chair",
+       "at": "seat",
+       "z": "back"
+      },
+      {
+       "prop": "tablet_flat",
+       "at": "grip",
+       "z": "front",
+       "rot": 0
+      }
+     ]
+    },
+    {
+     "index": 39,
+     "row": 5,
+     "col": 7,
+     "name": "sit_04",
+     "key": "pm/sit_04",
+     "bind": [
+      {
+       "furniture": "office_chair",
+       "at": "seat",
+       "z": "back"
+      }
+     ]
+    },
+    {
+     "index": 40,
+     "row": 5,
+     "col": 8,
+     "name": "sit_05",
+     "key": "pm/sit_05",
+     "bind": [
+      {
+       "furniture": "office_chair",
+       "at": "seat",
+       "z": "back"
+      }
+     ]
+    },
+    {
+     "index": 41,
+     "row": 6,
+     "col": 1,
+     "name": "slump_01",
+     "key": "pm/slump_01",
+     "bind": [
+      {
+       "furniture": "sofa",
+       "at": "seat",
+       "z": "back"
+      }
+     ]
+    },
+    {
+     "index": 42,
+     "row": 6,
+     "col": 2,
+     "name": "slump_02",
+     "key": "pm/slump_02",
+     "bind": [
+      {
+       "furniture": "sofa",
+       "at": "seat",
+       "z": "back"
+      }
+     ]
+    },
+    {
+     "index": 43,
+     "row": 6,
+     "col": 3,
+     "name": "lie_01",
+     "key": "pm/lie_01",
+     "bind": [
+      {
+       "furniture": "sofa",
+       "at": "seat",
+       "z": "back"
+      },
+      {
+       "prop": "tablet_flat",
+       "at": "grip",
+       "z": "front",
+       "rot": 0
+      }
+     ]
+    },
+    {
+     "index": 44,
+     "row": 6,
+     "col": 4,
+     "name": "lie_02",
+     "key": "pm/lie_02",
+     "bind": [
+      {
+       "furniture": "sofa",
+       "at": "seat",
+       "z": "back"
+      }
+     ]
+    },
+    {
+     "index": 45,
+     "row": 6,
+     "col": 5,
+     "name": "lie_03",
+     "key": "pm/lie_03",
+     "bind": [
+      {
+       "furniture": "sofa",
+       "at": "seat",
+       "z": "back"
+      }
+     ]
+    },
+    {
+     "index": 46,
+     "row": 6,
+     "col": 6,
+     "name": "getup_01",
+     "key": "pm/getup_01",
+     "bind": [
+      {
+       "furniture": "sofa",
+       "at": "seat",
+       "z": "back"
+      }
+     ]
+    },
+    {
+     "index": 47,
+     "row": 6,
+     "col": 7,
+     "name": "getup_02",
+     "key": "pm/getup_02",
+     "bind": [
+      {
+       "furniture": "sofa",
+       "at": "seat",
+       "z": "back"
+      }
+     ]
+    },
+    {
+     "index": 48,
+     "row": 6,
+     "col": 8,
+     "name": "getup_03",
+     "key": "pm/getup_03",
+     "bind": [
+      {
+       "furniture": "sofa",
+       "at": "seat",
+       "z": "back"
+      }
+     ]
+    },
+    {
+     "index": 49,
+     "row": 7,
+     "col": 1,
+     "name": "good_01",
+     "key": "pm/good_01"
+    },
+    {
+     "index": 50,
+     "row": 7,
+     "col": 2,
+     "name": "good_02",
+     "key": "pm/good_02"
+    },
+    {
+     "index": 51,
+     "row": 7,
+     "col": 3,
+     "name": "good_03",
+     "key": "pm/good_03"
+    },
+    {
+     "index": 52,
+     "row": 7,
+     "col": 4,
+     "name": "bad_01",
+     "key": "pm/bad_01"
+    },
+    {
+     "index": 53,
+     "row": 7,
+     "col": 5,
+     "name": "bad_02",
+     "key": "pm/bad_02"
+    },
+    {
+     "index": 54,
+     "row": 7,
+     "col": 6,
+     "name": "bad_03",
+     "key": "pm/bad_03"
+    },
+    {
+     "index": 55,
+     "row": 7,
+     "col": 7,
+     "name": "sigh_01",
+     "key": "pm/sigh_01"
+    },
+    {
+     "index": 56,
+     "row": 7,
+     "col": 8,
+     "name": "sigh_02",
+     "key": "pm/sigh_02"
+    }
+   ]
+  },
+  {
+   "id": "B",
+   "key": "hands_gestures",
+   "kind": "pm",
+   "file": "PM_B_hands_gestures.png",
+   "attach": "master",
+   "cols": 8,
+   "rows": 7,
+   "cells": [
+    {
+     "index": 1,
+     "row": 1,
+     "col": 1,
+     "name": "tab_hold_01",
+     "key": "pm/tab_hold_01",
+     "bind": [
+      {
+       "prop": "tablet_back",
+       "at": "grip",
+       "z": "front",
+       "rot": 0
+      }
+     ]
+    },
+    {
+     "index": 2,
+     "row": 1,
+     "col": 2,
+     "name": "tab_read_01",
+     "key": "pm/tab_read_01",
+     "bind": [
+      {
+       "prop": "tablet_back",
+       "at": "grip",
+       "z": "front",
+       "rot": 0
+      }
+     ]
+    },
+    {
+     "index": 3,
+     "row": 1,
+     "col": 3,
+     "name": "tab_read_02",
+     "key": "pm/tab_read_02",
+     "bind": [
+      {
+       "prop": "tablet_back",
+       "at": "grip",
+       "z": "front",
+       "rot": 0
+      }
+     ]
+    },
+    {
+     "index": 4,
+     "row": 1,
+     "col": 4,
+     "name": "tab_present_01",
+     "key": "pm/tab_present_01",
+     "bind": [
+      {
+       "prop": "tablet_screen_34",
+       "at": "grip",
+       "z": "front",
+       "rot": 0
+      }
+     ]
+    },
+    {
+     "index": 5,
+     "row": 1,
+     "col": 5,
+     "name": "tab_present_02",
+     "key": "pm/tab_present_02",
+     "bind": [
+      {
+       "prop": "tablet_screen_34",
+       "at": "grip",
+       "z": "front",
+       "rot": 0
+      }
+     ]
+    },
+    {
+     "index": 6,
+     "row": 1,
+     "col": 6,
+     "name": "tab_present_03",
+     "key": "pm/tab_present_03",
+     "bind": [
+      {
+       "prop": "tablet_screen_34",
+       "at": "grip",
+       "z": "front",
+       "rot": 0
+      }
+     ]
+    },
+    {
+     "index": 7,
+     "row": 1,
+     "col": 7,
+     "name": "tab_swipe_01",
+     "key": "pm/tab_swipe_01",
+     "bind": [
+      {
+       "prop": "tablet_screen_front",
+       "at": "grip",
+       "z": "front",
+       "rot": 0
+      }
+     ]
+    },
+    {
+     "index": 8,
+     "row": 1,
+     "col": 8,
+     "name": "tab_tuck_01",
+     "key": "pm/tab_tuck_01",
+     "bind": [
+      {
+       "prop": "tablet_edge",
+       "at": "grip",
+       "z": "back",
+       "rot": 0
+      }
+     ]
+    },
+    {
+     "index": 9,
+     "row": 2,
+     "col": 1,
+     "name": "doc_carry_01",
+     "key": "pm/doc_carry_01",
+     "bind": [
+      {
+       "prop": "folder_closed",
+       "at": "grip",
+       "z": "front",
+       "rot": 0
+      }
+     ]
+    },
+    {
+     "index": 10,
+     "row": 2,
+     "col": 2,
+     "name": "doc_give_01",
+     "key": "pm/doc_give_01",
+     "bind": [
+      {
+       "prop": "folder_closed",
+       "at": "grip",
+       "z": "front",
+       "rot": 0
+      }
+     ]
+    },
+    {
+     "index": 11,
+     "row": 2,
+     "col": 3,
+     "name": "doc_give_02",
+     "key": "pm/doc_give_02"
+    },
+    {
+     "index": 12,
+     "row": 2,
+     "col": 4,
+     "name": "doc_receive_01",
+     "key": "pm/doc_receive_01",
+     "bind": [
+      {
+       "prop": "folder_closed",
+       "at": "grip",
+       "z": "front",
+       "rot": 0
+      }
+     ]
+    },
+    {
+     "index": 13,
+     "row": 2,
+     "col": 5,
+     "name": "doc_raise_01",
+     "key": "pm/doc_raise_01",
+     "bind": [
+      {
+       "prop": "contract_sheet",
+       "at": "grip",
+       "z": "front",
+       "rot": 0
+      }
+     ]
+    },
+    {
+     "index": 14,
+     "row": 2,
+     "col": 6,
+     "name": "doc_raise_02",
+     "key": "pm/doc_raise_02",
+     "bind": [
+      {
+       "prop": "contract_sheet",
+       "at": "grip",
+       "z": "front",
+       "rot": 0
+      }
+     ]
+    },
+    {
+     "index": 15,
+     "row": 2,
+     "col": 7,
+     "name": "doc_flip_01",
+     "key": "pm/doc_flip_01",
+     "bind": [
+      {
+       "prop": "folder_open",
+       "at": "grip",
+       "z": "front",
+       "rot": 0
+      }
+     ]
+    },
+    {
+     "index": 16,
+     "row": 2,
+     "col": 8,
+     "name": "doc_flip_02",
+     "key": "pm/doc_flip_02",
+     "bind": [
+      {
+       "prop": "folder_open",
+       "at": "grip",
+       "z": "front",
+       "rot": 0
+      }
+     ]
+    },
+    {
+     "index": 17,
+     "row": 3,
+     "col": 1,
+     "name": "phone_call_01",
+     "key": "pm/phone_call_01",
+     "bind": [
+      {
+       "prop": "phone_back",
+       "at": "grip",
+       "z": "front",
+       "rot": 0
+      },
+      {
+       "prop": "notebook_open",
+       "at": "grip2",
+       "z": "front",
+       "rot": 0
+      }
+     ]
+    },
+    {
+     "index": 18,
+     "row": 3,
+     "col": 2,
+     "name": "phone_call_02",
+     "key": "pm/phone_call_02",
+     "bind": [
+      {
+       "prop": "phone_back",
+       "at": "grip",
+       "z": "front",
+       "rot": 0
+      }
+     ]
+    },
+    {
+     "index": 19,
+     "row": 3,
+     "col": 3,
+     "name": "phone_read_01",
+     "key": "pm/phone_read_01",
+     "bind": [
+      {
+       "prop": "phone_back",
+       "at": "grip",
+       "z": "front",
+       "rot": 0
+      }
+     ]
+    },
+    {
+     "index": 20,
+     "row": 3,
+     "col": 4,
+     "name": "phone_read_02",
+     "key": "pm/phone_read_02",
+     "bind": [
+      {
+       "prop": "phone_back",
+       "at": "grip",
+       "z": "front",
+       "rot": 0
+      }
+     ]
+    },
+    {
+     "index": 21,
+     "row": 3,
+     "col": 5,
+     "name": "coffee_01",
+     "key": "pm/coffee_01",
+     "bind": [
+      {
+       "prop": "mug_steam",
+       "at": "grip",
+       "z": "front",
+       "rot": 0
+      }
+     ]
+    },
+    {
+     "index": 22,
+     "row": 3,
+     "col": 6,
+     "name": "coffee_02",
+     "key": "pm/coffee_02",
+     "bind": [
+      {
+       "prop": "mug_steam",
+       "at": "grip",
+       "z": "front",
+       "rot": 0
+      }
+     ]
+    },
+    {
+     "index": 23,
+     "row": 3,
+     "col": 7,
+     "name": "shake_01",
+     "key": "pm/shake_01"
+    },
+    {
+     "index": 24,
+     "row": 3,
+     "col": 8,
+     "name": "shake_02",
+     "key": "pm/shake_02",
+     "bind": [
+      {
+       "prop": "tablet_back",
+       "at": "grip2",
+       "z": "front",
+       "rot": 0
+      }
+     ]
+    },
+    {
+     "index": 25,
+     "row": 4,
+     "col": 1,
+     "name": "talk_01",
+     "key": "pm/talk_01"
+    },
+    {
+     "index": 26,
+     "row": 4,
+     "col": 2,
+     "name": "talk_02",
+     "key": "pm/talk_02"
+    },
+    {
+     "index": 27,
+     "row": 4,
+     "col": 3,
+     "name": "count_01",
+     "key": "pm/count_01"
+    },
+    {
+     "index": 28,
+     "row": 4,
+     "col": 4,
+     "name": "count_02",
+     "key": "pm/count_02"
+    },
+    {
+     "index": 29,
+     "row": 4,
+     "col": 5,
+     "name": "count_03",
+     "key": "pm/count_03"
+    },
+    {
+     "index": 30,
+     "row": 4,
+     "col": 6,
+     "name": "nod_01",
+     "key": "pm/nod_01",
+     "bind": [
+      {
+       "prop": "notebook_open",
+       "at": "grip",
+       "z": "front",
+       "rot": 0
+      }
+     ]
+    },
+    {
+     "index": 31,
+     "row": 4,
+     "col": 7,
+     "name": "nod_02",
+     "key": "pm/nod_02"
+    },
+    {
+     "index": 32,
+     "row": 4,
+     "col": 8,
+     "name": "headshake_01",
+     "key": "pm/headshake_01"
+    },
+    {
+     "index": 33,
+     "row": 5,
+     "col": 1,
+     "name": "stop_01",
+     "key": "pm/stop_01"
+    },
+    {
+     "index": 34,
+     "row": 5,
+     "col": 2,
+     "name": "stop_02",
+     "key": "pm/stop_02"
+    },
+    {
+     "index": 35,
+     "row": 5,
+     "col": 3,
+     "name": "thumbs_01",
+     "key": "pm/thumbs_01"
+    },
+    {
+     "index": 36,
+     "row": 5,
+     "col": 4,
+     "name": "rally_01",
+     "key": "pm/rally_01"
+    },
+    {
+     "index": 37,
+     "row": 5,
+     "col": 5,
+     "name": "rally_02",
+     "key": "pm/rally_02"
+    },
+    {
+     "index": 38,
+     "row": 5,
+     "col": 6,
+     "name": "goahead_01",
+     "key": "pm/goahead_01"
+    },
+    {
+     "index": 39,
+     "row": 5,
+     "col": 7,
+     "name": "goahead_02",
+     "key": "pm/goahead_02"
+    },
+    {
+     "index": 40,
+     "row": 5,
+     "col": 8,
+     "name": "clap_01",
+     "key": "pm/clap_01"
+    },
+    {
+     "index": 41,
+     "row": 6,
+     "col": 1,
+     "name": "bow_01",
+     "key": "pm/bow_01"
+    },
+    {
+     "index": 42,
+     "row": 6,
+     "col": 2,
+     "name": "bow_02",
+     "key": "pm/bow_02"
+    },
+    {
+     "index": 43,
+     "row": 6,
+     "col": 3,
+     "name": "crossarms_01",
+     "key": "pm/crossarms_01",
+     "bind": [
+      {
+       "prop": "folder_closed",
+       "at": "grip",
+       "z": "back",
+       "rot": 0
+      }
+     ]
+    },
+    {
+     "index": 44,
+     "row": 6,
+     "col": 4,
+     "name": "scold_01",
+     "key": "pm/scold_01"
+    },
+    {
+     "index": 45,
+     "row": 6,
+     "col": 5,
+     "name": "scold_02",
+     "key": "pm/scold_02"
+    },
+    {
+     "index": 46,
+     "row": 6,
+     "col": 6,
+     "name": "facepalm_01",
+     "key": "pm/facepalm_01"
+    },
+    {
+     "index": 47,
+     "row": 6,
+     "col": 7,
+     "name": "scratch_01",
+     "key": "pm/scratch_01"
+    },
+    {
+     "index": 48,
+     "row": 6,
+     "col": 8,
+     "name": "shrug_01",
+     "key": "pm/shrug_01"
+    },
+    {
+     "index": 49,
+     "row": 7,
+     "col": 1,
+     "name": "think_01",
+     "key": "pm/think_01"
+    },
+    {
+     "index": 50,
+     "row": 7,
+     "col": 2,
+     "name": "think_02",
+     "key": "pm/think_02"
+    },
+    {
+     "index": 51,
+     "row": 7,
+     "col": 3,
+     "name": "stress_01",
+     "key": "pm/stress_01"
+    },
+    {
+     "index": 52,
+     "row": 7,
+     "col": 4,
+     "name": "stress_02",
+     "key": "pm/stress_02"
+    },
+    {
+     "index": 53,
+     "row": 7,
+     "col": 5,
+     "name": "confident_01",
+     "key": "pm/confident_01"
+    },
+    {
+     "index": 54,
+     "row": 7,
+     "col": 6,
+     "name": "stretch_01",
+     "key": "pm/stretch_01"
+    },
+    {
+     "index": 55,
+     "row": 7,
+     "col": 7,
+     "name": "stretch_02",
+     "key": "pm/stretch_02"
+    },
+    {
+     "index": 56,
+     "row": 7,
+     "col": 8,
+     "name": "coach_01",
+     "key": "pm/coach_01"
+    }
+   ]
+  },
+  {
+   "id": "C",
+   "key": "work_scenes",
+   "kind": "pm",
+   "file": "PM_C_work_scenes.png",
+   "attach": "master",
+   "cols": 8,
+   "rows": 7,
+   "cells": [
+    {
+     "index": 1,
+     "row": 1,
+     "col": 1,
+     "name": "desk_type_01",
+     "key": "pm/desk_type_01",
+     "bind": [
+      {
+       "furniture": "office_chair",
+       "at": "seat",
+       "z": "back"
+      },
+      {
+       "furniture": "desk_monitor",
+       "at": "seat",
+       "z": "front"
+      }
+     ]
+    },
+    {
+     "index": 2,
+     "row": 1,
+     "col": 2,
+     "name": "desk_type_02",
+     "key": "pm/desk_type_02",
+     "bind": [
+      {
+       "furniture": "office_chair",
+       "at": "seat",
+       "z": "back"
+      },
+      {
+       "furniture": "desk_monitor",
+       "at": "seat",
+       "z": "front"
+      }
+     ]
+    },
+    {
+     "index": 3,
+     "row": 1,
+     "col": 3,
+     "name": "desk_read_01",
+     "key": "pm/desk_read_01",
+     "bind": [
+      {
+       "furniture": "office_chair",
+       "at": "seat",
+       "z": "back"
+      },
+      {
+       "furniture": "desk_monitor",
+       "at": "seat",
+       "z": "front"
+      }
+     ]
+    },
+    {
+     "index": 4,
+     "row": 1,
+     "col": 4,
+     "name": "desk_note_01",
+     "key": "pm/desk_note_01",
+     "bind": [
+      {
+       "furniture": "office_chair",
+       "at": "seat",
+       "z": "back"
+      },
+      {
+       "furniture": "desk_monitor",
+       "at": "seat",
+       "z": "front"
+      },
+      {
+       "prop": "notebook_open",
+       "at": "grip",
+       "z": "front",
+       "rot": 0
+      }
+     ]
+    },
+    {
+     "index": 5,
+     "row": 1,
+     "col": 5,
+     "name": "desk_stand_01",
+     "key": "pm/desk_stand_01",
+     "bind": [
+      {
+       "furniture": "office_chair",
+       "at": "seat",
+       "z": "back"
+      },
+      {
+       "furniture": "desk_monitor",
+       "at": "seat",
+       "z": "front"
+      }
+     ]
+    },
+    {
+     "index": 6,
+     "row": 1,
+     "col": 6,
+     "name": "desk_stand_02",
+     "key": "pm/desk_stand_02",
+     "bind": [
+      {
+       "furniture": "desk_monitor",
+       "at": "beside_right",
+       "z": "back"
+      },
+      {
+       "prop": "tablet_back",
+       "at": "grip",
+       "z": "front",
+       "rot": 0
+      }
+     ]
+    },
+    {
+     "index": 7,
+     "row": 1,
+     "col": 7,
+     "name": "meet_note_01",
+     "key": "pm/meet_note_01",
+     "bind": [
+      {
+       "furniture": "meeting_chair",
+       "at": "seat",
+       "z": "back"
+      },
+      {
+       "prop": "notebook_open",
+       "at": "grip",
+       "z": "front",
+       "rot": 0
+      }
+     ]
+    },
+    {
+     "index": 8,
+     "row": 1,
+     "col": 8,
+     "name": "meet_note_02",
+     "key": "pm/meet_note_02",
+     "bind": [
+      {
+       "furniture": "meeting_chair",
+       "at": "seat",
+       "z": "back"
+      },
+      {
+       "prop": "notebook_open",
+       "at": "grip",
+       "z": "front",
+       "rot": 0
+      }
+     ]
+    },
+    {
+     "index": 9,
+     "row": 2,
+     "col": 1,
+     "name": "night_type_01",
+     "key": "pm/night_type_01",
+     "bind": [
+      {
+       "furniture": "office_chair",
+       "at": "seat",
+       "z": "back"
+      },
+      {
+       "furniture": "desk_monitor",
+       "at": "seat",
+       "z": "front"
+      },
+      {
+       "prop": "lamp_on",
+       "at": "surface:desk_monitor",
+       "z": "front",
+       "rot": 0
+      },
+      {
+       "prop": "mugs_pair",
+       "at": "surface:desk_monitor",
+       "z": "front",
+       "rot": 0
+      }
+     ]
+    },
+    {
+     "index": 10,
+     "row": 2,
+     "col": 2,
+     "name": "night_type_02",
+     "key": "pm/night_type_02",
+     "bind": [
+      {
+       "furniture": "office_chair",
+       "at": "seat",
+       "z": "back"
+      },
+      {
+       "furniture": "desk_monitor",
+       "at": "seat",
+       "z": "front"
+      },
+      {
+       "prop": "lamp_on",
+       "at": "surface:desk_monitor",
+       "z": "front",
+       "rot": 0
+      },
+      {
+       "prop": "mugs_pair",
+       "at": "surface:desk_monitor",
+       "z": "front",
+       "rot": 0
+      }
+     ]
+    },
+    {
+     "index": 11,
+     "row": 2,
+     "col": 3,
+     "name": "night_rub_01",
+     "key": "pm/night_rub_01",
+     "bind": [
+      {
+       "furniture": "office_chair",
+       "at": "seat",
+       "z": "back"
+      },
+      {
+       "furniture": "desk_monitor",
+       "at": "seat",
+       "z": "front"
+      },
+      {
+       "prop": "lamp_on",
+       "at": "surface:desk_monitor",
+       "z": "front",
+       "rot": 0
+      },
+      {
+       "prop": "mugs_pair",
+       "at": "surface:desk_monitor",
+       "z": "front",
+       "rot": 0
+      }
+     ]
+    },
+    {
+     "index": 12,
+     "row": 2,
+     "col": 4,
+     "name": "night_yawn_01",
+     "key": "pm/night_yawn_01",
+     "bind": [
+      {
+       "furniture": "office_chair",
+       "at": "seat",
+       "z": "back"
+      },
+      {
+       "furniture": "desk_monitor",
+       "at": "seat",
+       "z": "front"
+      },
+      {
+       "prop": "lamp_on",
+       "at": "surface:desk_monitor",
+       "z": "front",
+       "rot": 0
+      },
+      {
+       "prop": "mugs_pair",
+       "at": "surface:desk_monitor",
+       "z": "front",
+       "rot": 0
+      }
+     ]
+    },
+    {
+     "index": 13,
+     "row": 2,
+     "col": 5,
+     "name": "night_sleep_01",
+     "key": "pm/night_sleep_01",
+     "bind": [
+      {
+       "furniture": "office_chair",
+       "at": "seat",
+       "z": "back"
+      },
+      {
+       "furniture": "desk_monitor",
+       "at": "seat",
+       "z": "front"
+      },
+      {
+       "prop": "lamp_on",
+       "at": "surface:desk_monitor",
+       "z": "front",
+       "rot": 0
+      },
+      {
+       "prop": "mugs_pair",
+       "at": "surface:desk_monitor",
+       "z": "front",
+       "rot": 0
+      }
+     ]
+    },
+    {
+     "index": 14,
+     "row": 2,
+     "col": 6,
+     "name": "night_sleep_02",
+     "key": "pm/night_sleep_02",
+     "bind": [
+      {
+       "furniture": "office_chair",
+       "at": "seat",
+       "z": "back"
+      },
+      {
+       "furniture": "desk_monitor",
+       "at": "seat",
+       "z": "front"
+      },
+      {
+       "prop": "lamp_on",
+       "at": "surface:desk_monitor",
+       "z": "front",
+       "rot": 0
+      },
+      {
+       "prop": "mugs_pair",
+       "at": "surface:desk_monitor",
+       "z": "front",
+       "rot": 0
+      }
+     ]
+    },
+    {
+     "index": 15,
+     "row": 2,
+     "col": 7,
+     "name": "night_wake_01",
+     "key": "pm/night_wake_01",
+     "bind": [
+      {
+       "furniture": "office_chair",
+       "at": "seat",
+       "z": "back"
+      },
+      {
+       "furniture": "desk_monitor",
+       "at": "seat",
+       "z": "front"
+      },
+      {
+       "prop": "lamp_on",
+       "at": "surface:desk_monitor",
+       "z": "front",
+       "rot": 0
+      },
+      {
+       "prop": "mugs_pair",
+       "at": "surface:desk_monitor",
+       "z": "front",
+       "rot": 0
+      }
+     ]
+    },
+    {
+     "index": 16,
+     "row": 2,
+     "col": 8,
+     "name": "night_wake_02",
+     "key": "pm/night_wake_02",
+     "bind": [
+      {
+       "furniture": "office_chair",
+       "at": "seat",
+       "z": "back"
+      },
+      {
+       "furniture": "desk_monitor",
+       "at": "seat",
+       "z": "front"
+      },
+      {
+       "prop": "lamp_on",
+       "at": "surface:desk_monitor",
+       "z": "front",
+       "rot": 0
+      },
+      {
+       "prop": "mugs_pair",
+       "at": "surface:desk_monitor",
+       "z": "front",
+       "rot": 0
+      }
+     ]
+    },
+    {
+     "index": 17,
+     "row": 3,
+     "col": 1,
+     "name": "oneone_talk_01",
+     "key": "pm/oneone_talk_01",
+     "bind": [
+      {
+       "furniture": "meeting_chair",
+       "at": "seat",
+       "z": "back"
+      }
+     ]
+    },
+    {
+     "index": 18,
+     "row": 3,
+     "col": 2,
+     "name": "oneone_talk_02",
+     "key": "pm/oneone_talk_02",
+     "bind": [
+      {
+       "furniture": "meeting_chair",
+       "at": "seat",
+       "z": "back"
+      }
+     ]
+    },
+    {
+     "index": 19,
+     "row": 3,
+     "col": 3,
+     "name": "oneone_listen_01",
+     "key": "pm/oneone_listen_01",
+     "bind": [
+      {
+       "furniture": "meeting_chair",
+       "at": "seat",
+       "z": "back"
+      },
+      {
+       "prop": "notebook_open",
+       "at": "grip",
+       "z": "front",
+       "rot": 0
+      }
+     ]
+    },
+    {
+     "index": 20,
+     "row": 3,
+     "col": 4,
+     "name": "oneone_listen_02",
+     "key": "pm/oneone_listen_02",
+     "bind": [
+      {
+       "furniture": "meeting_chair",
+       "at": "seat",
+       "z": "back"
+      }
+     ]
+    },
+    {
+     "index": 21,
+     "row": 3,
+     "col": 5,
+     "name": "oneone_show_01",
+     "key": "pm/oneone_show_01",
+     "bind": [
+      {
+       "furniture": "meeting_chair",
+       "at": "seat",
+       "z": "back"
+      },
+      {
+       "prop": "tablet_screen_34",
+       "at": "grip",
+       "z": "front",
+       "rot": 0
+      }
+     ]
+    },
+    {
+     "index": 22,
+     "row": 3,
+     "col": 6,
+     "name": "oneone_show_02",
+     "key": "pm/oneone_show_02",
+     "bind": [
+      {
+       "furniture": "meeting_chair",
+       "at": "seat",
+       "z": "back"
+      },
+      {
+       "prop": "tablet_screen_34",
+       "at": "grip",
+       "z": "front",
+       "rot": 0
+      }
+     ]
+    },
+    {
+     "index": 23,
+     "row": 3,
+     "col": 7,
+     "name": "oneone_worry_01",
+     "key": "pm/oneone_worry_01",
+     "bind": [
+      {
+       "furniture": "meeting_chair",
+       "at": "seat",
+       "z": "back"
+      }
+     ]
+    },
+    {
+     "index": 24,
+     "row": 3,
+     "col": 8,
+     "name": "oneone_worry_02",
+     "key": "pm/oneone_worry_02",
+     "bind": [
+      {
+       "furniture": "meeting_chair",
+       "at": "seat",
+       "z": "back"
+      }
+     ]
+    },
+    {
+     "index": 25,
+     "row": 4,
+     "col": 1,
+     "name": "meet_table_talk_01",
+     "key": "pm/meet_table_talk_01",
+     "bind": [
+      {
+       "furniture": "meeting_chair",
+       "at": "seat",
+       "z": "back"
+      },
+      {
+       "furniture": "meeting_table",
+       "at": "seat",
+       "z": "front"
+      }
+     ]
+    },
+    {
+     "index": 26,
+     "row": 4,
+     "col": 2,
+     "name": "meet_table_talk_02",
+     "key": "pm/meet_table_talk_02",
+     "bind": [
+      {
+       "furniture": "meeting_chair",
+       "at": "seat",
+       "z": "back"
+      },
+      {
+       "furniture": "meeting_table",
+       "at": "seat",
+       "z": "front"
+      }
+     ]
+    },
+    {
+     "index": 27,
+     "row": 4,
+     "col": 3,
+     "name": "meet_table_listen_01",
+     "key": "pm/meet_table_listen_01",
+     "bind": [
+      {
+       "furniture": "meeting_chair",
+       "at": "seat",
+       "z": "back"
+      },
+      {
+       "furniture": "meeting_table",
+       "at": "seat",
+       "z": "front"
+      },
+      {
+       "prop": "notebook_open",
+       "at": "surface:meeting_table",
+       "z": "front",
+       "rot": 0
+      }
+     ]
+    },
+    {
+     "index": 28,
+     "row": 4,
+     "col": 4,
+     "name": "meet_table_listen_02",
+     "key": "pm/meet_table_listen_02",
+     "bind": [
+      {
+       "furniture": "meeting_chair",
+       "at": "seat",
+       "z": "back"
+      },
+      {
+       "furniture": "meeting_table",
+       "at": "seat",
+       "z": "front"
+      },
+      {
+       "prop": "pen",
+       "at": "grip",
+       "z": "front",
+       "rot": 0
+      },
+      {
+       "prop": "notebook_open",
+       "at": "surface:meeting_table",
+       "z": "front",
+       "rot": 0
+      }
+     ]
+    },
+    {
+     "index": 29,
+     "row": 4,
+     "col": 5,
+     "name": "meet_table_present_01",
+     "key": "pm/meet_table_present_01",
+     "bind": [
+      {
+       "furniture": "meeting_chair",
+       "at": "seat",
+       "z": "back"
+      },
+      {
+       "furniture": "meeting_table",
+       "at": "seat",
+       "z": "front"
+      },
+      {
+       "prop": "tablet_screen_34",
+       "at": "grip",
+       "z": "front",
+       "rot": 0
+      }
+     ]
+    },
+    {
+     "index": 30,
+     "row": 4,
+     "col": 6,
+     "name": "meet_table_present_02",
+     "key": "pm/meet_table_present_02",
+     "bind": [
+      {
+       "furniture": "meeting_chair",
+       "at": "seat",
+       "z": "back"
+      },
+      {
+       "furniture": "meeting_table",
+       "at": "seat",
+       "z": "front"
+      },
+      {
+       "prop": "tablet_flat",
+       "at": "surface:meeting_table",
+       "z": "front",
+       "rot": 0
+      }
+     ]
+    },
+    {
+     "index": 31,
+     "row": 4,
+     "col": 7,
+     "name": "meet_table_worry_01",
+     "key": "pm/meet_table_worry_01",
+     "bind": [
+      {
+       "furniture": "meeting_chair",
+       "at": "seat",
+       "z": "back"
+      },
+      {
+       "furniture": "meeting_table",
+       "at": "seat",
+       "z": "front"
+      }
+     ]
+    },
+    {
+     "index": 32,
+     "row": 4,
+     "col": 8,
+     "name": "meet_table_agree_01",
+     "key": "pm/meet_table_agree_01",
+     "bind": [
+      {
+       "furniture": "meeting_chair",
+       "at": "seat",
+       "z": "back"
+      },
+      {
+       "furniture": "meeting_table",
+       "at": "seat",
+       "z": "front"
+      }
+     ]
+    },
+    {
+     "index": 33,
+     "row": 5,
+     "col": 1,
+     "name": "wb_write_01",
+     "key": "pm/wb_write_01",
+     "bind": [
+      {
+       "furniture": "whiteboard",
+       "at": "beside_right",
+       "z": "back"
+      },
+      {
+       "prop": "marker",
+       "at": "grip",
+       "z": "front",
+       "rot": 0
+      }
+     ]
+    },
+    {
+     "index": 34,
+     "row": 5,
+     "col": 2,
+     "name": "wb_write_02",
+     "key": "pm/wb_write_02",
+     "bind": [
+      {
+       "furniture": "whiteboard",
+       "at": "beside_right",
+       "z": "back"
+      },
+      {
+       "prop": "marker",
+       "at": "grip",
+       "z": "front",
+       "rot": 0
+      }
+     ]
+    },
+    {
+     "index": 35,
+     "row": 5,
+     "col": 3,
+     "name": "wb_write_03",
+     "key": "pm/wb_write_03",
+     "bind": [
+      {
+       "furniture": "whiteboard",
+       "at": "beside_right",
+       "z": "back"
+      },
+      {
+       "prop": "marker",
+       "at": "grip",
+       "z": "front",
+       "rot": 0
+      }
+     ]
+    },
+    {
+     "index": 36,
+     "row": 5,
+     "col": 4,
+     "name": "wb_point_01",
+     "key": "pm/wb_point_01",
+     "bind": [
+      {
+       "furniture": "whiteboard",
+       "at": "beside_right",
+       "z": "back"
+      }
+     ]
+    },
+    {
+     "index": 37,
+     "row": 5,
+     "col": 5,
+     "name": "wb_point_02",
+     "key": "pm/wb_point_02",
+     "bind": [
+      {
+       "furniture": "whiteboard",
+       "at": "beside_right",
+       "z": "back"
+      },
+      {
+       "prop": "marker",
+       "at": "grip",
+       "z": "front",
+       "rot": 0
+      }
+     ]
+    },
+    {
+     "index": 38,
+     "row": 5,
+     "col": 6,
+     "name": "wb_explain_01",
+     "key": "pm/wb_explain_01",
+     "bind": [
+      {
+       "furniture": "whiteboard",
+       "at": "beside_right",
+       "z": "back"
+      },
+      {
+       "prop": "marker",
+       "at": "grip",
+       "z": "front",
+       "rot": 0
+      }
+     ]
+    },
+    {
+     "index": 39,
+     "row": 5,
+     "col": 7,
+     "name": "wb_explain_02",
+     "key": "pm/wb_explain_02",
+     "bind": [
+      {
+       "furniture": "whiteboard",
+       "at": "beside_right",
+       "z": "back"
+      }
+     ]
+    },
+    {
+     "index": 40,
+     "row": 5,
+     "col": 8,
+     "name": "wb_cap_01",
+     "key": "pm/wb_cap_01",
+     "bind": [
+      {
+       "furniture": "whiteboard",
+       "at": "beside_right",
+       "z": "back"
+      },
+      {
+       "prop": "marker",
+       "at": "grip",
+       "z": "front",
+       "rot": 0
+      }
+     ]
+    },
+    {
+     "index": 41,
+     "row": 6,
+     "col": 1,
+     "name": "alert_01",
+     "key": "pm/alert_01",
+     "bind": [
+      {
+       "prop": "phone_back",
+       "at": "grip",
+       "z": "front",
+       "rot": 0
+      }
+     ]
+    },
+    {
+     "index": 42,
+     "row": 6,
+     "col": 2,
+     "name": "alert_02",
+     "key": "pm/alert_02",
+     "bind": [
+      {
+       "prop": "phone_back",
+       "at": "grip",
+       "z": "front",
+       "rot": 0
+      }
+     ]
+    },
+    {
+     "index": 43,
+     "row": 6,
+     "col": 3,
+     "name": "command_01",
+     "key": "pm/command_01"
+    },
+    {
+     "index": 44,
+     "row": 6,
+     "col": 4,
+     "name": "command_02",
+     "key": "pm/command_02"
+    },
+    {
+     "index": 45,
+     "row": 6,
+     "col": 5,
+     "name": "command_03",
+     "key": "pm/command_03"
+    },
+    {
+     "index": 46,
+     "row": 6,
+     "col": 6,
+     "name": "headset_01",
+     "key": "pm/headset_01"
+    },
+    {
+     "index": 47,
+     "row": 6,
+     "col": 7,
+     "name": "headset_02",
+     "key": "pm/headset_02",
+     "bind": [
+      {
+       "prop": "tablet_back",
+       "at": "grip",
+       "z": "front",
+       "rot": 0
+      }
+     ]
+    },
+    {
+     "index": 48,
+     "row": 6,
+     "col": 8,
+     "name": "relief_01",
+     "key": "pm/relief_01"
+    },
+    {
+     "index": 49,
+     "row": 7,
+     "col": 1,
+     "name": "rollback_01",
+     "key": "pm/rollback_01",
+     "bind": [
+      {
+       "prop": "laptop_open_34",
+       "at": "grip",
+       "z": "front",
+       "rot": 0
+      }
+     ]
+    },
+    {
+     "index": 50,
+     "row": 7,
+     "col": 2,
+     "name": "rollback_02",
+     "key": "pm/rollback_02",
+     "bind": [
+      {
+       "prop": "laptop_open_34",
+       "at": "grip",
+       "z": "front",
+       "rot": 0
+      }
+     ]
+    },
+    {
+     "index": 51,
+     "row": 7,
+     "col": 3,
+     "name": "rollback_03",
+     "key": "pm/rollback_03",
+     "bind": [
+      {
+       "prop": "laptop_open_34",
+       "at": "grip",
+       "z": "front",
+       "rot": 0
+      }
+     ]
+    },
+    {
+     "index": 52,
+     "row": 7,
+     "col": 4,
+     "name": "rollback_04",
+     "key": "pm/rollback_04",
+     "bind": [
+      {
+       "prop": "laptop_closed",
+       "at": "grip2",
+       "z": "front",
+       "rot": 0
+      }
+     ]
+    },
+    {
+     "index": 53,
+     "row": 7,
+     "col": 5,
+     "name": "delegate_01",
+     "key": "pm/delegate_01",
+     "bind": [
+      {
+       "prop": "task_card",
+       "at": "grip",
+       "z": "front",
+       "rot": 0
+      }
+     ]
+    },
+    {
+     "index": 54,
+     "row": 7,
+     "col": 6,
+     "name": "delegate_02",
+     "key": "pm/delegate_02"
+    },
+    {
+     "index": 55,
+     "row": 7,
+     "col": 7,
+     "name": "checklist_01",
+     "key": "pm/checklist_01",
+     "bind": [
+      {
+       "prop": "checklist_sheet",
+       "at": "grip",
+       "z": "front",
+       "rot": 0
+      }
+     ]
+    },
+    {
+     "index": 56,
+     "row": 7,
+     "col": 8,
+     "name": "checklist_02",
+     "key": "pm/checklist_02",
+     "bind": [
+      {
+       "prop": "checklist_sheet",
+       "at": "grip",
+       "z": "front",
+       "rot": 0
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "D",
+   "key": "portraits",
+   "kind": "pm",
+   "file": "PM_D_portraits.png",
+   "attach": "master",
+   "cols": 4,
+   "rows": 5,
+   "cells": [
+    {
+     "index": 1,
+     "row": 1,
+     "col": 1,
+     "name": "face_neutral",
+     "key": "pm/face_neutral"
+    },
+    {
+     "index": 2,
+     "row": 1,
+     "col": 2,
+     "name": "face_confident",
+     "key": "pm/face_confident"
+    },
+    {
+     "index": 3,
+     "row": 1,
+     "col": 3,
+     "name": "face_serious",
+     "key": "pm/face_serious"
+    },
+    {
+     "index": 4,
+     "row": 1,
+     "col": 4,
+     "name": "face_worried",
+     "key": "pm/face_worried"
+    },
+    {
+     "index": 5,
+     "row": 2,
+     "col": 1,
+     "name": "face_surprised",
+     "key": "pm/face_surprised"
+    },
+    {
+     "index": 6,
+     "row": 2,
+     "col": 2,
+     "name": "face_happy",
+     "key": "pm/face_happy"
+    },
+    {
+     "index": 7,
+     "row": 2,
+     "col": 3,
+     "name": "face_apologetic",
+     "key": "pm/face_apologetic"
+    },
+    {
+     "index": 8,
+     "row": 2,
+     "col": 4,
+     "name": "face_stressed",
+     "key": "pm/face_stressed"
+    },
+    {
+     "index": 9,
+     "row": 3,
+     "col": 1,
+     "name": "face_stern",
+     "key": "pm/face_stern"
+    },
+    {
+     "index": 10,
+     "row": 3,
+     "col": 2,
+     "name": "face_sad",
+     "key": "pm/face_sad"
+    },
+    {
+     "index": 11,
+     "row": 3,
+     "col": 3,
+     "name": "face_proud",
+     "key": "pm/face_proud"
+    },
+    {
+     "index": 12,
+     "row": 3,
+     "col": 4,
+     "name": "face_thinking",
+     "key": "pm/face_thinking"
+    },
+    {
+     "index": 13,
+     "row": 4,
+     "col": 1,
+     "name": "face_relieved",
+     "key": "pm/face_relieved"
+    },
+    {
+     "index": 14,
+     "row": 4,
+     "col": 2,
+     "name": "face_determined",
+     "key": "pm/face_determined"
+    },
+    {
+     "index": 15,
+     "row": 4,
+     "col": 3,
+     "name": "face_exhausted",
+     "key": "pm/face_exhausted"
+    },
+    {
+     "index": 16,
+     "row": 4,
+     "col": 4,
+     "name": "face_embarrassed",
+     "key": "pm/face_embarrassed"
+    },
+    {
+     "index": 17,
+     "row": 5,
+     "col": 1,
+     "name": "face_formal_neutral",
+     "key": "pm/face_formal_neutral"
+    },
+    {
+     "index": 18,
+     "row": 5,
+     "col": 2,
+     "name": "face_formal_confident",
+     "key": "pm/face_formal_confident"
+    },
+    {
+     "index": 19,
+     "row": 5,
+     "col": 3,
+     "name": "face_pm_happy",
+     "key": "pm/face_pm_happy"
+    },
+    {
+     "index": 20,
+     "row": 5,
+     "col": 4,
+     "name": "face_pm_proud",
+     "key": "pm/face_pm_proud"
+    }
+   ]
+  },
+  {
+   "id": "E",
+   "key": "review_endings_tired",
+   "kind": "pm",
+   "file": "PM_E_review_endings_tired.png",
+   "attach": "master",
+   "cols": 8,
+   "rows": 7,
+   "cells": [
+    {
+     "index": 1,
+     "row": 1,
+     "col": 1,
+     "name": "formal_walk_01",
+     "key": "pm/formal_walk_01",
+     "bind": [
+      {
+       "prop": "tablet_edge",
+       "at": "grip",
+       "z": "back",
+       "rot": 0
+      }
+     ]
+    },
+    {
+     "index": 2,
+     "row": 1,
+     "col": 2,
+     "name": "formal_walk_02",
+     "key": "pm/formal_walk_02",
+     "bind": [
+      {
+       "prop": "tablet_edge",
+       "at": "grip",
+       "z": "back",
+       "rot": 0
+      }
+     ]
+    },
+    {
+     "index": 3,
+     "row": 1,
+     "col": 3,
+     "name": "formal_walk_03",
+     "key": "pm/formal_walk_03",
+     "bind": [
+      {
+       "prop": "tablet_edge",
+       "at": "grip",
+       "z": "back",
+       "rot": 0
+      }
+     ]
+    },
+    {
+     "index": 4,
+     "row": 1,
+     "col": 4,
+     "name": "formal_walk_04",
+     "key": "pm/formal_walk_04",
+     "bind": [
+      {
+       "prop": "tablet_edge",
+       "at": "grip",
+       "z": "back",
+       "rot": 0
+      }
+     ]
+    },
+    {
+     "index": 5,
+     "row": 1,
+     "col": 5,
+     "name": "formal_walk_05",
+     "key": "pm/formal_walk_05",
+     "bind": [
+      {
+       "prop": "tablet_edge",
+       "at": "grip",
+       "z": "back",
+       "rot": 0
+      }
+     ]
+    },
+    {
+     "index": 6,
+     "row": 1,
+     "col": 6,
+     "name": "formal_walk_06",
+     "key": "pm/formal_walk_06",
+     "bind": [
+      {
+       "prop": "tablet_edge",
+       "at": "grip",
+       "z": "back",
+       "rot": 0
+      }
+     ]
+    },
+    {
+     "index": 7,
+     "row": 1,
+     "col": 7,
+     "name": "formal_walk_07",
+     "key": "pm/formal_walk_07",
+     "bind": [
+      {
+       "prop": "tablet_edge",
+       "at": "grip",
+       "z": "back",
+       "rot": 0
+      }
+     ]
+    },
+    {
+     "index": 8,
+     "row": 1,
+     "col": 8,
+     "name": "formal_walk_08",
+     "key": "pm/formal_walk_08",
+     "bind": [
+      {
+       "prop": "tablet_edge",
+       "at": "grip",
+       "z": "back",
+       "rot": 0
+      }
+     ]
+    },
+    {
+     "index": 9,
+     "row": 2,
+     "col": 1,
+     "name": "present_01",
+     "key": "pm/present_01",
+     "bind": [
+      {
+       "prop": "clicker",
+       "at": "grip",
+       "z": "front",
+       "rot": 0
+      },
+      {
+       "furniture": "presentation_screen",
+       "at": "beside_right",
+       "z": "back"
+      }
+     ]
+    },
+    {
+     "index": 10,
+     "row": 2,
+     "col": 2,
+     "name": "present_02",
+     "key": "pm/present_02",
+     "bind": [
+      {
+       "prop": "clicker",
+       "at": "grip",
+       "z": "front",
+       "rot": 0
+      },
+      {
+       "furniture": "presentation_screen",
+       "at": "beside_right",
+       "z": "back"
+      }
+     ]
+    },
+    {
+     "index": 11,
+     "row": 2,
+     "col": 3,
+     "name": "present_03",
+     "key": "pm/present_03",
+     "bind": [
+      {
+       "prop": "clicker",
+       "at": "grip",
+       "z": "front",
+       "rot": 0
+      },
+      {
+       "furniture": "presentation_screen",
+       "at": "beside_right",
+       "z": "back"
+      }
+     ]
+    },
+    {
+     "index": 12,
+     "row": 2,
+     "col": 4,
+     "name": "present_04",
+     "key": "pm/present_04",
+     "bind": [
+      {
+       "prop": "clicker",
+       "at": "grip",
+       "z": "front",
+       "rot": 0
+      },
+      {
+       "furniture": "presentation_screen",
+       "at": "beside_right",
+       "z": "back"
+      }
+     ]
+    },
+    {
+     "index": 13,
+     "row": 2,
+     "col": 5,
+     "name": "nervous_01",
+     "key": "pm/nervous_01",
+     "bind": [
+      {
+       "prop": "clicker",
+       "at": "grip",
+       "z": "front",
+       "rot": 0
+      },
+      {
+       "furniture": "presentation_screen",
+       "at": "beside_right",
+       "z": "back"
+      }
+     ]
+    },
+    {
+     "index": 14,
+     "row": 2,
+     "col": 6,
+     "name": "nervous_02",
+     "key": "pm/nervous_02",
+     "bind": [
+      {
+       "prop": "clicker",
+       "at": "grip",
+       "z": "front",
+       "rot": 0
+      },
+      {
+       "furniture": "presentation_screen",
+       "at": "beside_right",
+       "z": "back"
+      }
+     ]
+    },
+    {
+     "index": 15,
+     "row": 2,
+     "col": 7,
+     "name": "adjust_01",
+     "key": "pm/adjust_01"
+    },
+    {
+     "index": 16,
+     "row": 2,
+     "col": 8,
+     "name": "adjust_02",
+     "key": "pm/adjust_02"
+    },
+    {
+     "index": 17,
+     "row": 3,
+     "col": 1,
+     "name": "answer_01",
+     "key": "pm/answer_01"
+    },
+    {
+     "index": 18,
+     "row": 3,
+     "col": 2,
+     "name": "answer_02",
+     "key": "pm/answer_02"
+    },
+    {
+     "index": 19,
+     "row": 3,
+     "col": 3,
+     "name": "reflect_01",
+     "key": "pm/reflect_01"
+    },
+    {
+     "index": 20,
+     "row": 3,
+     "col": 4,
+     "name": "reflect_02",
+     "key": "pm/reflect_02"
+    },
+    {
+     "index": 21,
+     "row": 3,
+     "col": 5,
+     "name": "bowthank_01",
+     "key": "pm/bowthank_01"
+    },
+    {
+     "index": 22,
+     "row": 3,
+     "col": 6,
+     "name": "bowthank_02",
+     "key": "pm/bowthank_02"
+    },
+    {
+     "index": 23,
+     "row": 3,
+     "col": 7,
+     "name": "wait_01",
+     "key": "pm/wait_01"
+    },
+    {
+     "index": 24,
+     "row": 3,
+     "col": 8,
+     "name": "wait_02",
+     "key": "pm/wait_02"
+    },
+    {
+     "index": 25,
+     "row": 4,
+     "col": 1,
+     "name": "badge_01",
+     "key": "pm/badge_01",
+     "bind": [
+      {
+       "prop": "badge_orange",
+       "at": "grip",
+       "z": "front",
+       "rot": 0
+      }
+     ]
+    },
+    {
+     "index": 26,
+     "row": 4,
+     "col": 2,
+     "name": "badge_02",
+     "key": "pm/badge_02",
+     "bind": [
+      {
+       "prop": "badge_blue",
+       "at": "grip",
+       "z": "front",
+       "rot": 0
+      }
+     ]
+    },
+    {
+     "index": 27,
+     "row": 4,
+     "col": 3,
+     "name": "badge_03",
+     "key": "pm/badge_03"
+    },
+    {
+     "index": 28,
+     "row": 4,
+     "col": 4,
+     "name": "celebrate_01",
+     "key": "pm/celebrate_01"
+    },
+    {
+     "index": 29,
+     "row": 4,
+     "col": 5,
+     "name": "celebrate_02",
+     "key": "pm/celebrate_02"
+    },
+    {
+     "index": 30,
+     "row": 4,
+     "col": 6,
+     "name": "celebrate_03",
+     "key": "pm/celebrate_03"
+    },
+    {
+     "index": 31,
+     "row": 4,
+     "col": 7,
+     "name": "relieved_01",
+     "key": "pm/relieved_01"
+    },
+    {
+     "index": 32,
+     "row": 4,
+     "col": 8,
+     "name": "relieved_02",
+     "key": "pm/relieved_02"
+    },
+    {
+     "index": 33,
+     "row": 5,
+     "col": 1,
+     "name": "fail_01",
+     "key": "pm/fail_01"
+    },
+    {
+     "index": 34,
+     "row": 5,
+     "col": 2,
+     "name": "fail_02",
+     "key": "pm/fail_02",
+     "bind": [
+      {
+       "prop": "cardboard_box",
+       "at": "grip",
+       "z": "front",
+       "rot": 0
+      }
+     ]
+    },
+    {
+     "index": 35,
+     "row": 5,
+     "col": 3,
+     "name": "fail_03",
+     "key": "pm/fail_03",
+     "bind": [
+      {
+       "prop": "cardboard_box",
+       "at": "grip",
+       "z": "front",
+       "rot": 0
+      }
+     ]
+    },
+    {
+     "index": 36,
+     "row": 5,
+     "col": 4,
+     "name": "leave_01",
+     "key": "pm/leave_01",
+     "bind": [
+      {
+       "prop": "cardboard_box",
+       "at": "grip",
+       "z": "front",
+       "rot": 0
+      }
+     ]
+    },
+    {
+     "index": 37,
+     "row": 5,
+     "col": 5,
+     "name": "leave_02",
+     "key": "pm/leave_02",
+     "bind": [
+      {
+       "prop": "cardboard_box",
+       "at": "grip",
+       "z": "front",
+       "rot": 0
+      }
+     ]
+    },
+    {
+     "index": 38,
+     "row": 5,
+     "col": 6,
+     "name": "leave_03",
+     "key": "pm/leave_03",
+     "bind": [
+      {
+       "prop": "cardboard_box",
+       "at": "grip",
+       "z": "front",
+       "rot": 0
+      }
+     ]
+    },
+    {
+     "index": 39,
+     "row": 5,
+     "col": 7,
+     "name": "leave_back_01",
+     "key": "pm/leave_back_01",
+     "bind": [
+      {
+       "prop": "cardboard_box",
+       "at": "grip",
+       "z": "front",
+       "rot": 0
+      }
+     ]
+    },
+    {
+     "index": 40,
+     "row": 5,
+     "col": 8,
+     "name": "resolve_01",
+     "key": "pm/resolve_01",
+     "bind": [
+      {
+       "prop": "cardboard_box",
+       "at": "ground_front",
+       "z": "back",
+       "rot": 0
+      }
+     ]
+    },
+    {
+     "index": 41,
+     "row": 6,
+     "col": 1,
+     "name": "tired_idle_01",
+     "key": "pm/tired_idle_01",
+     "bind": [
+      {
+       "prop": "tablet_back",
+       "at": "grip",
+       "z": "front",
+       "rot": 0
+      }
+     ]
+    },
+    {
+     "index": 42,
+     "row": 6,
+     "col": 2,
+     "name": "tired_idle_02",
+     "key": "pm/tired_idle_02",
+     "bind": [
+      {
+       "prop": "tablet_back",
+       "at": "grip",
+       "z": "front",
+       "rot": 0
+      }
+     ]
+    },
+    {
+     "index": 43,
+     "row": 6,
+     "col": 3,
+     "name": "tired_idle_03",
+     "key": "pm/tired_idle_03",
+     "bind": [
+      {
+       "prop": "tablet_back",
+       "at": "grip",
+       "z": "front",
+       "rot": 0
+      }
+     ]
+    },
+    {
+     "index": 44,
+     "row": 6,
+     "col": 4,
+     "name": "tired_idle_04",
+     "key": "pm/tired_idle_04",
+     "bind": [
+      {
+       "prop": "tablet_back",
+       "at": "grip",
+       "z": "front",
+       "rot": 0
+      }
+     ]
+    },
+    {
+     "index": 45,
+     "row": 6,
+     "col": 5,
+     "name": "tired_talk_01",
+     "key": "pm/tired_talk_01"
+    },
+    {
+     "index": 46,
+     "row": 6,
+     "col": 6,
+     "name": "tired_talk_02",
+     "key": "pm/tired_talk_02"
+    },
+    {
+     "index": 47,
+     "row": 6,
+     "col": 7,
+     "name": "tired_talk_03",
+     "key": "pm/tired_talk_03"
+    },
+    {
+     "index": 48,
+     "row": 6,
+     "col": 8,
+     "name": "tired_talk_04",
+     "key": "pm/tired_talk_04"
+    },
+    {
+     "index": 49,
+     "row": 7,
+     "col": 1,
+     "name": "tired_walk_01",
+     "key": "pm/tired_walk_01",
+     "bind": [
+      {
+       "prop": "tablet_edge",
+       "at": "grip",
+       "z": "front",
+       "rot": 10
+      }
+     ]
+    },
+    {
+     "index": 50,
+     "row": 7,
+     "col": 2,
+     "name": "tired_walk_02",
+     "key": "pm/tired_walk_02",
+     "bind": [
+      {
+       "prop": "tablet_edge",
+       "at": "grip",
+       "z": "front",
+       "rot": 10
+      }
+     ]
+    },
+    {
+     "index": 51,
+     "row": 7,
+     "col": 3,
+     "name": "tired_walk_03",
+     "key": "pm/tired_walk_03",
+     "bind": [
+      {
+       "prop": "tablet_edge",
+       "at": "grip",
+       "z": "front",
+       "rot": 10
+      }
+     ]
+    },
+    {
+     "index": 52,
+     "row": 7,
+     "col": 4,
+     "name": "tired_walk_04",
+     "key": "pm/tired_walk_04",
+     "bind": [
+      {
+       "prop": "tablet_edge",
+       "at": "grip",
+       "z": "front",
+       "rot": 10
+      }
+     ]
+    },
+    {
+     "index": 53,
+     "row": 7,
+     "col": 5,
+     "name": "tired_walk_05",
+     "key": "pm/tired_walk_05",
+     "bind": [
+      {
+       "prop": "tablet_edge",
+       "at": "grip",
+       "z": "front",
+       "rot": 10
+      }
+     ]
+    },
+    {
+     "index": 54,
+     "row": 7,
+     "col": 6,
+     "name": "tired_walk_06",
+     "key": "pm/tired_walk_06",
+     "bind": [
+      {
+       "prop": "tablet_edge",
+       "at": "grip",
+       "z": "front",
+       "rot": 10
+      }
+     ]
+    },
+    {
+     "index": 55,
+     "row": 7,
+     "col": 7,
+     "name": "tired_walk_07",
+     "key": "pm/tired_walk_07",
+     "bind": [
+      {
+       "prop": "tablet_edge",
+       "at": "grip",
+       "z": "front",
+       "rot": 10
+      }
+     ]
+    },
+    {
+     "index": 56,
+     "row": 7,
+     "col": 8,
+     "name": "tired_walk_08",
+     "key": "pm/tired_walk_08",
+     "bind": [
+      {
+       "prop": "tablet_edge",
+       "at": "grip",
+       "z": "front",
+       "rot": 10
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "P",
+   "key": "props",
+   "kind": "prop",
+   "file": "PM_P_props.png",
+   "attach": "master_only",
+   "cols": 8,
+   "rows": 4,
+   "cells": [
+    {
+     "index": 1,
+     "row": 1,
+     "col": 1,
+     "name": "tablet_back",
+     "key": "prop/tablet_back"
+    },
+    {
+     "index": 2,
+     "row": 1,
+     "col": 2,
+     "name": "tablet_screen_front",
+     "key": "prop/tablet_screen_front"
+    },
+    {
+     "index": 3,
+     "row": 1,
+     "col": 3,
+     "name": "tablet_screen_34",
+     "key": "prop/tablet_screen_34"
+    },
+    {
+     "index": 4,
+     "row": 1,
+     "col": 4,
+     "name": "tablet_edge",
+     "key": "prop/tablet_edge"
+    },
+    {
+     "index": 5,
+     "row": 1,
+     "col": 5,
+     "name": "tablet_flat",
+     "key": "prop/tablet_flat"
+    },
+    {
+     "index": 6,
+     "row": 1,
+     "col": 6,
+     "name": "phone_back",
+     "key": "prop/phone_back"
+    },
+    {
+     "index": 7,
+     "row": 1,
+     "col": 7,
+     "name": "phone_screen",
+     "key": "prop/phone_screen"
+    },
+    {
+     "index": 8,
+     "row": 1,
+     "col": 8,
+     "name": "laptop_closed",
+     "key": "prop/laptop_closed"
+    },
+    {
+     "index": 9,
+     "row": 2,
+     "col": 1,
+     "name": "folder_closed",
+     "key": "prop/folder_closed"
+    },
+    {
+     "index": 10,
+     "row": 2,
+     "col": 2,
+     "name": "folder_open",
+     "key": "prop/folder_open"
+    },
+    {
+     "index": 11,
+     "row": 2,
+     "col": 3,
+     "name": "contract_sheet",
+     "key": "prop/contract_sheet"
+    },
+    {
+     "index": 12,
+     "row": 2,
+     "col": 4,
+     "name": "paper_stack",
+     "key": "prop/paper_stack"
+    },
+    {
+     "index": 13,
+     "row": 2,
+     "col": 5,
+     "name": "papers_scattered",
+     "key": "prop/papers_scattered"
+    },
+    {
+     "index": 14,
+     "row": 2,
+     "col": 6,
+     "name": "notebook_open",
+     "key": "prop/notebook_open"
+    },
+    {
+     "index": 15,
+     "row": 2,
+     "col": 7,
+     "name": "pen",
+     "key": "prop/pen"
+    },
+    {
+     "index": 16,
+     "row": 2,
+     "col": 8,
+     "name": "checklist_sheet",
+     "key": "prop/checklist_sheet"
+    },
+    {
+     "index": 17,
+     "row": 3,
+     "col": 1,
+     "name": "task_card",
+     "key": "prop/task_card"
+    },
+    {
+     "index": 18,
+     "row": 3,
+     "col": 2,
+     "name": "mug_steam",
+     "key": "prop/mug_steam"
+    },
+    {
+     "index": 19,
+     "row": 3,
+     "col": 3,
+     "name": "mug_plain",
+     "key": "prop/mug_plain"
+    },
+    {
+     "index": 20,
+     "row": 3,
+     "col": 4,
+     "name": "marker",
+     "key": "prop/marker"
+    },
+    {
+     "index": 21,
+     "row": 3,
+     "col": 5,
+     "name": "clicker",
+     "key": "prop/clicker"
+    },
+    {
+     "index": 22,
+     "row": 3,
+     "col": 6,
+     "name": "laptop_open_34",
+     "key": "prop/laptop_open_34"
+    },
+    {
+     "index": 23,
+     "row": 3,
+     "col": 7,
+     "name": "laptop_open_front",
+     "key": "prop/laptop_open_front"
+    },
+    {
+     "index": 24,
+     "row": 3,
+     "col": 8,
+     "name": "cardboard_box",
+     "key": "prop/cardboard_box"
+    },
+    {
+     "index": 25,
+     "row": 4,
+     "col": 1,
+     "name": "badge_orange",
+     "key": "prop/badge_orange"
+    },
+    {
+     "index": 26,
+     "row": 4,
+     "col": 2,
+     "name": "badge_blue",
+     "key": "prop/badge_blue"
+    },
+    {
+     "index": 27,
+     "row": 4,
+     "col": 3,
+     "name": "mugs_pair",
+     "key": "prop/mugs_pair"
+    },
+    {
+     "index": 28,
+     "row": 4,
+     "col": 4,
+     "name": "lamp_on",
+     "key": "prop/lamp_on"
+    },
+    {
+     "index": 29,
+     "row": 4,
+     "col": 5,
+     "name": "lamp_off",
+     "key": "prop/lamp_off"
+    },
+    {
+     "index": 30,
+     "row": 4,
+     "col": 6,
+     "name": "plant_small",
+     "key": "prop/plant_small"
+    },
+    {
+     "index": 31,
+     "row": 4,
+     "col": 7,
+     "name": "sticky_notes",
+     "key": "prop/sticky_notes"
+    },
+    {
+     "index": 32,
+     "row": 4,
+     "col": 8,
+     "name": "notebook_closed",
+     "key": "prop/notebook_closed"
+    }
+   ]
+  },
+  {
+   "id": "O",
+   "key": "furniture",
+   "kind": "furn",
+   "file": "PM_O_furniture.png",
+   "attach": "master_only",
+   "cols": 4,
+   "rows": 3,
+   "cells": [
+    {
+     "index": 1,
+     "row": 1,
+     "col": 1,
+     "name": "office_chair",
+     "key": "furn/office_chair"
+    },
+    {
+     "index": 2,
+     "row": 1,
+     "col": 2,
+     "name": "meeting_chair",
+     "key": "furn/meeting_chair"
+    },
+    {
+     "index": 3,
+     "row": 1,
+     "col": 3,
+     "name": "sofa",
+     "key": "furn/sofa"
+    },
+    {
+     "index": 4,
+     "row": 1,
+     "col": 4,
+     "name": "desk_monitor",
+     "key": "furn/desk_monitor"
+    },
+    {
+     "index": 5,
+     "row": 2,
+     "col": 1,
+     "name": "meeting_table",
+     "key": "furn/meeting_table"
+    },
+    {
+     "index": 6,
+     "row": 2,
+     "col": 2,
+     "name": "whiteboard",
+     "key": "furn/whiteboard"
+    },
+    {
+     "index": 7,
+     "row": 2,
+     "col": 3,
+     "name": "presentation_screen",
+     "key": "furn/presentation_screen"
+    },
+    {
+     "index": 8,
+     "row": 2,
+     "col": 4,
+     "name": "kanban_normal",
+     "key": "furn/kanban_normal"
+    },
+    {
+     "index": 9,
+     "row": 3,
+     "col": 1,
+     "name": "kanban_overloaded",
+     "key": "furn/kanban_overloaded"
+    },
+    {
+     "index": 10,
+     "row": 3,
+     "col": 2,
+     "name": "checklist_poster",
+     "key": "furn/checklist_poster"
+    },
+    {
+     "index": 11,
+     "row": 3,
+     "col": 3,
+     "name": "monitor_alert",
+     "key": "furn/monitor_alert"
+    },
+    {
+     "index": 12,
+     "row": 3,
+     "col": 4,
+     "name": "plant_tall",
+     "key": "furn/plant_tall"
+    }
+   ]
+  },
+  {
+   "id": "F",
+   "key": "icons",
+   "kind": "icon",
+   "file": "PM_F_icons.png",
+   "attach": null,
+   "cols": 6,
+   "rows": 4,
+   "cells": [
+    {
+     "index": 1,
+     "row": 1,
+     "col": 1,
+     "name": "emo_exclaim",
+     "key": "icon/emo_exclaim"
+    },
+    {
+     "index": 2,
+     "row": 1,
+     "col": 2,
+     "name": "emo_question",
+     "key": "icon/emo_question"
+    },
+    {
+     "index": 3,
+     "row": 1,
+     "col": 3,
+     "name": "emo_sweat",
+     "key": "icon/emo_sweat"
+    },
+    {
+     "index": 4,
+     "row": 1,
+     "col": 4,
+     "name": "emo_idea",
+     "key": "icon/emo_idea"
+    },
+    {
+     "index": 5,
+     "row": 1,
+     "col": 5,
+     "name": "emo_anger",
+     "key": "icon/emo_anger"
+    },
+    {
+     "index": 6,
+     "row": 1,
+     "col": 6,
+     "name": "emo_zzz",
+     "key": "icon/emo_zzz"
+    },
+    {
+     "index": 7,
+     "row": 2,
+     "col": 1,
+     "name": "emo_sparkle",
+     "key": "icon/emo_sparkle"
+    },
+    {
+     "index": 8,
+     "row": 2,
+     "col": 2,
+     "name": "emo_heart",
+     "key": "icon/emo_heart"
+    },
+    {
+     "index": 9,
+     "row": 2,
+     "col": 3,
+     "name": "emo_storm",
+     "key": "icon/emo_storm"
+    },
+    {
+     "index": 10,
+     "row": 2,
+     "col": 4,
+     "name": "emo_coffee",
+     "key": "icon/emo_coffee"
+    },
+    {
+     "index": 11,
+     "row": 2,
+     "col": 5,
+     "name": "emo_check",
+     "key": "icon/emo_check"
+    },
+    {
+     "index": 12,
+     "row": 2,
+     "col": 6,
+     "name": "emo_cross",
+     "key": "icon/emo_cross"
+    },
+    {
+     "index": 13,
+     "row": 3,
+     "col": 1,
+     "name": "stat_budget",
+     "key": "icon/stat_budget"
+    },
+    {
+     "index": 14,
+     "row": 3,
+     "col": 2,
+     "name": "stat_progress",
+     "key": "icon/stat_progress"
+    },
+    {
+     "index": 15,
+     "row": 3,
+     "col": 3,
+     "name": "stat_quality",
+     "key": "icon/stat_quality"
+    },
+    {
+     "index": 16,
+     "row": 3,
+     "col": 4,
+     "name": "stat_morale",
+     "key": "icon/stat_morale"
+    },
+    {
+     "index": 17,
+     "row": 3,
+     "col": 5,
+     "name": "stat_client",
+     "key": "icon/stat_client"
+    },
+    {
+     "index": 18,
+     "row": 3,
+     "col": 6,
+     "name": "stat_management",
+     "key": "icon/stat_management"
+    },
+    {
+     "index": 19,
+     "row": 4,
+     "col": 1,
+     "name": "stat_risk",
+     "key": "icon/stat_risk"
+    },
+    {
+     "index": 20,
+     "row": 4,
+     "col": 2,
+     "name": "ico_deadline",
+     "key": "icon/ico_deadline"
+    },
+    {
+     "index": 21,
+     "row": 4,
+     "col": 3,
+     "name": "ico_up",
+     "key": "icon/ico_up"
+    },
+    {
+     "index": 22,
+     "row": 4,
+     "col": 4,
+     "name": "ico_down",
+     "key": "icon/ico_down"
+    },
+    {
+     "index": 23,
+     "row": 4,
+     "col": 5,
+     "name": "ico_calendar",
+     "key": "icon/ico_calendar"
+    },
+    {
+     "index": 24,
+     "row": 4,
+     "col": 6,
+     "name": "ico_checklist",
+     "key": "icon/ico_checklist"
+    }
+   ]
+  }
+ ],
+ "animations": {
+  "pm/idle": {
+   "frames": [
+    "pm/idle_01",
+    "pm/idle_02",
+    "pm/idle_03",
+    "pm/idle_04"
+   ],
+   "fps": 6,
+   "loop": true
+  },
+  "pm/idle_back": {
+   "frames": [
+    "pm/idle_back_01"
+   ],
+   "fps": 1,
+   "loop": false
+  },
+  "pm/greet": {
+   "frames": [
+    "pm/greet_01",
+    "pm/greet_02"
+   ],
+   "fps": 6,
+   "loop": false
+  },
+  "pm/walk": {
+   "frames": [
+    "pm/walk_01",
+    "pm/walk_02",
+    "pm/walk_03",
+    "pm/walk_04",
+    "pm/walk_05",
+    "pm/walk_06",
+    "pm/walk_07",
+    "pm/walk_08"
+   ],
+   "fps": 10,
+   "loop": true
+  },
+  "pm/run": {
+   "frames": [
+    "pm/run_01",
+    "pm/run_02",
+    "pm/run_03",
+    "pm/run_04",
+    "pm/run_05",
+    "pm/run_06",
+    "pm/run_07",
+    "pm/run_08"
+   ],
+   "fps": 14,
+   "loop": true
+  },
+  "pm/jump": {
+   "frames": [
+    "pm/jump_01",
+    "pm/jump_02",
+    "pm/jump_03",
+    "pm/jump_04",
+    "pm/jump_05",
+    "pm/jump_06"
+   ],
+   "fps": 12,
+   "loop": false
+  },
+  "pm/startle": {
+   "frames": [
+    "pm/startle_01",
+    "pm/startle_02"
+   ],
+   "fps": 10,
+   "loop": false
+  },
+  "pm/crouch": {
+   "frames": [
+    "pm/crouch_01",
+    "pm/crouch_02",
+    "pm/crouch_03"
+   ],
+   "fps": 8,
+   "loop": false
+  },
+  "pm/sit": {
+   "frames": [
+    "pm/sit_01",
+    "pm/sit_02",
+    "pm/sit_03",
+    "pm/sit_04",
+    "pm/sit_05"
+   ],
+   "fps": 8,
+   "loop": false
+  },
+  "pm/slump": {
+   "frames": [
+    "pm/slump_01",
+    "pm/slump_02"
+   ],
+   "fps": 6,
+   "loop": false
+  },
+  "pm/lie": {
+   "frames": [
+    "pm/lie_01",
+    "pm/lie_02",
+    "pm/lie_03"
+   ],
+   "fps": 2,
+   "loop": true
+  },
+  "pm/getup": {
+   "frames": [
+    "pm/getup_01",
+    "pm/getup_02",
+    "pm/getup_03"
+   ],
+   "fps": 8,
+   "loop": false
+  },
+  "pm/good": {
+   "frames": [
+    "pm/good_01",
+    "pm/good_02",
+    "pm/good_03"
+   ],
+   "fps": 8,
+   "loop": false
+  },
+  "pm/bad": {
+   "frames": [
+    "pm/bad_01",
+    "pm/bad_02",
+    "pm/bad_03"
+   ],
+   "fps": 8,
+   "loop": false
+  },
+  "pm/sigh": {
+   "frames": [
+    "pm/sigh_01",
+    "pm/sigh_02"
+   ],
+   "fps": 8,
+   "loop": false
+  },
+  "pm/tab_hold": {
+   "frames": [
+    "pm/tab_hold_01"
+   ],
+   "fps": 1,
+   "loop": false
+  },
+  "pm/tab_read": {
+   "frames": [
+    "pm/tab_read_01",
+    "pm/tab_read_02"
+   ],
+   "fps": 8,
+   "loop": false
+  },
+  "pm/tab_present": {
+   "frames": [
+    "pm/tab_present_01",
+    "pm/tab_present_02",
+    "pm/tab_present_03"
+   ],
+   "fps": 8,
+   "loop": false
+  },
+  "pm/tab_swipe": {
+   "frames": [
+    "pm/tab_swipe_01"
+   ],
+   "fps": 1,
+   "loop": false
+  },
+  "pm/tab_tuck": {
+   "frames": [
+    "pm/tab_tuck_01"
+   ],
+   "fps": 1,
+   "loop": false
+  },
+  "pm/doc_carry": {
+   "frames": [
+    "pm/doc_carry_01"
+   ],
+   "fps": 1,
+   "loop": false
+  },
+  "pm/doc_give": {
+   "frames": [
+    "pm/doc_give_01",
+    "pm/doc_give_02"
+   ],
+   "fps": 8,
+   "loop": false
+  },
+  "pm/doc_receive": {
+   "frames": [
+    "pm/doc_receive_01"
+   ],
+   "fps": 1,
+   "loop": false
+  },
+  "pm/doc_raise": {
+   "frames": [
+    "pm/doc_raise_01",
+    "pm/doc_raise_02"
+   ],
+   "fps": 8,
+   "loop": false
+  },
+  "pm/doc_flip": {
+   "frames": [
+    "pm/doc_flip_01",
+    "pm/doc_flip_02"
+   ],
+   "fps": 8,
+   "loop": false
+  },
+  "pm/phone_call": {
+   "frames": [
+    "pm/phone_call_01",
+    "pm/phone_call_02"
+   ],
+   "fps": 8,
+   "loop": false
+  },
+  "pm/phone_read": {
+   "frames": [
+    "pm/phone_read_01",
+    "pm/phone_read_02"
+   ],
+   "fps": 8,
+   "loop": false
+  },
+  "pm/coffee": {
+   "frames": [
+    "pm/coffee_01",
+    "pm/coffee_02"
+   ],
+   "fps": 8,
+   "loop": false
+  },
+  "pm/shake": {
+   "frames": [
+    "pm/shake_01",
+    "pm/shake_02"
+   ],
+   "fps": 8,
+   "loop": false
+  },
+  "pm/talk": {
+   "frames": [
+    "pm/talk_01",
+    "pm/talk_02"
+   ],
+   "fps": 6,
+   "loop": true
+  },
+  "pm/count": {
+   "frames": [
+    "pm/count_01",
+    "pm/count_02",
+    "pm/count_03"
+   ],
+   "fps": 8,
+   "loop": false
+  },
+  "pm/nod": {
+   "frames": [
+    "pm/nod_01",
+    "pm/nod_02"
+   ],
+   "fps": 6,
+   "loop": true
+  },
+  "pm/headshake": {
+   "frames": [
+    "pm/headshake_01"
+   ],
+   "fps": 1,
+   "loop": false
+  },
+  "pm/stop": {
+   "frames": [
+    "pm/stop_01",
+    "pm/stop_02"
+   ],
+   "fps": 8,
+   "loop": false
+  },
+  "pm/thumbs": {
+   "frames": [
+    "pm/thumbs_01"
+   ],
+   "fps": 1,
+   "loop": false
+  },
+  "pm/rally": {
+   "frames": [
+    "pm/rally_01",
+    "pm/rally_02"
+   ],
+   "fps": 8,
+   "loop": false
+  },
+  "pm/goahead": {
+   "frames": [
+    "pm/goahead_01",
+    "pm/goahead_02"
+   ],
+   "fps": 8,
+   "loop": false
+  },
+  "pm/clap": {
+   "frames": [
+    "pm/clap_01"
+   ],
+   "fps": 1,
+   "loop": false
+  },
+  "pm/bow": {
+   "frames": [
+    "pm/bow_01",
+    "pm/bow_02"
+   ],
+   "fps": 8,
+   "loop": false
+  },
+  "pm/crossarms": {
+   "frames": [
+    "pm/crossarms_01"
+   ],
+   "fps": 1,
+   "loop": false
+  },
+  "pm/scold": {
+   "frames": [
+    "pm/scold_01",
+    "pm/scold_02"
+   ],
+   "fps": 8,
+   "loop": false
+  },
+  "pm/facepalm": {
+   "frames": [
+    "pm/facepalm_01"
+   ],
+   "fps": 1,
+   "loop": false
+  },
+  "pm/scratch": {
+   "frames": [
+    "pm/scratch_01"
+   ],
+   "fps": 1,
+   "loop": false
+  },
+  "pm/shrug": {
+   "frames": [
+    "pm/shrug_01"
+   ],
+   "fps": 1,
+   "loop": false
+  },
+  "pm/think": {
+   "frames": [
+    "pm/think_01",
+    "pm/think_02"
+   ],
+   "fps": 8,
+   "loop": false
+  },
+  "pm/stress": {
+   "frames": [
+    "pm/stress_01",
+    "pm/stress_02"
+   ],
+   "fps": 8,
+   "loop": false
+  },
+  "pm/confident": {
+   "frames": [
+    "pm/confident_01"
+   ],
+   "fps": 1,
+   "loop": false
+  },
+  "pm/stretch": {
+   "frames": [
+    "pm/stretch_01",
+    "pm/stretch_02"
+   ],
+   "fps": 8,
+   "loop": false
+  },
+  "pm/coach": {
+   "frames": [
+    "pm/coach_01"
+   ],
+   "fps": 1,
+   "loop": false
+  },
+  "pm/desk_type": {
+   "frames": [
+    "pm/desk_type_01",
+    "pm/desk_type_02"
+   ],
+   "fps": 8,
+   "loop": true
+  },
+  "pm/desk_read": {
+   "frames": [
+    "pm/desk_read_01"
+   ],
+   "fps": 1,
+   "loop": false
+  },
+  "pm/desk_note": {
+   "frames": [
+    "pm/desk_note_01"
+   ],
+   "fps": 1,
+   "loop": false
+  },
+  "pm/desk_stand": {
+   "frames": [
+    "pm/desk_stand_01",
+    "pm/desk_stand_02"
+   ],
+   "fps": 8,
+   "loop": false
+  },
+  "pm/meet_note": {
+   "frames": [
+    "pm/meet_note_01",
+    "pm/meet_note_02"
+   ],
+   "fps": 8,
+   "loop": false
+  },
+  "pm/night_type": {
+   "frames": [
+    "pm/night_type_01",
+    "pm/night_type_02"
+   ],
+   "fps": 6,
+   "loop": true
+  },
+  "pm/night_rub": {
+   "frames": [
+    "pm/night_rub_01"
+   ],
+   "fps": 1,
+   "loop": false
+  },
+  "pm/night_yawn": {
+   "frames": [
+    "pm/night_yawn_01"
+   ],
+   "fps": 1,
+   "loop": false
+  },
+  "pm/night_sleep": {
+   "frames": [
+    "pm/night_sleep_01",
+    "pm/night_sleep_02"
+   ],
+   "fps": 2,
+   "loop": true
+  },
+  "pm/night_wake": {
+   "frames": [
+    "pm/night_wake_01",
+    "pm/night_wake_02"
+   ],
+   "fps": 8,
+   "loop": false
+  },
+  "pm/oneone_talk": {
+   "frames": [
+    "pm/oneone_talk_01",
+    "pm/oneone_talk_02"
+   ],
+   "fps": 8,
+   "loop": false
+  },
+  "pm/oneone_listen": {
+   "frames": [
+    "pm/oneone_listen_01",
+    "pm/oneone_listen_02"
+   ],
+   "fps": 8,
+   "loop": false
+  },
+  "pm/oneone_show": {
+   "frames": [
+    "pm/oneone_show_01",
+    "pm/oneone_show_02"
+   ],
+   "fps": 8,
+   "loop": false
+  },
+  "pm/oneone_worry": {
+   "frames": [
+    "pm/oneone_worry_01",
+    "pm/oneone_worry_02"
+   ],
+   "fps": 8,
+   "loop": false
+  },
+  "pm/meet_table_talk": {
+   "frames": [
+    "pm/meet_table_talk_01",
+    "pm/meet_table_talk_02"
+   ],
+   "fps": 8,
+   "loop": false
+  },
+  "pm/meet_table_listen": {
+   "frames": [
+    "pm/meet_table_listen_01",
+    "pm/meet_table_listen_02"
+   ],
+   "fps": 8,
+   "loop": false
+  },
+  "pm/meet_table_present": {
+   "frames": [
+    "pm/meet_table_present_01",
+    "pm/meet_table_present_02"
+   ],
+   "fps": 8,
+   "loop": false
+  },
+  "pm/meet_table_worry": {
+   "frames": [
+    "pm/meet_table_worry_01"
+   ],
+   "fps": 1,
+   "loop": false
+  },
+  "pm/meet_table_agree": {
+   "frames": [
+    "pm/meet_table_agree_01"
+   ],
+   "fps": 1,
+   "loop": false
+  },
+  "pm/wb_write": {
+   "frames": [
+    "pm/wb_write_01",
+    "pm/wb_write_02",
+    "pm/wb_write_03"
+   ],
+   "fps": 8,
+   "loop": true
+  },
+  "pm/wb_point": {
+   "frames": [
+    "pm/wb_point_01",
+    "pm/wb_point_02"
+   ],
+   "fps": 8,
+   "loop": false
+  },
+  "pm/wb_explain": {
+   "frames": [
+    "pm/wb_explain_01",
+    "pm/wb_explain_02"
+   ],
+   "fps": 8,
+   "loop": false
+  },
+  "pm/wb_cap": {
+   "frames": [
+    "pm/wb_cap_01"
+   ],
+   "fps": 1,
+   "loop": false
+  },
+  "pm/alert": {
+   "frames": [
+    "pm/alert_01",
+    "pm/alert_02"
+   ],
+   "fps": 8,
+   "loop": false
+  },
+  "pm/command": {
+   "frames": [
+    "pm/command_01",
+    "pm/command_02",
+    "pm/command_03"
+   ],
+   "fps": 6,
+   "loop": true
+  },
+  "pm/headset": {
+   "frames": [
+    "pm/headset_01",
+    "pm/headset_02"
+   ],
+   "fps": 6,
+   "loop": true
+  },
+  "pm/relief": {
+   "frames": [
+    "pm/relief_01"
+   ],
+   "fps": 1,
+   "loop": false
+  },
+  "pm/rollback": {
+   "frames": [
+    "pm/rollback_01",
+    "pm/rollback_02",
+    "pm/rollback_03",
+    "pm/rollback_04"
+   ],
+   "fps": 12,
+   "loop": true
+  },
+  "pm/delegate": {
+   "frames": [
+    "pm/delegate_01",
+    "pm/delegate_02"
+   ],
+   "fps": 8,
+   "loop": false
+  },
+  "pm/checklist": {
+   "frames": [
+    "pm/checklist_01",
+    "pm/checklist_02"
+   ],
+   "fps": 8,
+   "loop": false
+  },
+  "pm/formal_walk": {
+   "frames": [
+    "pm/formal_walk_01",
+    "pm/formal_walk_02",
+    "pm/formal_walk_03",
+    "pm/formal_walk_04",
+    "pm/formal_walk_05",
+    "pm/formal_walk_06",
+    "pm/formal_walk_07",
+    "pm/formal_walk_08"
+   ],
+   "fps": 10,
+   "loop": true
+  },
+  "pm/present": {
+   "frames": [
+    "pm/present_01",
+    "pm/present_02",
+    "pm/present_03",
+    "pm/present_04"
+   ],
+   "fps": 8,
+   "loop": false
+  },
+  "pm/nervous": {
+   "frames": [
+    "pm/nervous_01",
+    "pm/nervous_02"
+   ],
+   "fps": 8,
+   "loop": false
+  },
+  "pm/adjust": {
+   "frames": [
+    "pm/adjust_01",
+    "pm/adjust_02"
+   ],
+   "fps": 8,
+   "loop": false
+  },
+  "pm/answer": {
+   "frames": [
+    "pm/answer_01",
+    "pm/answer_02"
+   ],
+   "fps": 8,
+   "loop": false
+  },
+  "pm/reflect": {
+   "frames": [
+    "pm/reflect_01",
+    "pm/reflect_02"
+   ],
+   "fps": 8,
+   "loop": false
+  },
+  "pm/bowthank": {
+   "frames": [
+    "pm/bowthank_01",
+    "pm/bowthank_02"
+   ],
+   "fps": 8,
+   "loop": false
+  },
+  "pm/wait": {
+   "frames": [
+    "pm/wait_01",
+    "pm/wait_02"
+   ],
+   "fps": 8,
+   "loop": false
+  },
+  "pm/badge": {
+   "frames": [
+    "pm/badge_01",
+    "pm/badge_02",
+    "pm/badge_03"
+   ],
+   "fps": 8,
+   "loop": false
+  },
+  "pm/celebrate": {
+   "frames": [
+    "pm/celebrate_01",
+    "pm/celebrate_02",
+    "pm/celebrate_03"
+   ],
+   "fps": 8,
+   "loop": false
+  },
+  "pm/relieved": {
+   "frames": [
+    "pm/relieved_01",
+    "pm/relieved_02"
+   ],
+   "fps": 8,
+   "loop": false
+  },
+  "pm/fail": {
+   "frames": [
+    "pm/fail_01",
+    "pm/fail_02",
+    "pm/fail_03"
+   ],
+   "fps": 8,
+   "loop": false
+  },
+  "pm/leave": {
+   "frames": [
+    "pm/leave_01",
+    "pm/leave_02",
+    "pm/leave_03"
+   ],
+   "fps": 8,
+   "loop": true
+  },
+  "pm/leave_back": {
+   "frames": [
+    "pm/leave_back_01"
+   ],
+   "fps": 1,
+   "loop": false
+  },
+  "pm/resolve": {
+   "frames": [
+    "pm/resolve_01"
+   ],
+   "fps": 1,
+   "loop": false
+  },
+  "pm/tired_idle": {
+   "frames": [
+    "pm/tired_idle_01",
+    "pm/tired_idle_02",
+    "pm/tired_idle_03",
+    "pm/tired_idle_04"
+   ],
+   "fps": 5,
+   "loop": true
+  },
+  "pm/tired_talk": {
+   "frames": [
+    "pm/tired_talk_01",
+    "pm/tired_talk_02",
+    "pm/tired_talk_03",
+    "pm/tired_talk_04"
+   ],
+   "fps": 6,
+   "loop": true
+  },
+  "pm/tired_walk": {
+   "frames": [
+    "pm/tired_walk_01",
+    "pm/tired_walk_02",
+    "pm/tired_walk_03",
+    "pm/tired_walk_04",
+    "pm/tired_walk_05",
+    "pm/tired_walk_06",
+    "pm/tired_walk_07",
+    "pm/tired_walk_08"
+   ],
+   "fps": 8,
+   "loop": true
+  }
+ },
+ "objects": {
+  "prop/tablet_back": {
+   "ratio": 0.32,
+   "z": "front"
+  },
+  "prop/tablet_screen_front": {
+   "ratio": 0.32,
+   "z": "front"
+  },
+  "prop/tablet_screen_34": {
+   "ratio": 0.32,
+   "z": "front"
+  },
+  "prop/tablet_edge": {
+   "ratio": 0.32,
+   "z": "front"
+  },
+  "prop/tablet_flat": {
+   "ratio": 0.32,
+   "z": "front"
+  },
+  "prop/phone_back": {
+   "ratio": 0.14,
+   "z": "front"
+  },
+  "prop/phone_screen": {
+   "ratio": 0.14,
+   "z": "front"
+  },
+  "prop/laptop_closed": {
+   "ratio": 0.36,
+   "z": "front"
+  },
+  "prop/folder_closed": {
+   "ratio": 0.32,
+   "z": "front"
+  },
+  "prop/folder_open": {
+   "ratio": 0.34,
+   "z": "front"
+  },
+  "prop/contract_sheet": {
+   "ratio": 0.28,
+   "z": "front"
+  },
+  "prop/paper_stack": {
+   "ratio": 0.3,
+   "z": "front"
+  },
+  "prop/papers_scattered": {
+   "ratio": 0.45,
+   "z": "front"
+  },
+  "prop/notebook_open": {
+   "ratio": 0.26,
+   "z": "front"
+  },
+  "prop/pen": {
+   "ratio": 0.12,
+   "z": "front"
+  },
+  "prop/checklist_sheet": {
+   "ratio": 0.26,
+   "z": "front"
+  },
+  "prop/task_card": {
+   "ratio": 0.14,
+   "z": "front"
+  },
+  "prop/mug_steam": {
+   "ratio": 0.12,
+   "z": "front"
+  },
+  "prop/mug_plain": {
+   "ratio": 0.11,
+   "z": "front"
+  },
+  "prop/marker": {
+   "ratio": 0.12,
+   "z": "front"
+  },
+  "prop/clicker": {
+   "ratio": 0.08,
+   "z": "front"
+  },
+  "prop/laptop_open_34": {
+   "ratio": 0.4,
+   "z": "front"
+  },
+  "prop/laptop_open_front": {
+   "ratio": 0.4,
+   "z": "front"
+  },
+  "prop/cardboard_box": {
+   "ratio": 0.45,
+   "z": "front"
+  },
+  "prop/badge_orange": {
+   "ratio": 0.14,
+   "z": "front"
+  },
+  "prop/badge_blue": {
+   "ratio": 0.14,
+   "z": "front"
+  },
+  "prop/mugs_pair": {
+   "ratio": 0.2,
+   "z": "front"
+  },
+  "prop/lamp_on": {
+   "ratio": 0.3,
+   "z": "front"
+  },
+  "prop/lamp_off": {
+   "ratio": 0.3,
+   "z": "front"
+  },
+  "prop/plant_small": {
+   "ratio": 0.2,
+   "z": "front"
+  },
+  "prop/sticky_notes": {
+   "ratio": 0.1,
+   "z": "front"
+  },
+  "prop/notebook_closed": {
+   "ratio": 0.22,
+   "z": "front"
+  },
+  "furn/office_chair": {
+   "ratio": 0.75,
+   "z": "back"
+  },
+  "furn/meeting_chair": {
+   "ratio": 0.72,
+   "z": "back"
+  },
+  "furn/sofa": {
+   "ratio": 1.4,
+   "z": "back"
+  },
+  "furn/desk_monitor": {
+   "ratio": 1.3,
+   "z": "front"
+  },
+  "furn/meeting_table": {
+   "ratio": 0.95,
+   "z": "front"
+  },
+  "furn/whiteboard": {
+   "ratio": 1.3,
+   "z": "back"
+  },
+  "furn/presentation_screen": {
+   "ratio": 1.6,
+   "z": "back"
+  },
+  "furn/kanban_normal": {
+   "ratio": 1.1,
+   "z": "back"
+  },
+  "furn/kanban_overloaded": {
+   "ratio": 1.1,
+   "z": "back"
+  },
+  "furn/checklist_poster": {
+   "ratio": 0.6,
+   "z": "back"
+  },
+  "furn/monitor_alert": {
+   "ratio": 0.5,
+   "z": "back"
+  },
+  "furn/plant_tall": {
+   "ratio": 1.1,
+   "z": "back"
+  }
+ }
+}

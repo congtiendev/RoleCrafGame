@@ -1,0 +1,4 @@
+/* Chi quet ma nguon trong src/: tai lieu, anh va ban build o goc khong chua class, quet vao chi sinh CSS thua */
+@import "tailwindcss" source("../");
+@import "./theme.css";
+@import "./components.css";

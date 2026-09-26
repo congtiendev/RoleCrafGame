@@ -1,0 +1,53 @@
+/* Token mau sang/toi — utility bg-panel, text-mute, border-line... sinh tu day */
+@theme {
+  --font-sans: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  /* Mau thuong hieu Innocom (theo logo: dai do + dai xanh navy -> xanh duong) – mau chu dao cua ca project */
+  --color-brand-red: #d3343c;
+  --color-brand-navy: #233680;
+  --color-brand-blue: #2c63b0;
+  /* Bang mau UI pixel (trang game), dan xuat tu mau thuong hieu; dung token, khong viet ma hex tai cho */
+  --color-px-ink: #060a1c;      /* vien toi day, goc khuyet */
+  --color-px-panel: #14204a;    /* nen khung: navy logo, toi hon */
+  --color-px-frame: #2c63b0;    /* vien trong khung: xanh duong logo */
+  --color-px-hi: #ff6f76;       /* chu nhan / diem nhan tren nen toi: do logo sang hon (tuong phan 5.8:1) */
+  --color-px-deep: #182a6e;     /* vien chu tieu de */
+  --font-pixel: "VT323", ui-monospace, monospace;       /* font pixel co dau tieng Viet (src/fonts): CHI cho tieu de game (ten game, tieu de man/khung). Moi chu noi dung (nut, nhan, goi y, doan van, thoai, so lieu) dung font-sans */
+  --animate-rise: rise .7s cubic-bezier(.2,.8,.2,1) both;
+  --animate-bob: bob 1.2s steps(2) infinite;               /* nhun 2 buoc kieu pixel */
+  --animate-blink: blink 1s steps(1) infinite;              /* nhap nhay tat/bat nhu man cho game */
+  --animate-tap: tap 1s ease-in-out infinite;
+  --animate-nudge: nudge .8s ease-in-out infinite;          /* ban tay chi vao nut dang chon (.px-btn::before) */               /* ban tay go vao card (nut sang cau hoi thoai) */
+  @keyframes blink { 50% { opacity: 0; } }
+  @keyframes rise { from { opacity: 0; transform: translateY(18px); } }
+  @keyframes bob { 50% { transform: translateY(-4px); } }
+  /* ban tay o goc duoi-phai, ngon tro san huong len-trai (vao card): go vao 5px roi lui ra */
+  @keyframes nudge { 50% { transform: translateX(6px); } }
+  @keyframes tap { 0%, 100% { transform: translate(0, 0); } 45% { transform: translate(-5px, -5px); } }
+  --color-page: #f4f3ef;
+  --color-panel: #fff;
+  --color-ink: #1d1d1b;
+  --color-mute: #6b6a64;
+  --color-line: #dddbd3;
+  --color-accent: #2c63b0;
+  --color-accent-ink: #fff;
+  --color-chip: #ecebe5;
+  --color-loop: #1f8a5b;
+  --color-once: #b4691a;
+  --color-ck1: #ffffff;
+  --color-ck2: #e9e8e2;
+}
+
+@layer base {
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --color-page: #161615; --color-panel: #212120; --color-ink: #ecebe6; --color-mute: #9c9b94; --color-line: #34332f;
+      --color-accent: #7aa5ec; --color-accent-ink: #0d1320; --color-chip: #2c2c2a; --color-loop: #5cc494; --color-once: #e2a358;
+      --color-ck1: #2a2a28; --color-ck2: #232322;
+    }
+  }
+  :root[data-theme="dark"] {
+    --color-page: #161615; --color-panel: #212120; --color-ink: #ecebe6; --color-mute: #9c9b94; --color-line: #34332f;
+    --color-accent: #7aa5ec; --color-accent-ink: #0d1320; --color-chip: #2c2c2a; --color-loop: #5cc494; --color-once: #e2a358;
+    --color-ck1: #2a2a28; --color-ck2: #232322;
+  }
+}

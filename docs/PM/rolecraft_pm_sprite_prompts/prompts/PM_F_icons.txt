@@ -1,0 +1,11 @@
+ART STYLE: cute soft pixel-art game icons matching a chibi sprite set: clean dark-brown pixel outline, glossy saturated colors, soft highlight top-left, no characters, each icon a clean standalone object.
+
+LAYOUT: icon sheet, square 1:1, pure solid white background (#FFFFFF). Exactly 6 columns x 4 rows = 24 cells, one icon per cell, centered, all icons the same visual size, no icon touching another. Reading order left to right, top to bottom.
+
+CELLS:
+Row 1 - Emotes: (1) red exclamation mark bubble; (2) yellow question mark bubble; (3) blue sweat drop; (4) glowing light bulb; (5) red anger vein symbol; (6) blue Zzz sleep letters.
+Row 2 - Emotes 2: (7) golden sparkles cluster; (8) pink heart; (9) small dark storm cloud with rain; (10) coffee cup with steam; (11) green check mark badge; (12) red cross badge.
+Row 3 - Stat icons: (13) gold coin stack; (14) rising bar chart with arrow; (15) blue shield with check; (16) three small smiling heads together; (17) handshake; (18) gold star medal.
+Row 4 - Stat icons 2: (19) orange warning triangle; (20) hourglass; (21) green up arrow; (22) red down arrow; (23) calendar page; (24) clipboard with checklist.
+
+DO NOT include any text or letters except the literal symbols described (!, ?, Zzz); no watermark, grid lines, borders, characters or background.

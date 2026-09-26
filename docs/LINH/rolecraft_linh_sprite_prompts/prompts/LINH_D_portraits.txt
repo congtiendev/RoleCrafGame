@@ -1,0 +1,20 @@
+TASK: create a 4x5 chibi pixel-art game portrait sheet (head-and-shoulders, framed) of the person in the attached photo, dressed as Linh, the junior frontend developer in the young PM's team. Sheet content: 20 framed facial-expression portraits for a dialogue box.
+
+ATTACHED IMAGES: Image 1 is a photo of a real person (identity source). Image 2 is the approved master sprite sheet of this same character (Sheet A). Match Image 2 exactly: same chibi proportions, face, hair, outfit, colors, outline and shading style, and the same sprite size.
+
+IDENTITY: Convert the person in the photo into a game character. Keep them clearly recognizable: face shape, eye shape and eyebrows, nose and mouth character, hairstyle, hair length, hair color and parting, skin tone, and any distinctive features such as glasses, freckles, moles, beard or earrings (if the person wears glasses, keep the same glasses in every cell). Stylize the features into the art style below; do not trace or paste the photo. Ignore the photo's background, lighting, pose, expression and clothing.
+
+OUTFIT (replaces the clothing in the photo, identical in every cell unless a row says otherwise): Linh, a junior frontend developer in their early twenties, eager but still inexperienced. Pastel lavender crew-neck sweater over a white collared shirt (collar visible); beige chino trousers; clean white sneakers; slim black over-ear headphones resting around the neck. A royal-blue lanyard with a plain royal-blue staff ID badge card at the chest (blank, no text). Signature prop: a slim silver laptop. It is added later by code, so do NOT draw it (except in the framed portrait cell).
+
+ART STYLE: cute chibi game sprite in a soft high-resolution pixel-art style, exactly matching the reference sheet. Big head, about 2.3 to 2.4 heads tall in total, slightly shorter and younger-looking than the young PM; large expressive eyes with highlights, an eager youthful look; small nose and mouth; clean dark-brown pixel outline (not pure black); soft cel shading with gentle gradients in the hair; warm natural colors; consistent top-left light. Every full-body figure stands on a small soft grey oval shadow. Small effect icons (sparkles, sweat drop, small grey puff, exclamation mark, question mark) are drawn next to a figure only where a cell asks for them.
+
+LAYOUT: portrait sheet, square 1:1, pure white background outside the frames. Exactly 4 columns x 5 rows = 20 cells. Every cell is a head-and-shoulders portrait of the same character inside a rounded-square frame with a thin dark outline and a soft pastel-lavender background, identical frame size and crop in every cell, exactly like the portrait in cell 1 of the master sheet. Character faces the viewer, turned slightly left, hands empty unless an expression says otherwise. Frames never touch. Reading order left to right, top to bottom.
+
+EXPRESSIONS:
+Row 1: (1) neutral; (2) eager, bright eyes; (3) happy smile; (4) proud smile.
+Row 2: (5) shy smile, slight blush; (6) unsure, small awkward smile; (7) confused, head tilted; (8) thinking, eyes looking up.
+Row 3: (9) worried, eyebrows tilted; (10) anxious, biting the lip; (11) shocked, mouth open; (12) panicking, sweat drops.
+Row 4: (13) ashamed, eyes lowered; (14) apologetic, eyes wet; (15) tired, dark circles; (16) relieved exhale.
+Row 5: (17) determined; (18) confident small smile; (19) thankful, gentle smile; (20) hesitant, looking aside.
+
+DO NOT: make it photorealistic or paste the photo; include any text, letters, numbers, labels or watermark; draw grid lines or cell borders (except the frame of the portrait cells); add scenery, floor or walls; add extra characters (the PM and other team members are offscreen); crop limbs; repeat an identical pose; change the face, hair, outfit colors or proportions between cells; use pure white for clothing edges that touch the background.

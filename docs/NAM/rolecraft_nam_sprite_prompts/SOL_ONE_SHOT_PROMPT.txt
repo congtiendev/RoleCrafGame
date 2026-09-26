@@ -1,0 +1,22 @@
+Work autonomously until everything is done. Do not ask me questions.
+
+ATTACHMENTS
+1. The photo: a real person (who agreed to this) to be turned into the game character "Nam – Sales Executive".
+2. PM_A_master.png: the approved master sheet of the game's main character (the young PM). Style and scale reference ONLY.
+3. rolecraft_nam_sprite_prompts.zip: prompts/NAM_*.txt (one image prompt per sheet), nam_sprite_manifest.json (grid, attachments, sprite names, prop/furniture bindings), tools/extract_anchors.py (cutting + anchor extraction) and tools/pm_compose.js.
+
+IMPORTANT: handheld objects and furniture are SEPARATE sprites and already exist (the PM set's props, furniture and icon sheets are reused). Character sheets must show empty hands in grip poses with small marker dots (MAGENTA = main grip, GREEN = second grip, CYAN = seat point), exactly as each prompt describes.
+
+STEPS
+1. Unzip and read every prompt file and the manifest.
+2. Sheet A: call the image generation tool with the exact text of NAM_A_master.txt, attaching the photo as Image 1 and PM_A_master.png as Image 2. Check: 8x7 cells; cell 1 is a framed portrait; the face, hair and glasses (if any) are recognizable; the outfit matches the OUTFIT paragraph; the art style, outline and sprite size match PM_A_master.png; no handheld object drawn outside the portrait; marker dots present where the [markers] tags ask; no text. If a check fails, regenerate (max 3 attempts) and keep the best.
+3. Sheets B, D: exact prompt text, attach the photo as Image 1 and the approved NAM Sheet A as Image 2. Same checks, plus the character matches Sheet A. Max 3 attempts each.
+4. Save the approved images into sheets/ using the file names in the manifest (NAM_A_master.png, NAM_B_sales_scenes.png, NAM_D_portraits.png). Run:
+   python3 tools/extract_anchors.py --manifest nam_sprite_manifest.json --sheets sheets --out build
+   Read build/report.json. For every sprite with a missing marker, regenerate only that row of its sheet (max 2 attempts per sheet), then run the script again.
+5. DELIVER
+   - Show all final sheets in the chat.
+   - One file rolecraft_nam_sprites.zip containing sheets/, build/ (sprites/, anim/, anchors.json, animations.json, report.json), the manifest and tools/pm_compose.js.
+   - A short table: sheet, attempts, checks passed, remaining warnings from report.json.
+
+If you cannot finish in one reply, stop after the last completed step and state exactly which step to resume from.

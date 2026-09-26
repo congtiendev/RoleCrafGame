@@ -1,0 +1,2086 @@
+{
+ "version": 3,
+ "character": {
+  "id": "LINH",
+  "role": "JUNIOR_DEV",
+  "name": "Linh – Junior Frontend Developer"
+ },
+ "shared": {
+  "note": "Đồ vật, nội thất, icon dùng lại sheet P, O, F của bộ PM (docs/PM): prop/*, furn/*, icon/*"
+ },
+ "markers": {
+  "grip": "#FF00FF",
+  "grip2": "#00FF00",
+  "seat": "#00FFFF"
+ },
+ "sheets": [
+  {
+   "id": "A",
+   "key": "master",
+   "kind": "linh",
+   "file": "LINH_A_master.png",
+   "attach": "photo+pm",
+   "cols": 8,
+   "rows": 7,
+   "cells": [
+    {
+     "index": 1,
+     "row": 1,
+     "col": 1,
+     "name": "portrait",
+     "key": "linh/portrait"
+    },
+    {
+     "index": 2,
+     "row": 1,
+     "col": 2,
+     "name": "idle_01",
+     "key": "linh/idle_01",
+     "bind": [
+      {
+       "prop": "laptop_closed",
+       "at": "grip",
+       "z": "front",
+       "rot": 0
+      }
+     ]
+    },
+    {
+     "index": 3,
+     "row": 1,
+     "col": 3,
+     "name": "idle_02",
+     "key": "linh/idle_02",
+     "bind": [
+      {
+       "prop": "laptop_closed",
+       "at": "grip",
+       "z": "front",
+       "rot": 0
+      }
+     ]
+    },
+    {
+     "index": 4,
+     "row": 1,
+     "col": 4,
+     "name": "idle_03",
+     "key": "linh/idle_03",
+     "bind": [
+      {
+       "prop": "laptop_closed",
+       "at": "grip",
+       "z": "front",
+       "rot": 0
+      }
+     ]
+    },
+    {
+     "index": 5,
+     "row": 1,
+     "col": 5,
+     "name": "idle_back_01",
+     "key": "linh/idle_back_01",
+     "bind": [
+      {
+       "prop": "laptop_closed",
+       "at": "grip",
+       "z": "front",
+       "rot": 0
+      }
+     ]
+    },
+    {
+     "index": 6,
+     "row": 1,
+     "col": 6,
+     "name": "idle_04",
+     "key": "linh/idle_04",
+     "bind": [
+      {
+       "prop": "laptop_closed",
+       "at": "grip",
+       "z": "front",
+       "rot": 0
+      }
+     ]
+    },
+    {
+     "index": 7,
+     "row": 1,
+     "col": 7,
+     "name": "greet_01",
+     "key": "linh/greet_01"
+    },
+    {
+     "index": 8,
+     "row": 1,
+     "col": 8,
+     "name": "greet_02",
+     "key": "linh/greet_02"
+    },
+    {
+     "index": 9,
+     "row": 2,
+     "col": 1,
+     "name": "walk_01",
+     "key": "linh/walk_01",
+     "bind": [
+      {
+       "prop": "laptop_closed",
+       "at": "grip",
+       "z": "front",
+       "rot": 0
+      }
+     ]
+    },
+    {
+     "index": 10,
+     "row": 2,
+     "col": 2,
+     "name": "walk_02",
+     "key": "linh/walk_02",
+     "bind": [
+      {
+       "prop": "laptop_closed",
+       "at": "grip",
+       "z": "front",
+       "rot": 0
+      }
+     ]
+    },
+    {
+     "index": 11,
+     "row": 2,
+     "col": 3,
+     "name": "walk_03",
+     "key": "linh/walk_03",
+     "bind": [
+      {
+       "prop": "laptop_closed",
+       "at": "grip",
+       "z": "front",
+       "rot": 0
+      }
+     ]
+    },
+    {
+     "index": 12,
+     "row": 2,
+     "col": 4,
+     "name": "walk_04",
+     "key": "linh/walk_04",
+     "bind": [
+      {
+       "prop": "laptop_closed",
+       "at": "grip",
+       "z": "front",
+       "rot": 0
+      }
+     ]
+    },
+    {
+     "index": 13,
+     "row": 2,
+     "col": 5,
+     "name": "walk_05",
+     "key": "linh/walk_05",
+     "bind": [
+      {
+       "prop": "laptop_closed",
+       "at": "grip",
+       "z": "front",
+       "rot": 0
+      }
+     ]
+    },
+    {
+     "index": 14,
+     "row": 2,
+     "col": 6,
+     "name": "walk_06",
+     "key": "linh/walk_06",
+     "bind": [
+      {
+       "prop": "laptop_closed",
+       "at": "grip",
+       "z": "front",
+       "rot": 0
+      }
+     ]
+    },
+    {
+     "index": 15,
+     "row": 2,
+     "col": 7,
+     "name": "walk_07",
+     "key": "linh/walk_07",
+     "bind": [
+      {
+       "prop": "laptop_closed",
+       "at": "grip",
+       "z": "front",
+       "rot": 0
+      }
+     ]
+    },
+    {
+     "index": 16,
+     "row": 2,
+     "col": 8,
+     "name": "walk_08",
+     "key": "linh/walk_08",
+     "bind": [
+      {
+       "prop": "laptop_closed",
+       "at": "grip",
+       "z": "front",
+       "rot": 0
+      }
+     ]
+    },
+    {
+     "index": 17,
+     "row": 3,
+     "col": 1,
+     "name": "talk_01",
+     "key": "linh/talk_01"
+    },
+    {
+     "index": 18,
+     "row": 3,
+     "col": 2,
+     "name": "talk_02",
+     "key": "linh/talk_02"
+    },
+    {
+     "index": 19,
+     "row": 3,
+     "col": 3,
+     "name": "talk_03",
+     "key": "linh/talk_03"
+    },
+    {
+     "index": 20,
+     "row": 3,
+     "col": 4,
+     "name": "talk_04",
+     "key": "linh/talk_04"
+    },
+    {
+     "index": 21,
+     "row": 3,
+     "col": 5,
+     "name": "listen_01",
+     "key": "linh/listen_01"
+    },
+    {
+     "index": 22,
+     "row": 3,
+     "col": 6,
+     "name": "listen_02",
+     "key": "linh/listen_02"
+    },
+    {
+     "index": 23,
+     "row": 3,
+     "col": 7,
+     "name": "nod_01",
+     "key": "linh/nod_01"
+    },
+    {
+     "index": 24,
+     "row": 3,
+     "col": 8,
+     "name": "nod_02",
+     "key": "linh/nod_02"
+    },
+    {
+     "index": 25,
+     "row": 4,
+     "col": 1,
+     "name": "sit_01",
+     "key": "linh/sit_01",
+     "bind": [
+      {
+       "furniture": "office_chair",
+       "at": "beside_left",
+       "z": "back"
+      }
+     ]
+    },
+    {
+     "index": 26,
+     "row": 4,
+     "col": 2,
+     "name": "sit_02",
+     "key": "linh/sit_02",
+     "bind": [
+      {
+       "furniture": "office_chair",
+       "at": "seat",
+       "z": "back"
+      }
+     ]
+    },
+    {
+     "index": 27,
+     "row": 4,
+     "col": 3,
+     "name": "sit_03",
+     "key": "linh/sit_03",
+     "bind": [
+      {
+       "furniture": "office_chair",
+       "at": "seat",
+       "z": "back"
+      }
+     ]
+    },
+    {
+     "index": 28,
+     "row": 4,
+     "col": 4,
+     "name": "sit_04",
+     "key": "linh/sit_04",
+     "bind": [
+      {
+       "furniture": "office_chair",
+       "at": "seat",
+       "z": "back"
+      }
+     ]
+    },
+    {
+     "index": 29,
+     "row": 4,
+     "col": 5,
+     "name": "sit_05",
+     "key": "linh/sit_05",
+     "bind": [
+      {
+       "furniture": "office_chair",
+       "at": "seat",
+       "z": "back"
+      }
+     ]
+    },
+    {
+     "index": 30,
+     "row": 4,
+     "col": 6,
+     "name": "sit_06",
+     "key": "linh/sit_06",
+     "bind": [
+      {
+       "furniture": "office_chair",
+       "at": "seat",
+       "z": "back"
+      }
+     ]
+    },
+    {
+     "index": 31,
+     "row": 4,
+     "col": 7,
+     "name": "sit_07",
+     "key": "linh/sit_07",
+     "bind": [
+      {
+       "furniture": "office_chair",
+       "at": "seat",
+       "z": "back"
+      }
+     ]
+    },
+    {
+     "index": 32,
+     "row": 4,
+     "col": 8,
+     "name": "sit_08",
+     "key": "linh/sit_08",
+     "bind": [
+      {
+       "furniture": "office_chair",
+       "at": "seat",
+       "z": "back"
+      }
+     ]
+    },
+    {
+     "index": 33,
+     "row": 5,
+     "col": 1,
+     "name": "eager_01",
+     "key": "linh/eager_01"
+    },
+    {
+     "index": 34,
+     "row": 5,
+     "col": 2,
+     "name": "happy_01",
+     "key": "linh/happy_01"
+    },
+    {
+     "index": 35,
+     "row": 5,
+     "col": 3,
+     "name": "proud_01",
+     "key": "linh/proud_01"
+    },
+    {
+     "index": 36,
+     "row": 5,
+     "col": 4,
+     "name": "relieved_01",
+     "key": "linh/relieved_01"
+    },
+    {
+     "index": 37,
+     "row": 5,
+     "col": 5,
+     "name": "determined_01",
+     "key": "linh/determined_01"
+    },
+    {
+     "index": 38,
+     "row": 5,
+     "col": 6,
+     "name": "thankful_01",
+     "key": "linh/thankful_01"
+    },
+    {
+     "index": 39,
+     "row": 5,
+     "col": 7,
+     "name": "confident_01",
+     "key": "linh/confident_01"
+    },
+    {
+     "index": 40,
+     "row": 5,
+     "col": 8,
+     "name": "excited_01",
+     "key": "linh/excited_01"
+    },
+    {
+     "index": 41,
+     "row": 6,
+     "col": 1,
+     "name": "worried_01",
+     "key": "linh/worried_01"
+    },
+    {
+     "index": 42,
+     "row": 6,
+     "col": 2,
+     "name": "anxious_01",
+     "key": "linh/anxious_01"
+    },
+    {
+     "index": 43,
+     "row": 6,
+     "col": 3,
+     "name": "ashamed_01",
+     "key": "linh/ashamed_01"
+    },
+    {
+     "index": 44,
+     "row": 6,
+     "col": 4,
+     "name": "ashamed_02",
+     "key": "linh/ashamed_02"
+    },
+    {
+     "index": 45,
+     "row": 6,
+     "col": 5,
+     "name": "apologize_01",
+     "key": "linh/apologize_01"
+    },
+    {
+     "index": 46,
+     "row": 6,
+     "col": 6,
+     "name": "apologize_02",
+     "key": "linh/apologize_02"
+    },
+    {
+     "index": 47,
+     "row": 6,
+     "col": 7,
+     "name": "hesitant_01",
+     "key": "linh/hesitant_01"
+    },
+    {
+     "index": 48,
+     "row": 6,
+     "col": 8,
+     "name": "stressed_01",
+     "key": "linh/stressed_01"
+    },
+    {
+     "index": 49,
+     "row": 7,
+     "col": 1,
+     "name": "unsure_01",
+     "key": "linh/unsure_01"
+    },
+    {
+     "index": 50,
+     "row": 7,
+     "col": 2,
+     "name": "confused_01",
+     "key": "linh/confused_01"
+    },
+    {
+     "index": 51,
+     "row": 7,
+     "col": 3,
+     "name": "ask_01",
+     "key": "linh/ask_01"
+    },
+    {
+     "index": 52,
+     "row": 7,
+     "col": 4,
+     "name": "ask_02",
+     "key": "linh/ask_02"
+    },
+    {
+     "index": 53,
+     "row": 7,
+     "col": 5,
+     "name": "busy_01",
+     "key": "linh/busy_01"
+    },
+    {
+     "index": 54,
+     "row": 7,
+     "col": 6,
+     "name": "try_01",
+     "key": "linh/try_01"
+    },
+    {
+     "index": 55,
+     "row": 7,
+     "col": 7,
+     "name": "accept_01",
+     "key": "linh/accept_01"
+    },
+    {
+     "index": 56,
+     "row": 7,
+     "col": 8,
+     "name": "breath_01",
+     "key": "linh/breath_01"
+    }
+   ]
+  },
+  {
+   "id": "B",
+   "key": "desk_work",
+   "kind": "linh",
+   "file": "LINH_B_desk_work.png",
+   "attach": "master",
+   "cols": 8,
+   "rows": 4,
+   "cells": [
+    {
+     "index": 1,
+     "row": 1,
+     "col": 1,
+     "name": "desk_type_01",
+     "key": "linh/desk_type_01",
+     "bind": [
+      {
+       "furniture": "office_chair",
+       "at": "seat",
+       "z": "back"
+      },
+      {
+       "furniture": "desk_monitor",
+       "at": "seat",
+       "z": "front"
+      }
+     ]
+    },
+    {
+     "index": 2,
+     "row": 1,
+     "col": 2,
+     "name": "desk_type_02",
+     "key": "linh/desk_type_02",
+     "bind": [
+      {
+       "furniture": "office_chair",
+       "at": "seat",
+       "z": "back"
+      },
+      {
+       "furniture": "desk_monitor",
+       "at": "seat",
+       "z": "front"
+      }
+     ]
+    },
+    {
+     "index": 3,
+     "row": 1,
+     "col": 3,
+     "name": "desk_fix_01",
+     "key": "linh/desk_fix_01",
+     "bind": [
+      {
+       "furniture": "office_chair",
+       "at": "seat",
+       "z": "back"
+      },
+      {
+       "furniture": "desk_monitor",
+       "at": "seat",
+       "z": "front"
+      }
+     ]
+    },
+    {
+     "index": 4,
+     "row": 1,
+     "col": 4,
+     "name": "desk_think_01",
+     "key": "linh/desk_think_01",
+     "bind": [
+      {
+       "furniture": "office_chair",
+       "at": "seat",
+       "z": "back"
+      },
+      {
+       "furniture": "desk_monitor",
+       "at": "seat",
+       "z": "front"
+      }
+     ]
+    },
+    {
+     "index": 5,
+     "row": 1,
+     "col": 5,
+     "name": "desk_push_01",
+     "key": "linh/desk_push_01",
+     "bind": [
+      {
+       "furniture": "office_chair",
+       "at": "seat",
+       "z": "back"
+      },
+      {
+       "furniture": "desk_monitor",
+       "at": "seat",
+       "z": "front"
+      }
+     ]
+    },
+    {
+     "index": 6,
+     "row": 1,
+     "col": 6,
+     "name": "desk_panic_01",
+     "key": "linh/desk_panic_01",
+     "bind": [
+      {
+       "furniture": "office_chair",
+       "at": "seat",
+       "z": "back"
+      },
+      {
+       "furniture": "desk_monitor",
+       "at": "seat",
+       "z": "front"
+      }
+     ]
+    },
+    {
+     "index": 7,
+     "row": 1,
+     "col": 7,
+     "name": "desk_panic_02",
+     "key": "linh/desk_panic_02",
+     "bind": [
+      {
+       "furniture": "office_chair",
+       "at": "seat",
+       "z": "back"
+      },
+      {
+       "furniture": "desk_monitor",
+       "at": "seat",
+       "z": "front"
+      }
+     ]
+    },
+    {
+     "index": 8,
+     "row": 1,
+     "col": 8,
+     "name": "desk_stand_01",
+     "key": "linh/desk_stand_01",
+     "bind": [
+      {
+       "furniture": "desk_monitor",
+       "at": "beside_left",
+       "z": "back"
+      }
+     ]
+    },
+    {
+     "index": 9,
+     "row": 2,
+     "col": 1,
+     "name": "night_type_01",
+     "key": "linh/night_type_01",
+     "bind": [
+      {
+       "furniture": "office_chair",
+       "at": "seat",
+       "z": "back"
+      },
+      {
+       "furniture": "desk_monitor",
+       "at": "seat",
+       "z": "front"
+      },
+      {
+       "prop": "lamp_on",
+       "at": "surface:desk_monitor",
+       "z": "front",
+       "rot": 0
+      },
+      {
+       "prop": "mugs_pair",
+       "at": "surface:desk_monitor",
+       "z": "front",
+       "rot": 0
+      }
+     ]
+    },
+    {
+     "index": 10,
+     "row": 2,
+     "col": 2,
+     "name": "night_type_02",
+     "key": "linh/night_type_02",
+     "bind": [
+      {
+       "furniture": "office_chair",
+       "at": "seat",
+       "z": "back"
+      },
+      {
+       "furniture": "desk_monitor",
+       "at": "seat",
+       "z": "front"
+      },
+      {
+       "prop": "lamp_on",
+       "at": "surface:desk_monitor",
+       "z": "front",
+       "rot": 0
+      },
+      {
+       "prop": "mugs_pair",
+       "at": "surface:desk_monitor",
+       "z": "front",
+       "rot": 0
+      }
+     ]
+    },
+    {
+     "index": 11,
+     "row": 2,
+     "col": 3,
+     "name": "night_rub_01",
+     "key": "linh/night_rub_01",
+     "bind": [
+      {
+       "furniture": "office_chair",
+       "at": "seat",
+       "z": "back"
+      },
+      {
+       "furniture": "desk_monitor",
+       "at": "seat",
+       "z": "front"
+      },
+      {
+       "prop": "lamp_on",
+       "at": "surface:desk_monitor",
+       "z": "front",
+       "rot": 0
+      },
+      {
+       "prop": "mugs_pair",
+       "at": "surface:desk_monitor",
+       "z": "front",
+       "rot": 0
+      }
+     ]
+    },
+    {
+     "index": 12,
+     "row": 2,
+     "col": 4,
+     "name": "tired_idle_01",
+     "key": "linh/tired_idle_01"
+    },
+    {
+     "index": 13,
+     "row": 2,
+     "col": 5,
+     "name": "tired_idle_02",
+     "key": "linh/tired_idle_02"
+    },
+    {
+     "index": 14,
+     "row": 2,
+     "col": 6,
+     "name": "tired_talk_01",
+     "key": "linh/tired_talk_01"
+    },
+    {
+     "index": 15,
+     "row": 2,
+     "col": 7,
+     "name": "tired_yawn_01",
+     "key": "linh/tired_yawn_01"
+    },
+    {
+     "index": 16,
+     "row": 2,
+     "col": 8,
+     "name": "tired_slump_01",
+     "key": "linh/tired_slump_01",
+     "bind": [
+      {
+       "furniture": "office_chair",
+       "at": "seat",
+       "z": "back"
+      },
+      {
+       "furniture": "desk_monitor",
+       "at": "seat",
+       "z": "front"
+      },
+      {
+       "prop": "lamp_on",
+       "at": "surface:desk_monitor",
+       "z": "front",
+       "rot": 0
+      },
+      {
+       "prop": "mugs_pair",
+       "at": "surface:desk_monitor",
+       "z": "front",
+       "rot": 0
+      }
+     ]
+    },
+    {
+     "index": 17,
+     "row": 3,
+     "col": 1,
+     "name": "checklist_read_01",
+     "key": "linh/checklist_read_01",
+     "bind": [
+      {
+       "prop": "checklist_sheet",
+       "at": "grip",
+       "z": "front",
+       "rot": 0
+      }
+     ]
+    },
+    {
+     "index": 18,
+     "row": 3,
+     "col": 2,
+     "name": "checklist_tick_01",
+     "key": "linh/checklist_tick_01",
+     "bind": [
+      {
+       "prop": "checklist_sheet",
+       "at": "grip",
+       "z": "front",
+       "rot": 0
+      },
+      {
+       "prop": "pen",
+       "at": "grip2",
+       "z": "front",
+       "rot": 0
+      }
+     ]
+    },
+    {
+     "index": 19,
+     "row": 3,
+     "col": 3,
+     "name": "checklist_tick_02",
+     "key": "linh/checklist_tick_02",
+     "bind": [
+      {
+       "prop": "checklist_sheet",
+       "at": "grip",
+       "z": "front",
+       "rot": 0
+      },
+      {
+       "prop": "pen",
+       "at": "grip2",
+       "z": "front",
+       "rot": 0
+      }
+     ]
+    },
+    {
+     "index": 20,
+     "row": 3,
+     "col": 4,
+     "name": "checklist_show_01",
+     "key": "linh/checklist_show_01",
+     "bind": [
+      {
+       "prop": "checklist_sheet",
+       "at": "grip",
+       "z": "front",
+       "rot": 0
+      }
+     ]
+    },
+    {
+     "index": 21,
+     "row": 3,
+     "col": 5,
+     "name": "note_01",
+     "key": "linh/note_01",
+     "bind": [
+      {
+       "prop": "notebook_open",
+       "at": "grip",
+       "z": "front",
+       "rot": 0
+      },
+      {
+       "prop": "pen",
+       "at": "grip2",
+       "z": "front",
+       "rot": 0
+      }
+     ]
+    },
+    {
+     "index": 22,
+     "row": 3,
+     "col": 6,
+     "name": "tab_read_01",
+     "key": "linh/tab_read_01",
+     "bind": [
+      {
+       "prop": "tablet_back",
+       "at": "grip",
+       "z": "front",
+       "rot": 0
+      }
+     ]
+    },
+    {
+     "index": 23,
+     "row": 3,
+     "col": 7,
+     "name": "guide_01",
+     "key": "linh/guide_01",
+     "bind": [
+      {
+       "prop": "checklist_sheet",
+       "at": "grip",
+       "z": "front",
+       "rot": 0
+      }
+     ]
+    },
+    {
+     "index": 24,
+     "row": 3,
+     "col": 8,
+     "name": "laptop_show_01",
+     "key": "linh/laptop_show_01",
+     "bind": [
+      {
+       "prop": "laptop_open_front",
+       "at": "grip",
+       "z": "front",
+       "rot": 0
+      }
+     ]
+    },
+    {
+     "index": 25,
+     "row": 4,
+     "col": 1,
+     "name": "mistake_shock_01",
+     "key": "linh/mistake_shock_01"
+    },
+    {
+     "index": 26,
+     "row": 4,
+     "col": 2,
+     "name": "mistake_confess_01",
+     "key": "linh/mistake_confess_01",
+     "bind": [
+      {
+       "prop": "laptop_closed",
+       "at": "grip",
+       "z": "front",
+       "rot": 0
+      }
+     ]
+    },
+    {
+     "index": 27,
+     "row": 4,
+     "col": 3,
+     "name": "blamed_01",
+     "key": "linh/blamed_01"
+    },
+    {
+     "index": 28,
+     "row": 4,
+     "col": 4,
+     "name": "blamed_02",
+     "key": "linh/blamed_02",
+     "bind": [
+      {
+       "prop": "laptop_closed",
+       "at": "grip",
+       "z": "front",
+       "rot": 0
+      }
+     ]
+    },
+    {
+     "index": 29,
+     "row": 4,
+     "col": 5,
+     "name": "forgiven_01",
+     "key": "linh/forgiven_01"
+    },
+    {
+     "index": 30,
+     "row": 4,
+     "col": 6,
+     "name": "analyze_01",
+     "key": "linh/analyze_01",
+     "bind": [
+      {
+       "prop": "laptop_open_front",
+       "at": "grip",
+       "z": "front",
+       "rot": 0
+      }
+     ]
+    },
+    {
+     "index": 31,
+     "row": 4,
+     "col": 7,
+     "name": "analyze_02",
+     "key": "linh/analyze_02"
+    },
+    {
+     "index": 32,
+     "row": 4,
+     "col": 8,
+     "name": "resolve_01",
+     "key": "linh/resolve_01",
+     "bind": [
+      {
+       "prop": "checklist_sheet",
+       "at": "grip",
+       "z": "front",
+       "rot": 0
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "C",
+   "key": "meetings",
+   "kind": "linh",
+   "file": "LINH_C_meetings.png",
+   "attach": "master",
+   "cols": 8,
+   "rows": 2,
+   "cells": [
+    {
+     "index": 1,
+     "row": 1,
+     "col": 1,
+     "name": "meet_table_listen_01",
+     "key": "linh/meet_table_listen_01",
+     "bind": [
+      {
+       "furniture": "meeting_chair",
+       "at": "seat",
+       "z": "back"
+      },
+      {
+       "furniture": "meeting_table",
+       "at": "seat",
+       "z": "front"
+      },
+      {
+       "prop": "notebook_open",
+       "at": "surface:meeting_table",
+       "z": "front",
+       "rot": 0
+      }
+     ]
+    },
+    {
+     "index": 2,
+     "row": 1,
+     "col": 2,
+     "name": "meet_table_listen_02",
+     "key": "linh/meet_table_listen_02",
+     "bind": [
+      {
+       "furniture": "meeting_chair",
+       "at": "seat",
+       "z": "back"
+      },
+      {
+       "furniture": "meeting_table",
+       "at": "seat",
+       "z": "front"
+      },
+      {
+       "prop": "pen",
+       "at": "grip",
+       "z": "front",
+       "rot": 0
+      },
+      {
+       "prop": "notebook_open",
+       "at": "surface:meeting_table",
+       "z": "front",
+       "rot": 0
+      }
+     ]
+    },
+    {
+     "index": 3,
+     "row": 1,
+     "col": 3,
+     "name": "meet_table_talk_01",
+     "key": "linh/meet_table_talk_01",
+     "bind": [
+      {
+       "furniture": "meeting_chair",
+       "at": "seat",
+       "z": "back"
+      },
+      {
+       "furniture": "meeting_table",
+       "at": "seat",
+       "z": "front"
+      }
+     ]
+    },
+    {
+     "index": 4,
+     "row": 1,
+     "col": 4,
+     "name": "meet_table_busy_01",
+     "key": "linh/meet_table_busy_01",
+     "bind": [
+      {
+       "furniture": "meeting_chair",
+       "at": "seat",
+       "z": "back"
+      },
+      {
+       "furniture": "meeting_table",
+       "at": "seat",
+       "z": "front"
+      }
+     ]
+    },
+    {
+     "index": 5,
+     "row": 1,
+     "col": 5,
+     "name": "meet_table_try_01",
+     "key": "linh/meet_table_try_01",
+     "bind": [
+      {
+       "furniture": "meeting_chair",
+       "at": "seat",
+       "z": "back"
+      },
+      {
+       "furniture": "meeting_table",
+       "at": "seat",
+       "z": "front"
+      }
+     ]
+    },
+    {
+     "index": 6,
+     "row": 1,
+     "col": 6,
+     "name": "meet_table_report_01",
+     "key": "linh/meet_table_report_01",
+     "bind": [
+      {
+       "furniture": "meeting_chair",
+       "at": "seat",
+       "z": "back"
+      },
+      {
+       "furniture": "meeting_table",
+       "at": "seat",
+       "z": "front"
+      }
+     ]
+    },
+    {
+     "index": 7,
+     "row": 1,
+     "col": 7,
+     "name": "meet_table_unsure_01",
+     "key": "linh/meet_table_unsure_01",
+     "bind": [
+      {
+       "furniture": "meeting_chair",
+       "at": "seat",
+       "z": "back"
+      },
+      {
+       "furniture": "meeting_table",
+       "at": "seat",
+       "z": "front"
+      }
+     ]
+    },
+    {
+     "index": 8,
+     "row": 1,
+     "col": 8,
+     "name": "meet_table_volunteer_01",
+     "key": "linh/meet_table_volunteer_01",
+     "bind": [
+      {
+       "furniture": "meeting_chair",
+       "at": "seat",
+       "z": "back"
+      },
+      {
+       "furniture": "meeting_table",
+       "at": "seat",
+       "z": "front"
+      }
+     ]
+    },
+    {
+     "index": 9,
+     "row": 2,
+     "col": 1,
+     "name": "oneone_listen_01",
+     "key": "linh/oneone_listen_01",
+     "bind": [
+      {
+       "furniture": "meeting_chair",
+       "at": "seat",
+       "z": "back"
+      },
+      {
+       "prop": "notebook_open",
+       "at": "grip",
+       "z": "front",
+       "rot": 0
+      }
+     ]
+    },
+    {
+     "index": 10,
+     "row": 2,
+     "col": 2,
+     "name": "oneone_listen_02",
+     "key": "linh/oneone_listen_02",
+     "bind": [
+      {
+       "furniture": "meeting_chair",
+       "at": "seat",
+       "z": "back"
+      }
+     ]
+    },
+    {
+     "index": 11,
+     "row": 2,
+     "col": 3,
+     "name": "oneone_talk_01",
+     "key": "linh/oneone_talk_01",
+     "bind": [
+      {
+       "furniture": "meeting_chair",
+       "at": "seat",
+       "z": "back"
+      }
+     ]
+    },
+    {
+     "index": 12,
+     "row": 2,
+     "col": 4,
+     "name": "oneone_unsure_01",
+     "key": "linh/oneone_unsure_01",
+     "bind": [
+      {
+       "furniture": "meeting_chair",
+       "at": "seat",
+       "z": "back"
+      }
+     ]
+    },
+    {
+     "index": 13,
+     "row": 2,
+     "col": 5,
+     "name": "oneone_proud_01",
+     "key": "linh/oneone_proud_01",
+     "bind": [
+      {
+       "furniture": "meeting_chair",
+       "at": "seat",
+       "z": "back"
+      },
+      {
+       "prop": "checklist_sheet",
+       "at": "grip",
+       "z": "front",
+       "rot": 0
+      }
+     ]
+    },
+    {
+     "index": 14,
+     "row": 2,
+     "col": 6,
+     "name": "oneone_agree_01",
+     "key": "linh/oneone_agree_01",
+     "bind": [
+      {
+       "furniture": "meeting_chair",
+       "at": "seat",
+       "z": "back"
+      }
+     ]
+    },
+    {
+     "index": 15,
+     "row": 2,
+     "col": 7,
+     "name": "oneone_accept_01",
+     "key": "linh/oneone_accept_01",
+     "bind": [
+      {
+       "furniture": "meeting_chair",
+       "at": "seat",
+       "z": "back"
+      }
+     ]
+    },
+    {
+     "index": 16,
+     "row": 2,
+     "col": 8,
+     "name": "oneone_confused_01",
+     "key": "linh/oneone_confused_01",
+     "bind": [
+      {
+       "furniture": "meeting_chair",
+       "at": "seat",
+       "z": "back"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "D",
+   "key": "portraits",
+   "kind": "linh",
+   "file": "LINH_D_portraits.png",
+   "attach": "master",
+   "cols": 4,
+   "rows": 5,
+   "cells": [
+    {
+     "index": 1,
+     "row": 1,
+     "col": 1,
+     "name": "face_neutral",
+     "key": "linh/face_neutral"
+    },
+    {
+     "index": 2,
+     "row": 1,
+     "col": 2,
+     "name": "face_eager",
+     "key": "linh/face_eager"
+    },
+    {
+     "index": 3,
+     "row": 1,
+     "col": 3,
+     "name": "face_happy",
+     "key": "linh/face_happy"
+    },
+    {
+     "index": 4,
+     "row": 1,
+     "col": 4,
+     "name": "face_proud",
+     "key": "linh/face_proud"
+    },
+    {
+     "index": 5,
+     "row": 2,
+     "col": 1,
+     "name": "face_shy",
+     "key": "linh/face_shy"
+    },
+    {
+     "index": 6,
+     "row": 2,
+     "col": 2,
+     "name": "face_unsure",
+     "key": "linh/face_unsure"
+    },
+    {
+     "index": 7,
+     "row": 2,
+     "col": 3,
+     "name": "face_confused",
+     "key": "linh/face_confused"
+    },
+    {
+     "index": 8,
+     "row": 2,
+     "col": 4,
+     "name": "face_thinking",
+     "key": "linh/face_thinking"
+    },
+    {
+     "index": 9,
+     "row": 3,
+     "col": 1,
+     "name": "face_worried",
+     "key": "linh/face_worried"
+    },
+    {
+     "index": 10,
+     "row": 3,
+     "col": 2,
+     "name": "face_anxious",
+     "key": "linh/face_anxious"
+    },
+    {
+     "index": 11,
+     "row": 3,
+     "col": 3,
+     "name": "face_shocked",
+     "key": "linh/face_shocked"
+    },
+    {
+     "index": 12,
+     "row": 3,
+     "col": 4,
+     "name": "face_panic",
+     "key": "linh/face_panic"
+    },
+    {
+     "index": 13,
+     "row": 4,
+     "col": 1,
+     "name": "face_ashamed",
+     "key": "linh/face_ashamed"
+    },
+    {
+     "index": 14,
+     "row": 4,
+     "col": 2,
+     "name": "face_sorry",
+     "key": "linh/face_sorry"
+    },
+    {
+     "index": 15,
+     "row": 4,
+     "col": 3,
+     "name": "face_tired",
+     "key": "linh/face_tired"
+    },
+    {
+     "index": 16,
+     "row": 4,
+     "col": 4,
+     "name": "face_relieved",
+     "key": "linh/face_relieved"
+    },
+    {
+     "index": 17,
+     "row": 5,
+     "col": 1,
+     "name": "face_determined",
+     "key": "linh/face_determined"
+    },
+    {
+     "index": 18,
+     "row": 5,
+     "col": 2,
+     "name": "face_confident",
+     "key": "linh/face_confident"
+    },
+    {
+     "index": 19,
+     "row": 5,
+     "col": 3,
+     "name": "face_thankful",
+     "key": "linh/face_thankful"
+    },
+    {
+     "index": 20,
+     "row": 5,
+     "col": 4,
+     "name": "face_hesitant",
+     "key": "linh/face_hesitant"
+    }
+   ]
+  }
+ ],
+ "animations": {
+  "linh/idle": {
+   "frames": [
+    "linh/idle_01",
+    "linh/idle_02",
+    "linh/idle_03",
+    "linh/idle_04"
+   ],
+   "fps": 6,
+   "loop": true
+  },
+  "linh/idle_back": {
+   "frames": [
+    "linh/idle_back_01"
+   ],
+   "fps": 1,
+   "loop": false
+  },
+  "linh/greet": {
+   "frames": [
+    "linh/greet_01",
+    "linh/greet_02"
+   ],
+   "fps": 8,
+   "loop": false
+  },
+  "linh/walk": {
+   "frames": [
+    "linh/walk_01",
+    "linh/walk_02",
+    "linh/walk_03",
+    "linh/walk_04",
+    "linh/walk_05",
+    "linh/walk_06",
+    "linh/walk_07",
+    "linh/walk_08"
+   ],
+   "fps": 11,
+   "loop": true
+  },
+  "linh/talk": {
+   "frames": [
+    "linh/talk_01",
+    "linh/talk_02",
+    "linh/talk_03",
+    "linh/talk_04"
+   ],
+   "fps": 6,
+   "loop": true
+  },
+  "linh/listen": {
+   "frames": [
+    "linh/listen_01",
+    "linh/listen_02"
+   ],
+   "fps": 4,
+   "loop": true
+  },
+  "linh/nod": {
+   "frames": [
+    "linh/nod_01",
+    "linh/nod_02"
+   ],
+   "fps": 7,
+   "loop": true
+  },
+  "linh/sit": {
+   "frames": [
+    "linh/sit_01",
+    "linh/sit_02",
+    "linh/sit_03",
+    "linh/sit_04",
+    "linh/sit_05",
+    "linh/sit_06",
+    "linh/sit_07",
+    "linh/sit_08"
+   ],
+   "fps": 8,
+   "loop": false
+  },
+  "linh/eager": {
+   "frames": [
+    "linh/eager_01"
+   ],
+   "fps": 1,
+   "loop": false
+  },
+  "linh/happy": {
+   "frames": [
+    "linh/happy_01"
+   ],
+   "fps": 1,
+   "loop": false
+  },
+  "linh/proud": {
+   "frames": [
+    "linh/proud_01"
+   ],
+   "fps": 1,
+   "loop": false
+  },
+  "linh/relieved": {
+   "frames": [
+    "linh/relieved_01"
+   ],
+   "fps": 1,
+   "loop": false
+  },
+  "linh/determined": {
+   "frames": [
+    "linh/determined_01"
+   ],
+   "fps": 1,
+   "loop": false
+  },
+  "linh/thankful": {
+   "frames": [
+    "linh/thankful_01"
+   ],
+   "fps": 1,
+   "loop": false
+  },
+  "linh/confident": {
+   "frames": [
+    "linh/confident_01"
+   ],
+   "fps": 1,
+   "loop": false
+  },
+  "linh/excited": {
+   "frames": [
+    "linh/excited_01"
+   ],
+   "fps": 1,
+   "loop": false
+  },
+  "linh/worried": {
+   "frames": [
+    "linh/worried_01"
+   ],
+   "fps": 1,
+   "loop": false
+  },
+  "linh/anxious": {
+   "frames": [
+    "linh/anxious_01"
+   ],
+   "fps": 1,
+   "loop": false
+  },
+  "linh/ashamed": {
+   "frames": [
+    "linh/ashamed_01",
+    "linh/ashamed_02"
+   ],
+   "fps": 4,
+   "loop": false
+  },
+  "linh/apologize": {
+   "frames": [
+    "linh/apologize_01",
+    "linh/apologize_02"
+   ],
+   "fps": 6,
+   "loop": false
+  },
+  "linh/hesitant": {
+   "frames": [
+    "linh/hesitant_01"
+   ],
+   "fps": 1,
+   "loop": false
+  },
+  "linh/stressed": {
+   "frames": [
+    "linh/stressed_01"
+   ],
+   "fps": 1,
+   "loop": false
+  },
+  "linh/unsure": {
+   "frames": [
+    "linh/unsure_01"
+   ],
+   "fps": 1,
+   "loop": false
+  },
+  "linh/confused": {
+   "frames": [
+    "linh/confused_01"
+   ],
+   "fps": 1,
+   "loop": false
+  },
+  "linh/ask": {
+   "frames": [
+    "linh/ask_01",
+    "linh/ask_02"
+   ],
+   "fps": 6,
+   "loop": false
+  },
+  "linh/busy": {
+   "frames": [
+    "linh/busy_01"
+   ],
+   "fps": 1,
+   "loop": false
+  },
+  "linh/try": {
+   "frames": [
+    "linh/try_01"
+   ],
+   "fps": 1,
+   "loop": false
+  },
+  "linh/accept": {
+   "frames": [
+    "linh/accept_01"
+   ],
+   "fps": 1,
+   "loop": false
+  },
+  "linh/breath": {
+   "frames": [
+    "linh/breath_01"
+   ],
+   "fps": 1,
+   "loop": false
+  },
+  "linh/desk_type": {
+   "frames": [
+    "linh/desk_type_01",
+    "linh/desk_type_02"
+   ],
+   "fps": 8,
+   "loop": true
+  },
+  "linh/desk_fix": {
+   "frames": [
+    "linh/desk_fix_01"
+   ],
+   "fps": 1,
+   "loop": false
+  },
+  "linh/desk_think": {
+   "frames": [
+    "linh/desk_think_01"
+   ],
+   "fps": 1,
+   "loop": false
+  },
+  "linh/desk_push": {
+   "frames": [
+    "linh/desk_push_01"
+   ],
+   "fps": 1,
+   "loop": false
+  },
+  "linh/desk_panic": {
+   "frames": [
+    "linh/desk_panic_01",
+    "linh/desk_panic_02"
+   ],
+   "fps": 8,
+   "loop": false
+  },
+  "linh/desk_stand": {
+   "frames": [
+    "linh/desk_stand_01"
+   ],
+   "fps": 1,
+   "loop": false
+  },
+  "linh/night_type": {
+   "frames": [
+    "linh/night_type_01",
+    "linh/night_type_02"
+   ],
+   "fps": 6,
+   "loop": true
+  },
+  "linh/night_rub": {
+   "frames": [
+    "linh/night_rub_01"
+   ],
+   "fps": 1,
+   "loop": false
+  },
+  "linh/tired_idle": {
+   "frames": [
+    "linh/tired_idle_01",
+    "linh/tired_idle_02"
+   ],
+   "fps": 5,
+   "loop": true
+  },
+  "linh/tired_talk": {
+   "frames": [
+    "linh/tired_talk_01"
+   ],
+   "fps": 1,
+   "loop": false
+  },
+  "linh/tired_yawn": {
+   "frames": [
+    "linh/tired_yawn_01"
+   ],
+   "fps": 1,
+   "loop": false
+  },
+  "linh/tired_slump": {
+   "frames": [
+    "linh/tired_slump_01"
+   ],
+   "fps": 1,
+   "loop": false
+  },
+  "linh/checklist_read": {
+   "frames": [
+    "linh/checklist_read_01"
+   ],
+   "fps": 1,
+   "loop": false
+  },
+  "linh/checklist_tick": {
+   "frames": [
+    "linh/checklist_tick_01",
+    "linh/checklist_tick_02"
+   ],
+   "fps": 6,
+   "loop": false
+  },
+  "linh/checklist_show": {
+   "frames": [
+    "linh/checklist_show_01"
+   ],
+   "fps": 1,
+   "loop": false
+  },
+  "linh/note": {
+   "frames": [
+    "linh/note_01"
+   ],
+   "fps": 1,
+   "loop": false
+  },
+  "linh/tab_read": {
+   "frames": [
+    "linh/tab_read_01"
+   ],
+   "fps": 1,
+   "loop": false
+  },
+  "linh/guide": {
+   "frames": [
+    "linh/guide_01"
+   ],
+   "fps": 1,
+   "loop": false
+  },
+  "linh/laptop_show": {
+   "frames": [
+    "linh/laptop_show_01"
+   ],
+   "fps": 1,
+   "loop": false
+  },
+  "linh/mistake_shock": {
+   "frames": [
+    "linh/mistake_shock_01"
+   ],
+   "fps": 1,
+   "loop": false
+  },
+  "linh/mistake_confess": {
+   "frames": [
+    "linh/mistake_confess_01"
+   ],
+   "fps": 1,
+   "loop": false
+  },
+  "linh/blamed": {
+   "frames": [
+    "linh/blamed_01",
+    "linh/blamed_02"
+   ],
+   "fps": 4,
+   "loop": true
+  },
+  "linh/forgiven": {
+   "frames": [
+    "linh/forgiven_01"
+   ],
+   "fps": 1,
+   "loop": false
+  },
+  "linh/analyze": {
+   "frames": [
+    "linh/analyze_01",
+    "linh/analyze_02"
+   ],
+   "fps": 6,
+   "loop": false
+  },
+  "linh/resolve": {
+   "frames": [
+    "linh/resolve_01"
+   ],
+   "fps": 1,
+   "loop": false
+  },
+  "linh/meet_table_listen": {
+   "frames": [
+    "linh/meet_table_listen_01",
+    "linh/meet_table_listen_02"
+   ],
+   "fps": 4,
+   "loop": true
+  },
+  "linh/meet_table_talk": {
+   "frames": [
+    "linh/meet_table_talk_01"
+   ],
+   "fps": 1,
+   "loop": false
+  },
+  "linh/meet_table_busy": {
+   "frames": [
+    "linh/meet_table_busy_01"
+   ],
+   "fps": 1,
+   "loop": false
+  },
+  "linh/meet_table_try": {
+   "frames": [
+    "linh/meet_table_try_01"
+   ],
+   "fps": 1,
+   "loop": false
+  },
+  "linh/meet_table_report": {
+   "frames": [
+    "linh/meet_table_report_01"
+   ],
+   "fps": 1,
+   "loop": false
+  },
+  "linh/meet_table_unsure": {
+   "frames": [
+    "linh/meet_table_unsure_01"
+   ],
+   "fps": 1,
+   "loop": false
+  },
+  "linh/meet_table_volunteer": {
+   "frames": [
+    "linh/meet_table_volunteer_01"
+   ],
+   "fps": 1,
+   "loop": false
+  },
+  "linh/oneone_listen": {
+   "frames": [
+    "linh/oneone_listen_01",
+    "linh/oneone_listen_02"
+   ],
+   "fps": 4,
+   "loop": true
+  },
+  "linh/oneone_talk": {
+   "frames": [
+    "linh/oneone_talk_01"
+   ],
+   "fps": 1,
+   "loop": false
+  },
+  "linh/oneone_unsure": {
+   "frames": [
+    "linh/oneone_unsure_01"
+   ],
+   "fps": 1,
+   "loop": false
+  },
+  "linh/oneone_proud": {
+   "frames": [
+    "linh/oneone_proud_01"
+   ],
+   "fps": 1,
+   "loop": false
+  },
+  "linh/oneone_agree": {
+   "frames": [
+    "linh/oneone_agree_01"
+   ],
+   "fps": 1,
+   "loop": false
+  },
+  "linh/oneone_accept": {
+   "frames": [
+    "linh/oneone_accept_01"
+   ],
+   "fps": 1,
+   "loop": false
+  },
+  "linh/oneone_confused": {
+   "frames": [
+    "linh/oneone_confused_01"
+   ],
+   "fps": 1,
+   "loop": false
+  }
+ }
+}

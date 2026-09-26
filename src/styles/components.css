@@ -1,0 +1,232 @@
+/* HUD man tinh huong xep 2 cot doc hai ben khi man hinh doc (dien thoai, tablet dung) hoac hep < 768px */
+@custom-variant hud-col (@media (orientation: portrait), (width < 48rem));
+
+/* Chi nhung mau lap lai o ca HTML lan JS; con lai viet utility tai cho */
+@layer components {
+  .btn {
+    @apply cursor-pointer rounded-lg border border-line bg-panel px-2.5 py-[5px] text-ink
+      aria-pressed:border-accent aria-pressed:bg-accent aria-pressed:text-accent-ink;
+  }
+  .field { @apply rounded-lg border border-line bg-panel text-ink; }
+  .ctl { @apply flex items-center gap-1.5 text-[13px] text-mute; }
+  /* Nen san khau: o caro mac dinh, doi theo body[data-bg] */
+  .stage {
+    @apply block bg-[repeating-conic-gradient(var(--color-ck1)_0_25%,var(--color-ck2)_0_50%)] bg-size-[16px_16px]
+      in-data-[bg=light]:bg-[#fbfaf6] in-data-[bg=light]:bg-none
+      in-data-[bg=dark]:bg-[#1b1c22] in-data-[bg=dark]:bg-none
+      in-data-[bg=office]:bg-[linear-gradient(#dfe7ee_0_72%,#c9b79b_72%)] in-data-[bg=office]:bg-auto;
+  }
+  .code { @apply rounded-[5px] bg-chip px-[5px] py-px font-mono text-xs; }
+}
+
+/* ---------- UI pixel cho trang game (src/game) ----------
+   Vien den day 4px voi goc khuyet mot buoc (4 bong do lech 4px), khong bo tron;
+   go sang tren-trai / toi duoi-phai kieu 8-16bit. Bam: lun xuong va dao go. */
+@layer components {
+  /* Khung = ui/cards/card_panel_wide_normal.webp keo gian 9-slice: goc trai giu bac "tab" cua dai header xanh,
+     goc cam tren-phai / duoi-trai giu nguyen. Nen trong kinh sang -> chu mac dinh navy; border trong suot = do day
+     vien + dai header, de padding cua tung panel tinh tu mep vung trang. */
+  .px-panel {
+    @apply bg-transparent text-px-panel;
+    border: solid transparent;
+    border-width: 24px 13px 10px;
+    border-image: url("../../ui/cards/card_panel_wide_normal.webp") 80 52 55 155 fill / 34px 22px 23px 65px;
+  }
+  @media (width < 40rem) {
+    .px-panel { border-width: 19px 11px 8px; border-image-width: 27px 18px 19px 53px; }
+  }
+  /* Nut = anh trong ui/buttons (cat tu ui/source/button.png), keo gian 9-slice bang border-image nen rong bao nhieu
+     cung giu goc vat. Moi mau 4 anh: --btn thuong, --btn-hi hover/focus (vien phat sang), --btn-lo bam, --btn-off khoa. */
+  .px-btn {
+    @apply relative flex w-full cursor-pointer items-center justify-center gap-3 px-6 py-3 font-sans text-lg leading-snug font-bold tracking-wide text-white uppercase
+      [text-shadow:0_2px_0_rgb(0_0_0/.35)] outline-none active:translate-y-0.5
+      disabled:pointer-events-none disabled:text-white/60
+      before:pointer-events-none before:absolute before:-left-11 before:hidden before:size-9 before:animate-nudge before:content-['']
+      hover:before:block focus-visible:before:block focus:before:block;
+    border: 0 solid transparent;
+    border-image: var(--btn) 26 30 fill / 17px 20px;
+  }
+  .px-btn:hover, .px-btn:focus-visible { border-image-source: var(--btn-hi); }
+  .px-btn:active { border-image-source: var(--btn-lo); }
+  .px-btn:disabled { border-image-source: var(--btn-off); }
+  /* Tai san anh cac trang thai khac de hover/bam lan dau khong nhay trang */
+  .px-btn::after { @apply pointer-events-none absolute size-px opacity-0 content-['']; background-image: var(--btn-hi), var(--btn-lo); }
+  /* Con tro chon menu = ban tay chi sang phai (ui/cursors/point_e, cung bo con tro chuot), nhun vao nut */
+  .px-btn::before { background: url("../../ui/cursors/point_e@2x.png") center / contain no-repeat; }
+  /* Chinh = do, phu = xanh duong (gan mau logo nhat trong bo nut) */
+  .px-btn-primary {
+    --btn: url("../../ui/buttons/btn_red_normal.webp");
+    --btn-hi: url("../../ui/buttons/btn_red_selected.webp");
+    --btn-lo: url("../../ui/buttons/btn_red_pressed.webp");
+    --btn-off: url("../../ui/buttons/btn_red_disabled.webp");
+  }
+  .px-btn-blue {
+    --btn: url("../../ui/buttons/btn_blue_normal.webp");
+    --btn-hi: url("../../ui/buttons/btn_blue_selected.webp");
+    --btn-lo: url("../../ui/buttons/btn_blue_pressed.webp");
+    --btn-off: url("../../ui/buttons/btn_blue_disabled.webp");
+  }
+  /* Nut chi co icon (Heroicons): anh nut vuong ui/buttons/square, co dinh 48px, khong con tro chon */
+  .px-btn-sq { @apply size-12 shrink-0 p-0 before:!hidden; border-image: var(--btn) 24 fill / 15px; }
+  .px-btn-sq.px-btn-primary {
+    --btn: url("../../ui/buttons/square/square_red_normal.webp");
+    --btn-hi: url("../../ui/buttons/square/square_red_selected.webp");
+    --btn-lo: url("../../ui/buttons/square/square_red_pressed.webp");
+    --btn-off: url("../../ui/buttons/square/square_red_disabled.webp");
+  }
+  .px-btn-sq.px-btn-blue {
+    --btn: url("../../ui/buttons/square/square_blue_normal.webp");
+    --btn-hi: url("../../ui/buttons/square/square_blue_selected.webp");
+    --btn-lo: url("../../ui/buttons/square/square_blue_pressed.webp");
+    --btn-off: url("../../ui/buttons/square/square_blue_disabled.webp");
+  }
+  .px-title {
+    @apply font-pixel leading-[0.85] text-white
+      [text-shadow:4px_0_0_var(--color-px-deep),-4px_0_0_var(--color-px-deep),0_4px_0_var(--color-px-deep),0_-4px_0_var(--color-px-deep),4px_4px_0_var(--color-px-deep),-4px_4px_0_var(--color-px-deep),4px_-4px_0_var(--color-px-deep),-4px_-4px_0_var(--color-px-deep),0_10px_0_var(--color-brand-red),4px_10px_0_var(--color-brand-red),-4px_10px_0_var(--color-brand-red),0_16px_0_rgba(0,0,0,.45)];
+  }
+  .px-bubble {
+    @apply bg-white font-sans text-base leading-snug font-semibold text-px-panel
+      shadow-[0_-4px_0_0_var(--color-px-ink),0_4px_0_0_var(--color-px-ink),-4px_0_0_0_var(--color-px-ink),4px_0_0_0_var(--color-px-ink)];
+  }
+}
+
+/* O nhap kieu pixel: nen trang, vien den goc khuyet; chu font-sans cho de doc tieng Viet */
+@layer components {
+  .px-input {
+    @apply w-full min-w-0 bg-white px-4 py-3 font-sans text-xl font-semibold text-px-panel outline-none placeholder:font-normal placeholder:text-px-panel/40
+      shadow-[0_-4px_0_0_var(--color-px-ink),0_4px_0_0_var(--color-px-ink),-4px_0_0_0_var(--color-px-ink),4px_0_0_0_var(--color-px-ink),inset_4px_4px_0_0_rgba(0,0,0,.12)]
+      focus:shadow-[0_-4px_0_0_var(--color-px-ink),0_4px_0_0_var(--color-px-ink),-4px_0_0_0_var(--color-px-ink),4px_0_0_0_var(--color-px-ink),inset_0_0_0_4px_var(--color-px-frame)]
+      aria-invalid:shadow-[0_-4px_0_0_var(--color-px-ink),0_4px_0_0_var(--color-px-ink),-4px_0_0_0_var(--color-px-ink),4px_0_0_0_var(--color-px-ink),inset_0_0_0_4px_#e8492f];
+  }
+}
+
+/* The lua chon A/B/C trong man tinh huong: khung pixel nhu .px-btn nhung chu font-sans (cau lua chon can doc ro).
+   Hover/focus: vien do nhan + go day hon; bam: lun xuong. */
+@layer components {
+  .px-choice {
+    @apply relative flex w-full cursor-pointer items-start gap-3 bg-brand-navy px-4 py-3.5 text-left text-white
+      shadow-[0_-4px_0_0_var(--color-px-ink),0_4px_0_0_var(--color-px-ink),-4px_0_0_0_var(--color-px-ink),4px_0_0_0_var(--color-px-ink),inset_-4px_-4px_0_0_var(--color-px-deep)]
+      hover:bg-[#2b43a0] hover:shadow-[0_-4px_0_0_var(--color-px-ink),0_4px_0_0_var(--color-px-ink),-4px_0_0_0_var(--color-px-ink),4px_0_0_0_var(--color-px-ink),inset_0_0_0_4px_var(--color-px-hi)]
+      focus-visible:bg-[#2b43a0] focus-visible:outline-none focus-visible:shadow-[0_-4px_0_0_var(--color-px-ink),0_4px_0_0_var(--color-px-ink),-4px_0_0_0_var(--color-px-ink),4px_0_0_0_var(--color-px-ink),inset_0_0_0_4px_var(--color-px-hi)]
+      active:translate-y-1 disabled:pointer-events-none disabled:opacity-45;
+  }
+  /* The nhan vat tam (NPC chua co sprite): dung tren san trong canh; la nut -> bam mo the nhan vien (staffCard.js) */
+  .px-standee {
+    @apply absolute flex flex-col items-center bg-px-panel text-center transition-[translate,opacity] duration-300
+      shadow-[0_-4px_0_0_var(--color-px-ink),0_4px_0_0_var(--color-px-ink),-4px_0_0_0_var(--color-px-ink),4px_0_0_0_var(--color-px-ink),inset_0_0_0_3px_var(--tint)]
+      data-talk:-translate-y-2 data-talk:shadow-[0_-4px_0_0_var(--color-px-ink),0_4px_0_0_var(--color-px-ink),-4px_0_0_0_var(--color-px-ink),4px_0_0_0_var(--color-px-ink),inset_0_0_0_4px_var(--color-px-hi)]
+      pointer-events-auto outline-none hover:-translate-y-1.5 hover:brightness-110 focus-visible:-translate-y-1.5 focus-visible:outline-4 focus-visible:outline-offset-4 focus-visible:outline-px-hi;
+  }
+}
+
+/* Vong song "cham vao day" cua nut sang cau hoi thoai (#dlgNext): 2 vong xanh lech nhip toa ra tu diem ngon tay go;
+   hover/focus: toa nhanh hon */
+@layer components {
+  .tap-ripple {
+    @apply pointer-events-none absolute top-[calc(16%-5px)] left-[calc(34%-5px)] size-7 -translate-1/2 rounded-full
+      border-2 border-[#1d8bff] bg-[#5ec8ff]/35;
+    animation: tap-ripple 1.2s cubic-bezier(0, 0, .2, 1) infinite;
+  }
+  .group:is(:hover, :focus-visible) .tap-ripple { animation-duration: .7s; }
+}
+@keyframes tap-ripple { 0% { scale: .3; opacity: 1; } 100% { scale: 2.2; opacity: 0; } }
+
+/* HUD man tinh huong (moi chi so mot badge): vua doi -> badge nhay nen xanh (tot) / do (xau) 3 lan kieu pixel, icon nay len,
+   the +/- (.hud-delta) noi canh o: PC duoi o, mobile (cot doc hai ben) phia trong man hinh. */
+@layer components {
+  /* Khung o HUD (o chi so, o level) = ui/progress/track_sm.webp keo gian 9-slice: nen navy, vien xanh sang */
+  .px-hud {
+    border: solid transparent;
+    border-width: 5px 7px;
+    border-image: url("../../ui/progress/track_sm.webp") 30 fill / 14px;
+  }
+  /* Nhay mau nam o lop ::before duoi noi dung (z -1 trong isolate): anh khung ve de len background nen khong nhay nen duoc */
+  .hud-stat { @apply relative isolate; }
+  .hud-stat::before { @apply pointer-events-none absolute -inset-0.5 -z-10 rounded-md content-['']; }
+  .hud-stat[data-fx="good"]::before { animation: hud-flash-good 1.8s steps(1) both; }
+  .hud-stat[data-fx="bad"]::before { animation: hud-flash-bad 1.8s steps(1) both; }
+  /* Thanh chi so mini: ve hoan toan bang CSS (khong dung anh). Ranh toi vien xanh mo; ruot = dai mau co vet sang tren,
+     do dai + mau (data-tone) do JS dat tung khung hinh (LevelScreen.js: meter(), animateHud) */
+  .hud-meter {
+    @apply relative block h-[5px] w-full overflow-hidden rounded-full bg-[#0a1230]
+      shadow-[inset_0_0_0_1px_rgb(124_170_255/0.35),inset_0_1px_2px_rgb(0_0_0/0.6)];
+  }
+  .hud-meter > i {
+    @apply absolute inset-y-0 left-0 rounded-full;
+    background: linear-gradient(to bottom, var(--hi) 0 40%, var(--c) 40% 100%);
+    box-shadow: inset 0 -1px 0 rgb(0 0 0 / 0.25);
+    --hi: #8ff07a; --c: #34b24a;                                      /* xanh */
+  }
+  .hud-meter > i[data-tone="yellow"] { --hi: #ffe27a; --c: #f0a01e; }
+  .hud-meter > i[data-tone="red"] { --hi: #ff8f82; --c: #d8342c; }
+  .hud-stat[data-fx] [data-ic] { animation: hud-bump .9s steps(6) both; }
+  .hud-delta {
+    @apply pointer-events-none absolute top-full left-1/2 z-10 mt-2 flex items-center gap-0.5 px-1.5 py-1 text-sm leading-none font-extrabold whitespace-nowrap text-white
+      shadow-[0_-3px_0_0_var(--color-px-ink),0_3px_0_0_var(--color-px-ink),-3px_0_0_0_var(--color-px-ink),3px_0_0_0_var(--color-px-ink)];
+    translate: -50% 0;
+    animation: hud-delta 2.6s ease-out both;
+  }
+  @media (orientation: portrait), (width < 48rem) {
+    .hud-stat[data-side="project"] .hud-delta { top: 50%; left: 100%; margin: 0 0 0 10px; translate: 0 -50%; }
+    .hud-stat[data-side="people"] .hud-delta { top: 50%; left: auto; right: 100%; margin: 0 10px 0 0; translate: 0 -50%; }
+  }
+}
+@keyframes hud-flash-good {
+  0%, 34%, 68% { background: rgb(40 150 50); outline: 3px solid #9cf07f; }
+  17%, 51%, 85% { background: rgb(30 90 45); outline: 3px solid transparent; }
+  100% { outline: 3px solid transparent; }
+}
+@keyframes hud-flash-bad {
+  0%, 34%, 68% { background: rgb(190 45 40); outline: 3px solid #ff8a7a; }
+  17%, 51%, 85% { background: rgb(110 30 35); outline: 3px solid transparent; }
+  100% { outline: 3px solid transparent; }
+}
+@keyframes hud-bump { 0%, 100% { scale: 1; } 20% { scale: 1.5; } 45% { scale: .95; } 70% { scale: 1.25; } }
+@keyframes hud-delta {
+  0% { opacity: 0; transform: translateY(8px) scale(.6); }
+  12% { opacity: 1; transform: translateY(0) scale(1.15); }
+  22% { transform: scale(1); }
+  80% { opacity: 1; transform: translateY(0); }
+  100% { opacity: 0; transform: translateY(-6px); }
+}
+
+/* Con tro chuot trang game: mot ho hinh cua Kenney Cursor Pack (CC0, ui/cursors/LICENSE_kenney.txt) to lai mau Innocom:
+   than xanh bong, ky hieu trang thai (? / dong ho cat / cam) do. Cach ve: ui/README.md muc "Con tro chuot".
+   Chi bat khi body co .px-cursors (src/game.html). Ngoai @layer de thang utility cursor-* cua Tailwind (layer utilities).
+   Moi rule: url() cho trinh duyet cu, image-set() de man retina dung ban @2x; so sau anh = diem nong tren ban 32px.
+   Moi selector boc :where() -> cung do uu tien voi rule mac dinh, thu tu rule quyet dinh: busy cuoi cung de che het. */
+.px-cursors, .px-cursors * {
+  cursor: url("../../ui/cursors/arrow.png") 10 6, default;
+  cursor: image-set(url("../../ui/cursors/arrow.png") 1x, url("../../ui/cursors/arrow@2x.png") 2x) 10 6, default;
+}
+/* vung cham duoc khong phai nut: [data-tap] (man level dang cho cham, khung mo dau dang chay chu) */
+.px-cursors :where([data-tap], [data-tap] *) {
+  cursor: url("../../ui/cursors/link.png") 11 5, pointer;
+  cursor: image-set(url("../../ui/cursors/link.png") 1x, url("../../ui/cursors/link@2x.png") 2x) 11 5, pointer;
+}
+/* co tooltip nhung khong bam duoc (vd o chi so HUD) */
+.px-cursors :where([title]:not(button, a, input, [role="button"])) {
+  cursor: url("../../ui/cursors/help.png") 5 2, help;
+  cursor: image-set(url("../../ui/cursors/help.png") 1x, url("../../ui/cursors/help@2x.png") 2x) 5 2, help;
+}
+.px-cursors :where(:is(button, a[href], summary, label[for], [role="button"], .cursor-pointer):not(:disabled)) {
+  cursor: url("../../ui/cursors/link.png") 11 5, pointer;
+  cursor: image-set(url("../../ui/cursors/link.png") 1x, url("../../ui/cursors/link@2x.png") 2x) 11 5, pointer;
+}
+.px-cursors :where(:is(button, a[href], [role="button"]):not(:disabled):active) {
+  cursor: url("../../ui/cursors/press.png") 16 16, grabbing;
+  cursor: image-set(url("../../ui/cursors/press.png") 1x, url("../../ui/cursors/press@2x.png") 2x) 16 16, grabbing;
+}
+.px-cursors :where(input:not([type="button"], [type="submit"], [type="checkbox"], [type="radio"]), textarea) {
+  cursor: url("../../ui/cursors/text.png") 16 16, text;
+  cursor: image-set(url("../../ui/cursors/text.png") 1x, url("../../ui/cursors/text@2x.png") 2x) 16 16, text;
+}
+.px-cursors :where(:disabled, [aria-disabled="true"]) {
+  cursor: url("../../ui/cursors/disabled.png") 3 2, not-allowed;
+  cursor: image-set(url("../../ui/cursors/disabled.png") 1x, url("../../ui/cursors/disabled@2x.png") 2x) 3 2, not-allowed;
+}
+/* dang chuyen canh (LevelScreen.js: fade) */
+.px-cursors :where([aria-busy="true"], [aria-busy="true"] *) {
+  cursor: url("../../ui/cursors/busy.png") 4 2, wait;
+  cursor: image-set(url("../../ui/cursors/busy.png") 1x, url("../../ui/cursors/busy@2x.png") 2x) 4 2, wait;
+}

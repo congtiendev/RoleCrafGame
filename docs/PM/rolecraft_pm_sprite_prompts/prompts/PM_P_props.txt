@@ -1,0 +1,17 @@
+TASK: create a 8x4 sheet of separate handheld items for a chibi pixel-art office game. Sheet content: separate handheld and desk items that the character uses.
+
+ATTACHED IMAGE: the approved master sprite sheet of the game character. Use it ONLY as the style and scale reference; do not draw the character.
+
+ART STYLE: exactly the same soft high-resolution pixel-art style as the attached sheet: clean dark-brown pixel outline, soft cel shading, warm natural colors, top-left light. Everything is seen in the same 3/4 view as a character facing right.
+
+LAYOUT: square 1:1, pure solid white background (#FFFFFF). Exactly 8 columns x 4 rows = 32 cells, one item per cell, centered, never touching another item. Draw every item at its correct real size relative to the chibi character in the attached sheet (for example the tablet is about as wide as the character's torso, a chair seat is at the character's knee height). No shadows under items.
+
+MARKERS on every item: one small solid MAGENTA #FF00FF dot at the grip point (where the center of a hand holds it) or, for items that stand or lie on a surface, at the bottom-center contact point. Screens are flat solid GREEN #00FF00 with no reflections. Never use these colors elsewhere.
+
+CELLS:
+Row 1 - Tablet, phone, laptop: (1) teal-green cased tablet seen from the back, upright, as held against the chest; (2) the tablet upright with the screen facing the viewer; the screen is a flat solid GREEN #00FF00 area; (3) the tablet turned so the screen faces right at a 3/4 angle; visible screen part is flat solid GREEN #00FF00; (4) the tablet seen almost edge-on, thin, as tucked under an arm; (5) the tablet lying flat, screen up, seen from a low angle; screen flat solid GREEN #00FF00; (6) smartphone seen from the back, upright; (7) smartphone with the screen facing the viewer; screen flat solid GREEN #00FF00; (8) closed silver laptop, seen 3/4.
+Row 2 - Paper: (9) closed navy document folder with papers peeking out; (10) open navy folder with printed pages, seen at a reading angle; (11) single printed contract page with grey lines (no readable text); (12) small untidy stack of papers held together; (13) a few papers scattered flat on the floor, seen from the side at a low angle; (14) small open spiral notebook; (15) ballpoint pen; (16) printed checklist sheet with grey check boxes (no readable text).
+Row 3 - Office items: (17) small index card with grey lines; (18) cream coffee mug with steam; (19) cream coffee mug without steam; (20) black whiteboard marker, uncapped; (21) small black presentation clicker; (22) open silver laptop seen 3/4 from behind-left, as balanced on a forearm (lid back visible, keyboard partly visible); (23) open silver laptop with the screen facing the viewer; screen flat solid GREEN #00FF00; (24) open cardboard box holding a small potted plant, a mug and a notebook.
+Row 4 - Badges and desk decor: (25) orange ID badge card on an orange lanyard, loose in the hand, blank card; (26) royal-blue ID badge card on a royal-blue lanyard, loose in the hand, blank card; (27) two cream coffee mugs side by side, one tipped slightly; (28) small desk lamp, switched on, warm glow drawn only on the lamp; (29) the same desk lamp switched off; (30) small potted desk plant; (31) small pad of yellow sticky notes; (32) closed spiral notebook.
+
+DO NOT: draw any character or hands; add text, letters, numbers or watermark; draw grid lines, borders, floors or backgrounds.
