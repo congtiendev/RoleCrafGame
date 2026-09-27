@@ -7,12 +7,24 @@
     "build": "vite build && PAGE=scenario-test vite build && PAGE=game vite build",
     "preview": "vite preview",
     "watch": "vite build --watch & PAGE=scenario-test vite build --watch & PAGE=game vite build --watch",
-    "test": "node --test tests/*.test.js"
+    "test": "node --test tests/*.test.js",
+    "build:embed": "vite build --config vite.embed.config.js && node scripts/copy-embed-assets.mjs",
+    "demo:embed": "npm run build:embed && vite --config vite.demo.config.js"
   },
   "devDependencies": {
     "@tailwindcss/vite": "4.1.12",
     "heroicons": "^2.2.0",
+    "react": "^19.3.0",
+    "react-dom": "^19.3.0",
     "tailwindcss": "4.1.12",
     "vite": "^7.1.0"
+  },
+  "peerDependencies": {
+    "react": ">=17"
+  },
+  "peerDependenciesMeta": {
+    "react": {
+      "optional": true
+    }
   }
 }

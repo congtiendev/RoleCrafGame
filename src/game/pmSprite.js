@@ -2,15 +2,24 @@
 // (build_preview.py -> sheets/start_pm_idle.webp). Ve thang tung khung, khong doc diem anh luc chay
 // (file:// cam getImageData).
 import { ANIM } from '../shared/sprites.js';
+import { asset } from '../shared/ui.js';
 
-const STRIP = new Image(), FRAMES = 4, FPS = ANIM.idle.fps;
+// nap luc dung lan dau (khong nap luc import): ban nhung dat assetBase truoc khi mo man
+let STRIP = null;
+const FRAMES = 4, FPS = ANIM.idle.fps;
 const waiting = [];
-STRIP.onload = () => waiting.splice(0).forEach(f => f());
-STRIP.src = 'sheets/start_pm_idle.webp';
+const strip = () => {
+  if (!STRIP) {
+    STRIP = new Image();
+    STRIP.onload = () => waiting.splice(0).forEach(f => f());
+    STRIP.src = asset('sheets/start_pm_idle.webp');
+  }
+  return STRIP;
+};
 
-const ready = () => STRIP.complete && STRIP.naturalWidth > 0;
+const ready = () => strip().complete && STRIP.naturalWidth > 0;
 export const onPmReady = f => (ready() ? f() : waiting.push(f));
-const frame = () => [(STRIP.naturalWidth || 456) / FRAMES, STRIP.naturalHeight || 175];
+const frame = () => [(strip().naturalWidth || 456) / FRAMES, STRIP.naturalHeight || 175];
 
 // Dat kich thuoc canvas cho PM cao ~cssH px. He so gan nguyen thi lam tron de giu diem anh sac (pixel),
 // he so le thi ve co lam min de khong meo. Tra ve kich thuoc CSS { w, h }.
@@ -32,5 +41,5 @@ export function drawPm(cv, now, t0) {
   const i = Math.floor(Math.max(0, now - t0) * FPS / 1000) % FRAMES;   // rAF co the som hon t0
   ctx.clearRect(0, 0, cv.width, cv.height);
   ctx.imageSmoothingEnabled = !!cv._smooth; ctx.imageSmoothingQuality = 'high';
-  ctx.drawImage(STRIP, i * fw, 0, fw, fh, 0, 0, cv.width, cv.height);
+  ctx.drawImage(strip(), i * fw, 0, fw, fh, 0, 0, cv.width, cv.height);
 }

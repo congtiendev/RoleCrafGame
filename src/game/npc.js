@@ -1,6 +1,7 @@
 // NPC co sprite trong trang game: atlas characters/<id>/game.webp + toa do npcAtlas.js (import_characters.py: GAME_NPC).
 // NPC chua co trong npcAtlas.js van hien bang the UI tam (LevelScreen). Anh nap luc can (NPC xuat hien lan dau).
 import NPC_ATLAS from './npcAtlas.js';
+import { asset } from '../shared/ui.js';
 
 const IMG = {}, waiting = {};
 export const npcAtlas = id => NPC_ATLAS[id] || null;
@@ -9,7 +10,7 @@ export function npcImg(id) {
   if (!IMG[id]) {
     IMG[id] = new Image();
     IMG[id].onload = () => (waiting[id] || []).splice(0).forEach(f => f());
-    IMG[id].src = `${NPC_ATLAS[id].file}?v=${NPC_ATLAS[id].v}`;       // v: ma phien ban -> doi bo sprite la bo cache
+    IMG[id].src = asset(`${NPC_ATLAS[id].file}?v=${NPC_ATLAS[id].v}`);       // v: ma phien ban -> doi bo sprite la bo cache
   }
   return IMG[id];
 }

@@ -3,7 +3,7 @@
 // chon A/B/C, dien nhanh, bang ket qua cong/tru chi so tren HUD, canh ket -> tong ket level voi Anh Minh -> level ke.
 // Luu phien sau moi lua chon va dau moi level: mo lai trang thi choi tiep tu tinh huong chua xong.
 // PM ve bang sprite (stage.js); Anh Minh, Huy, Lan... chua co sprite day du -> the nhan vat tam (UI).
-import { $, esc } from '../shared/ui.js';
+import { $, esc, asset, portal, modalOpen, activeEl, evTarget } from '../shared/ui.js';
 import { icon } from '../shared/icons.js';
 import { session, saveSession } from './session.js';
 import { METRICS, METRIC, METRIC_GROUPS, newRun, beginLevel, applyChoice, enterScenario, dueNotes, isGood, fmt, fmtNum, fmtDelta } from './rules.js';
@@ -22,7 +22,7 @@ import { openStaffCard, closeStaffCard } from './staffCard.js';
 
 const LEVELS = [LEVEL1, LEVEL2, LEVEL3, LEVEL4];                         // choi lan luot; level sau ke thua trang thai level truoc
 const CPS = 45;                                          // ky tu / giay khi chu hien dan
-const BG = name => ({ pc: `bg/${name}_pc.webp`, mobile: `bg/${name}_mobile.webp` });
+const BG = name => ({ pc: asset(`bg/${name}_pc.webp`), mobile: asset(`bg/${name}_mobile.webp`) });
 // Vi tri dung: PM + NPC dung thanh mot cum giua man nhu dang tro chuyen. Khoang cach tinh theo chieu cao nhan vat
 // (view.ch): PM <-> NPC dau = TALK (noi rong neu dong tac PM trong canh co dao cu vuon sang phai – bang trang, ban hop:
 // tam vuon + PROP_GAP), NPC <-> NPC = SIDE; ca cum rong qua 84% be ngang (man doc, 3 NPC) thi nen lai cho vua.
@@ -43,7 +43,7 @@ const MOOD = { good: 'gm-green', mid: 'gm-yellow', bad: 'gm-red' };   // mau nha
 const TIER_BADGE = { good: 'gold', mid: 'silver', bad: 'bronze' };
 const tierBadge = (no, mood, cls, numCls) => `
   <span class="relative grid shrink-0 place-items-center ${cls}">
-    <img src="ui/badges/badge_laurel_${TIER_BADGE[mood]}.webp" alt="" class="absolute inset-0 size-full object-contain" draggable="false">
+    <img src="${asset(`ui/badges/badge_laurel_${TIER_BADGE[mood]}.webp`)}" alt="" class="absolute inset-0 size-full object-contain" draggable="false">
     <span class="relative -mt-[12%] font-pixel leading-none ${numCls}">${no}</span>
   </span>`;
 const TAP_HINT = `<span class="pointer-coarse:hidden">NHẤN ENTER ĐỂ TIẾP TỤC</span><span class="hidden pointer-coarse:inline">CHẠM ĐỂ TIẾP TỤC</span>`;
@@ -122,7 +122,7 @@ const template = () => `
         <button type="button" id="dlgNext" class="group absolute right-0 bottom-0 grid size-16 place-items-center outline-none max-sm:size-14" title="Tiếp tục" aria-label="Tiếp tục hội thoại">
           <span class="relative size-10 max-sm:size-9">
             <span class="tap-ripple"></span><span class="tap-ripple [animation-delay:.6s]"></span>
-            <img src="ui/cursors/link@2x.png" alt="" class="relative size-full animate-tap" draggable="false">
+            <img src="${asset('ui/cursors/link@2x.png')}" alt="" class="relative size-full animate-tap" draggable="false">
           </span>
         </button>
       </div>
@@ -414,14 +414,14 @@ export function mountLevel(root, { onMenu }) {
     if (e.target.closest('#card') || (e.target.closest('#dlg [data-tap]') && !$('dlg').classList.contains('invisible'))) advance();
   };
   const onKey = e => {
-    if (document.querySelector('dialog:modal')) return;   // hop thoai modal dang mo: phim thuoc ve dialog
-    if ((e.key === 'Enter' || e.key === ' ') && !e.target.closest('button')) { e.preventDefault(); advance(); }
+    if (modalOpen()) return;   // hop thoai modal dang mo: phim thuoc ve dialog
+    if ((e.key === 'Enter' || e.key === ' ') && !evTarget(e).closest?.('button')) { e.preventDefault(); advance(); }
     if (!$('choice').hidden && /^[abc123]$/i.test(e.key)) {
       const i = 'abc123'.indexOf(e.key.toLowerCase()) % 3; $('chList').children[i]?.click();
     }
     if (['ArrowUp', 'ArrowDown', 'ArrowLeft', 'ArrowRight'].includes(e.key) && !$('choice').hidden) {
       e.preventDefault();
-      const list = [...$('chList').children], i = list.indexOf(document.activeElement);
+      const list = [...$('chList').children], i = list.indexOf(activeEl());
       const d = ['ArrowDown', 'ArrowRight'].includes(e.key) ? 1 : list.length - 1;
       list[(i < 0 ? 0 : i + d) % list.length].focus();
     }
@@ -732,7 +732,7 @@ export function mountLevel(root, { onMenu }) {
     // the noi bat: khung HUD (px-hud) + icon trong badge art (ui/badges/badge_<badge>); bad = nen do nhu o Rui ro
     const card = (ic, badge, label, big, sub, i, bad = false) => `
       <div class="px-hud sm-card animate-rise" ${bad ? 'data-bad' : ''} ${at(150 + i * 110)}>
-        <span class="sm-badge"><img src="ui/badges/badge_${badge}.webp" alt="" draggable="false">${icon(ic, 'size-5', { stroke: 2.25 })}</span>
+        <span class="sm-badge"><img src="${asset(`ui/badges/badge_${badge}.webp`)}" alt="" draggable="false">${icon(ic, 'size-5', { stroke: 2.25 })}</span>
         <p class="pr-12 text-[0.68rem] font-bold tracking-[0.14em] text-white/60 uppercase">${label}</p>
         <p class="mt-1 text-[1.5rem] leading-none font-extrabold">${big}</p>
         <p class="mt-1.5 line-clamp-2 text-[0.8rem] leading-snug font-medium text-white/75">${sub}</p>
@@ -934,7 +934,7 @@ export function mountLevel(root, { onMenu }) {
     const a = Object.assign(document.createElement('a'), {
       href: URL.createObjectURL(new Blob([txt], { type: 'text/plain;charset=utf-8' })), download: `bao-cao-thu-viec-${slug}.txt`,
     });
-    document.body.append(a); a.click(); a.remove();
+    portal().append(a); a.click(); a.remove();
     later(1000, () => URL.revokeObjectURL(a.href));
   }
   // The cuoi sau 60 ngay: xem lai bao cao, tai bao cao, choi lai Level cuoi / tu dau, ve menu. Tra ve 'level' | 'all'

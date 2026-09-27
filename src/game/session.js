@@ -1,11 +1,18 @@
 // Phien choi (logic, khong dung DOM): ten nhan vat va trang thai se luu qua cac man.
 // Luu localStorage de mo lai trang van con; loi luu (che do rieng tu...) thi van choi binh thuong.
-const KEY = 'rolecraft.pm60.session';
+let KEY = 'rolecraft.pm60.session';
 
 function load() {
   try { return JSON.parse(localStorage.getItem(KEY)) || {}; } catch { return {}; }
 }
 export const session = load();
+// Ban nhung: web chu dat khoa rieng (vd theo nguoi dung) -> nap lai phien vao dung doi tuong `session` (cac man giu tham chieu)
+export function useStorage(key) {
+  if (!key || key === KEY) return;
+  KEY = key;
+  for (const k of Object.keys(session)) delete session[k];
+  Object.assign(session, load());
+}
 export function saveSession() {
   try { localStorage.setItem(KEY, JSON.stringify(session)); } catch { /* bo qua */ }
 }

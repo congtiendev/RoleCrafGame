@@ -4,10 +4,14 @@
 import ATLAS from './atlas.js';
 import { DATA } from '../shared/sprites.js';
 import { IMG, ready, loadSheets } from '../shared/images.js';
+import { asset } from '../shared/ui.js';
 
-const PM_IMG = new Image();
-PM_IMG.src = 'sheets/game_pm.webp';
-loadSheets(() => {}, () => {}, ['F']);                  // emote (sheet F)
+// Anh nap luc dung lan dau (khong nap luc import – ban nhung dat assetBase truoc): atlas PM + sheet F (emote, icon HUD)
+let PM_IMG = null;
+function images() {
+  if (!PM_IMG) { PM_IMG = new Image(); PM_IMG.src = asset('sheets/game_pm.webp'); loadSheets(() => {}, () => {}, ['F']); }
+  return PM_IMG;
+}
 const EMO = {};
 DATA.cells.filter(c => c.s === 'F').forEach(c => { EMO[c.name] = DATA.rects.F[`${c.r},${c.c}`]; });
 
@@ -73,6 +77,7 @@ export class Actor {
 
 // view: { foot (px, CSS), ch (cao nhan vat px), night (0..1), emo: name | null }
 export function drawStage(cv, pm, view, now) {
+  images();
   const dpr = devicePixelRatio || 1, W = innerWidth, H = innerHeight;
   if (cv.width !== Math.round(W * dpr) || cv.height !== Math.round(H * dpr)) {
     cv.width = Math.round(W * dpr); cv.height = Math.round(H * dpr);
@@ -137,6 +142,7 @@ export function drawActor(ctx, actor, img, s, x, foot, now) {
 
 // Ve mot icon sheet F vua khit canvas (HUD chi so, bang ket qua)
 export function drawIcon(cv, name, size) {
+  images();
   const dpr = devicePixelRatio || 1;
   cv.width = cv.height = Math.round(size * dpr);
   Object.assign(cv.style, { width: `${size}px`, height: `${size}px` });

@@ -1,7 +1,7 @@
 // The nhan vien kieu tooltip: bam vao nhan vat trong canh (standee NPC / vung PM) -> the noi ngay tren dau nhan vat,
 // khong phu toi nen, game van chay phia sau. Moi luc chi 1 the; bam lai nhan vat do / bam ra ngoai / Esc / nut X -> dong.
 // The bam theo nhan vat moi khung hinh (PM co the dang di); khong du cho phia tren thi lat xuong duoi.
-import { esc } from '../shared/ui.js';
+import { esc, portal } from '../shared/ui.js';
 import { icon } from '../shared/icons.js';
 import { innocomLogo } from './brand/InnocomLogo.js';
 import { drawFace } from './portrait.js';
@@ -50,7 +50,7 @@ export function openStaffCard(p, anchor) {
         <dl class="mt-2 border-t border-px-panel/15 pt-2 grid grid-cols-[auto_1fr] gap-x-3 gap-y-1 text-[0.85rem] leading-snug text-px-panel/90">${p.facts.map(([k, v]) => FACT(k, v)).join('')}</dl>
       </div>
     </div>`;
-  document.body.append(dlg);
+  portal().append(dlg);
   if (p.avatar) p.avatar(dlg.querySelector('canvas'), AV);
   else if (p.face) drawFace(dlg.querySelector('canvas'), p.face, AV);
   dlg.show();
@@ -65,7 +65,8 @@ export function openStaffCard(p, anchor) {
     Object.assign(dlg.style, { left: `${x}px`, top: `${y}px` });
     cur.raf = requestAnimationFrame(place);
   };
-  const onDown = e => { if (!dlg.contains(e.target) && !anchor.contains(e.target)) closeStaffCard(); };
+  // composedPath: nghe tren document thi e.target cua cham trong ShadowRoot (ban nhung) chi la host
+  const onDown = e => { const p = e.composedPath(); if (!p.includes(dlg) && !p.includes(anchor)) closeStaffCard(); };
   const onKey = e => { if (e.key === 'Escape') { e.stopPropagation(); closeStaffCard(); } };
   cur = { dlg, anchor, raf: 0, onDown, onKey };
   dlg.querySelector('[data-close]').onclick = closeStaffCard;

@@ -88,3 +88,7 @@ npm test           # tests/: rules (chỉ số, cờ, hậu quả trì hoãn), s
   `phone_read` cao 183–184px. Các animation cao hơn chuẩn được thu nhỏ theo hệ số `k`.
 - **Có điểm đánh dấu vẽ sẵn trong ảnh**: chấm magenta/cyan là điểm cầm và điểm ngồi, vùng xanh lá là
   màn hình (xem `markers` trong manifest). Đưa vào game thì phải xoá hoặc thay các điểm này.
+
+## Nhúng vào web khác (React)
+
+`npm run build:embed` tạo `dist/embed/`: component `<RoleCraftGame />` và hàm `mountRoleCraft()` (Shadow DOM, phủ toàn màn hình). Cách dùng xem [docs/NHUNG_GAME_REACT.md](docs/NHUNG_GAME_REACT.md).

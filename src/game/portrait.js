@@ -4,7 +4,8 @@ import { DATA } from '../shared/sprites.js';
 import { IMG, ready, loadSheets } from '../shared/images.js';
 
 const waiting = [];
-loadSheets(() => waiting.splice(0).forEach(f => f()), () => {}, ['D']);
+// nap sheet D luc ve lan dau (khong nap luc import – ban nhung dat assetBase truoc)
+const load = () => loadSheets(() => waiting.splice(0).forEach(f => f()), () => {}, ['D']);
 
 const FACE = {};                       // ten bieu cam -> [x, y, w, h] tren sheet D
 DATA.cells.filter(c => c.s === 'D').forEach(c => { FACE[c.name] = DATA.rects.D[`${c.r},${c.c}`]; });
@@ -16,7 +17,7 @@ export function drawFace(cv, name, size) {
     cv.width = cv.height = Math.round(size * dpr);
     Object.assign(cv.style, { width: `${size}px`, height: `${size}px` });
   }
-  if (!ready('D')) { waiting.push(() => drawFace(cv, name, size)); return; }
+  if (!ready('D')) { waiting.push(() => drawFace(cv, name, size)); load(); return; }
   const [x, y, w, h] = FACE[name] || FACE.face_neutral, s = Math.min(cv.width / w, cv.height / h);
   const ctx = cv.getContext('2d');
   ctx.clearRect(0, 0, cv.width, cv.height);

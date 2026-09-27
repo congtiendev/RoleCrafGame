@@ -1,6 +1,6 @@
 // Man Start kieu menu game: nen lobby (PC ngang / mobile doc), logo ten game, khung menu,
 // PM dung canh menu voi bong bong thoai.
-import { $ } from '../shared/ui.js';
+import { $, asset, activeEl } from '../shared/ui.js';
 import { fitPm, drawPm, onPmReady } from './pmSprite.js';
 import { icon } from '../shared/icons.js';
 
@@ -14,11 +14,11 @@ const PLACE = {
 
 const BULLET = icon('chevronRight', 'size-4 mt-1.5 text-brand-red', { stroke: 2.5 });
 
-const template = () => `
+const template = exit => `
   <section class="relative h-dvh w-full overflow-hidden select-none">
     <picture>
-      <source media="(orientation: portrait)" srcset="bg/lobby_mobile.webp">
-      <img src="bg/lobby_pc.webp" alt="" class="absolute inset-0 size-full object-cover" draggable="false">
+      <source media="(orientation: portrait)" srcset="${asset('bg/lobby_mobile.webp')}">
+      <img src="${asset('bg/lobby_pc.webp')}" alt="" class="absolute inset-0 size-full object-cover" draggable="false">
     </picture>
     <!-- lam toi vien + mep tren/duoi de UI noi len; anh goc giu nguyen -->
     <div class="absolute inset-0 bg-[radial-gradient(ellipse_at_50%_55%,transparent_35%,rgba(8,10,20,.72)_100%)]"></div>
@@ -47,6 +47,7 @@ const template = () => `
         <button id="startBtn" class="px-btn px-btn-primary px-btn-hint">${icon('play', 'size-6', { stroke: 2.25 })}Bắt đầu</button>
         <button id="contBtn" class="px-btn px-btn-blue" disabled title="Chưa có bản lưu">${icon('playPause', 'size-6', { stroke: 2.25 })}Tiếp tục</button>
         <button id="guideBtn" class="px-btn px-btn-blue">${icon('bookOpen', 'size-6', { stroke: 2.25 })}Hướng dẫn</button>
+        ${exit ? `<button id="exitBtn" class="px-btn px-btn-blue">${icon('arrowLeft', 'size-6', { stroke: 2.25 })}Thoát</button>` : ''}
       </div>
       <p id="startNote" class="mt-4 hidden text-center text-sm leading-snug font-semibold text-brand-red" role="status"></p>
       <p class="mt-5 flex animate-blink items-center justify-center gap-1 text-center text-sm leading-tight font-bold tracking-wider text-brand-red portrait:hidden pointer-coarse:hidden [@media(max-height:560px)]:hidden">${icon('arrowUp', 'size-4', { stroke: 2.5 })}${icon('arrowDown', 'size-4', { stroke: 2.5 })} CHỌN · ENTER XÁC NHẬN</p>
@@ -108,22 +109,23 @@ function layout() {
 }
 
 // Tra ve { update, destroy } cho bo dieu huong man (game/main.js)
-// onContinue: co ban luu thi bat nut Tiep tuc
-export function mountStart(root, { onStart, onContinue }) {
-  root.innerHTML = template();
+// onContinue: co ban luu thi bat nut Tiep tuc; onExit: ban nhung vao web khac -> them nut Thoat (dong game)
+export function mountStart(root, { onStart, onContinue, onExit }) {
+  root.innerHTML = template(!!onExit);
   cv = $('startPm'); bubble = $('startBubble');
   layout(); onPmReady(layout);
   // font VT323 tai xong lam doi chieu cao tieu de -> do lai (neu man van con)
   document.fonts?.ready.then(() => cv?.isConnected && layout());
   $('guideBtn').onclick = () => $('guide').showModal();
   $('startBtn').onclick = () => onStart();
+  if (onExit) $('exitBtn').onclick = () => onExit();
   if (onContinue) { const b = $('contBtn'); b.disabled = false; b.removeAttribute('title'); b.onclick = () => onContinue(); }
   // Dieu khien kieu game: len/xuong chon nut, Enter bam; mo trang la chon san "Bat dau"
   const items = () => [...root.querySelectorAll('nav .px-btn:not(:disabled)')];
   const onKey = e => {
     if ($('guide').open || !['ArrowUp', 'ArrowDown'].includes(e.key)) return;
     e.preventDefault();
-    const list = items(), i = list.indexOf(document.activeElement);
+    const list = items(), i = list.indexOf(activeEl());
     list[(i + (e.key === 'ArrowDown' ? 1 : list.length - 1)) % list.length].focus();
   };
   addEventListener('resize', layout); addEventListener('keydown', onKey);

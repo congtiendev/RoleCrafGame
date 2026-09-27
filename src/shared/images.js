@@ -1,4 +1,5 @@
 import { DATA } from './sprites.js';
+import { asset } from './ui.js';
 
 export const IMG = {};
 export const ready = id => IMG[id] && IMG[id].complete && IMG[id].naturalWidth > 0;
@@ -11,10 +12,10 @@ export function loadSheets(onLoad, onMissing, only) {
     const im = new Image();
     im.onload = onLoad;
     im.onerror = () => {
-      if (!im.src.endsWith('.png')) { im.src = s.file.replace(/\.webp$/, '.png'); return; }   // chua co .webp thi lui ve PNG
+      if (!im.src.endsWith('.png')) { im.src = asset(s.file.replace(/\.webp$/, '.png')); return; }   // chua co .webp thi lui ve PNG
       miss.push(s.file); onMissing(miss);
     };
-    im.src = s.v ? `${s.file}?v=${s.v}` : s.file;         // v: ma phien ban (import_characters.py) -> doi anh la bo cache
+    im.src = asset(s.v ? `${s.file}?v=${s.v}` : s.file);         // v: ma phien ban (import_characters.py) -> doi anh la bo cache
     IMG[s.id] = im;
   });
 }

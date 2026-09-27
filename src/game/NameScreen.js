@@ -1,6 +1,6 @@
 // Man nhap ten nhan vat: the nhan vien thu viec (pixel) tren nen lobby, sau do doan dan truyen mo dau co ten.
 // Logic ten (kiem tra, goi y, luu) o session.js; man nay chi dung giao dien.
-import { $, esc } from '../shared/ui.js';
+import { $, esc, asset } from '../shared/ui.js';
 import { session, saveSession, checkName, suggestName } from './session.js';
 import { fitPm, drawPm, onPmReady } from './pmSprite.js';
 import { drawFace } from './portrait.js';
@@ -34,8 +34,8 @@ const FACT = (k, v) => `<dt class="text-px-panel/60">${k}</dt><dd class="font-se
 const template = () => `
   <section class="relative h-dvh w-full overflow-hidden">
     <picture>
-      <source media="(orientation: portrait)" srcset="bg/lobby_mobile.webp">
-      <img src="bg/lobby_pc.webp" alt="" class="absolute inset-0 size-full object-cover" draggable="false">
+      <source media="(orientation: portrait)" srcset="${asset('bg/lobby_mobile.webp')}">
+      <img src="${asset('bg/lobby_pc.webp')}" alt="" class="absolute inset-0 size-full object-cover" draggable="false">
     </picture>
     <div class="absolute inset-0 bg-px-ink/65"></div>
 

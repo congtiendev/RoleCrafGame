@@ -1,0 +1,5 @@
+/* CSS cho ban nhung (src/embed): cung Tailwind + component + font nhu trang game, nap dang chuoi (?inline) roi gan vao
+   ShadowRoot cua game – CSS game khong lan ra web chu va nguoc lai. mount.js doi :root -> :host va dua @font-face,
+   @property ra document (hai loai nay khong co tac dung khi chi nam trong ShadowRoot). */
+@import "./index.css";
+@import "../fonts/vt323.css";
