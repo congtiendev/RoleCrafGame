@@ -3,6 +3,7 @@ import { createReadStream, existsSync } from 'node:fs';
 import { resolve } from 'node:path';
 import { defineConfig } from 'vite';
 import tailwindcss from '@tailwindcss/vite';
+import react from '@vitejs/plugin-react';
 
 const ROOT = import.meta.dirname;
 // IIFE (de mo thang file duoc) khong gop nhieu trang trong mot lan build -> build tung trang:
@@ -32,6 +33,7 @@ export default defineConfig({
     },
   },
   plugins: [
+    react(),
     tailwindcss(),
     {
       // Anh nap luc chay bang duong dan 'sheets/...', 'characters/...', 'bg/...', 'ui/...': luc dev root la src/ nen phai tu phuc vu

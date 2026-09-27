@@ -13,8 +13,22 @@ export function useStorage(key) {
   for (const k of Object.keys(session)) delete session[k];
   Object.assign(session, load());
 }
+// Web chu luu tien do tren server: save(state) goi moi lan luu (van giu ban sao localStorage de mo lai nhanh / offline);
+// load() -> state (co the la Promise) nap truoc khi vao game, thay ban localStorage neu co du lieu.
+let remote = null;
+export async function connectStorage({ load, save } = {}) {
+  remote = save || null;
+  if (!load) return;
+  const data = await load();
+  if (data && typeof data === 'object') {
+    for (const k of Object.keys(session)) delete session[k];
+    Object.assign(session, JSON.parse(JSON.stringify(data)));
+    try { localStorage.setItem(KEY, JSON.stringify(session)); } catch { /* bo qua */ }
+  }
+}
 export function saveSession() {
   try { localStorage.setItem(KEY, JSON.stringify(session)); } catch { /* bo qua */ }
+  if (remote) Promise.resolve().then(() => remote(JSON.parse(JSON.stringify(session)))).catch(() => { /* web chu tu xu ly loi */ });
 }
 
 // Ten PM thay cho {{player_name}} trong kich ban: 2–24 ky tu, chi chu cai (co dau) va khoang trang.

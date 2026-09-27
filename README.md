@@ -91,4 +91,4 @@ npm test           # tests/: rules (chỉ số, cờ, hậu quả trì hoãn), s
 
 ## Nhúng vào web khác (React)
 
-`npm run build:embed` tạo `dist/embed/`: component `<RoleCraftGame />` và hàm `mountRoleCraft()` (Shadow DOM, phủ toàn màn hình). Cách dùng xem [docs/NHUNG_GAME_REACT.md](docs/NHUNG_GAME_REACT.md).
+Giao diện game viết bằng React (`src/game/GameApp.jsx`). `npm run build:embed` tạo `dist/embed/`: component `<RoleCraftGame />` (Shadow DOM, phủ toàn màn hình, props nối API) và hàm `mountRoleCraft()`. Cách dùng xem [docs/NHUNG_GAME_REACT.md](docs/NHUNG_GAME_REACT.md).

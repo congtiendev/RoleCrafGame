@@ -1,5 +1,5 @@
 // NPC co sprite trong trang game: atlas characters/<id>/game.webp + toa do npcAtlas.js (import_characters.py: GAME_NPC).
-// NPC chua co trong npcAtlas.js van hien bang the UI tam (LevelScreen). Anh nap luc can (NPC xuat hien lan dau).
+// NPC chua co trong npcAtlas.js van hien bang the UI tam (play/PlayScreen.jsx). Anh nap luc can (NPC xuat hien lan dau).
 import NPC_ATLAS from './npcAtlas.js';
 import { asset } from '../shared/ui.js';
 

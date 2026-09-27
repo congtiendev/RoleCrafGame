@@ -2,7 +2,7 @@
 // Logic thuan, khong dung DOM; luu cung session (session.js).
 
 // icon = o chi so trong sheet F; bad = diem cao la bat loi (rui ro); group = nhom tren HUD (du an / con nguoi);
-// hint = loi giai thich trong tour huong dan lan dau (hudTour.js)
+// hint = loi giai thich trong tour huong dan lan dau (play/HudTour.jsx)
 // unit / scale = so lieu thuc te (xem fmt): quy luu theo trieu dong (scale 1e6 -> hien 100.000.000 VND); tien do quy ra
 // so ngay tren ke hoach 60 ngay (1 diem = 0,6 ngay), of = hien kem tong (24/60); cac chi so con lai la %
 export const METRICS = [
@@ -53,7 +53,7 @@ export function newRun() {
                           // below = { chi so: nguong } chi kich hoat khi chi so duoi nguong (vd tinh than < 40)
     fired: [],            // [{ at, source, note }] – hau qua tri hoan da quay lai (bang tong ket: "Hau qua quay lai")
     choices: {},          // scenarioId -> 'A' | 'B' | 'C'
-    levelsDone: [],       // level da xong tong ket (LevelScreen: choi tiep sang level sau)
+    levelsDone: [],       // level da xong tong ket (play/director.js: choi tiep sang level sau)
     hardFails: [],        // ma that bai nghiem trong da tung xay ra (muc 9, allow_early_fail=false: van choi tiep, ket qua FAIL)
     outcomes: {},         // scenarioId -> ket qua re nhanh cua lua chon (vd S07 C -> 'C1' | 'C2'), xem resolveOutcome
   };

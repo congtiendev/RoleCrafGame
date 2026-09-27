@@ -28,7 +28,7 @@ import academicCap from 'heroicons/24/outline/academic-cap.svg?raw';
 import exclamationTriangle from 'heroicons/24/outline/exclamation-triangle.svg?raw';
 import checkCircle from 'heroicons/24/outline/check-circle.svg?raw';
 
-const SVG = { arrowDown, arrowLeft, arrowPath, arrowRight, arrowTrendingDown, arrowTrendingUp, arrowUp, bellAlert, bookOpen, chatBubbleLeft, chevronDown, clock, chevronLeft, chevronRight,
+export const SVG = { arrowDown, arrowLeft, arrowPath, arrowRight, arrowTrendingDown, arrowTrendingUp, arrowUp, bellAlert, bookOpen, chatBubbleLeft, chevronDown, clock, chevronLeft, chevronRight,
   lightBulb, pause, play, playPause, questionMarkCircle, sparkles, user, xMark, trophy, academicCap, exclamationTriangle, checkCircle };
 
 // icon('play', 'size-6') -> chuoi <svg>. cls = class Tailwind (co, mau); stroke = do day net (Heroicons mac dinh 1.5,

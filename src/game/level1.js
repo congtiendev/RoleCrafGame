@@ -8,7 +8,7 @@
 // Tinh huong: enter = PM ngoi san o tu the nay khi mo canh (khong di vao), vd hop ban.
 
 // NPC co sprite (npcAtlas.js: Huy, Minh, Lan, Hiep, Linh, Ha) dung trong canh + chan dung that; con lai hien bang the UI tam (the + huy hieu chu cai)
-// desc = vai tro trong du an (docs/KICH_BAN_ROLECRAFT_PM60.md muc 2), hien tren the nhan vien (staffCard.js); client = nguoi ben khach hang
+// desc = vai tro trong du an (docs/KICH_BAN_ROLECRAFT_PM60.md muc 2), hien tren the nhan vien (play/StaffCard.jsx); client = nguoi ben khach hang
 export const CAST = {
   MINH: { name: 'Anh Minh', role: 'Trưởng phòng / PM Lead', tint: '#5b8def', desc: 'Bàn giao dự án, giao việc và chủ trì đánh giá thử việc 60 ngày.' },
   HUY: { name: 'Huy', role: 'Backend Developer', tint: '#f2a03d', desc: 'Developer chủ chốt, giỏi nhưng thích tự quyết; ứng viên Technical Lead.' },

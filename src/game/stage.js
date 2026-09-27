@@ -1,6 +1,6 @@
 // San khau man tinh huong: canvas phu ca man, ve PM, emote, phu toi canh dem. Atlas sheets/game_pm.webp (build_preview.py) da xoa
 // cham neo va ghep san do cam tay + noi that theo `bind` trong manifest (but long, bang trang, ban lam viec, ban hop...).
-// NPC co sprite (npcAtlas.js) dung chung Actor + drawActor, ve tren canvas rieng cua tung NPC (LevelScreen); chua co -> the UI tam.
+// NPC co sprite (npcAtlas.js) dung chung Actor + drawActor, ve tren canvas rieng cua tung NPC (play/director.js); chua co -> the UI tam.
 import ATLAS from './atlas.js';
 import { DATA } from '../shared/sprites.js';
 import { IMG, ready, loadSheets } from '../shared/images.js';

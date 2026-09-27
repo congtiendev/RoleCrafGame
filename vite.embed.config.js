@@ -5,11 +5,13 @@
 import { resolve } from 'node:path';
 import { defineConfig } from 'vite';
 import tailwindcss from '@tailwindcss/vite';
+import react from '@vitejs/plugin-react';
 
 const ROOT = import.meta.dirname;
 
 export default defineConfig({
   plugins: [
+    react(),
     tailwindcss(),
     {
       // chay sau Tailwind (gop @import), truoc vite:css (se nhung anh): url co scheme la tai nguyen ngoai, Vite bo qua
@@ -26,7 +28,7 @@ export default defineConfig({
     outDir: resolve(ROOT, 'dist/embed'),
     emptyOutDir: true,
     lib: { entry: resolve(ROOT, 'src/embed/index.js'), formats: ['es'], fileName: () => 'rolecraft-game.js' },
-    rollupOptions: { external: ['react', 'react-dom', 'react/jsx-runtime'] },
+    rollupOptions: { external: ['react', 'react-dom', 'react-dom/client', 'react/jsx-runtime'] },
     sourcemap: true,
   },
 });
