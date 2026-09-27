@@ -1,22 +1,35 @@
-Work autonomously until everything is done. Do not ask me questions.
+Work autonomously. Do not ask questions. Keep chat output short.
+
+GOAL: sprite sheets for the game character "Huy – Senior Developer" (sheets A, B, C, E, P). Sheet D (portraits) is already approved: do NOT generate it.
 
 ATTACHMENTS
-1. The photo: a real person (who agreed to this) to be turned into the game character "Huy – Senior Developer".
-2. PM_A_master.png: the approved master sheet of the game's main character (the young PM). Style and scale reference ONLY.
-3. rolecraft_huy_sprite_prompts.zip: prompts/HUY_*.txt (one image prompt per sheet), huy_sprite_manifest.json (grid, attachments, sprite names, prop/furniture bindings), tools/extract_anchors.py (cutting + anchor extraction) and tools/pm_compose.js.
+1. HUY_B_old.png – old approved Huy sheet (identity: face, hair, navy polo). Layout is wrong, ignore layout.
+2. HUY_D_portraits.png – approved portrait sheet (identity; final sheet D).
+3. PM_A_master.png – another character's master sheet: grid, size and style reference only.
+4. rolecraft_huy_sprite_prompts.zip – prompts/HUY_*.txt, huy_sprite_manifest.json, tools/.
 
-IMPORTANT: handheld objects and furniture are SEPARATE sprites and already exist (the PM set's props, furniture and icon sheets are reused). Character sheets must show empty hands in grip poses with small marker dots (MAGENTA = main grip, GREEN = second grip, CYAN = seat point), exactly as each prompt describes.
+TOKEN BUDGET RULES (follow strictly)
+- Always ask the image tool for a TRANSPARENT background (PNG with alpha). If a sheet still comes back on plain white, do NOT regenerate it: remove the white with tools/make_transparent.py (step below).
+- One image call per sheet, using the prompt file text EXACTLY. Do not rewrite, shorten or "improve" prompts.
+- Regenerate a whole sheet ONLY for a HARD FAIL: wrong grid (not the stated columns x rows), figures overlapping or cut off, a clearly different character, a drawn object/furniture in many cells, visible text, or a checkerboard pattern / scenery painted as the background. Maximum 1 retry per sheet; keep the better of the two.
+- On a retry, append this line to the prompt and nothing else: "GRID CHECK: exactly 8 columns and 7 rows (sheet P: 4 columns and 2 rows), one figure or item per cell, nothing crosses a cell edge."
+- Everything else is a SOFT issue (a pose slightly off, a missing or extra dot, small color drift): do not regenerate, just list it.
+- Never regenerate a sheet that passed. Never regenerate A after B has started.
+- Do not describe images or repeat prompts in chat. After each sheet print one line: `<sheet> | attempts | PASS / FAIL: reason`.
 
 STEPS
-1. Unzip and read every prompt file and the manifest.
-2. Sheet A: call the image generation tool with the exact text of HUY_A_master.txt, attaching the photo as Image 1 and PM_A_master.png as Image 2. Check: 8x7 cells; cell 1 is a framed portrait; the face, hair and glasses (if any) are recognizable; the outfit matches the OUTFIT paragraph; the art style, outline and sprite size match PM_A_master.png; no handheld object drawn outside the portrait; marker dots present where the [markers] tags ask; no text. If a check fails, regenerate (max 3 attempts) and keep the best.
-3. Sheets B, C, D: exact prompt text, attach the photo as Image 1 and the approved HUY Sheet A as Image 2. Same checks, plus the character matches Sheet A. Max 3 attempts each.
-4. Save the approved images into sheets/ using the file names in the manifest (HUY_A_master.png, HUY_B_hands_gestures.png, HUY_C_work_scenes.png, HUY_D_portraits.png). Run:
+1. Unzip; read the manifest (file names) and prompts.
+2. Sheet A: HUY_A_master.txt with Image 1 = HUY_B_old.png, Image 2 = HUY_D_portraits.png, Image 3 = PM_A_master.png.
+3. Sheets B, C, E: their prompt files with Image 1 = approved HUY_A_master.png, Image 2 = HUY_D_portraits.png.
+4. Sheet P: HUY_P_props.txt with only HUY_A_master.png attached.
+5. Save to sheets/ with the manifest file names (copy HUY_D_portraits.png there too). Make every saved sheet transparent (no image call needed):
+   python3 tools/make_transparent.py sheets/*.png
+   Then run once:
    python3 tools/extract_anchors.py --manifest huy_sprite_manifest.json --sheets sheets --out build
-   Read build/report.json. For every sprite with a missing marker, regenerate only that row of its sheet (max 2 attempts per sheet), then run the script again.
-5. DELIVER
-   - Show all final sheets in the chat.
-   - One file rolecraft_huy_sprites.zip containing sheets/, build/ (sprites/, anim/, anchors.json, animations.json, report.json), the manifest and tools/pm_compose.js.
-   - A short table: sheet, attempts, checks passed, remaining warnings from report.json.
+6. Read build/report.json. Only for a ROW where 3 or more cells report "missing ... marker", make ONE edit call on that sheet with the ROW FIX prompt below (max 2 row fixes in total for the whole job), then run the script once more. Leave all other warnings as they are.
+7. DELIVER: show the final sheets; one file rolecraft_huy_sprites.zip with sheets/, build/, huy_sprite_manifest.json, tools/pm_compose.js; a table: sheet, attempts, result, remaining warnings.
 
-If you cannot finish in one reply, stop after the last completed step and state exactly which step to resume from.
+ROW FIX PROMPT (Image 1 = HUY_A_master.png, Image 2 = the sheet to fix):
+"Edit Image 2: redraw ONLY row {N}; keep every other row pixel-identical. Same character as Image 1. Draw no objects or furniture: empty hands in the grip pose. Add the marker dots exactly as tagged: {paste the Row N line from the prompt file}. Dots are small solid flat circles: MAGENTA #FF00FF, GREEN #00FF00, CYAN #00FFFF."
+
+If you run out of room, stop after the last finished step and write: "Resume from step X."

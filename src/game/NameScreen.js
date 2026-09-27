@@ -13,7 +13,7 @@ const INTRO = [
   'Ngày 1 · Công ty Innocom.',
   '{name}, bạn vừa nhận vị trí Project Manager thử việc.',
   'Anh Minh – Trưởng phòng – giao cho bạn một dự án đang làm dở: đã xong khoảng 40%, PM cũ nghỉ đột ngột, tài liệu bàn giao không đầy đủ.',
-  'Khách hàng muốn xem demo sau 7 ngày. Bạn có một team 3 người và quỹ dự án 100 điểm.',
+  'Khách hàng muốn xem demo sau 7 ngày. Bạn có một team 3 người và quỹ dự án 100.000.000 VND.',
   '60 ngày tới sẽ quyết định bạn có ở lại hay không.',
 ];
 // Bieu cam chan dung PM theo tung cau dan truyen (sheet D): [chinh, gan giong]. Trong luc chu dang hien,
@@ -40,7 +40,7 @@ const template = () => `
     <div class="absolute inset-0 bg-px-ink/65"></div>
 
     <!-- flex + m-auto: can giua nhung van cuon duoc tu mep tren khi khung cao hon man hinh -->
-    <div class="absolute inset-0 flex overflow-y-auto p-5 max-sm:p-3">
+    <div class="absolute inset-0 flex overflow-y-auto p-safe-5 max-sm:p-safe-3">
       <!-- the nhan vien -->
       <form id="nameForm" novalidate class="px-panel m-auto w-[min(780px,100%)] animate-rise px-8 py-7 max-sm:px-6 max-sm:py-6">
         <div class="flex items-center justify-between gap-4 max-sm:flex-col-reverse max-sm:gap-3">
@@ -66,7 +66,7 @@ const template = () => `
             <dl class="mt-1 grid grid-cols-[auto_1fr] gap-x-5 gap-y-1.5 text-[0.95rem] text-px-panel/90">
               ${FACT('Vị trí', 'Project Manager (thử việc)')}
               ${FACT('Quản lý', 'Anh Minh – Trưởng phòng/PM Lead')}
-              ${FACT('Team', 'Huy (Backend) · Linh (Frontend) · Lan (BA/QA)')}
+              ${FACT('Team', 'Huy (Backend) · Nam (Frontend) · Lan (BA/QA)')}
               ${FACT('Thời hạn', '60 ngày · 4 giai đoạn')}
             </dl>
           </div>

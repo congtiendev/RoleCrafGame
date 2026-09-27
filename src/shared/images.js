@@ -14,7 +14,7 @@ export function loadSheets(onLoad, onMissing, only) {
       if (!im.src.endsWith('.png')) { im.src = s.file.replace(/\.webp$/, '.png'); return; }   // chua co .webp thi lui ve PNG
       miss.push(s.file); onMissing(miss);
     };
-    im.src = s.file;
+    im.src = s.v ? `${s.file}?v=${s.v}` : s.file;         // v: ma phien ban (import_characters.py) -> doi anh la bo cache
     IMG[s.id] = im;
   });
 }

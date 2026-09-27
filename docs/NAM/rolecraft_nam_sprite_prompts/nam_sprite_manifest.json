@@ -1,13 +1,14 @@
 {
- "version": 3,
+ "version": 4,
  "character": {
-  "id": "SALE",
-  "role": "SALE",
-  "name": "Nam – Sales Executive"
+  "id": "NAM",
+  "role": "JUNIOR_DEV",
+  "name": "Nam – Frontend Developer"
  },
  "shared": {
-  "note": "Đồ vật, nội thất, icon dùng lại sheet P, O, F của bộ PM (docs/PM): prop/*, furn/*, icon/*"
+  "note": "prop/*, furn/*, icon/* dùng lại sheet P, O, F của bộ PM (docs/PM)"
  },
+ "facing": "right",
  "markers": {
   "grip": "#FF00FF",
   "grip2": "#00FF00",
@@ -38,10 +39,9 @@
      "key": "nam/idle_01",
      "bind": [
       {
-       "prop": "phone_back",
+       "prop": "laptop_closed",
        "at": "grip",
-       "z": "front",
-       "rot": 0
+       "z": "front"
       }
      ]
     },
@@ -53,10 +53,9 @@
      "key": "nam/idle_02",
      "bind": [
       {
-       "prop": "phone_back",
+       "prop": "laptop_closed",
        "at": "grip",
-       "z": "front",
-       "rot": 0
+       "z": "front"
       }
      ]
     },
@@ -68,10 +67,9 @@
      "key": "nam/idle_03",
      "bind": [
       {
-       "prop": "phone_back",
+       "prop": "laptop_closed",
        "at": "grip",
-       "z": "front",
-       "rot": 0
+       "z": "front"
       }
      ]
     },
@@ -79,14 +77,13 @@
      "index": 5,
      "row": 1,
      "col": 5,
-     "name": "idle_back_01",
-     "key": "nam/idle_back_01",
+     "name": "idle_04",
+     "key": "nam/idle_04",
      "bind": [
       {
-       "prop": "phone_back",
+       "prop": "laptop_closed",
        "at": "grip",
-       "z": "front",
-       "rot": 0
+       "z": "front"
       }
      ]
     },
@@ -94,14 +91,13 @@
      "index": 6,
      "row": 1,
      "col": 6,
-     "name": "idle_04",
-     "key": "nam/idle_04",
+     "name": "idle_back_01",
+     "key": "nam/idle_back_01",
      "bind": [
       {
-       "prop": "phone_back",
+       "prop": "laptop_closed",
        "at": "grip",
-       "z": "front",
-       "rot": 0
+       "z": "front"
       }
      ]
     },
@@ -127,10 +123,9 @@
      "key": "nam/walk_01",
      "bind": [
       {
-       "prop": "phone_back",
+       "prop": "laptop_closed",
        "at": "grip",
-       "z": "front",
-       "rot": 0
+       "z": "front"
       }
      ]
     },
@@ -142,10 +137,9 @@
      "key": "nam/walk_02",
      "bind": [
       {
-       "prop": "phone_back",
+       "prop": "laptop_closed",
        "at": "grip",
-       "z": "front",
-       "rot": 0
+       "z": "front"
       }
      ]
     },
@@ -157,10 +151,9 @@
      "key": "nam/walk_03",
      "bind": [
       {
-       "prop": "phone_back",
+       "prop": "laptop_closed",
        "at": "grip",
-       "z": "front",
-       "rot": 0
+       "z": "front"
       }
      ]
     },
@@ -172,10 +165,9 @@
      "key": "nam/walk_04",
      "bind": [
       {
-       "prop": "phone_back",
+       "prop": "laptop_closed",
        "at": "grip",
-       "z": "front",
-       "rot": 0
+       "z": "front"
       }
      ]
     },
@@ -187,10 +179,9 @@
      "key": "nam/walk_05",
      "bind": [
       {
-       "prop": "phone_back",
+       "prop": "laptop_closed",
        "at": "grip",
-       "z": "front",
-       "rot": 0
+       "z": "front"
       }
      ]
     },
@@ -202,10 +193,9 @@
      "key": "nam/walk_06",
      "bind": [
       {
-       "prop": "phone_back",
+       "prop": "laptop_closed",
        "at": "grip",
-       "z": "front",
-       "rot": 0
+       "z": "front"
       }
      ]
     },
@@ -217,10 +207,9 @@
      "key": "nam/walk_07",
      "bind": [
       {
-       "prop": "phone_back",
+       "prop": "laptop_closed",
        "at": "grip",
-       "z": "front",
-       "rot": 0
+       "z": "front"
       }
      ]
     },
@@ -232,10 +221,9 @@
      "key": "nam/walk_08",
      "bind": [
       {
-       "prop": "phone_back",
+       "prop": "laptop_closed",
        "at": "grip",
-       "z": "front",
-       "rot": 0
+       "z": "front"
       }
      ]
     },
@@ -243,57 +231,113 @@
      "index": 17,
      "row": 3,
      "col": 1,
-     "name": "talk_01",
-     "key": "nam/talk_01"
+     "name": "run_01",
+     "key": "nam/run_01",
+     "bind": [
+      {
+       "prop": "laptop_closed",
+       "at": "grip",
+       "z": "front"
+      }
+     ]
     },
     {
      "index": 18,
      "row": 3,
      "col": 2,
-     "name": "talk_02",
-     "key": "nam/talk_02"
+     "name": "run_02",
+     "key": "nam/run_02",
+     "bind": [
+      {
+       "prop": "laptop_closed",
+       "at": "grip",
+       "z": "front"
+      }
+     ]
     },
     {
      "index": 19,
      "row": 3,
      "col": 3,
-     "name": "talk_03",
-     "key": "nam/talk_03"
+     "name": "run_03",
+     "key": "nam/run_03",
+     "bind": [
+      {
+       "prop": "laptop_closed",
+       "at": "grip",
+       "z": "front"
+      }
+     ]
     },
     {
      "index": 20,
      "row": 3,
      "col": 4,
-     "name": "talk_04",
-     "key": "nam/talk_04"
+     "name": "run_04",
+     "key": "nam/run_04",
+     "bind": [
+      {
+       "prop": "laptop_closed",
+       "at": "grip",
+       "z": "front"
+      }
+     ]
     },
     {
      "index": 21,
      "row": 3,
      "col": 5,
-     "name": "listen_01",
-     "key": "nam/listen_01"
+     "name": "run_05",
+     "key": "nam/run_05",
+     "bind": [
+      {
+       "prop": "laptop_closed",
+       "at": "grip",
+       "z": "front"
+      }
+     ]
     },
     {
      "index": 22,
      "row": 3,
      "col": 6,
-     "name": "listen_02",
-     "key": "nam/listen_02"
+     "name": "run_06",
+     "key": "nam/run_06",
+     "bind": [
+      {
+       "prop": "laptop_closed",
+       "at": "grip",
+       "z": "front"
+      }
+     ]
     },
     {
      "index": 23,
      "row": 3,
      "col": 7,
-     "name": "nod_01",
-     "key": "nam/nod_01"
+     "name": "run_07",
+     "key": "nam/run_07",
+     "bind": [
+      {
+       "prop": "laptop_closed",
+       "at": "grip",
+       "z": "front"
+      }
+     ]
     },
     {
      "index": 24,
      "row": 3,
      "col": 8,
-     "name": "nod_02",
-     "key": "nam/nod_02"
+     "name": "run_08",
+     "key": "nam/run_08",
+     "bind": [
+      {
+       "prop": "laptop_closed",
+       "at": "grip",
+       "z": "front"
+      }
+     ]
     },
     {
      "index": 25,
@@ -304,7 +348,7 @@
      "bind": [
       {
        "furniture": "office_chair",
-       "at": "beside_left",
+       "at": "beside",
        "z": "back"
       }
      ]
@@ -355,251 +399,205 @@
      "index": 29,
      "row": 4,
      "col": 5,
-     "name": "sit_05",
-     "key": "nam/sit_05",
-     "bind": [
-      {
-       "furniture": "office_chair",
-       "at": "seat",
-       "z": "back"
-      }
-     ]
+     "name": "startle_01",
+     "key": "nam/startle_01"
     },
     {
      "index": 30,
      "row": 4,
      "col": 6,
-     "name": "sit_06",
-     "key": "nam/sit_06",
-     "bind": [
-      {
-       "furniture": "office_chair",
-       "at": "seat",
-       "z": "back"
-      },
-      {
-       "prop": "notebook_open",
-       "at": "grip",
-       "z": "front",
-       "rot": 0
-      },
-      {
-       "prop": "pen",
-       "at": "grip2",
-       "z": "front",
-       "rot": 0
-      }
-     ]
+     "name": "startle_02",
+     "key": "nam/startle_02"
     },
     {
      "index": 31,
      "row": 4,
      "col": 7,
-     "name": "sit_07",
-     "key": "nam/sit_07",
-     "bind": [
-      {
-       "furniture": "office_chair",
-       "at": "seat",
-       "z": "back"
-      },
-      {
-       "prop": "phone_back",
-       "at": "grip",
-       "z": "front",
-       "rot": 0
-      }
-     ]
+     "name": "shrink_01",
+     "key": "nam/shrink_01"
     },
     {
      "index": 32,
      "row": 4,
      "col": 8,
-     "name": "sit_08",
-     "key": "nam/sit_08",
-     "bind": [
-      {
-       "furniture": "office_chair",
-       "at": "seat",
-       "z": "back"
-      }
-     ]
+     "name": "shrink_02",
+     "key": "nam/shrink_02"
     },
     {
      "index": 33,
      "row": 5,
      "col": 1,
-     "name": "good_01",
-     "key": "nam/good_01"
+     "name": "apologize_01",
+     "key": "nam/apologize_01"
     },
     {
      "index": 34,
      "row": 5,
      "col": 2,
-     "name": "good_02",
-     "key": "nam/good_02"
+     "name": "apologize_02",
+     "key": "nam/apologize_02"
     },
     {
      "index": 35,
      "row": 5,
      "col": 3,
-     "name": "good_03",
-     "key": "nam/good_03"
+     "name": "sorry_talk_01",
+     "key": "nam/sorry_talk_01"
     },
     {
      "index": 36,
      "row": 5,
      "col": 4,
-     "name": "good_04",
-     "key": "nam/good_04"
+     "name": "sorry_talk_02",
+     "key": "nam/sorry_talk_02"
     },
     {
      "index": 37,
      "row": 5,
      "col": 5,
-     "name": "applaud_01",
-     "key": "nam/applaud_01"
+     "name": "teary_01",
+     "key": "nam/teary_01"
     },
     {
      "index": 38,
      "row": 5,
      "col": 6,
-     "name": "applaud_02",
-     "key": "nam/applaud_02"
+     "name": "hurt_01",
+     "key": "nam/hurt_01"
     },
     {
      "index": 39,
      "row": 5,
      "col": 7,
-     "name": "excited_01",
-     "key": "nam/excited_01"
+     "name": "uneasy_01",
+     "key": "nam/uneasy_01"
     },
     {
      "index": 40,
      "row": 5,
      "col": 8,
-     "name": "relieved_01",
-     "key": "nam/relieved_01"
+     "name": "resolve_01",
+     "key": "nam/resolve_01"
     },
     {
      "index": 41,
      "row": 6,
      "col": 1,
-     "name": "sheepish_01",
-     "key": "nam/sheepish_01"
+     "name": "good_01",
+     "key": "nam/good_01"
     },
     {
      "index": 42,
      "row": 6,
      "col": 2,
-     "name": "sheepish_02",
-     "key": "nam/sheepish_02"
+     "name": "good_02",
+     "key": "nam/good_02"
     },
     {
      "index": 43,
      "row": 6,
      "col": 3,
-     "name": "caught_01",
-     "key": "nam/caught_01"
+     "name": "try_01",
+     "key": "nam/try_01"
     },
     {
      "index": 44,
      "row": 6,
      "col": 4,
-     "name": "sweat_01",
-     "key": "nam/sweat_01"
+     "name": "eager_01",
+     "key": "nam/eager_01"
     },
     {
      "index": 45,
      "row": 6,
      "col": 5,
-     "name": "frown_01",
-     "key": "nam/frown_01"
+     "name": "eager_02",
+     "key": "nam/eager_02"
     },
     {
      "index": 46,
      "row": 6,
      "col": 6,
-     "name": "offended_01",
-     "key": "nam/offended_01"
+     "name": "happy_01",
+     "key": "nam/happy_01"
     },
     {
      "index": 47,
      "row": 6,
      "col": 7,
-     "name": "disappoint_01",
-     "key": "nam/disappoint_01"
+     "name": "happy_02",
+     "key": "nam/happy_02"
     },
     {
      "index": 48,
      "row": 6,
      "col": 8,
-     "name": "impatient_01",
-     "key": "nam/impatient_01"
+     "name": "thankful_01",
+     "key": "nam/thankful_01"
     },
     {
      "index": 49,
      "row": 7,
      "col": 1,
-     "name": "think_01",
-     "key": "nam/think_01"
+     "name": "worry_01",
+     "key": "nam/worry_01"
     },
     {
      "index": 50,
      "row": 7,
      "col": 2,
-     "name": "think_02",
-     "key": "nam/think_02"
+     "name": "worry_02",
+     "key": "nam/worry_02"
     },
     {
      "index": 51,
      "row": 7,
      "col": 3,
-     "name": "pocket_01",
-     "key": "nam/pocket_01"
+     "name": "hesitant_01",
+     "key": "nam/hesitant_01"
     },
     {
      "index": 52,
      "row": 7,
      "col": 4,
-     "name": "crossarms_01",
-     "key": "nam/crossarms_01"
+     "name": "hesitant_02",
+     "key": "nam/hesitant_02"
     },
     {
      "index": 53,
      "row": 7,
      "col": 5,
-     "name": "hips_01",
-     "key": "nam/hips_01"
+     "name": "confused_01",
+     "key": "nam/confused_01"
     },
     {
      "index": 54,
      "row": 7,
      "col": 6,
-     "name": "lean_01",
-     "key": "nam/lean_01"
+     "name": "sigh_01",
+     "key": "nam/sigh_01"
     },
     {
      "index": 55,
      "row": 7,
      "col": 7,
-     "name": "persuade_01",
-     "key": "nam/persuade_01"
+     "name": "listen_01",
+     "key": "nam/listen_01"
     },
     {
      "index": 56,
      "row": 7,
      "col": 8,
-     "name": "point_01",
-     "key": "nam/point_01"
+     "name": "listen_02",
+     "key": "nam/listen_02"
     }
    ]
   },
   {
    "id": "B",
-   "key": "sales_scenes",
+   "key": "work_scenes",
    "kind": "nam",
-   "file": "NAM_B_sales_scenes.png",
+   "file": "NAM_B_work_scenes.png",
    "attach": "master",
    "cols": 8,
    "rows": 7,
@@ -608,14 +606,13 @@
      "index": 1,
      "row": 1,
      "col": 1,
-     "name": "phone_call_01",
-     "key": "nam/phone_call_01",
+     "name": "lap_carry_01",
+     "key": "nam/lap_carry_01",
      "bind": [
       {
-       "prop": "phone_back",
+       "prop": "laptop_closed",
        "at": "grip",
-       "z": "front",
-       "rot": 0
+       "z": "back"
       }
      ]
     },
@@ -623,14 +620,13 @@
      "index": 2,
      "row": 1,
      "col": 2,
-     "name": "phone_call_02",
-     "key": "nam/phone_call_02",
+     "name": "lap_hold_01",
+     "key": "nam/lap_hold_01",
      "bind": [
       {
-       "prop": "phone_back",
+       "prop": "laptop_open_34",
        "at": "grip",
-       "z": "front",
-       "rot": 0
+       "z": "front"
       }
      ]
     },
@@ -638,14 +634,13 @@
      "index": 3,
      "row": 1,
      "col": 3,
-     "name": "phone_call_03",
-     "key": "nam/phone_call_03",
+     "name": "lap_type_01",
+     "key": "nam/lap_type_01",
      "bind": [
       {
-       "prop": "phone_back",
+       "prop": "laptop_open_34",
        "at": "grip",
-       "z": "front",
-       "rot": 0
+       "z": "front"
       }
      ]
     },
@@ -653,14 +648,13 @@
      "index": 4,
      "row": 1,
      "col": 4,
-     "name": "phone_hangup_01",
-     "key": "nam/phone_hangup_01",
+     "name": "lap_type_02",
+     "key": "nam/lap_type_02",
      "bind": [
       {
-       "prop": "phone_back",
+       "prop": "laptop_open_34",
        "at": "grip",
-       "z": "front",
-       "rot": 0
+       "z": "front"
       }
      ]
     },
@@ -668,14 +662,13 @@
      "index": 5,
      "row": 1,
      "col": 5,
-     "name": "phone_read_01",
-     "key": "nam/phone_read_01",
+     "name": "lap_show_01",
+     "key": "nam/lap_show_01",
      "bind": [
       {
-       "prop": "phone_back",
+       "prop": "laptop_open_front",
        "at": "grip",
-       "z": "front",
-       "rot": 0
+       "z": "front"
       }
      ]
     },
@@ -683,14 +676,13 @@
      "index": 6,
      "row": 1,
      "col": 6,
-     "name": "phone_type_01",
-     "key": "nam/phone_type_01",
+     "name": "lap_show_02",
+     "key": "nam/lap_show_02",
      "bind": [
       {
-       "prop": "phone_back",
+       "prop": "laptop_open_front",
        "at": "grip",
-       "z": "front",
-       "rot": 0
+       "z": "front"
       }
      ]
     },
@@ -698,14 +690,13 @@
      "index": 7,
      "row": 1,
      "col": 7,
-     "name": "phone_show_01",
-     "key": "nam/phone_show_01",
+     "name": "lap_close_01",
+     "key": "nam/lap_close_01",
      "bind": [
       {
-       "prop": "phone_screen",
+       "prop": "laptop_open_34",
        "at": "grip",
-       "z": "front",
-       "rot": 0
+       "z": "front"
       }
      ]
     },
@@ -713,14 +704,13 @@
      "index": 8,
      "row": 1,
      "col": 8,
-     "name": "phone_pocket_01",
-     "key": "nam/phone_pocket_01",
+     "name": "lap_hug_01",
+     "key": "nam/lap_hug_01",
      "bind": [
       {
-       "prop": "phone_back",
+       "prop": "laptop_closed",
        "at": "grip",
-       "z": "front",
-       "rot": 0
+       "z": "front"
       }
      ]
     },
@@ -728,140 +718,215 @@
      "index": 9,
      "row": 2,
      "col": 1,
-     "name": "dropby_01",
-     "key": "nam/dropby_01",
-     "bind": [
-      {
-       "furniture": "desk_monitor",
-       "at": "lean_left",
-       "z": "front"
-      }
-     ]
+     "name": "talk_01",
+     "key": "nam/talk_01"
     },
     {
      "index": 10,
      "row": 2,
      "col": 2,
-     "name": "dropby_02",
-     "key": "nam/dropby_02",
-     "bind": [
-      {
-       "furniture": "desk_monitor",
-       "at": "lean_left",
-       "z": "front"
-      }
-     ]
+     "name": "talk_02",
+     "key": "nam/talk_02"
     },
     {
      "index": 11,
      "row": 2,
      "col": 3,
-     "name": "announce_01",
-     "key": "nam/announce_01"
+     "name": "talk_03",
+     "key": "nam/talk_03"
     },
     {
      "index": 12,
      "row": 2,
      "col": 4,
-     "name": "announce_02",
-     "key": "nam/announce_02"
+     "name": "talk_04",
+     "key": "nam/talk_04"
     },
     {
      "index": 13,
      "row": 2,
      "col": 5,
-     "name": "announce_03",
-     "key": "nam/announce_03"
+     "name": "nod_01",
+     "key": "nam/nod_01"
     },
     {
      "index": 14,
      "row": 2,
      "col": 6,
-     "name": "promise_01",
-     "key": "nam/promise_01"
+     "name": "nod_02",
+     "key": "nam/nod_02"
     },
     {
      "index": 15,
      "row": 2,
      "col": 7,
-     "name": "easy_01",
-     "key": "nam/easy_01"
+     "name": "proud_01",
+     "key": "nam/proud_01",
+     "bind": [
+      {
+       "prop": "checklist_sheet",
+       "at": "grip",
+       "z": "front"
+      }
+     ]
     },
     {
      "index": 16,
      "row": 2,
      "col": 8,
-     "name": "pushback_01",
-     "key": "nam/pushback_01"
+     "name": "proud_02",
+     "key": "nam/proud_02",
+     "bind": [
+      {
+       "prop": "checklist_sheet",
+       "at": "grip",
+       "z": "front"
+      }
+     ]
     },
     {
      "index": 17,
      "row": 3,
      "col": 1,
-     "name": "accept_01",
-     "key": "nam/accept_01"
+     "name": "check_write_01",
+     "key": "nam/check_write_01",
+     "bind": [
+      {
+       "prop": "checklist_sheet",
+       "at": "grip2",
+       "z": "front"
+      },
+      {
+       "prop": "pen",
+       "at": "grip",
+       "z": "front"
+      }
+     ]
     },
     {
      "index": 18,
      "row": 3,
      "col": 2,
-     "name": "accept_02",
-     "key": "nam/accept_02"
+     "name": "check_write_02",
+     "key": "nam/check_write_02",
+     "bind": [
+      {
+       "prop": "checklist_sheet",
+       "at": "grip2",
+       "z": "front"
+      },
+      {
+       "prop": "pen",
+       "at": "grip",
+       "z": "front"
+      }
+     ]
     },
     {
      "index": 19,
      "row": 3,
      "col": 3,
-     "name": "persuade_02",
-     "key": "nam/persuade_02"
+     "name": "check_tick_01",
+     "key": "nam/check_tick_01",
+     "bind": [
+      {
+       "prop": "checklist_sheet",
+       "at": "grip2",
+       "z": "front"
+      },
+      {
+       "prop": "pen",
+       "at": "grip",
+       "z": "front"
+      }
+     ]
     },
     {
      "index": 20,
      "row": 3,
      "col": 4,
-     "name": "persuade_03",
-     "key": "nam/persuade_03"
+     "name": "check_read_01",
+     "key": "nam/check_read_01",
+     "bind": [
+      {
+       "prop": "checklist_sheet",
+       "at": "grip",
+       "z": "front"
+      }
+     ]
     },
     {
      "index": 21,
      "row": 3,
      "col": 5,
-     "name": "blamed_01",
-     "key": "nam/blamed_01"
+     "name": "check_point_01",
+     "key": "nam/check_point_01",
+     "bind": [
+      {
+       "prop": "checklist_sheet",
+       "at": "grip",
+       "z": "front"
+      }
+     ]
     },
     {
      "index": 22,
      "row": 3,
      "col": 6,
-     "name": "blamed_02",
-     "key": "nam/blamed_02"
+     "name": "check_give_01",
+     "key": "nam/check_give_01",
+     "bind": [
+      {
+       "prop": "checklist_sheet",
+       "at": "grip",
+       "z": "front"
+      }
+     ]
     },
     {
      "index": 23,
      "row": 3,
      "col": 7,
-     "name": "apologize_01",
-     "key": "nam/apologize_01"
+     "name": "check_hold_01",
+     "key": "nam/check_hold_01",
+     "bind": [
+      {
+       "prop": "checklist_sheet",
+       "at": "grip",
+       "z": "front"
+      }
+     ]
     },
     {
      "index": 24,
      "row": 3,
      "col": 8,
-     "name": "reluctant_01",
-     "key": "nam/reluctant_01"
+     "name": "check_hug_01",
+     "key": "nam/check_hug_01",
+     "bind": [
+      {
+       "prop": "checklist_sheet",
+       "at": "grip",
+       "z": "front"
+      }
+     ]
     },
     {
      "index": 25,
      "row": 4,
      "col": 1,
-     "name": "quote_hold_01",
-     "key": "nam/quote_hold_01",
+     "name": "desk_type_01",
+     "key": "nam/desk_type_01",
      "bind": [
       {
-       "prop": "contract_sheet",
-       "at": "grip",
-       "z": "front",
-       "rot": 0
+       "furniture": "office_chair",
+       "at": "seat",
+       "z": "back"
+      },
+      {
+       "furniture": "desk_monitor",
+       "at": "seat",
+       "z": "front"
       }
      ]
     },
@@ -869,14 +934,18 @@
      "index": 26,
      "row": 4,
      "col": 2,
-     "name": "quote_show_01",
-     "key": "nam/quote_show_01",
+     "name": "desk_type_02",
+     "key": "nam/desk_type_02",
      "bind": [
       {
-       "prop": "contract_sheet",
-       "at": "grip",
-       "z": "front",
-       "rot": 0
+       "furniture": "office_chair",
+       "at": "seat",
+       "z": "back"
+      },
+      {
+       "furniture": "desk_monitor",
+       "at": "seat",
+       "z": "front"
       }
      ]
     },
@@ -884,20 +953,18 @@
      "index": 27,
      "row": 4,
      "col": 3,
-     "name": "quote_split_01",
-     "key": "nam/quote_split_01",
+     "name": "desk_focus_01",
+     "key": "nam/desk_focus_01",
      "bind": [
       {
-       "prop": "contract_sheet",
-       "at": "grip",
-       "z": "front",
-       "rot": 0
+       "furniture": "office_chair",
+       "at": "seat",
+       "z": "back"
       },
       {
-       "prop": "contract_sheet",
-       "at": "grip2",
-       "z": "front",
-       "rot": 0
+       "furniture": "desk_monitor",
+       "at": "seat",
+       "z": "front"
       }
      ]
     },
@@ -905,14 +972,18 @@
      "index": 28,
      "row": 4,
      "col": 4,
-     "name": "quote_give_01",
-     "key": "nam/quote_give_01",
+     "name": "desk_panic_01",
+     "key": "nam/desk_panic_01",
      "bind": [
       {
-       "prop": "folder_closed",
-       "at": "grip",
-       "z": "front",
-       "rot": 0
+       "furniture": "office_chair",
+       "at": "seat",
+       "z": "back"
+      },
+      {
+       "furniture": "desk_monitor",
+       "at": "seat",
+       "z": "front"
       }
      ]
     },
@@ -920,14 +991,18 @@
      "index": 29,
      "row": 4,
      "col": 5,
-     "name": "quote_give_02",
-     "key": "nam/quote_give_02",
+     "name": "desk_panic_02",
+     "key": "nam/desk_panic_02",
      "bind": [
       {
-       "prop": "folder_closed",
-       "at": "grip",
-       "z": "front",
-       "rot": 0
+       "furniture": "office_chair",
+       "at": "seat",
+       "z": "back"
+      },
+      {
+       "furniture": "desk_monitor",
+       "at": "seat",
+       "z": "front"
       }
      ]
     },
@@ -935,14 +1010,18 @@
      "index": 30,
      "row": 4,
      "col": 6,
-     "name": "tab_present_01",
-     "key": "nam/tab_present_01",
+     "name": "desk_fix_01",
+     "key": "nam/desk_fix_01",
      "bind": [
       {
-       "prop": "tablet_screen_34",
-       "at": "grip",
-       "z": "front",
-       "rot": 0
+       "furniture": "office_chair",
+       "at": "seat",
+       "z": "back"
+      },
+      {
+       "furniture": "desk_monitor",
+       "at": "seat",
+       "z": "front"
       }
      ]
     },
@@ -950,14 +1029,13 @@
      "index": 31,
      "row": 4,
      "col": 7,
-     "name": "tab_present_02",
-     "key": "nam/tab_present_02",
+     "name": "desk_turn_01",
+     "key": "nam/desk_turn_01",
      "bind": [
       {
-       "prop": "tablet_screen_34",
-       "at": "grip",
-       "z": "front",
-       "rot": 0
+       "furniture": "office_chair",
+       "at": "seat",
+       "z": "back"
       }
      ]
     },
@@ -965,14 +1043,18 @@
      "index": 32,
      "row": 4,
      "col": 8,
-     "name": "card_give_01",
-     "key": "nam/card_give_01",
+     "name": "desk_stand_01",
+     "key": "nam/desk_stand_01",
      "bind": [
       {
-       "prop": "task_card",
-       "at": "grip",
-       "z": "front",
-       "rot": 0
+       "furniture": "office_chair",
+       "at": "seat",
+       "z": "back"
+      },
+      {
+       "furniture": "desk_monitor",
+       "at": "seat",
+       "z": "front"
       }
      ]
     },
@@ -980,17 +1062,22 @@
      "index": 33,
      "row": 5,
      "col": 1,
-     "name": "meet_table_talk_01",
-     "key": "nam/meet_table_talk_01",
+     "name": "night_type_01",
+     "key": "nam/night_type_01",
      "bind": [
       {
-       "furniture": "meeting_chair",
+       "furniture": "office_chair",
        "at": "seat",
        "z": "back"
       },
       {
-       "furniture": "meeting_table",
+       "furniture": "desk_monitor",
        "at": "seat",
+       "z": "front"
+      },
+      {
+       "prop": "lamp_on",
+       "at": "surface:desk_monitor",
        "z": "front"
       }
      ]
@@ -999,17 +1086,22 @@
      "index": 34,
      "row": 5,
      "col": 2,
-     "name": "meet_table_talk_02",
-     "key": "nam/meet_table_talk_02",
+     "name": "night_type_02",
+     "key": "nam/night_type_02",
      "bind": [
       {
-       "furniture": "meeting_chair",
+       "furniture": "office_chair",
        "at": "seat",
        "z": "back"
       },
       {
-       "furniture": "meeting_table",
+       "furniture": "desk_monitor",
        "at": "seat",
+       "z": "front"
+      },
+      {
+       "prop": "lamp_on",
+       "at": "surface:desk_monitor",
        "z": "front"
       }
      ]
@@ -1018,6 +1110,150 @@
      "index": 35,
      "row": 5,
      "col": 3,
+     "name": "night_rub_01",
+     "key": "nam/night_rub_01",
+     "bind": [
+      {
+       "furniture": "office_chair",
+       "at": "seat",
+       "z": "back"
+      },
+      {
+       "furniture": "desk_monitor",
+       "at": "seat",
+       "z": "front"
+      },
+      {
+       "prop": "lamp_on",
+       "at": "surface:desk_monitor",
+       "z": "front"
+      }
+     ]
+    },
+    {
+     "index": 36,
+     "row": 5,
+     "col": 4,
+     "name": "night_yawn_01",
+     "key": "nam/night_yawn_01",
+     "bind": [
+      {
+       "furniture": "office_chair",
+       "at": "seat",
+       "z": "back"
+      },
+      {
+       "furniture": "desk_monitor",
+       "at": "seat",
+       "z": "front"
+      },
+      {
+       "prop": "lamp_on",
+       "at": "surface:desk_monitor",
+       "z": "front"
+      }
+     ]
+    },
+    {
+     "index": 37,
+     "row": 5,
+     "col": 5,
+     "name": "night_coffee_01",
+     "key": "nam/night_coffee_01",
+     "bind": [
+      {
+       "furniture": "office_chair",
+       "at": "seat",
+       "z": "back"
+      },
+      {
+       "furniture": "desk_monitor",
+       "at": "seat",
+       "z": "front"
+      },
+      {
+       "prop": "mug_steam",
+       "at": "grip",
+       "z": "front"
+      }
+     ]
+    },
+    {
+     "index": 38,
+     "row": 5,
+     "col": 6,
+     "name": "night_sleep_01",
+     "key": "nam/night_sleep_01",
+     "bind": [
+      {
+       "furniture": "office_chair",
+       "at": "seat",
+       "z": "back"
+      },
+      {
+       "furniture": "desk_monitor",
+       "at": "seat",
+       "z": "front"
+      },
+      {
+       "prop": "lamp_on",
+       "at": "surface:desk_monitor",
+       "z": "front"
+      }
+     ]
+    },
+    {
+     "index": 39,
+     "row": 5,
+     "col": 7,
+     "name": "night_sleep_02",
+     "key": "nam/night_sleep_02",
+     "bind": [
+      {
+       "furniture": "office_chair",
+       "at": "seat",
+       "z": "back"
+      },
+      {
+       "furniture": "desk_monitor",
+       "at": "seat",
+       "z": "front"
+      },
+      {
+       "prop": "lamp_on",
+       "at": "surface:desk_monitor",
+       "z": "front"
+      }
+     ]
+    },
+    {
+     "index": 40,
+     "row": 5,
+     "col": 8,
+     "name": "night_wake_01",
+     "key": "nam/night_wake_01",
+     "bind": [
+      {
+       "furniture": "office_chair",
+       "at": "seat",
+       "z": "back"
+      },
+      {
+       "furniture": "desk_monitor",
+       "at": "seat",
+       "z": "front"
+      },
+      {
+       "prop": "lamp_on",
+       "at": "surface:desk_monitor",
+       "z": "front"
+      }
+     ]
+    },
+    {
+     "index": 41,
+     "row": 6,
+     "col": 1,
      "name": "meet_table_listen_01",
      "key": "nam/meet_table_listen_01",
      "bind": [
@@ -1034,9 +1270,85 @@
      ]
     },
     {
-     "index": 36,
-     "row": 5,
+     "index": 42,
+     "row": 6,
+     "col": 2,
+     "name": "meet_table_listen_02",
+     "key": "nam/meet_table_listen_02",
+     "bind": [
+      {
+       "furniture": "meeting_chair",
+       "at": "seat",
+       "z": "back"
+      },
+      {
+       "furniture": "meeting_table",
+       "at": "seat",
+       "z": "front"
+      }
+     ]
+    },
+    {
+     "index": 43,
+     "row": 6,
+     "col": 3,
+     "name": "meet_table_talk_01",
+     "key": "nam/meet_table_talk_01",
+     "bind": [
+      {
+       "furniture": "meeting_chair",
+       "at": "seat",
+       "z": "back"
+      },
+      {
+       "furniture": "meeting_table",
+       "at": "seat",
+       "z": "front"
+      }
+     ]
+    },
+    {
+     "index": 44,
+     "row": 6,
      "col": 4,
+     "name": "meet_table_talk_02",
+     "key": "nam/meet_table_talk_02",
+     "bind": [
+      {
+       "furniture": "meeting_chair",
+       "at": "seat",
+       "z": "back"
+      },
+      {
+       "furniture": "meeting_table",
+       "at": "seat",
+       "z": "front"
+      }
+     ]
+    },
+    {
+     "index": 45,
+     "row": 6,
+     "col": 5,
+     "name": "meet_table_worry_01",
+     "key": "nam/meet_table_worry_01",
+     "bind": [
+      {
+       "furniture": "meeting_chair",
+       "at": "seat",
+       "z": "back"
+      },
+      {
+       "furniture": "meeting_table",
+       "at": "seat",
+       "z": "front"
+      }
+     ]
+    },
+    {
+     "index": 46,
+     "row": 6,
+     "col": 6,
      "name": "meet_table_note_01",
      "key": "nam/meet_table_note_01",
      "bind": [
@@ -1053,167 +1365,64 @@
       {
        "prop": "pen",
        "at": "grip",
-       "z": "front",
-       "rot": 0
+       "z": "front"
       },
       {
        "prop": "notebook_open",
        "at": "surface:meeting_table",
-       "z": "front",
-       "rot": 0
-      }
-     ]
-    },
-    {
-     "index": 37,
-     "row": 5,
-     "col": 5,
-     "name": "meet_table_show_01",
-     "key": "nam/meet_table_show_01",
-     "bind": [
-      {
-       "furniture": "meeting_chair",
-       "at": "seat",
-       "z": "back"
-      },
-      {
-       "furniture": "meeting_table",
-       "at": "seat",
-       "z": "front"
-      },
-      {
-       "prop": "tablet_screen_34",
-       "at": "grip",
-       "z": "front",
-       "rot": 0
-      }
-     ]
-    },
-    {
-     "index": 38,
-     "row": 5,
-     "col": 6,
-     "name": "meet_table_tap_01",
-     "key": "nam/meet_table_tap_01",
-     "bind": [
-      {
-       "furniture": "meeting_chair",
-       "at": "seat",
-       "z": "back"
-      },
-      {
-       "furniture": "meeting_table",
-       "at": "seat",
        "z": "front"
       }
      ]
-    },
-    {
-     "index": 39,
-     "row": 5,
-     "col": 7,
-     "name": "meet_table_agree_01",
-     "key": "nam/meet_table_agree_01",
-     "bind": [
-      {
-       "furniture": "meeting_chair",
-       "at": "seat",
-       "z": "back"
-      },
-      {
-       "furniture": "meeting_table",
-       "at": "seat",
-       "z": "front"
-      }
-     ]
-    },
-    {
-     "index": 40,
-     "row": 5,
-     "col": 8,
-     "name": "meet_table_thumb_01",
-     "key": "nam/meet_table_thumb_01",
-     "bind": [
-      {
-       "furniture": "meeting_chair",
-       "at": "seat",
-       "z": "back"
-      },
-      {
-       "furniture": "meeting_table",
-       "at": "seat",
-       "z": "front"
-      }
-     ]
-    },
-    {
-     "index": 41,
-     "row": 6,
-     "col": 1,
-     "name": "pitch_01",
-     "key": "nam/pitch_01"
-    },
-    {
-     "index": 42,
-     "row": 6,
-     "col": 2,
-     "name": "pitch_02",
-     "key": "nam/pitch_02"
-    },
-    {
-     "index": 43,
-     "row": 6,
-     "col": 3,
-     "name": "pitch_03",
-     "key": "nam/pitch_03"
-    },
-    {
-     "index": 44,
-     "row": 6,
-     "col": 4,
-     "name": "shake_01",
-     "key": "nam/shake_01"
-    },
-    {
-     "index": 45,
-     "row": 6,
-     "col": 5,
-     "name": "shake_02",
-     "key": "nam/shake_02"
-    },
-    {
-     "index": 46,
-     "row": 6,
-     "col": 6,
-     "name": "bow_01",
-     "key": "nam/bow_01"
     },
     {
      "index": 47,
      "row": 6,
      "col": 7,
-     "name": "watch_01",
-     "key": "nam/watch_01"
+     "name": "meet_table_raise_01",
+     "key": "nam/meet_table_raise_01",
+     "bind": [
+      {
+       "furniture": "meeting_chair",
+       "at": "seat",
+       "z": "back"
+      },
+      {
+       "furniture": "meeting_table",
+       "at": "seat",
+       "z": "front"
+      }
+     ]
     },
     {
      "index": 48,
      "row": 6,
      "col": 8,
-     "name": "hurry_01",
-     "key": "nam/hurry_01"
+     "name": "meet_table_nod_01",
+     "key": "nam/meet_table_nod_01",
+     "bind": [
+      {
+       "furniture": "meeting_chair",
+       "at": "seat",
+       "z": "back"
+      },
+      {
+       "furniture": "meeting_table",
+       "at": "seat",
+       "z": "front"
+      }
+     ]
     },
     {
      "index": 49,
      "row": 7,
      "col": 1,
-     "name": "coffee_01",
-     "key": "nam/coffee_01",
+     "name": "oneone_listen_01",
+     "key": "nam/oneone_listen_01",
      "bind": [
       {
-       "prop": "mug_steam",
-       "at": "grip",
-       "z": "front",
-       "rot": 0
+       "furniture": "meeting_chair",
+       "at": "seat",
+       "z": "back"
       }
      ]
     },
@@ -1221,14 +1430,13 @@
      "index": 50,
      "row": 7,
      "col": 2,
-     "name": "coffee_02",
-     "key": "nam/coffee_02",
+     "name": "oneone_nod_01",
+     "key": "nam/oneone_nod_01",
      "bind": [
       {
-       "prop": "mug_steam",
-       "at": "grip",
-       "z": "front",
-       "rot": 0
+       "furniture": "meeting_chair",
+       "at": "seat",
+       "z": "back"
       }
      ]
     },
@@ -1236,45 +1444,363 @@
      "index": 51,
      "row": 7,
      "col": 3,
-     "name": "cheer_01",
-     "key": "nam/cheer_01"
+     "name": "oneone_sad_01",
+     "key": "nam/oneone_sad_01",
+     "bind": [
+      {
+       "furniture": "meeting_chair",
+       "at": "seat",
+       "z": "back"
+      }
+     ]
     },
     {
      "index": 52,
      "row": 7,
      "col": 4,
-     "name": "cheer_02",
-     "key": "nam/cheer_02"
+     "name": "oneone_fidget_01",
+     "key": "nam/oneone_fidget_01",
+     "bind": [
+      {
+       "furniture": "meeting_chair",
+       "at": "seat",
+       "z": "back"
+      }
+     ]
     },
     {
      "index": 53,
      "row": 7,
      "col": 5,
-     "name": "congrats_01",
-     "key": "nam/congrats_01"
+     "name": "oneone_talk_01",
+     "key": "nam/oneone_talk_01",
+     "bind": [
+      {
+       "furniture": "meeting_chair",
+       "at": "seat",
+       "z": "back"
+      }
+     ]
     },
     {
      "index": 54,
      "row": 7,
      "col": 6,
-     "name": "congrats_02",
-     "key": "nam/congrats_02"
+     "name": "oneone_proud_01",
+     "key": "nam/oneone_proud_01",
+     "bind": [
+      {
+       "furniture": "meeting_chair",
+       "at": "seat",
+       "z": "back"
+      },
+      {
+       "prop": "checklist_sheet",
+       "at": "grip",
+       "z": "front"
+      }
+     ]
     },
     {
      "index": 55,
      "row": 7,
      "col": 7,
-     "name": "sad_01",
-     "key": "nam/sad_01"
+     "name": "oneone_eager_01",
+     "key": "nam/oneone_eager_01",
+     "bind": [
+      {
+       "furniture": "meeting_chair",
+       "at": "seat",
+       "z": "back"
+      }
+     ]
     },
     {
      "index": 56,
      "row": 7,
      "col": 8,
-     "name": "wave_01",
-     "key": "nam/wave_01"
+     "name": "oneone_surprised_01",
+     "key": "nam/oneone_surprised_01",
+     "bind": [
+      {
+       "furniture": "meeting_chair",
+       "at": "seat",
+       "z": "back"
+      }
+     ]
     }
    ]
+  },
+  {
+   "id": "E",
+   "key": "tired",
+   "kind": "nam",
+   "file": "NAM_E_tired.png",
+   "attach": "master",
+   "cols": 8,
+   "rows": 3,
+   "cells": [
+    {
+     "index": 1,
+     "row": 1,
+     "col": 1,
+     "name": "tired_idle_01",
+     "key": "nam/tired_idle_01",
+     "bind": [
+      {
+       "prop": "laptop_closed",
+       "at": "grip",
+       "z": "front"
+      }
+     ]
+    },
+    {
+     "index": 2,
+     "row": 1,
+     "col": 2,
+     "name": "tired_idle_02",
+     "key": "nam/tired_idle_02",
+     "bind": [
+      {
+       "prop": "laptop_closed",
+       "at": "grip",
+       "z": "front"
+      }
+     ]
+    },
+    {
+     "index": 3,
+     "row": 1,
+     "col": 3,
+     "name": "tired_idle_03",
+     "key": "nam/tired_idle_03",
+     "bind": [
+      {
+       "prop": "laptop_closed",
+       "at": "grip",
+       "z": "front"
+      }
+     ]
+    },
+    {
+     "index": 4,
+     "row": 1,
+     "col": 4,
+     "name": "tired_idle_04",
+     "key": "nam/tired_idle_04",
+     "bind": [
+      {
+       "prop": "laptop_closed",
+       "at": "grip",
+       "z": "front"
+      }
+     ]
+    },
+    {
+     "index": 5,
+     "row": 1,
+     "col": 5,
+     "name": "tired_talk_01",
+     "key": "nam/tired_talk_01"
+    },
+    {
+     "index": 6,
+     "row": 1,
+     "col": 6,
+     "name": "tired_talk_02",
+     "key": "nam/tired_talk_02"
+    },
+    {
+     "index": 7,
+     "row": 1,
+     "col": 7,
+     "name": "tired_talk_03",
+     "key": "nam/tired_talk_03"
+    },
+    {
+     "index": 8,
+     "row": 1,
+     "col": 8,
+     "name": "tired_talk_04",
+     "key": "nam/tired_talk_04"
+    },
+    {
+     "index": 9,
+     "row": 2,
+     "col": 1,
+     "name": "tired_walk_01",
+     "key": "nam/tired_walk_01",
+     "bind": [
+      {
+       "prop": "laptop_closed",
+       "at": "grip",
+       "z": "front"
+      }
+     ]
+    },
+    {
+     "index": 10,
+     "row": 2,
+     "col": 2,
+     "name": "tired_walk_02",
+     "key": "nam/tired_walk_02",
+     "bind": [
+      {
+       "prop": "laptop_closed",
+       "at": "grip",
+       "z": "front"
+      }
+     ]
+    },
+    {
+     "index": 11,
+     "row": 2,
+     "col": 3,
+     "name": "tired_walk_03",
+     "key": "nam/tired_walk_03",
+     "bind": [
+      {
+       "prop": "laptop_closed",
+       "at": "grip",
+       "z": "front"
+      }
+     ]
+    },
+    {
+     "index": 12,
+     "row": 2,
+     "col": 4,
+     "name": "tired_walk_04",
+     "key": "nam/tired_walk_04",
+     "bind": [
+      {
+       "prop": "laptop_closed",
+       "at": "grip",
+       "z": "front"
+      }
+     ]
+    },
+    {
+     "index": 13,
+     "row": 2,
+     "col": 5,
+     "name": "tired_walk_05",
+     "key": "nam/tired_walk_05",
+     "bind": [
+      {
+       "prop": "laptop_closed",
+       "at": "grip",
+       "z": "front"
+      }
+     ]
+    },
+    {
+     "index": 14,
+     "row": 2,
+     "col": 6,
+     "name": "tired_walk_06",
+     "key": "nam/tired_walk_06",
+     "bind": [
+      {
+       "prop": "laptop_closed",
+       "at": "grip",
+       "z": "front"
+      }
+     ]
+    },
+    {
+     "index": 15,
+     "row": 2,
+     "col": 7,
+     "name": "tired_walk_07",
+     "key": "nam/tired_walk_07",
+     "bind": [
+      {
+       "prop": "laptop_closed",
+       "at": "grip",
+       "z": "front"
+      }
+     ]
+    },
+    {
+     "index": 16,
+     "row": 2,
+     "col": 8,
+     "name": "tired_walk_08",
+     "key": "nam/tired_walk_08",
+     "bind": [
+      {
+       "prop": "laptop_closed",
+       "at": "grip",
+       "z": "front"
+      }
+     ]
+    },
+    {
+     "index": 17,
+     "row": 3,
+     "col": 1,
+     "name": "tired_worry_01",
+     "key": "nam/tired_worry_01"
+    },
+    {
+     "index": 18,
+     "row": 3,
+     "col": 2,
+     "name": "tired_worry_02",
+     "key": "nam/tired_worry_02"
+    },
+    {
+     "index": 19,
+     "row": 3,
+     "col": 3,
+     "name": "tired_try_01",
+     "key": "nam/tired_try_01"
+    },
+    {
+     "index": 20,
+     "row": 3,
+     "col": 4,
+     "name": "weary_01",
+     "key": "nam/weary_01"
+    },
+    {
+     "index": 21,
+     "row": 3,
+     "col": 5,
+     "name": "weary_02",
+     "key": "nam/weary_02"
+    },
+    {
+     "index": 22,
+     "row": 3,
+     "col": 6,
+     "name": "weary_03",
+     "key": "nam/weary_03",
+     "bind": [
+      {
+       "prop": "mug_plain",
+       "at": "grip",
+       "z": "front"
+      }
+     ]
+    },
+    {
+     "index": 23,
+     "row": 3,
+     "col": 7,
+     "name": "exhausted_01",
+     "key": "nam/exhausted_01"
+    },
+    {
+     "index": 24,
+     "row": 3,
+     "col": 8,
+     "name": "tired_sigh_01",
+     "key": "nam/tired_sigh_01"
+    }
+   ],
+   "aspect": "3:2"
   },
   {
    "id": "D",
@@ -1296,134 +1822,134 @@
      "index": 2,
      "row": 1,
      "col": 2,
-     "name": "face_grin",
-     "key": "nam/face_grin"
+     "name": "face_eager",
+     "key": "nam/face_eager"
     },
     {
      "index": 3,
      "row": 1,
      "col": 3,
-     "name": "face_wink",
-     "key": "nam/face_wink"
+     "name": "face_happy",
+     "key": "nam/face_happy"
     },
     {
      "index": 4,
      "row": 1,
      "col": 4,
-     "name": "face_excited",
-     "key": "nam/face_excited"
+     "name": "face_proud",
+     "key": "nam/face_proud"
     },
     {
      "index": 5,
      "row": 2,
      "col": 1,
-     "name": "face_laugh",
-     "key": "nam/face_laugh"
+     "name": "face_shy",
+     "key": "nam/face_shy"
     },
     {
      "index": 6,
      "row": 2,
      "col": 2,
-     "name": "face_charming",
-     "key": "nam/face_charming"
+     "name": "face_unsure",
+     "key": "nam/face_unsure"
     },
     {
      "index": 7,
      "row": 2,
      "col": 3,
-     "name": "face_eager",
-     "key": "nam/face_eager"
+     "name": "face_confused",
+     "key": "nam/face_confused"
     },
     {
      "index": 8,
      "row": 2,
      "col": 4,
-     "name": "face_persuading",
-     "key": "nam/face_persuading"
+     "name": "face_thinking",
+     "key": "nam/face_thinking"
     },
     {
      "index": 9,
      "row": 3,
      "col": 1,
-     "name": "face_thinking",
-     "key": "nam/face_thinking"
+     "name": "face_worried",
+     "key": "nam/face_worried"
     },
     {
      "index": 10,
      "row": 3,
      "col": 2,
-     "name": "face_calculating",
-     "key": "nam/face_calculating"
+     "name": "face_anxious",
+     "key": "nam/face_anxious"
     },
     {
      "index": 11,
      "row": 3,
      "col": 3,
-     "name": "face_surprised",
-     "key": "nam/face_surprised"
+     "name": "face_shocked",
+     "key": "nam/face_shocked"
     },
     {
      "index": 12,
      "row": 3,
      "col": 4,
-     "name": "face_sheepish",
-     "key": "nam/face_sheepish"
+     "name": "face_panic",
+     "key": "nam/face_panic"
     },
     {
      "index": 13,
      "row": 4,
      "col": 1,
-     "name": "face_nervous",
-     "key": "nam/face_nervous"
+     "name": "face_ashamed",
+     "key": "nam/face_ashamed"
     },
     {
      "index": 14,
      "row": 4,
      "col": 2,
-     "name": "face_frown",
-     "key": "nam/face_frown"
+     "name": "face_sorry",
+     "key": "nam/face_sorry"
     },
     {
      "index": 15,
      "row": 4,
      "col": 3,
-     "name": "face_offended",
-     "key": "nam/face_offended"
+     "name": "face_tired",
+     "key": "nam/face_tired"
     },
     {
      "index": 16,
      "row": 4,
      "col": 4,
-     "name": "face_disappointed",
-     "key": "nam/face_disappointed"
+     "name": "face_relieved",
+     "key": "nam/face_relieved"
     },
     {
      "index": 17,
      "row": 5,
      "col": 1,
-     "name": "face_relieved",
-     "key": "nam/face_relieved"
+     "name": "face_determined",
+     "key": "nam/face_determined"
     },
     {
      "index": 18,
      "row": 5,
      "col": 2,
-     "name": "face_impatient",
-     "key": "nam/face_impatient"
+     "name": "face_confident",
+     "key": "nam/face_confident"
     },
     {
      "index": 19,
      "row": 5,
      "col": 3,
-     "name": "face_apologetic",
-     "key": "nam/face_apologetic"
+     "name": "face_thankful",
+     "key": "nam/face_thankful"
     },
     {
      "index": 20,
      "row": 5,
      "col": 4,
-     "name": "face_proud",
-     "key": "nam/face_proud"
+     "name": "face_hesitant",
+     "key": "nam/face_hesitant"
     }
    ]
   }
@@ -1436,7 +1962,7 @@
     "nam/idle_03",
     "nam/idle_04"
    ],
-   "fps": 7,
+   "fps": 6,
    "loop": true
   },
   "nam/idle_back": {
@@ -1451,7 +1977,7 @@
     "nam/greet_01",
     "nam/greet_02"
    ],
-   "fps": 8,
+   "fps": 6,
    "loop": false
   },
   "nam/walk": {
@@ -1465,8 +1991,212 @@
     "nam/walk_07",
     "nam/walk_08"
    ],
-   "fps": 11,
+   "fps": 10,
    "loop": true
+  },
+  "nam/run": {
+   "frames": [
+    "nam/run_01",
+    "nam/run_02",
+    "nam/run_03",
+    "nam/run_04",
+    "nam/run_05",
+    "nam/run_06",
+    "nam/run_07",
+    "nam/run_08"
+   ],
+   "fps": 14,
+   "loop": true
+  },
+  "nam/sit": {
+   "frames": [
+    "nam/sit_01",
+    "nam/sit_02",
+    "nam/sit_03",
+    "nam/sit_04"
+   ],
+   "fps": 8,
+   "loop": false
+  },
+  "nam/startle": {
+   "frames": [
+    "nam/startle_01",
+    "nam/startle_02"
+   ],
+   "fps": 10,
+   "loop": false
+  },
+  "nam/shrink": {
+   "frames": [
+    "nam/shrink_01",
+    "nam/shrink_02"
+   ],
+   "fps": 4,
+   "loop": false
+  },
+  "nam/apologize": {
+   "frames": [
+    "nam/apologize_01",
+    "nam/apologize_02"
+   ],
+   "fps": 5,
+   "loop": false
+  },
+  "nam/sorry_talk": {
+   "frames": [
+    "nam/sorry_talk_01",
+    "nam/sorry_talk_02"
+   ],
+   "fps": 4,
+   "loop": true
+  },
+  "nam/teary": {
+   "frames": [
+    "nam/teary_01"
+   ],
+   "fps": 1,
+   "loop": false
+  },
+  "nam/hurt": {
+   "frames": [
+    "nam/hurt_01"
+   ],
+   "fps": 1,
+   "loop": false
+  },
+  "nam/uneasy": {
+   "frames": [
+    "nam/uneasy_01"
+   ],
+   "fps": 1,
+   "loop": false
+  },
+  "nam/resolve": {
+   "frames": [
+    "nam/resolve_01"
+   ],
+   "fps": 1,
+   "loop": false
+  },
+  "nam/good": {
+   "frames": [
+    "nam/good_01",
+    "nam/good_02"
+   ],
+   "fps": 6,
+   "loop": false
+  },
+  "nam/try": {
+   "frames": [
+    "nam/try_01"
+   ],
+   "fps": 1,
+   "loop": false
+  },
+  "nam/eager": {
+   "frames": [
+    "nam/eager_01",
+    "nam/eager_02"
+   ],
+   "fps": 6,
+   "loop": false
+  },
+  "nam/happy": {
+   "frames": [
+    "nam/happy_01",
+    "nam/happy_02"
+   ],
+   "fps": 6,
+   "loop": false
+  },
+  "nam/thankful": {
+   "frames": [
+    "nam/thankful_01"
+   ],
+   "fps": 1,
+   "loop": false
+  },
+  "nam/worry": {
+   "frames": [
+    "nam/worry_01",
+    "nam/worry_02"
+   ],
+   "fps": 4,
+   "loop": true
+  },
+  "nam/hesitant": {
+   "frames": [
+    "nam/hesitant_01",
+    "nam/hesitant_02"
+   ],
+   "fps": 4,
+   "loop": true
+  },
+  "nam/confused": {
+   "frames": [
+    "nam/confused_01"
+   ],
+   "fps": 1,
+   "loop": false
+  },
+  "nam/sigh": {
+   "frames": [
+    "nam/sigh_01"
+   ],
+   "fps": 1,
+   "loop": false
+  },
+  "nam/listen": {
+   "frames": [
+    "nam/listen_01",
+    "nam/listen_02"
+   ],
+   "fps": 3,
+   "loop": true
+  },
+  "nam/lap_carry": {
+   "frames": [
+    "nam/lap_carry_01"
+   ],
+   "fps": 1,
+   "loop": false
+  },
+  "nam/lap_hold": {
+   "frames": [
+    "nam/lap_hold_01"
+   ],
+   "fps": 1,
+   "loop": false
+  },
+  "nam/lap_type": {
+   "frames": [
+    "nam/lap_type_01",
+    "nam/lap_type_02"
+   ],
+   "fps": 8,
+   "loop": true
+  },
+  "nam/lap_show": {
+   "frames": [
+    "nam/lap_show_01",
+    "nam/lap_show_02"
+   ],
+   "fps": 6,
+   "loop": false
+  },
+  "nam/lap_close": {
+   "frames": [
+    "nam/lap_close_01"
+   ],
+   "fps": 1,
+   "loop": false
+  },
+  "nam/lap_hug": {
+   "frames": [
+    "nam/lap_hug_01"
+   ],
+   "fps": 1,
+   "loop": false
   },
   "nam/talk": {
    "frames": [
@@ -1475,15 +2205,7 @@
     "nam/talk_03",
     "nam/talk_04"
    ],
-   "fps": 7,
-   "loop": true
-  },
-  "nam/listen": {
-   "frames": [
-    "nam/listen_01",
-    "nam/listen_02"
-   ],
-   "fps": 4,
+   "fps": 6,
    "loop": true
   },
   "nam/nod": {
@@ -1491,323 +2213,174 @@
     "nam/nod_01",
     "nam/nod_02"
    ],
-   "fps": 8,
-   "loop": true
-  },
-  "nam/sit": {
-   "frames": [
-    "nam/sit_01",
-    "nam/sit_02",
-    "nam/sit_03",
-    "nam/sit_04",
-    "nam/sit_05",
-    "nam/sit_06",
-    "nam/sit_07",
-    "nam/sit_08"
-   ],
-   "fps": 8,
+   "fps": 6,
    "loop": false
   },
-  "nam/good": {
+  "nam/proud": {
    "frames": [
-    "nam/good_01",
-    "nam/good_02",
-    "nam/good_03",
-    "nam/good_04"
+    "nam/proud_01",
+    "nam/proud_02"
    ],
    "fps": 6,
    "loop": false
   },
-  "nam/applaud": {
+  "nam/check_write": {
    "frames": [
-    "nam/applaud_01",
-    "nam/applaud_02"
-   ],
-   "fps": 8,
-   "loop": true
-  },
-  "nam/excited": {
-   "frames": [
-    "nam/excited_01"
-   ],
-   "fps": 1,
-   "loop": false
-  },
-  "nam/relieved": {
-   "frames": [
-    "nam/relieved_01"
-   ],
-   "fps": 1,
-   "loop": false
-  },
-  "nam/sheepish": {
-   "frames": [
-    "nam/sheepish_01",
-    "nam/sheepish_02"
-   ],
-   "fps": 6,
-   "loop": false
-  },
-  "nam/caught": {
-   "frames": [
-    "nam/caught_01"
-   ],
-   "fps": 1,
-   "loop": false
-  },
-  "nam/sweat": {
-   "frames": [
-    "nam/sweat_01"
-   ],
-   "fps": 1,
-   "loop": false
-  },
-  "nam/frown": {
-   "frames": [
-    "nam/frown_01"
-   ],
-   "fps": 1,
-   "loop": false
-  },
-  "nam/offended": {
-   "frames": [
-    "nam/offended_01"
-   ],
-   "fps": 1,
-   "loop": false
-  },
-  "nam/disappoint": {
-   "frames": [
-    "nam/disappoint_01"
-   ],
-   "fps": 1,
-   "loop": false
-  },
-  "nam/impatient": {
-   "frames": [
-    "nam/impatient_01"
-   ],
-   "fps": 1,
-   "loop": false
-  },
-  "nam/think": {
-   "frames": [
-    "nam/think_01",
-    "nam/think_02"
-   ],
-   "fps": 8,
-   "loop": false
-  },
-  "nam/pocket": {
-   "frames": [
-    "nam/pocket_01"
-   ],
-   "fps": 1,
-   "loop": false
-  },
-  "nam/crossarms": {
-   "frames": [
-    "nam/crossarms_01"
-   ],
-   "fps": 1,
-   "loop": false
-  },
-  "nam/hips": {
-   "frames": [
-    "nam/hips_01"
-   ],
-   "fps": 1,
-   "loop": false
-  },
-  "nam/lean": {
-   "frames": [
-    "nam/lean_01"
-   ],
-   "fps": 1,
-   "loop": false
-  },
-  "nam/persuade": {
-   "frames": [
-    "nam/persuade_02",
-    "nam/persuade_03"
-   ],
-   "fps": 6,
-   "loop": false
-  },
-  "nam/point": {
-   "frames": [
-    "nam/point_01"
-   ],
-   "fps": 1,
-   "loop": false
-  },
-  "nam/phone_call": {
-   "frames": [
-    "nam/phone_call_01",
-    "nam/phone_call_02",
-    "nam/phone_call_03"
+    "nam/check_write_01",
+    "nam/check_write_02"
    ],
    "fps": 6,
    "loop": true
   },
-  "nam/phone_hangup": {
+  "nam/check_tick": {
    "frames": [
-    "nam/phone_hangup_01"
+    "nam/check_tick_01"
    ],
    "fps": 1,
    "loop": false
   },
-  "nam/phone_read": {
+  "nam/check_read": {
    "frames": [
-    "nam/phone_read_01"
+    "nam/check_read_01"
    ],
    "fps": 1,
    "loop": false
   },
-  "nam/phone_type": {
+  "nam/check_point": {
    "frames": [
-    "nam/phone_type_01"
+    "nam/check_point_01"
    ],
    "fps": 1,
    "loop": false
   },
-  "nam/phone_show": {
+  "nam/check_give": {
    "frames": [
-    "nam/phone_show_01"
+    "nam/check_give_01"
    ],
    "fps": 1,
    "loop": false
   },
-  "nam/phone_pocket": {
+  "nam/check_hold": {
    "frames": [
-    "nam/phone_pocket_01"
+    "nam/check_hold_01"
    ],
    "fps": 1,
    "loop": false
   },
-  "nam/dropby": {
+  "nam/check_hug": {
    "frames": [
-    "nam/dropby_01",
-    "nam/dropby_02"
+    "nam/check_hug_01"
+   ],
+   "fps": 1,
+   "loop": false
+  },
+  "nam/desk_type": {
+   "frames": [
+    "nam/desk_type_01",
+    "nam/desk_type_02"
+   ],
+   "fps": 8,
+   "loop": true
+  },
+  "nam/desk_focus": {
+   "frames": [
+    "nam/desk_focus_01"
+   ],
+   "fps": 1,
+   "loop": false
+  },
+  "nam/desk_panic": {
+   "frames": [
+    "nam/desk_panic_01",
+    "nam/desk_panic_02"
+   ],
+   "fps": 6,
+   "loop": false
+  },
+  "nam/desk_fix": {
+   "frames": [
+    "nam/desk_fix_01"
+   ],
+   "fps": 1,
+   "loop": false
+  },
+  "nam/desk_turn": {
+   "frames": [
+    "nam/desk_turn_01"
+   ],
+   "fps": 1,
+   "loop": false
+  },
+  "nam/desk_stand": {
+   "frames": [
+    "nam/desk_stand_01"
+   ],
+   "fps": 1,
+   "loop": false
+  },
+  "nam/night_type": {
+   "frames": [
+    "nam/night_type_01",
+    "nam/night_type_02"
    ],
    "fps": 6,
    "loop": true
   },
-  "nam/announce": {
+  "nam/night_rub": {
    "frames": [
-    "nam/announce_01",
-    "nam/announce_02",
-    "nam/announce_03"
-   ],
-   "fps": 7,
-   "loop": false
-  },
-  "nam/promise": {
-   "frames": [
-    "nam/promise_01"
+    "nam/night_rub_01"
    ],
    "fps": 1,
    "loop": false
   },
-  "nam/easy": {
+  "nam/night_yawn": {
    "frames": [
-    "nam/easy_01"
+    "nam/night_yawn_01"
    ],
    "fps": 1,
    "loop": false
   },
-  "nam/pushback": {
+  "nam/night_coffee": {
    "frames": [
-    "nam/pushback_01"
+    "nam/night_coffee_01"
    ],
    "fps": 1,
    "loop": false
   },
-  "nam/accept": {
+  "nam/night_sleep": {
    "frames": [
-    "nam/accept_01",
-    "nam/accept_02"
+    "nam/night_sleep_01",
+    "nam/night_sleep_02"
    ],
-   "fps": 6,
-   "loop": false
+   "fps": 2,
+   "loop": true
   },
-  "nam/blamed": {
+  "nam/night_wake": {
    "frames": [
-    "nam/blamed_01",
-    "nam/blamed_02"
-   ],
-   "fps": 6,
-   "loop": false
-  },
-  "nam/apologize": {
-   "frames": [
-    "nam/apologize_01"
+    "nam/night_wake_01"
    ],
    "fps": 1,
    "loop": false
   },
-  "nam/reluctant": {
+  "nam/meet_table_listen": {
    "frames": [
-    "nam/reluctant_01"
+    "nam/meet_table_listen_01",
+    "nam/meet_table_listen_02"
    ],
-   "fps": 1,
-   "loop": false
-  },
-  "nam/quote_hold": {
-   "frames": [
-    "nam/quote_hold_01"
-   ],
-   "fps": 1,
-   "loop": false
-  },
-  "nam/quote_show": {
-   "frames": [
-    "nam/quote_show_01"
-   ],
-   "fps": 1,
-   "loop": false
-  },
-  "nam/quote_split": {
-   "frames": [
-    "nam/quote_split_01"
-   ],
-   "fps": 1,
-   "loop": false
-  },
-  "nam/quote_give": {
-   "frames": [
-    "nam/quote_give_01",
-    "nam/quote_give_02"
-   ],
-   "fps": 8,
-   "loop": false
-  },
-  "nam/tab_present": {
-   "frames": [
-    "nam/tab_present_01",
-    "nam/tab_present_02"
-   ],
-   "fps": 6,
-   "loop": false
-  },
-  "nam/card_give": {
-   "frames": [
-    "nam/card_give_01"
-   ],
-   "fps": 1,
-   "loop": false
+   "fps": 3,
+   "loop": true
   },
   "nam/meet_table_talk": {
    "frames": [
     "nam/meet_table_talk_01",
     "nam/meet_table_talk_02"
    ],
-   "fps": 7,
+   "fps": 6,
    "loop": true
   },
-  "nam/meet_table_listen": {
+  "nam/meet_table_worry": {
    "frames": [
-    "nam/meet_table_listen_01"
+    "nam/meet_table_worry_01"
    ],
    "fps": 1,
    "loop": false
@@ -1819,216 +2392,147 @@
    "fps": 1,
    "loop": false
   },
-  "nam/meet_table_show": {
+  "nam/meet_table_raise": {
    "frames": [
-    "nam/meet_table_show_01"
+    "nam/meet_table_raise_01"
    ],
    "fps": 1,
    "loop": false
   },
-  "nam/meet_table_tap": {
+  "nam/meet_table_nod": {
    "frames": [
-    "nam/meet_table_tap_01"
+    "nam/meet_table_nod_01"
    ],
    "fps": 1,
    "loop": false
   },
-  "nam/meet_table_agree": {
+  "nam/oneone_listen": {
    "frames": [
-    "nam/meet_table_agree_01"
+    "nam/oneone_listen_01"
    ],
    "fps": 1,
    "loop": false
   },
-  "nam/meet_table_thumb": {
+  "nam/oneone_nod": {
    "frames": [
-    "nam/meet_table_thumb_01"
+    "nam/oneone_nod_01"
    ],
    "fps": 1,
    "loop": false
   },
-  "nam/pitch": {
+  "nam/oneone_sad": {
    "frames": [
-    "nam/pitch_01",
-    "nam/pitch_02",
-    "nam/pitch_03"
+    "nam/oneone_sad_01"
+   ],
+   "fps": 1,
+   "loop": false
+  },
+  "nam/oneone_fidget": {
+   "frames": [
+    "nam/oneone_fidget_01"
+   ],
+   "fps": 1,
+   "loop": false
+  },
+  "nam/oneone_talk": {
+   "frames": [
+    "nam/oneone_talk_01"
+   ],
+   "fps": 1,
+   "loop": false
+  },
+  "nam/oneone_proud": {
+   "frames": [
+    "nam/oneone_proud_01"
+   ],
+   "fps": 1,
+   "loop": false
+  },
+  "nam/oneone_eager": {
+   "frames": [
+    "nam/oneone_eager_01"
+   ],
+   "fps": 1,
+   "loop": false
+  },
+  "nam/oneone_surprised": {
+   "frames": [
+    "nam/oneone_surprised_01"
+   ],
+   "fps": 1,
+   "loop": false
+  },
+  "nam/tired_idle": {
+   "frames": [
+    "nam/tired_idle_01",
+    "nam/tired_idle_02",
+    "nam/tired_idle_03",
+    "nam/tired_idle_04"
+   ],
+   "fps": 4,
+   "loop": true
+  },
+  "nam/tired_talk": {
+   "frames": [
+    "nam/tired_talk_01",
+    "nam/tired_talk_02",
+    "nam/tired_talk_03",
+    "nam/tired_talk_04"
+   ],
+   "fps": 5,
+   "loop": true
+  },
+  "nam/tired_walk": {
+   "frames": [
+    "nam/tired_walk_01",
+    "nam/tired_walk_02",
+    "nam/tired_walk_03",
+    "nam/tired_walk_04",
+    "nam/tired_walk_05",
+    "nam/tired_walk_06",
+    "nam/tired_walk_07",
+    "nam/tired_walk_08"
    ],
    "fps": 7,
-   "loop": false
+   "loop": true
   },
-  "nam/shake": {
+  "nam/tired_worry": {
    "frames": [
-    "nam/shake_01",
-    "nam/shake_02"
+    "nam/tired_worry_01",
+    "nam/tired_worry_02"
    ],
-   "fps": 7,
-   "loop": false
+   "fps": 4,
+   "loop": true
   },
-  "nam/bow": {
+  "nam/tired_try": {
    "frames": [
-    "nam/bow_01"
-   ],
-   "fps": 1,
-   "loop": false
-  },
-  "nam/watch": {
-   "frames": [
-    "nam/watch_01"
+    "nam/tired_try_01"
    ],
    "fps": 1,
    "loop": false
   },
-  "nam/hurry": {
+  "nam/weary": {
    "frames": [
-    "nam/hurry_01"
-   ],
-   "fps": 1,
-   "loop": false
-  },
-  "nam/coffee": {
-   "frames": [
-    "nam/coffee_01",
-    "nam/coffee_02"
+    "nam/weary_01",
+    "nam/weary_02",
+    "nam/weary_03"
    ],
    "fps": 4,
    "loop": false
   },
-  "nam/cheer": {
+  "nam/exhausted": {
    "frames": [
-    "nam/cheer_01",
-    "nam/cheer_02"
-   ],
-   "fps": 8,
-   "loop": true
-  },
-  "nam/congrats": {
-   "frames": [
-    "nam/congrats_01",
-    "nam/congrats_02"
-   ],
-   "fps": 6,
-   "loop": false
-  },
-  "nam/sad": {
-   "frames": [
-    "nam/sad_01"
+    "nam/exhausted_01"
    ],
    "fps": 1,
    "loop": false
   },
-  "nam/wave": {
+  "nam/tired_sigh": {
    "frames": [
-    "nam/wave_01"
+    "nam/tired_sigh_01"
    ],
    "fps": 1,
    "loop": false
   }
- },
- "script_animations": {},
- "scenes": [
-  {
-   "scenario": "P3_S10_SALES_OVERCOMMIT",
-   "beat": "Mở cảnh",
-   "line": "Nam ghé qua bàn PM: anh chốt với khách rồi, tính năng AI xong trong mười ngày!",
-   "use": [
-    "nam/walk",
-    "nam/dropby",
-    "nam/announce",
-    "nam/face_excited"
-   ]
-  },
-  {
-   "scenario": "P3_S10_SALES_OVERCOMMIT",
-   "beat": "PM phản ứng",
-   "line": "Mười ngày? Team còn chưa được hỏi!",
-   "use": [
-    "nam/pushback_01",
-    "nam/promise_01",
-    "nam/easy_01",
-    "nam/face_sheepish"
-   ]
-  },
-  {
-   "scenario": "P3_S10_SALES_OVERCOMMIT",
-   "beat": "Nhánh A",
-   "line": "PM nhận deadline, cả team chạy nước rút.",
-   "use": [
-    "nam/accept_02",
-    "nam/good_02",
-    "nam/face_grin"
-   ]
-  },
-  {
-   "scenario": "P3_S10_SALES_OVERCOMMIT",
-   "beat": "Nhánh B",
-   "line": "PM nói với khách rằng Sales đã hứa sai.",
-   "use": [
-    "nam/blamed",
-    "nam/offended_01",
-    "nam/face_offended"
-   ]
-  },
-  {
-   "scenario": "P3_S10_SALES_OVERCOMMIT",
-   "beat": "Nhánh C",
-   "line": "MVP 10 ngày, phase 2 có estimate.",
-   "use": [
-    "nam/reluctant_01",
-    "nam/accept_01",
-    "nam/face_relieved"
-   ]
-  },
-  {
-   "scenario": "P4_S15_CLIENT_EXPANSION",
-   "beat": "Mở cảnh",
-   "line": "Cơ hội tốt để mở rộng hợp đồng… team xác nhận để anh hoàn thiện báo giá.",
-   "use": [
-    "nam/meet_table_talk",
-    "nam/meet_table_tap_01",
-    "nam/face_eager"
-   ]
-  },
-  {
-   "scenario": "P4_S15_CLIENT_EXPANSION",
-   "beat": "Nhánh A",
-   "line": "Anh sẽ tiến hành báo giá và thủ tục mở rộng ngay.",
-   "use": [
-    "nam/excited_01",
-    "nam/quote_give",
-    "nam/shake",
-    "nam/face_grin"
-   ]
-  },
-  {
-   "scenario": "P4_S15_CLIENT_EXPANSION",
-   "beat": "Nhánh B",
-   "line": "Chậm hơn, nhưng anh có cơ sở rõ hơn để xây dựng báo giá.",
-   "use": [
-    "nam/think_01",
-    "nam/quote_hold_01",
-    "nam/face_calculating"
-   ]
-  },
-  {
-   "scenario": "P4_S15_CLIENT_EXPANSION",
-   "beat": "Nhánh C",
-   "line": "Anh tách báo giá và kế hoạch thanh toán theo từng phase.",
-   "use": [
-    "nam/quote_split_01",
-    "nam/tab_present",
-    "nam/face_proud"
-   ]
-  },
-  {
-   "scenario": "END",
-   "beat": "Kết thúc",
-   "line": "Chúc mừng / chia tay PM (không có thoại trong docs – dùng cho màn kết).",
-   "use": [
-    "nam/cheer",
-    "nam/congrats",
-    "nam/sad_01",
-    "nam/wave_01"
-   ]
-  }
- ]
+ }
 }

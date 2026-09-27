@@ -5,6 +5,7 @@ import { test } from 'node:test';
 import assert from 'node:assert/strict';
 import { readFileSync } from 'node:fs';
 import { execFileSync } from 'node:child_process';
+import { fileURLToPath } from 'node:url';
 import ATLAS from '../src/game/atlas.js';
 
 const root = new URL('../', import.meta.url);
@@ -18,7 +19,7 @@ import json, sys
 from PIL import Image
 a = json.loads(sys.argv[1]); im = Image.open(sys.argv[2]).convert('RGBA')
 print(json.dumps({n: [im.crop((i * v['fw'], v['y'], (i + 1) * v['fw'], v['y'] + v['fh'])).getbbox() for i in range(v['n'])] for n, v in a.items()}))
-`, JSON.stringify(ATLAS.anims), new URL('sheets/game_pm.webp', root).pathname]).toString());
+`, JSON.stringify(ATLAS.anims), fileURLToPath(new URL('sheets/game_pm.webp', root))]).toString());
 
 const frames = n => man.animations['pm/' + n].frames;
 const binds = n => frames(n).map(k => bind[k] || []);

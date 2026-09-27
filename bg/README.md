@@ -8,7 +8,7 @@
 
 | Mã nền | File PC / mobile | Vai trò trong game |
 |---|---|---|
-| `lobby` | `lobby_pc.webp` / `lobby_mobile.webp` | Mở đầu level, hành lang chuyển cảnh, vào khu làm việc |
+| `lobby` | `lobby_pc.webp` / `lobby_mobile.webp` | Mở đầu + tổng kết Level 1, hành lang chuyển cảnh, vào khu làm việc |
 | `team_floor` | `team_floor_pc.webp` / `team_floor_mobile.webp` | Khu làm việc chung của team |
 | `senior_desk` | `senior_desk_pc.webp` / `senior_desk_mobile.webp` | Góc Huy, đối thoại 1–1 |
 | `internal_meeting` | `internal_meeting_pc.webp` / `internal_meeting_mobile.webp` | Họp team, kế hoạch deadline, quy trình |
@@ -17,8 +17,8 @@
 | `final_review` | `final_review_pc.webp` / `final_review_mobile.webp` | Hội đồng đánh giá ngày 60 |
 | `team_huddle` | `team_huddle_pc.webp` / `team_huddle_mobile.webp` | *(mới, chưa gán)* Bàn họp nhanh ở khu mở, cạnh pantry |
 | `lounge` | `lounge_pc.webp` / `lounge_mobile.webp` | *(mới, chưa gán)* Góc nghỉ / pantry: sofa, tủ lạnh, cây nước |
-| `manager_office` | `manager_office_pc.webp` / `manager_office_mobile.webp` | *(mới, chưa gán)* Phòng Anh Minh: bàn quản lý, kệ cúp, bàn tròn 1-1 |
-| `dev_corner` | `dev_corner_pc.webp` / `dev_corner_mobile.webp` | *(mới, chưa gán)* Khu bàn dev cạnh vách kính, bảng kế hoạch |
+| `manager_office` | `manager_office_pc.webp` / `manager_office_mobile.webp` | Phòng Anh Minh: bàn quản lý, kệ cúp, bàn tròn 1-1 — mở đầu + tổng kết Level 2, L3 S12 |
+| `dev_corner` | `dev_corner_pc.webp` / `dev_corner_mobile.webp` | Khu bàn dev cạnh vách kính, bảng kế hoạch — cảnh đêm `pm_overloaded` đầu Level 2, bàn PM ở L3 S10 |
 
 Ảnh gốc → tên file (số trong tên "Ảnh ChatGPT … -N.png"):
 
@@ -42,20 +42,22 @@
 |---|---|---|---|
 | 1 | S01 — Team mới, deadline cũ | `team_floor` | PM đi từ cửa trái đến khu bàn team; Huy và Lan xuất hiện ở các bàn phía sau |
 | 1 | S02 — Quyền tự quyết Senior | `senior_desk` | PM tiến từ trái tới bàn Huy bên phải |
-| 1 | S03 — Khách hàng thêm tính năng | `client_meeting` | PM bước vào từ cửa kính; Chị Mai ở phía bàn họp, Lan/Huy xuất hiện lần lượt |
+| 1 | S03 — Khách hàng thêm tính năng | `client_meeting` | PM bước vào từ cửa kính; Anh Hiệp ở phía bàn họp, Lan/Huy xuất hiện lần lượt |
 | 1 | S04 — Quỹ công cụ | `team_floor` | PM đi qua bàn team; hiệu ứng chọn công cụ đặt thành lớp overlay |
+| 2 | Mở đầu, tổng kết Level 2 | `manager_office` | Anh Minh giao thêm dự án B; cờ `pm_overloaded`: cảnh đêm ở `dev_corner` trước đó |
 | 2 | S05 — Hai dự án cùng deadline | `internal_meeting` | PM vào phòng; Anh Minh trước màn hình họp, team quanh bàn |
 | 2 | S06 — Deadline hay chất lượng | `internal_meeting` | Hiển thị phương án release trên màn hình/overlay, không ghi chết lên nền |
 | 2 | S07 — Giữ nhân sự chủ chốt | `senior_desk` | Góc đối thoại PM–Huy, NPC đứng cạnh bàn |
-| 2 | S08 — Khách hàng complain | `client_meeting` | Chị Mai xuất hiện phía bàn, PM tiến tới đối thoại |
+| 2 | S08 — Khách hàng complain | `client_meeting` | Anh Hiệp xuất hiện phía bàn, PM tiến tới đối thoại |
 | 3 | S09 — Production incident | `incident_ops` | PM chạy từ cửa trái tới cụm monitor; cảnh báo đỏ là phần nền, chỉ số là UI riêng |
-| 3 | S10 — Sales hứa quá khả năng | `client_meeting` | PM, Nam, Chị Mai và Anh Minh được spawn theo thoại |
-| 3 | S11 — Junior gây lỗi | `incident_ops` | PM tới workstation của Linh, sau đó chuyển animation 1–1/checklist |
-| 3 | S12 — Cơ hội dự án lớn | `internal_meeting` | Anh Minh ở đầu bàn; PM di chuyển tới vùng trình bày |
+| 3 | S10 — Sales hứa quá khả năng | `dev_corner` | Linh ghé bàn PM; nhánh B PM gọi điện cho Anh Hiệp |
+| 3 | S11 — Junior gây lỗi | `incident_ops` | PM tới workstation của Nam, sau đó chuyển animation 1–1/checklist |
+| 3 | S12 — Cơ hội dự án lớn | `manager_office` | Anh Minh gọi PM lên phòng |
+| 3 | Tổng kết Level 3 | `team_floor` | Không có nhận xét của Anh Minh; bảng tổng kết liệt kê hậu quả đã quay lại |
 | 4 | S13 — Hệ thống vận hành | `internal_meeting` | Team tụ họp; quy trình/checklist là UI overlay trên màn hình |
 | 4 | S14 — Phát triển thành viên | `senior_desk` hoặc `team_floor` | Dùng góc 1–1 rồi chuyển khu làm việc cho ownership của team |
-| 4 | S15 — Mở rộng hợp tác | `client_meeting` | PM trao đổi với Chị Mai, roadmap hiển thị bằng lớp UI |
-| 4 | S16 — Final Review | `final_review` | PM vào từ trái, dừng trước bàn hội đồng, trình bày trên màn hình |
+| 4 | S15 — Mở rộng hợp tác | `client_meeting` | PM trao đổi với Anh Hiệp, roadmap hiển thị bằng lớp UI |
+| 4 | S16 — Final Review, kết quả thử việc | `final_review` | PM vào từ trái, dừng trước bàn hội đồng, trình bày trên màn hình |
 
 ## Gợi ý tích hợp 2D
 

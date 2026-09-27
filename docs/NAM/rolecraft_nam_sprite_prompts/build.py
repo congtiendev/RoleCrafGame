@@ -1,318 +1,334 @@
 # -*- coding: utf-8 -*-
-# Bo prompt sprite NAM (SALE – Sales Executive, uu tien co hoi va cam ket voi khach hang), cung co che v3 voi bo PM
-# (docs/PM), MINH, LAN, HA, HUY: nhan vat ve tay khong + cham neo, do vat / noi that / icon DUNG LAI sheet P, O, F cua
-# PM. Nam chi xuat hien o L3 S10 (hua tinh nang AI trong 10 ngay) va L4 S15 (mo rong hop tac, bao gia) -> 3 sheet
-# A, B, D nhu bo HA. Noi dung o bam theo docs/KICH_BAN_ROLECRAFT_PM60.md (L3 S10, L4 S15) va THOAI_MAU.json.
-#     python3 build.py        # sinh prompts/NAM_*.txt + nam_sprite_manifest.json + README_NAM_SPRITE_PROMPTS.md
+# Bo prompt sprite NAM v4 (JUNIOR_DEV – Frontend Developer), cung khuon voi bo LAN / ANH HIEP v4.
+# MOI O bam mot cau thoai hoac mot canh Nam co mat trong docs/KICH_BAN_ROLECRAFT_PM60.md (xem SCENES):
+# L1 canh team (nen), L2 S05, S06, L3 S11, L4 S13, S14, co team_ot_14_days / junior_publicly_blamed /
+# deployment_checklist_added. Ve tay khong + cham neo; do vat / noi that / icon DUNG LAI sheet P, O, F cua PM.
+# Nam quay PHAI nhu PM de dung chung ghe, ban cua bo PM; game lat ca cum (flip) khi Nam dung doi dien PM.
+# Nhan dien tu ANH THAT. Nen trong suot.
+#     python build.py   -> prompts/NAM_*.txt, nam_sprite_manifest.json, SOL_ONE_SHOT_PROMPT.txt,
+#                          mapping_section.md, README_NAM_SPRITE_PROMPTS.md (ca ban o docs/NAM/)
 import copy, json, os, re
-OUT = os.environ.get("OUT", os.path.dirname(os.path.abspath(__file__)))
+HERE = os.path.dirname(os.path.abspath(__file__))
+OUT = os.environ.get("OUT", HERE)
 
-# ---------------------------------------------------------------- van ban chung
-ATTACH_A = ("ATTACHED IMAGES: Image 1 is a photo of a real person (identity source for this character). Image 2 is the "
-"approved master sprite sheet of ANOTHER character from the same game (the young PM). Use Image 2 ONLY as the style and "
-"scale reference: same chibi proportions, outline, shading, pixel density, shadow and sprite size. Do not copy the PM's "
-"face, hair or outfit.")
-ATTACH_MASTER = ("ATTACHED IMAGES: Image 1 is a photo of a real person (identity source). Image 2 is the approved master "
-"sprite sheet of this same character (Sheet A). Match Image 2 exactly: same chibi proportions, face, hair, outfit, colors, "
-"outline and shading style, and the same sprite size.")
+# ---------------------------------------------------------------- van ban chung (ngan, khong lap y)
+WHO = ("Nam, the team's junior frontend developer: eager and hard-working but still inexperienced, easily worried, "
+       "grows more confident after a serious mistake")
 
-IDENTITY = ("IDENTITY: Convert the person in the photo into a game character. Keep them clearly recognizable: face shape, "
-"eye shape and eyebrows, nose and mouth character, hairstyle, hair length, hair color and parting, skin tone, and any "
-"distinctive features such as glasses, freckles, moles, beard or earrings (if the person wears glasses, keep the same "
-"glasses in every cell). Stylize the features into the art style below; do not trace or paste the photo. Ignore the "
-"photo's background, lighting, pose, expression and clothing.")
+ATTACH_A = ("ATTACHED IMAGES: Image 1 is a photo of a real person who agreed to become this character: the ONLY source "
+"for the face. Image 2 is the master sheet of ANOTHER character (the young PM): use it ONLY for the grid layout, sprite "
+"size, outline and shading; never copy the PM's face or clothes.")
+ATTACH_MASTER = ("ATTACHED IMAGES: Image 1 is the approved master sheet of this character (Nam, Sheet A): match it "
+"exactly (face, hair, outfit, colors, proportions, outline, shading, sprite size). Image 2 is the photo of the real "
+"person: use it only to keep the face recognizable.")
 
-OUTFIT = ("OUTFIT (replaces the clothing in the photo, identical in every cell unless a row says otherwise): an energetic "
-"sales executive around thirty, a few years older than the PM, sharp and client-ready. Light sky-blue dress shirt, no "
-"tie, top button open; slim navy blazer worn open; tan chinos; polished brown loafers; a shiny silver wristwatch on the "
-"left wrist; a small silver pin on the blazer lapel. A royal-blue lanyard around the neck with a plain royal-blue ID "
-"badge card at the chest (blank, no text) — the official staff badge. Signature prop: a smartphone (always talking to "
-"clients). It is added later by code, so do NOT draw it (except in the framed portrait cell).")
+IDENTITY = ("IDENTITY: keep the person in the photo clearly recognizable: face shape, eyes and eyebrows, nose and mouth, "
+"hairstyle, hair length, color and parting, skin tone, and features such as glasses, moles or earrings (glasses, if any, "
+"in every cell). Stylize into the art style; do not trace the photo. Ignore the photo's background, pose, expression "
+"and clothing.")
 
-STYLE = ("ART STYLE: cute chibi game sprite in a soft high-resolution pixel-art style, exactly matching the reference "
-"sheet. Big head, about 2.4 to 2.6 heads tall in total (a little taller than the young PM); expressive bright eyes with "
-"highlights, a big confident salesman smile is the default; lively, animated body language; small nose and mouth; clean "
-"dark-brown pixel outline (not pure black); soft cel shading with gentle gradients in the hair; warm natural colors; "
-"consistent top-left light. Every full-body figure stands on a small soft grey oval shadow. Small effect icons "
-"(sparkles, sweat drop, small grey puff, exclamation mark, question mark) are drawn next to a figure only where a cell "
-"asks for them.")
+CHARACTER = ("CHARACTER (identical in every cell unless a row says otherwise): Nam, a young man in his early twenties, the "
+"youngest on the team. Pastel lavender crew-neck sweater over a white collared shirt (collar visible); beige chino trousers; clean white "
+"sneakers; slim black over-ear headphones resting around the neck (on the ears ONLY where a cell says so); royal-blue "
+"lanyard with a plain royal-blue ID badge card at the chest (blank, no text). About 2.3 heads tall, slightly shorter and "
+"slimmer than the PM, bright eager eyes.")
 
-def LAYOUT(cols, rows, portrait_first):
-    s = (f"LAYOUT: one sprite sheet, square 1:1, pure solid white background (#FFFFFF). Exactly {cols} columns x {rows} rows "
-         f"= {cols*rows} cells, packed like a professional game asset sheet: each figure fills most of its cell but never "
-         "touches or overlaps a neighbour. Same sprite size in every cell; within each row all feet rest on one shared "
-         "baseline. Figures face LEFT in a 3/4 view (the character usually stands opposite the PM, who faces right) unless "
-         "a cell says otherwise. Reading order: left to right, top to bottom. ")
-    if portrait_first:
-        s += ("Cell 1 (top-left) is special: a head-and-shoulders portrait inside a rounded-square frame with a thin dark "
-              "outline and a soft pastel-blue background with a few sparkles, the character with a big confident grin, "
-              "holding a smartphone up beside the face. Cell 1 is the ONLY cell with a background; every other cell is a "
-              "full-body figure on pure white.")
-    return s
+STYLE = ("ART STYLE: cute chibi game sprite, soft high-resolution pixel art: big head, expressive glossy eyes, small nose "
+"and mouth, short limbs, clean dark-brown outline (not pure black), soft cel shading, warm natural colors, top-left light. "
+"Every full-body figure stands on a small soft grey oval shadow. Small effect icons (sparkles, sweat drop, tear drop, "
+"grey puff, exclamation or question mark, Zzz) only where a cell asks for them, kept inside the cell.")
 
-OBJECT_RULE = ("OBJECT RULE (overrides every cell description): all handheld objects and all furniture are separate sprites "
-"that will be placed by code. Wherever a cell mentions a phone, tablet, quote, contract, page, folder, business card, "
-"notebook, pen, mug, chair, desk or table, do NOT draw that object. Instead draw the empty hand(s) in the exact grip pose "
-"as if holding it, and the body sitting or leaning at the correct height as if on the invisible furniture. Keep the worn "
-"lanyard badge, the lapel pin and the wristwatch as part of the character. MARKER DOTS: small solid round dots about 1.5% "
-"of the cell width, flat color, no outline, no shading, drawn on top of the character. MAGENTA #FF00FF = grip point of "
-"the main held object (for a two-handed hold, midway between the hands). GREEN #00FF00 = grip point of a second object "
-"held in the other hand. CYAN #00FFFF = seat contact point (middle of the hips where they touch the seat) for sitting "
-"poses. Draw only the dots listed in each cell's [markers] tag; cells without a tag have no dots. Never use these three "
-"colors anywhere else.")
+def LAYOUT(s):
+    cols, rows = s["cols"], s["rows"]
+    shape = "landscape 3:2 image" if s.get("aspect") == "3:2" else "square 1:1 image"
+    t = (f"LAYOUT (most important): {shape}, fully TRANSPARENT background (PNG with alpha channel): no white, no color, "
+         f"no checkerboard pattern painted in. Exactly {cols} columns x {rows} rows = {cols*rows} equal invisible cells, "
+         "ONE full-body figure per cell (head to shoes, never cut), centred in its cell, same size in every cell, clear "
+         "empty gap between neighbours; no arm, icon or shadow crosses a cell edge. In each row all feet rest on one shared "
+         "baseline. Figures face RIGHT in a 3/4 view unless a cell says otherwise. Reading order left to right, top to "
+         "bottom.")
+    if s.get("portrait_first"):
+        t += (" Cell 1 is the only exception: a head-and-shoulders portrait in a rounded-square frame with a thin dark "
+              "outline and a soft pastel-lavender background with a few sparkles; Nam with a bright eager smile hugging "
+              "a closed slim silver laptop to the chest. No other cell has a background or a drawn object.")
+    return t
 
-NEG = ("DO NOT: make it photorealistic or paste the photo; include any text, letters, numbers, labels or watermark; draw "
-"grid lines or cell borders (except the frame of the portrait cells); add scenery, floor or walls; add extra characters "
-"(the client, the PM and the other person in a handshake are offscreen); crop limbs; repeat an identical pose; change "
-"the face, hair, outfit colors or proportions between cells; use pure white for clothing edges that touch the "
-"background.")
+OBJECT_RULE = ("OBJECTS AND FURNITURE ARE ADDED BY CODE, SO NEVER DRAW THEM: no laptop, checklist, pen, notebook, mug, "
+"chair, desk, table, monitor or lamp (the worn headphones and lanyard badge stay). Draw the empty hand(s) in the exact "
+"grip pose, and seated bodies at the right height on an invisible chair. MARKER DOTS, only where a cell has a [markers] "
+"tag: small solid flat dots about 1.5% of the cell width drawn on top of the figure. MAGENTA #FF00FF = grip point of the "
+"main held object (two hands: midway between them); GREEN #00FF00 = grip point of a second object in the other hand; "
+"CYAN #00FFFF = middle of the hips where they touch the seat. Never use these three colors anywhere else.")
 
-# ---------------------------------------------------------------- sheet A – master
+NEG = ("DO NOT: make it photorealistic or paste the photo; add text, letters, numbers or watermark; draw grid lines or "
+"cell borders; add scenery, floor or walls; add other characters (the PM, Huy, Lan or Anh Minh are offscreen); crop "
+"limbs; repeat an identical pose; change face, hair, outfit colors or proportions between cells.")
+
+# ---------------------------------------------------------------- sheet A – master (co the, cam xuc)
 A = [
- ("Row 1 - Portrait + idle", [
-  ("portrait","[portrait cell, see LAYOUT] big confident grin, phone held up beside the face, a few sparkles"),
-  ("idle_01","idle loop 1/4: upbeat stance, phone held loosely in the right hand"),
-  ("idle_02","idle loop 2/4: small bounce on the toes, energetic"),
-  ("idle_03","idle loop 3/4: quick glance at the phone screen"),
-  ("idle_back_01","standing seen from behind (back view), phone in the right hand"),
-  ("idle_04","idle loop 4/4: settling back, bright smile"),
-  ("greet_01","big friendly wave, 'hey!'"),
-  ("greet_02","finger guns with a wink")]),
- ("Row 2 - Walk cycle 8 frames, brisk bouncy pace, phone in the right hand, left arm swings", [
-  ("walk_01","walk contact: left foot forward heel touching"),("walk_02","walk down: weight on left leg, knee bent"),
-  ("walk_03","walk passing: right leg passing the left"),("walk_04","walk up: rising on left toes"),
-  ("walk_05","walk contact: right foot forward heel touching"),("walk_06","walk down: weight on right leg, knee bent"),
-  ("walk_07","walk passing: left leg passing the right"),("walk_08","walk up: rising on right toes")]),
- ("Row 3 - Talking + listening (dialogue loops, hands free)", [
-  ("talk_01","talking, right hand open at chest height, enthusiastic"),
-  ("talk_02","talking, both hands spread wide, selling the idea"),
-  ("talk_03","talking, index finger pointing up, 'here's the thing'"),
-  ("talk_04","talking, hand returning down, charming smile"),
-  ("listen_01","listening, hands on the hips, eager to jump in"),
-  ("listen_02","listening, head tilted, hand on the chin, calculating"),
-  ("nod_01","nodding quickly, big smile"),("nod_02","nodding, chin lifted back up")]),
- ("Row 4 - Sit on an invisible office chair (same seat height in every sit cell)", [
-  ("sit_01","standing next to the chair, about to sit"),
-  ("sit_02","dropping onto the chair"),("sit_03","seated, leaning back, one arm over the backrest, relaxed"),
-  ("sit_04","seated, leaning forward eagerly, hands on the knees"),
-  ("sit_05","seated, one foot tapping, impatient"),
-  ("sit_06","seated, writing in a notebook on the lap with a pen"),("sit_07","seated, typing on a phone held in both hands"),
-  ("sit_08","springing up from the chair")]),
- ("Row 5 - Positive reactions with small effect icons", [
-  ("good_01","big grin, thumbs up, sparkles"),("good_02","fist pump, 'yes!', sparkles"),
-  ("good_03","confident wink with a thumbs up"),("good_04","laughing, head back, hand on the stomach"),
-  ("applaud_01","applauding, hands apart"),("applaud_02","applauding, hands together"),
-  ("excited_01","both arms up, excited, sparkles, 'great opportunity!'"),
-  ("relieved_01","relieved exhale, hand on the chest, smile")]),
- ("Row 6 - Sheepish, pressured and negative reactions", [
-  ("sheepish_01","sheepish grin, rubbing the back of the neck, one sweat drop"),
-  ("sheepish_02","awkward laugh, hand waving in front, 'haha... about that'"),
-  ("caught_01","eyes wide, shoulders up, caught off guard, exclamation mark"),
-  ("sweat_01","nervous smile, two sweat drops, tugging the collar"),
-  ("frown_01","frowning, arms crossed, 'the client already agreed'"),
-  ("offended_01","offended, hand on the chest, eyebrows up, 'you told the client WHAT?'"),
-  ("disappoint_01","disappointed, shoulders dropped, small grey puff"),
-  ("impatient_01","impatient, tapping the wristwatch")]),
- ("Row 7 - Thinking + sales stances", [
-  ("think_01","thinking, hand on the chin, looking up"),("think_02","thinking, eyes closed, finger tapping the temple"),
-  ("pocket_01","one hand in the trouser pocket, confident stance"),
-  ("crossarms_01","arms crossed, neutral, waiting for the answer"),
-  ("hips_01","hands on the hips, upbeat, ready to close"),
-  ("lean_01","leaning in with a conspiratorial smile, hand beside the mouth"),
-  ("persuade_01","both hands pressed together in front, 'can't we try?'"),
-  ("point_01","pointing forward with an open hand, 'your call'")]),
+ ("Row 1 - Portrait + idle (closed laptop hugged against the chest)", [
+  ("portrait", "[portrait cell, see LAYOUT]"),
+  ("idle_01", "idle 1/4: upright, a little stiff and eager"),
+  ("idle_02", "idle 2/4: slight inhale, shoulders a tiny bit higher"),
+  ("idle_03", "idle 3/4: glancing around, curious"),
+  ("idle_04", "idle 4/4: slight exhale, soft smile"),
+  ("idle_back_01", "seen from BEHIND (back view), standing"),
+  ("greet_01", "small shy wave at shoulder height"),
+  ("greet_02", "quick polite bow of the head, bright smile")]),
+ ("Row 2 - Walk cycle 8 frames, light quick steps, closed laptop hugged against the chest", [
+  ("walk_01", "contact: right foot forward, heel touching"), ("walk_02", "down: weight on right leg, knee bent"),
+  ("walk_03", "passing: left leg passing the right"), ("walk_04", "up: rising on right toes"),
+  ("walk_05", "contact: left foot forward, heel touching"), ("walk_06", "down: weight on left leg, knee bent"),
+  ("walk_07", "passing: right leg passing the left"), ("walk_08", "up: rising on left toes")]),
+ ("Row 3 - Run cycle 8 frames, hurrying early in the morning to report a mistake, closed laptop clutched to the chest, "
+  "panicked face, sweat drop", [
+  ("run_01", "contact right foot"), ("run_02", "push-off from right foot"), ("run_03", "airborne, legs apart"),
+  ("run_04", "landing on left foot"), ("run_05", "contact left foot"), ("run_06", "push-off from left foot"),
+  ("run_07", "airborne, legs apart, mirrored"), ("run_08", "landing on right foot")]),
+ ("Row 4 - Office chair (invisible; same seat height in the seated cells), shock and shrinking", [
+  ("sit_01", "standing in front of the chair, about to sit"),
+  ("sit_02", "lowering onto the chair"),
+  ("sit_03", "seated upright, hands on the knees"),
+  ("sit_04", "standing up from the chair, hands on the knees"),
+  ("startle_01", "startled jump, eyes wide, both hands up, exclamation mark"),
+  ("startle_02", "landing, both hands on the cheeks, 'oh no', sweat drops"),
+  ("shrink_01", "shrinking, shoulders raised, head lowered, hands clasped tight"),
+  ("shrink_02", "hugging the own arms, looking at the floor, small")]),
+ ("Row 5 - Apologizing for the mistake and what comes after", [
+  ("apologize_01", "polite bow, hands clasped in front, 'I'm so sorry'"),
+  ("apologize_02", "deep bow, eyes shut, sweat drop"),
+  ("sorry_talk_01", "hands clasped at the chest, teary eyes, speaking"),
+  ("sorry_talk_02", "hands clasped at the chest, looking down, speaking quietly"),
+  ("teary_01", "wiping one eye with the back of the hand, small tear drop"),
+  ("hurt_01", "looking down, lip trembling, sweat drop, publicly blamed"),
+  ("uneasy_01", "small relieved smile but rubbing the own arm, uneasy"),
+  ("resolve_01", "both fists at the chest, determined to do better")]),
+ ("Row 6 - Positive reactions", [
+  ("good_01", "relieved smile, small nod, two golden sparkles"),
+  ("good_02", "small fist pump, sparkles"),
+  ("try_01", "small fist in front, brave smile, 'I'll try'"),
+  ("eager_01", "raising one hand eagerly, 'I want to take this on'"),
+  ("eager_02", "hand up, bright smile, sparkles"),
+  ("happy_01", "both hands on the cheeks, happily surprised"),
+  ("happy_02", "hands clasped under the chin, beaming"),
+  ("thankful_01", "hand on the chest, grateful small bow")]),
+ ("Row 7 - Worry and hesitation", [
+  ("worry_01", "worried eyebrows, fingers touching the lips"),
+  ("worry_02", "anxious, hands clasped at the chest, sweat drop"),
+  ("hesitant_01", "fidgeting fingers, looking down"),
+  ("hesitant_02", "rubbing the back of the neck, awkward smile"),
+  ("confused_01", "head tilted, small question mark"),
+  ("sigh_01", "small sigh, shoulders dropped, grey puff"),
+  ("listen_01", "listening, hands clasped in front, attentive"),
+  ("listen_02", "listening, head tilted, nodding slightly")]),
 ]
 
-# ---------------------------------------------------------------- sheet B – cam nam, S10, S15, ket thuc
+# ---------------------------------------------------------------- sheet B – laptop, checklist, ban, hop, 1-1
 B = [
- ("Row 1 - Phone with clients (the signature prop)", [
-  ("phone_call_01","phone at the ear, big smile, talking to a client"),
-  ("phone_call_02","phone at the ear, laughing, free hand gesturing"),
-  ("phone_call_03","phone at the ear, nodding, 'yes, yes, of course!'"),
-  ("phone_hangup_01","lowering the phone from the ear, triumphant grin"),
-  ("phone_read_01","reading a message on the phone"),
-  ("phone_type_01","typing quickly with both thumbs"),
-  ("phone_show_01","turning the phone screen toward the viewer, 'look, the client said yes'"),
-  ("phone_pocket_01","sliding the phone into the blazer pocket")]),
- ("Row 2 - Dropping by the PM's desk with the 10-day promise; the desk is on the LEFT (desk invisible)", [
-  ("dropby_01","arriving and leaning on the desk with one hand, grinning"),
-  ("dropby_02","leaning on the desk, tapping it with the fingers, excited"),
-  ("announce_01","both arms wide, 'I closed the deal!'"),
-  ("announce_02","both hands up with ten fingers spread, 'ten days!'"),
-  ("announce_03","double thumbs up, confident, sparkles"),
-  ("promise_01","hand on the chest, 'I already promised the client'"),
-  ("easy_01","waving a hand casually, 'it's just a small AI feature'"),
-  ("pushback_01","leaning back from the desk, surprised by the pushback, question mark")]),
- ("Row 3 - Reacting to the PM's decision", [
-  ("accept_01","relieved nod, 'OK, MVP in ten days then'"),
-  ("accept_02","thumbs up, reassured smile"),
-  ("persuade_02","palms pressing down gently, 'the client is very happy right now'"),
-  ("persuade_03","leaning in, both hands open, bargaining"),
-  ("blamed_01","stunned, hand on the chest, being blamed in front of the client"),
-  ("blamed_02","frowning, jaw tight, arms crossed, upset"),
-  ("apologize_01","small apologetic bow, hands pressed together"),
-  ("reluctant_01","reluctant sigh, shrug, 'fine, fine'")]),
- ("Row 4 - Quote and contract papers (standing)", [
-  ("quote_hold_01","holding a quote page in both hands, reading it"),
-  ("quote_show_01","turning the quote page toward the viewer"),
-  ("quote_split_01","holding two quote pages side by side, one per hand, 'phase 1 and phase 2'"),
-  ("quote_give_01","extending a closed folder with the proposal forward"),
-  ("quote_give_02","folder handed over, hands returning, big smile"),
-  ("tab_present_01","turning a tablet toward the viewer, showing the pricing"),
-  ("tab_present_02","tablet turned, pointing at a number on the screen"),
-  ("card_give_01","offering a business card with both hands, small bow")]),
- ("Row 5 - Client meeting, seated at an invisible round meeting table on the LEFT (same seat height in every cell)", [
-  ("meet_table_talk_01","seated, talking enthusiastically with an open hand"),
-  ("meet_table_talk_02","seated, leaning in, selling the expansion"),
-  ("meet_table_listen_01","seated, listening, hands folded on the table, eager"),
-  ("meet_table_note_01","seated, writing notes with a pen"),
-  ("meet_table_show_01","seated, turning a tablet toward the client"),
-  ("meet_table_tap_01","seated, fingers drumming on the table, impatient"),
-  ("meet_table_agree_01","seated, nodding with a big smile"),
-  ("meet_table_thumb_01","seated, thumbs up across the table")]),
- ("Row 6 - Pitching and closing (standing)", [
-  ("pitch_01","pitching, one arm sweeping outward, 'imagine the possibilities'"),
-  ("pitch_02","pitching, counting benefits on the fingers"),
-  ("pitch_03","pointing up, 'a big opportunity!'"),
-  ("shake_01","reaching out the right hand for a handshake"),
-  ("shake_02","vigorous two-handed handshake, big grin"),
-  ("bow_01","small polite bow to the client"),
-  ("watch_01","checking the wristwatch, 'this week, the budget closes this month'"),
-  ("hurry_01","gesturing 'come on, let's move' with a beckoning hand")]),
- ("Row 7 - Coffee and endings (standing)", [
-  ("coffee_01","holding a coffee mug, relaxed"),("coffee_02","sipping the coffee, eyes closed"),
-  ("cheer_01","cheering, one fist raised, sparkles"),("cheer_02","both arms up, big grin"),
-  ("congrats_01","offering a fist bump"),("congrats_02","clapping someone on the shoulder offscreen"),
-  ("sad_01","sad, looking down, hands in the pockets"),
-  ("wave_01","cheerful goodbye wave")]),
+ ("Row 1 - Laptop (the signature prop)", [
+  ("lap_carry_01", "closed laptop tucked under the left arm"),
+  ("lap_hold_01", "open laptop balanced on the left forearm, looking at the screen"),
+  ("lap_type_01", "typing on the balanced laptop"),
+  ("lap_type_02", "typing, glancing up over the laptop"),
+  ("lap_show_01", "turning the open laptop so its screen faces the viewer, showing the error"),
+  ("lap_show_02", "laptop screen toward the viewer, pointing at it, apologetic"),
+  ("lap_close_01", "closing the laptop slowly, dejected"),
+  ("lap_hug_01", "hugging the closed laptop tightly, nervous")]),
+ ("Row 2 - Talking (dialogue loop) and nodding", [
+  ("talk_01", "talking, right hand open at chest height"),
+  ("talk_02", "talking, both hands slightly open"),
+  ("talk_03", "talking, index finger lightly raised"),
+  ("talk_04", "talking, hand returning down, small smile"),
+  ("nod_01", "nodding down"), ("nod_02", "chin back up after the nod"),
+  ("proud_01", "holding up a finished checklist sheet with both hands, proud"),
+  ("proud_02", "checklist hugged to the chest, confident small smile")]),
+ ("Row 3 - Writing the deploy checklist and onboarding a new member (checklist in the left hand, pen in the right)", [
+  ("check_write_01", "writing a step on the checklist"),
+  ("check_write_02", "writing the next step, tongue slightly out, focused"),
+  ("check_tick_01", "ticking an item"),
+  ("check_read_01", "reading the checklist carefully"),
+  ("check_point_01", "pointing at one step on the checklist, explaining to a newcomer offscreen on the right"),
+  ("check_give_01", "handing the checklist forward with both hands, welcoming smile"),
+  ("check_hold_01", "holding the checklist in both hands at chest height"),
+  ("check_hug_01", "hugging the checklist, happy")]),
+ ("Row 4 - Own desk by day (desk, monitor and office chair invisible; the desk is on the RIGHT; same seat height)", [
+  ("desk_type_01", "typing frontend code"),
+  ("desk_type_02", "typing, glancing at the monitor"),
+  ("desk_focus_01", "headphones ON the ears, typing, focused"),
+  ("desk_panic_01", "both hands on the head, staring at the monitor in panic, sweat drops"),
+  ("desk_panic_02", "frozen, mouth open, exclamation mark"),
+  ("desk_fix_01", "typing fast to restore the data, sweat drop"),
+  ("desk_turn_01", "swiveled on the chair to face the viewer"),
+  ("desk_stand_01", "pushing the chair back, starting to stand")]),
+ ("Row 5 - Overtime at the desk at night (desk, lamp and chair invisible; warm lamp light from the right on the "
+  "character only; background stays transparent)", [
+  ("night_type_01", "typing late at night, tired eyes"),
+  ("night_type_02", "typing, head drooping slightly"),
+  ("night_rub_01", "rubbing the eyes with one hand"),
+  ("night_yawn_01", "yawning, hand over the mouth"),
+  ("night_coffee_01", "holding a mug, eyes on the monitor"),
+  ("night_sleep_01", "asleep with the head on folded arms on the desk, small Zzz"),
+  ("night_sleep_02", "asleep, slightly different breathing pose"),
+  ("night_wake_01", "jolting awake, eyes wide")]),
+ ("Row 6 - Seated at an invisible round meeting table on the RIGHT (same seat height)", [
+  ("meet_table_listen_01", "listening, forearms on the table"),
+  ("meet_table_listen_02", "listening, glancing at the others"),
+  ("meet_table_talk_01", "talking with an open hand"),
+  ("meet_table_talk_02", "talking, leaning in a little"),
+  ("meet_table_worry_01", "worried, hands clasped on the table, sweat drop"),
+  ("meet_table_note_01", "taking notes with a pen"),
+  ("meet_table_raise_01", "raising one hand, volunteering"),
+  ("meet_table_nod_01", "nodding, relieved")]),
+ ("Row 7 - One-on-one on an invisible chair, no table", [
+  ("oneone_listen_01", "listening, hands on the knees, a little tense"),
+  ("oneone_nod_01", "nodding, taking it in"),
+  ("oneone_sad_01", "looking down, hands squeezed between the knees, 'will the team still trust me?'"),
+  ("oneone_fidget_01", "fidgeting with the lanyard, unsure"),
+  ("oneone_talk_01", "talking, open hand"),
+  ("oneone_proud_01", "holding up the deploy checklist, proud smile"),
+  ("oneone_eager_01", "leaning forward, eager nod, 'with clear criteria I can track my progress'"),
+  ("oneone_surprised_01", "happily surprised, both hands open, 'a module of my own?'")]),
+]
+
+# ---------------------------------------------------------------- sheet E – bien the kiet suc (8x3, anh ngang)
+E = [
+ ("Row 1 - OUTFIT FOR THIS ROW: same outfit after two weeks of overtime: hair messier, faint dark circles, sweater "
+  "sleeves pushed up unevenly, collar crooked, headphones askew, slouched. Tired idle + tired talk", [
+  ("tired_idle_01", "slouched idle 1/4, closed laptop hanging from one hand"),
+  ("tired_idle_02", "slouched idle 2/4"), ("tired_idle_03", "slouched idle 3/4, eyes half closed"),
+  ("tired_idle_04", "slouched idle 4/4"),
+  ("tired_talk_01", "talking wearily, low hand gesture"), ("tired_talk_02", "talking, forced smile"),
+  ("tired_talk_03", "talking, rubbing the neck"), ("tired_talk_04", "talking, sighing")]),
+ ("Row 2 - Tired outfit as row 1. Tired walk cycle, dragging feet, closed laptop hanging from one hand", [
+  ("tired_walk_01", "contact right"), ("tired_walk_02", "down"), ("tired_walk_03", "passing"),
+  ("tired_walk_04", "up"), ("tired_walk_05", "contact left"), ("tired_walk_06", "down"),
+  ("tired_walk_07", "passing"), ("tired_walk_08", "up")]),
+ ("Row 3 - Tired outfit as row 1. Tired reactions", [
+  ("tired_worry_01", "worried, hands clasped, 'if we speed up again I'm afraid quality will drop'"),
+  ("tired_worry_02", "worried, looking aside"),
+  ("tired_try_01", "forcing a small fist, tired smile, 'I'll try'"),
+  ("weary_01", "rubbing the eyes"), ("weary_02", "long yawn"),
+  ("weary_03", "holding a mug with both hands, faint dark circles"),
+  ("exhausted_01", "head down, arms hanging, grey puff"),
+  ("tired_sigh_01", "deep sigh, shoulders dropping")]),
 ]
 
 # ---------------------------------------------------------------- sheet D – chan dung hoi thoai
 D = [
- ("Row 1", [("face_neutral","neutral, friendly"),("face_grin","big confident grin"),("face_wink","wink with a smile"),("face_excited","excited, sparkling eyes")]),
- ("Row 2", [("face_laugh","laughing, eyes closed"),("face_charming","charming salesman smile"),("face_eager","eager, leaning into the frame"),("face_persuading","persuading, eyebrows raised, hands pressed together")]),
- ("Row 3", [("face_thinking","thinking, eyes looking up"),("face_calculating","calculating, one eye narrowed"),("face_surprised","surprised, eyebrows up, mouth open"),("face_sheepish","sheepish grin, sweat drop")]),
- ("Row 4", [("face_nervous","nervous smile, two sweat drops"),("face_frown","frowning, displeased"),("face_offended","offended, eyebrows up, lips pressed"),("face_disappointed","disappointed, small grey puff")]),
- ("Row 5", [("face_relieved","relieved, soft smile"),("face_impatient","impatient, eyes to the side"),("face_apologetic","apologetic, awkward smile"),("face_proud","proud, chin up")]),
+ ("Row 1", [("face_neutral", "neutral"), ("face_eager", "eager, bright eyes"),
+            ("face_happy", "happy smile"), ("face_proud", "proud smile")]),
+ ("Row 2", [("face_shy", "shy smile, slight blush"), ("face_unsure", "unsure, small awkward smile"),
+            ("face_confused", "confused, head tilted"), ("face_thinking", "thinking, eyes looking up")]),
+ ("Row 3", [("face_worried", "worried, eyebrows tilted"), ("face_anxious", "anxious, biting the lip"),
+            ("face_shocked", "shocked, mouth open"), ("face_panic", "panicking, sweat drops")]),
+ ("Row 4", [("face_ashamed", "ashamed, eyes lowered"), ("face_sorry", "apologetic, eyes wet"),
+            ("face_tired", "tired, dark circles"), ("face_relieved", "relieved exhale")]),
+ ("Row 5", [("face_determined", "determined"), ("face_confident", "confident small smile"),
+            ("face_thankful", "thankful, gentle smile"), ("face_hesitant", "hesitant, looking aside")]),
 ]
 
 SHEETS = [
- {"id":"A","key":"master","cols":8,"rows":7,"attach":"photo+pm","grid":A,"portrait_first":True,
-  "task":"framed portrait, idle, back view, walk cycle, talking and listening, sitting on a chair, and reactions",
-  "title":"Master: chân dung, đứng, đi, nói/nghe, ngồi, cảm xúc (hào hứng, lúng túng)"},
- {"id":"B","key":"sales_scenes","cols":8,"rows":7,"attach":"master","grid":B,
-  "task":"phone calls with clients, dropping by the PM's desk with a promise, reacting to the PM's decision, quotes and contracts, a client meeting, pitching and closing, and endings",
-  "title":"Điện thoại, hứa 10 ngày (S10), báo giá + họp mở rộng (S15), kết thúc"},
- {"id":"D","key":"portraits","cols":4,"rows":5,"attach":"master","grid":D,"portrait":True,
-  "task":"20 framed facial-expression portraits for a dialogue box","title":"20 chân dung cảm xúc cho hộp thoại"},
+ {"id": "A", "key": "master", "cols": 8, "rows": 7, "attach": "photo+pm", "grid": A, "portrait_first": True,
+  "task": "framed portrait, idle, back view, walk and run cycles, chair, shock, apologizing, positive reactions, "
+          "worry and hesitation",
+  "title": "Master: chân dung, đứng, đi, chạy, ngồi, hoảng hốt, xin lỗi, vui, lo lắng/ngập ngừng"},
+ {"id": "B", "key": "work_scenes", "cols": 8, "rows": 7, "attach": "master", "grid": B,
+  "task": "laptop, talking, writing a deploy checklist and onboarding, own desk, overtime at night, meeting table, "
+          "one-on-one",
+  "title": "Laptop, nói, checklist/onboarding, bàn làm việc ngày/đêm, bàn họp, 1-1"},
+ {"id": "E", "key": "tired", "cols": 8, "rows": 3, "aspect": "3:2", "attach": "master", "grid": E,
+  "task": "an exhausted variant after two weeks of overtime", "title": "Biến thể kiệt sức (team_ot_14_days)"},
+ {"id": "D", "key": "portraits", "cols": 4, "rows": 5, "attach": "master", "grid": D, "portrait": True,
+  "task": "20 framed facial-expression portraits for a dialogue box", "title": "20 chân dung hộp thoại"},
 ]
 
-# ---------------------------------------------------------------- gan ket o -> do vat / noi that (id cua sheet P, O cua PM)
-def P(id, at="grip", z="front", rot=0): return {"prop": id, "at": at, "z": z, "rot": rot}
+# ---------------------------------------------------------------- gan ket o -> do vat / noi that (id cua bo PM)
+def P(id, at="grip", z="front"): return {"prop": id, "at": at, "z": z}
 def F(id, at="seat", z="back"): return {"furniture": id, "at": at, "z": z}
-CHAIR, MCHAIR, MTABLE = F("office_chair"), F("meeting_chair"), F("meeting_table", z="front")
-PHONE = P("phone_back")
+CHAIR, MCHAIR = F("office_chair"), F("meeting_chair")
+DESK, MTABLE = F("desk_monitor", z="front"), F("meeting_table", z="front")
+LAPC, CHECK = P("laptop_closed"), P("checklist_sheet")
 RULES = [  # (regex, bindings) – khop dau tien
- (r"portrait$|^face_", []),
- (r"^idle_0|idle_back|^walk_", [PHONE]),
- (r"sit_06", [CHAIR, P("notebook_open"), P("pen", "grip2")]),
- (r"sit_07", [CHAIR, PHONE]),
- (r"sit_01", [F("office_chair", "beside_left")]),
+ (r"^portrait$|^face_", []),
+ (r"lap_carry", [P("laptop_closed", z="back")]),
+ (r"^idle_|^walk_|^run_|lap_hug|^tired_idle|^tired_walk", [LAPC]),
+ (r"lap_show", [P("laptop_open_front")]),
+ (r"^lap_", [P("laptop_open_34")]),
+ (r"check_(write|tick)", [P("checklist_sheet", "grip2"), P("pen")]),
+ (r"^check_|^proud_", [CHECK]),
+ (r"^sit_01$", [F("office_chair", "beside")]),
  (r"^sit_", [CHAIR]),
- (r"phone_show", [P("phone_screen")]),
- (r"^phone_", [PHONE]),
- (r"dropby_", [F("desk_monitor", "lean_left", z="front")]),
- (r"quote_split", [P("contract_sheet"), P("contract_sheet", "grip2")]),
- (r"quote_hold|quote_show", [P("contract_sheet")]),
- (r"quote_give", [P("folder_closed")]),
- (r"tab_present", [P("tablet_screen_34")]),
- (r"card_give", [P("task_card")]),
- (r"coffee_", [P("mug_steam")]),
+ (r"desk_turn", [CHAIR]),
+ (r"^desk_", [CHAIR, DESK]),
+ (r"night_coffee", [CHAIR, DESK, P("mug_steam")]),
+ (r"^night_", [CHAIR, DESK, P("lamp_on", "surface:desk_monitor")]),
  (r"meet_table_note", [MCHAIR, MTABLE, P("pen"), P("notebook_open", "surface:meeting_table")]),
- (r"meet_table_show", [MCHAIR, MTABLE, P("tablet_screen_34")]),
- (r"meet_table_", [MCHAIR, MTABLE]),
+ (r"^meet_table_", [MCHAIR, MTABLE]),
+ (r"oneone_proud", [MCHAIR, CHECK]),
+ (r"^oneone_", [MCHAIR]),
+ (r"weary_03", [P("mug_plain")]),
 ]
 def bindings(name):
     for rx, b in RULES:
         if re.search(rx, name): return copy.deepcopy(b)
     return []
 
-LABEL = {"grip": "magenta", "grip2": "green", "seat": "cyan"}
-WORD = {"phone": "phone", "contract": "page", "folder": "folder", "tablet": "tablet", "task": "card", "notebook": "notebook",
-        "pen": "pen", "mug": "mug"}
+LABEL = {"grip": "magenta", "grip2": "green"}
+WORD = {"laptop": "laptop", "checklist": "checklist", "pen": "pen", "mug": "mug", "notebook": "notebook"}
 def marker_tag(name):
     ms = []
     for x in bindings(name):
-        at = x["at"]
-        if at not in LABEL: continue
-        if at == "seat":
-            if "cyan = seat" not in ms: ms.append("cyan = seat")
-        else:
-            ms.append(f"{LABEL[at]} = {WORD.get(x['prop'].split('_')[0], x['prop'])}")
-    return ("  [markers: " + "; ".join(ms) + "]") if ms else ""
+        if x["at"] == "seat" and "cyan = seat" not in ms: ms.append("cyan = seat")
+        elif x["at"] in LABEL:
+            ms.append(f"{LABEL[x['at']]} = {WORD.get(x['prop'].split('_')[0], x['prop'])}")
+    return f" [markers: {'; '.join(ms)}]" if ms else ""
 
 # ---------------------------------------------------------------- dung prompt
 def cells(s):
     out, n = [], 0
+    assert len(s["grid"]) == s["rows"], f"sheet {s['id']}: {len(s['grid'])} hang, can {s['rows']}"
     for r, (title, row) in enumerate(s["grid"]):
         assert len(row) == s["cols"], f"sheet {s['id']} {title}: {len(row)} o, can {s['cols']}"
         for c, (name, desc) in enumerate(row):
             n += 1
             out.append({"index": n, "row": r + 1, "col": c + 1, "name": name, "desc": desc})
-    assert len(s["grid"]) == s["rows"], f"sheet {s['id']}: {len(s['grid'])} hang, can {s['rows']}"
     return out
 
-def content(s):
+def rows_text(s, tags=True):
     lines, n = [], 0
     for title, row in s["grid"]:
         parts = []
         for name, desc in row:
             n += 1
-            tag = "" if s.get("portrait") or name == "portrait" else marker_tag(name)
-            parts.append(f"({n}) {desc}{tag}")
+            parts.append(f"({n}) {desc}{marker_tag(name) if tags and name != 'portrait' else ''}")
         lines.append(f"{title}: " + "; ".join(parts) + ".")
     return "\n".join(lines)
 
 def prompt(s):
     cols, rows = s["cols"], s["rows"]
-    kind = "portrait sheet (head-and-shoulders, framed)" if s.get("portrait") else "sprite sheet"
-    parts = [f"TASK: create a {cols}x{rows} chibi pixel-art game {kind} of the person in the attached photo, dressed as "
-             f"Nam, the company's sales executive — upbeat, persuasive, always chasing the next deal, sometimes promising "
-             f"the client more than the team can deliver. Sheet content: {s['task']}.",
-             ATTACH_A if s["attach"] == "photo+pm" else ATTACH_MASTER, IDENTITY, OUTFIT, STYLE]
+    head = f"TASK: create a {cols}x{rows} chibi pixel-art game "
+    attach = ATTACH_A if s["attach"] == "photo+pm" else ATTACH_MASTER
     if s.get("portrait"):
-        parts.append(f"LAYOUT: portrait sheet, square 1:1, pure white background outside the frames. Exactly {cols} columns x "
-            f"{rows} rows = {cols*rows} cells. Every cell is a head-and-shoulders portrait of the same character inside a "
-            "rounded-square frame with a thin dark outline and a soft pastel-blue background, identical frame size and "
-            "crop in every cell, exactly like the portrait in cell 1 of the master sheet. Character faces the viewer, "
-            "turned slightly left, hands empty unless an expression says otherwise. Frames never touch. Reading order left "
-            "to right, top to bottom.")
-        parts.append("EXPRESSIONS:\n" + content(s))
-    else:
-        parts += [LAYOUT(cols, rows, s.get("portrait_first", False)), OBJECT_RULE, "CELLS:\n" + content(s)]
-    parts.append(NEG)
-    return "\n\n".join(parts)
+        return "\n\n".join([
+            head + f"portrait sheet of {WHO}. Sheet content: {s['task']}.", attach, IDENTITY, CHARACTER, STYLE,
+            f"LAYOUT: square 1:1, fully transparent background outside the frames (no white, no checkerboard). Exactly "
+            f"{cols} columns x {rows} rows = {cols*rows} cells. Every cell is a head-and-shoulders portrait inside a "
+            "rounded-square frame with a thin dark outline and a soft pastel-lavender background, identical frame size "
+            "and crop, exactly like cell 1 of the master sheet. Face the viewer, turned slightly right, hands empty. "
+            "Frames never touch.",
+            "EXPRESSIONS:\n" + rows_text(s, tags=False), NEG])
+    return "\n\n".join([
+        head + f"sprite sheet of {WHO}. Sheet content: {s['task']}.", attach, IDENTITY, CHARACTER, STYLE,
+        LAYOUT(s), OBJECT_RULE, "CELLS:\n" + rows_text(s), NEG])
 
-FPS = {"idle": (7, True), "walk": (11, True), "talk": (7, True), "listen": (4, True), "nod": (8, True), "sit": (8, False),
-       "applaud": (8, True), "phone_call": (6, True), "dropby": (6, True), "announce": (7, False), "accept": (6, False),
-       "persuade": (6, False), "blamed": (6, False), "quote_give": (8, False), "tab_present": (6, False),
-       "meet_table_talk": (7, True), "pitch": (7, False), "shake": (7, False), "cheer": (8, True), "congrats": (6, False),
-       "coffee": (4, False), "sheepish": (6, False), "good": (6, False)}
-
-# ---------------------------------------------------------------- bam kich ban: canh -> animation goi y (nam/<nhom>)
-SCRIPT_ANIM = {}  # docs khong dat ten animation nao cho SALE
-SCENES = [  # (scenario, nhip, cau thoai tom tat theo docs / THOAI_MAU, animation / chan dung)
- ("P3_S10_SALES_OVERCOMMIT", "Mở cảnh", "Nam ghé qua bàn PM: anh chốt với khách rồi, tính năng AI xong trong mười ngày!", ["nam/walk", "nam/dropby", "nam/announce", "nam/face_excited"]),
- ("P3_S10_SALES_OVERCOMMIT", "PM phản ứng", "Mười ngày? Team còn chưa được hỏi!", ["nam/pushback_01", "nam/promise_01", "nam/easy_01", "nam/face_sheepish"]),
- ("P3_S10_SALES_OVERCOMMIT", "Nhánh A", "PM nhận deadline, cả team chạy nước rút.", ["nam/accept_02", "nam/good_02", "nam/face_grin"]),
- ("P3_S10_SALES_OVERCOMMIT", "Nhánh B", "PM nói với khách rằng Sales đã hứa sai.", ["nam/blamed", "nam/offended_01", "nam/face_offended"]),
- ("P3_S10_SALES_OVERCOMMIT", "Nhánh C", "MVP 10 ngày, phase 2 có estimate.", ["nam/reluctant_01", "nam/accept_01", "nam/face_relieved"]),
- ("P4_S15_CLIENT_EXPANSION", "Mở cảnh", "Cơ hội tốt để mở rộng hợp đồng… team xác nhận để anh hoàn thiện báo giá.", ["nam/meet_table_talk", "nam/meet_table_tap_01", "nam/face_eager"]),
- ("P4_S15_CLIENT_EXPANSION", "Nhánh A", "Anh sẽ tiến hành báo giá và thủ tục mở rộng ngay.", ["nam/excited_01", "nam/quote_give", "nam/shake", "nam/face_grin"]),
- ("P4_S15_CLIENT_EXPANSION", "Nhánh B", "Chậm hơn, nhưng anh có cơ sở rõ hơn để xây dựng báo giá.", ["nam/think_01", "nam/quote_hold_01", "nam/face_calculating"]),
- ("P4_S15_CLIENT_EXPANSION", "Nhánh C", "Anh tách báo giá và kế hoạch thanh toán theo từng phase.", ["nam/quote_split_01", "nam/tab_present", "nam/face_proud"]),
- ("END", "Kết thúc", "Chúc mừng / chia tay PM (không có thoại trong docs – dùng cho màn kết).", ["nam/cheer", "nam/congrats", "nam/sad_01", "nam/wave_01"]),
-]
+FPS = {"idle": (6, True), "walk": (10, True), "run": (14, True), "greet": (6, False), "sit": (8, False),
+       "startle": (10, False), "shrink": (4, False), "apologize": (5, False), "sorry_talk": (4, True),
+       "good": (6, False), "eager": (6, False), "happy": (6, False), "worry": (4, True), "hesitant": (4, True),
+       "listen": (3, True), "lap_type": (8, True), "lap_show": (6, False), "talk": (6, True), "nod": (6, False),
+       "proud": (6, False), "check_write": (6, True), "desk_type": (8, True), "desk_panic": (6, False),
+       "night_type": (6, True), "night_sleep": (2, True), "meet_table_listen": (3, True),
+       "meet_table_talk": (6, True), "tired_idle": (4, True), "tired_talk": (5, True), "tired_walk": (7, True),
+       "tired_worry": (4, True), "weary": (4, False)}
 
 def groups(s):
     g = {}
@@ -321,43 +337,183 @@ def groups(s):
         g.setdefault(m.group(1) if m else c["name"], []).append(c["name"])
     return g
 
-def readme(man):
-    L = ["# Bộ prompt sprite NAM (SALE – Sales Executive)", "",
-         "Sinh bởi `build.py` – sửa ở `build.py` rồi chạy lại, không sửa tay file này.", "",
-         "Cùng cơ chế v3 với bộ PM (`docs/PM`), MINH, LAN, HA, HUY: nhân vật vẽ tay không + chấm neo "
-         "(magenta = cầm chính, green = tay kia, cyan = điểm ngồi); đồ vật, nội thất, icon **dùng lại sheet P, O, F của PM**.", "",
-         "## Thứ tự tạo ảnh", "",
-         "| Sheet | File prompt | Đính kèm | Nội dung |", "|---|---|---|---|"]
-    for s in SHEETS:
-        att = "ảnh thật + `PM_A_master.png` (chỉ lấy style)" if s["attach"] == "photo+pm" else "ảnh thật + `NAM_A_master.png`"
-        L.append(f"| {s['id']} ({s['cols']}x{s['rows']}) | `prompts/NAM_{s['id']}_{s['key']}.txt` | {att} | {s['title']} |")
-    L += ["", "Tạo sheet A trước và duyệt, sau đó B, D đính kèm A làm chuẩn. Không có sheet C: Nam chỉ xuất hiện ở "
-          "L3 S10 và L4 S15, nên các cảnh gộp vào sheet B (như bộ HA).", "",
-          "## Tạo hình nhân vật (theo docs)", "",
-          "- Vai trò: Sales Executive – “ưu tiên cơ hội và cam kết với khách hàng” (docs/KICH_BAN_ROLECRAFT_PM60.md, mục 2), "
-          "“thúc đẩy cơ hội mở rộng hợp đồng” (L4 S15).",
-          "- Xưng “anh” với PM → lớn tuổi hơn PM một chút; hào hứng, thuyết phục, hay hứa trước với khách rồi mới hỏi team.",
-          "- Đạo cụ đặc trưng: điện thoại (`prop/phone_back`, `prop/phone_screen`); báo giá dùng `prop/contract_sheet`, "
-          "danh thiếp dùng `prop/task_card`.",
-          "- Ô `dropby_*` tựa vào bàn PM: nội thất gắn điểm `lean_left` (mới, chưa có ở bộ khác) – code cần đặt "
-          "`furn/desk_monitor` ngay dưới bàn tay tì lên bàn.", "",
-          "## Cảnh → animation gợi ý (bám thoại của Nam)", "",
-          "| Scenario | Nhịp | Thoại (tóm tắt) | Animation / chân dung |", "|---|---|---|---|"]
-    for sc, beat, line, anims in SCENES:
-        L.append(f"| `{sc}` | {beat} | {line} | {', '.join(f'`{a}`' for a in anims)} |")
-    L += ["", f"Tổng: {sum(len(s['cells']) for s in man['sheets'])} ô, {len(man['animations'])} animation.", ""]
+# ---------------------------------------------------------------- bam kich ban: MOI O phai co mat o day
+# (canh, nhip, thoai / dien bien theo docs/KICH_BAN_ROLECRAFT_PM60.md, chuoi animation va chan dung)
+SCENES = [
+ ("L1 Cảnh team", "Nền khu làm việc", "Nam (JUNIOR_DEV) có mặt ở khu team, không thoại; PM gặp team lần đầu", "desk_type → desk_focus_01 → desk_turn_01 → greet_01 · face_shy"),
+ ("L1 Cảnh team", "Đi lại", "Vào / rời khu làm việc", "walk → idle → sit → desk_stand_01 → sit_04 → idle_back_01"),
+ ("L2 S05 Hai dự án", "Mở cảnh", "Ngày 18 · Phòng họp nội bộ (Anh Minh, Huy nói)", "walk → lap_carry_01 → meet_table_listen · face_neutral"),
+ ("L2 S05 Hai dự án", "A", "Thuê Freelancer (Huy: team vẫn mất thời gian onboarding)", "meet_table_nod_01 → good_01 · face_relieved"),
+ ("L2 S05 Hai dự án", "B", "Nam: “Em sẽ cố, nhưng team đã căng từ đợt demo trước.”", "meet_table_worry_01 → meet_table_talk → try_01 · face_worried"),
+ ("L2 S05 Hai dự án", "C", "Đàm phán lại ưu tiên với quản lý", "meet_table_nod_01 · face_relieved"),
+ ("L2 S05 Hai dự án", "B → team_ot_14_days", "Dẫn truyện: Hai tuần OT liên tục. Cả team kiệt sức.", "night_type → night_coffee_01 → night_rub_01 → night_yawn_01 → night_sleep → night_wake_01 · face_tired; từ đây idle/talk/walk → tired_idle / tired_talk / tired_walk"),
+ ("L2 S05 Hai dự án", "Áp lực OT", "", "weary → tired_try_01 → tired_sigh_01 → exhausted_01 · face_tired"),
+ ("L2 S06 Deadline/chất lượng", "Mở cảnh + nhánh", "(JUNIOR_DEV có mặt; Huy, Anh Hiệp nói)", "meet_table_listen · A: worry_01 · face_anxious · B: meet_table_nod_01 · face_relieved · C: meet_table_note_01 · face_thinking"),
+ ("L3 S11 Junior gây lỗi", "Trước cảnh", "Ngày 41 · sáng sớm, Nam phát hiện push nhầm code", "desk_type → desk_panic → startle_01 → startle_02 · face_shocked → face_panic"),
+ ("L3 S11 Junior gây lỗi", "Chạy đi báo", "", "desk_stand_01 → run → lap_hold_01 → lap_show · face_panic"),
+ ("L3 S11 Junior gây lỗi", "Mở cảnh", "Nam: “Em xin lỗi... em push nhầm code, dữ liệu test mất hết rồi.”", "apologize → sorry_talk → teary_01 · face_sorry"),
+ ("L3 S11 Junior gây lỗi", "", "Lan: “Team sẽ mất gần một ngày để khôi phục.”", "lap_close_01 → lap_hug_01 → worry_02 · face_ashamed"),
+ ("L3 S11 Junior gây lỗi", "A", "PM: “Mọi người nghe đây: lỗi lần này là do Nam!” → junior_publicly_blamed", "hurt_01 → shrink · face_ashamed"),
+ ("L3 S11 Junior gây lỗi", "B", "PM: “Để mình xử lý nốt. Chuyện này bỏ qua nhé.”", "confused_01 → uneasy_01 · face_confused"),
+ ("L3 S11 Junior gây lỗi", "C", "PM: “Nam, mình nói chuyện riêng, cùng tìm nguyên nhân rồi thêm checklist deploy.”", "oneone_listen_01 → oneone_nod_01 → oneone_talk_01 · face_thankful"),
+ ("L3 S11 Junior gây lỗi", "C → khôi phục + checklist", "deployment_checklist_added", "desk_fix_01 → check_write → check_tick_01 → check_read_01 → resolve_01 · face_determined"),
+ ("L4 S13 Hệ thống vận hành", "Mở cảnh", "(JUNIOR_DEV có mặt; Anh Minh, Lan nói)", "meet_table_listen · face_neutral"),
+ ("L4 S13 Hệ thống vận hành", "A + team_ot_14_days", "Nam: “Team vừa trải qua một giai đoạn làm việc kéo dài. Nếu tiếp tục tăng tốc, em lo mọi người sẽ không giữ được chất lượng.”", "tired_worry · face_worried"),
+ ("L4 S13 Hệ thống vận hành", "B", "Chuẩn hóa quy trình (Lan gộp checklist)", "meet_table_nod_01 → meet_table_note_01 · face_happy"),
+ ("L4 S13 Hệ thống vận hành", "C", "Nam: “Em muốn phụ trách checklist cho thành viên mới.”", "meet_table_raise_01 → eager · face_eager"),
+ ("L4 S13 Hệ thống vận hành", "C + junior_publicly_blamed", "Nam: “Em hơi lo mình chưa đủ kinh nghiệm để nhận phần này. Nếu có người review cùng, em sẽ thử.”", "hesitant_01 → hesitant_02 → try_01 · face_hesitant"),
+ ("L4 S13 Hệ thống vận hành", "C → onboarding", "Nam phụ trách checklist cho thành viên mới", "check_hold_01 → check_point_01 → check_give_01 → check_hug_01 · face_confident"),
+ ("L4 S14 Phát triển team", "Mở cảnh", "Ngày 52 · Phòng họp 1-1 (Anh Minh, Huy nói)", "oneone_listen_01 · face_neutral"),
+ ("L4 S14 Phát triển team", "junior_publicly_blamed", "Nam: “Sau lỗi lần trước, em không chắc team còn tin tưởng giao việc quan trọng cho em không.”", "oneone_sad_01 → oneone_fidget_01 · face_unsure"),
+ ("L4 S14 Phát triển team", "deployment_checklist_added", "Nam: “Em đã hoàn thiện checklist deploy và hỗ trợ team dùng trong các lần release gần đây. Em muốn tiếp tục chịu trách nhiệm phần này.”", "oneone_proud_01 → oneone_talk_01 · face_proud"),
+ ("L4 S14 Phát triển team", "A", "Đánh giá theo số task (Lan: QA ngăn lỗi không có ticket)", "sigh_01 · face_worried"),
+ ("L4 S14 Phát triển team", "B", "Nam: “Em đồng ý. Có tiêu chí em sẽ tự theo dõi được tiến bộ.”", "oneone_eager_01 → nod · face_eager"),
+ ("L4 S14 Phát triển team", "C", "PM: “…Nam sở hữu một module.”", "oneone_surprised_01 → happy → thankful_01 · face_happy"),
+ ("L4 S14 Phát triển team", "C + junior_publicly_blamed", "Nam: “Em vẫn hơi lo mắc lỗi. Nếu có checklist và người hỗ trợ ở các mốc quan trọng, em sẽ nhận.”", "worry_01 → nod · face_hesitant"),
+ ("L4 S14 Phát triển team", "Kết cảnh", "Nhận module / IDP", "proud → good_02 · face_confident"),
+ ("Hội thoại", "Nam đứng nói / nghe", "Mặc định khi đứng", "talk · listen · greet_02 · lap_type · meet_table_talk"),
+]
+NOTE = ("Nam chỉ có ở cảnh team L1 (nền, không thoại), L2 S05, S06, L3 S11 và L4 S13, S14 (kịch bản mục 2), nên không có "
+        "sự cố production, gặp khách hay màn kết thúc. Mọi ô trong các sheet đều xuất hiện trong bảng trên (`build.py` kiểm tra).")
+
+def anim_refs(text):
+    refs = []
+    for part in text.replace("·", "→").replace("/", "→").replace("(", " ").replace(")", " ").replace(";", " ").split("→"):
+        for tok in part.split():
+            if re.fullmatch(r"[a-z][a-z0-9_]+", tok): refs.append(tok)
+    return refs
+
+# ---------------------------------------------------------------- SOL one-shot (toi uu token)
+SOL = """Work autonomously. Do not ask questions. Keep chat output short.
+
+GOAL: sprite sheets A, B, E, D for the game character "Nam – junior frontend developer".
+
+ATTACHMENTS
+1. The photo of the real person (who agreed to this): face source.
+2. PM_A_master.png – another character's master sheet: grid, size and style reference only.
+3. rolecraft_nam_sprite_prompts.zip – prompts/NAM_*.txt, nam_sprite_manifest.json, tools/.
+Props, furniture and icons already exist in the PM set: never generate them.
+
+TOKEN BUDGET RULES (follow strictly)
+- Always ask the image tool for a TRANSPARENT background (PNG with alpha). If a sheet still comes back on plain white, do NOT regenerate it: remove the white with tools/make_transparent.py (step below).
+- One image call per sheet, using the prompt file text EXACTLY. Do not rewrite, shorten or "improve" prompts. Sheet E is a landscape 3:2 image; the others are square.
+- Regenerate a whole sheet ONLY for a HARD FAIL: wrong grid (not the stated columns x rows), figures overlapping or cut off, a face that does not resemble the photo, drawn objects/furniture in many cells, visible text, or a checkerboard pattern / scenery painted as the background. Maximum 1 retry per sheet; keep the better of the two.
+- On a retry, append this line to the prompt and nothing else: "GRID CHECK: exactly the stated columns and rows, one figure per cell, nothing crosses a cell edge."
+- Everything else is a SOFT issue (a pose slightly off, a missing or extra dot, small color drift): do not regenerate, just list it.
+- Never regenerate a sheet that passed. Never regenerate A after B has started.
+- Do not describe images or repeat prompts in chat. After each sheet print one line: `<sheet> | attempts | PASS / FAIL: reason`.
+
+STEPS
+1. Unzip; read the manifest (file names) and prompts.
+2. Sheet A: NAM_A_master.txt with Image 1 = the photo, Image 2 = PM_A_master.png.
+3. Sheets B, E, D: their prompt files with Image 1 = approved NAM_A_master.png, Image 2 = the photo.
+4. Save to sheets/ with the manifest file names. Make every saved sheet transparent (no image call needed):
+   python3 tools/make_transparent.py sheets/*.png
+   Then run once:
+   python3 tools/extract_anchors.py --manifest nam_sprite_manifest.json --sheets sheets --out build
+5. Read build/report.json. Only for a ROW where 3 or more cells report "missing ... marker", make ONE edit call on that sheet with the ROW FIX prompt below (max 2 row fixes in total for the whole job), then run the script once more. Leave all other warnings as they are.
+6. DELIVER: show the final sheets; one file rolecraft_nam_sprites.zip with sheets/, build/, nam_sprite_manifest.json, tools/pm_compose.js; a table: sheet, attempts, result, remaining warnings.
+
+ROW FIX PROMPT (Image 1 = NAM_A_master.png, Image 2 = the sheet to fix):
+"Edit Image 2: redraw ONLY row {N}; keep every other row pixel-identical. Same character as Image 1. Draw no objects or furniture: empty hands in the grip pose. Add the marker dots exactly as tagged: {paste the Row N line from the prompt file}. Dots are small solid flat circles: MAGENTA #FF00FF, GREEN #00FF00, CYAN #00FFFF."
+
+If you run out of room, stop after the last finished step and write: "Resume from step X."
+"""
+
+# ---------------------------------------------------------------- README
+def cell_table(s):
+    L = ["| # | Tên | Mô tả |", "|---:|---|---|"]
+    for c in cells(s):
+        tag = "" if s.get("portrait") or c["name"] == "portrait" else marker_tag(c["name"])
+        L.append(f"| {c['index']} | `nam/{c['name']}` | {c['desc']}{tag} |")
+    return L
+
+KNOWN = set()
+def mapping_md():
+    L = ["Tên là **nhóm animation** `nam/<nhóm>` (bỏ hậu tố `_01`…) hoặc một ô `nam/<ô>_01`; `face_*` là chân dung "
+         "hộp thoại (sheet D). `→` là chuỗi phát nối tiếp. Thoại theo `docs/KICH_BAN_ROLECRAFT_PM60.md`; dòng không ghi "
+         "“Nam:” là phản ứng của Nam khi người khác nói hoặc theo kết quả lựa chọn.", "",
+         "| Cảnh | Nhịp | Thoại / diễn biến | Animation · chân dung |", "|---|---|---|---|"]
+    for sc, beat, line, anim in SCENES:
+        a = re.sub(r"\b([a-z][a-z0-9_]{2,})\b", lambda m: f"`{m.group(1)}`" if m.group(1) in KNOWN else m.group(1), anim)
+        L.append(f"| {sc} | {beat} | {line} | {a} |")
+    L += ["", NOTE]
     return "\n".join(L)
 
+def readme(man):
+    n_cells = sum(len(s["cells"]) for s in man["sheets"])
+    L = ["# RoleCraft PM60 – Bộ prompt sprite Nam v4 (Frontend Developer)", "",
+         "Sinh bởi `rolecraft_nam_sprite_prompts/build.py` – sửa ở đó rồi chạy `python build.py`, không sửa tay file này.", "",
+         f"**{len(man['sheets'])} sheet / {n_cells} ô / {len(man['animations'])} animation.** Mỗi ô gắn với một câu thoại "
+         "hoặc cảnh Nam có mặt trong kịch bản (mục 5). Đồ vật (P), nội thất (O), icon (F) dùng lại của bộ PM.", "",
+         "## Thiết kế", "",
+         "- **Tạo hình:** nam, thành viên trẻ nhất team, áo len lavender ngoài sơ mi trắng, quần chino be, giày trắng, tai nghe "
+         "đeo cổ, thẻ xanh royal. Vật đặc trưng: laptop bạc mỏng (dùng `laptop_*` của bộ PM).",
+         "- **Cung truyện theo kịch bản:** “Em sẽ cố” khi team OT (S05) → push nhầm code, xin lỗi (S11) → bị phê bình / "
+         "được bỏ qua / 1-1 và viết checklist deploy (S11 A/B/C) → xin phụ trách onboarding (S13) → 1-1 đánh giá, nhận "
+         "module (S14), kèm các biến thể theo cờ `team_ot_14_days`, `junior_publicly_blamed`, `deployment_checklist_added`.",
+         "- **Quay PHẢI** như PM, nội thất bên phải: dùng thẳng ghế, bàn của bộ PM; khi đứng đối diện PM thì game lật cả "
+         "cụm (`flip: true`).",
+         "- **Sheet:** A (8×7), B (8×7), E kiệt sức (8×3, ảnh ngang 3:2 – không độn ô), D (4×5). Nền trong suốt; quy tắc "
+         "tiết kiệm token trong `SOL_ONE_SHOT_PROMPT.txt`.",
+         "- **Thay bản cũ:** bản cũ quay trái + bind `beside_left` (không ghép được), mapping theo kịch bản chi tiết cũ.", "",
+         "## 1. Thứ tự sinh và ảnh đính kèm", "",
+         "| Sheet | File prompt | Đính kèm | Nội dung |", "|---|---|---|---|"]
+    att = {"photo+pm": "ảnh thật + `PM_A_master.png`", "master": "`NAM_A` đã duyệt + ảnh thật"}
+    for s in SHEETS:
+        L.append(f"| {s['id']} ({s['cols']}×{s['rows']}) | `prompts/NAM_{s['id']}_{s['key']}.txt` | {att[s['attach']]} | {s['title']} |")
+    L += ["", "**Cách nhanh, ít token nhất:** chat mới với GPT-5.6 Sol, đính kèm ảnh thật, `sheets/PM_A_master.png` và zip "
+          "thư mục `rolecraft_nam_sprite_prompts`, dán `SOL_ONE_SHOT_PROMPT.txt`, gửi một lần. Mỗi sheet 1 lần sinh, chỉ "
+          "sinh lại 1 lần khi lỗi cứng (sai lưới, dính/cụt hình, không giống ảnh thật, có chữ, nền vẽ ô caro giả); nền "
+          "trắng thì chỉ chạy `tools/make_transparent.py`; sửa chấm neo theo **hàng**, tối đa 2 lần cho cả bộ.", "",
+          "**Sinh thủ công:** mỗi sheet dán nguyên văn file prompt, đính kèm như bảng trên. Duyệt A xong mới làm các sheet còn lại.", "",
+          "## 2. Điểm kiểm tra (chỉ các lỗi cứng mới sinh lại)", "",
+          "> ✅ Đúng lưới (A, B: 8×7 vuông; E: 8×3 ảnh ngang; D: 4×5), mỗi ô một hình toàn thân, không dính ô bên, "
+          "**nền trong suốt** (không trắng, không ô caro vẽ giả).",
+          ">",
+          "> ✅ Nhận ra người thật; áo len lavender, cổ sơ mi trắng, tai nghe đeo cổ, thẻ xanh royal; ô 1 sheet A là chân dung khung tím nhạt.",
+          ">",
+          "> ✅ Không vẽ laptop, checklist, ghế, bàn (trừ ô chân dung); chấm neo có ở phần lớn ô có `[markers]`.",
+          ">",
+          "> ✅ Sau script: `build/report.json` – chỉ hàng có ≥3 ô thiếu chấm mới sửa hàng; còn lại chỉnh `dx`/`dy` trong bind.", "",
+          "## 3. Dùng tool", "",
+          "```bash",
+          "cd docs/NAM/rolecraft_nam_sprite_prompts",
+          "python3 tools/make_transparent.py sheets/*.png",
+          "python3 tools/extract_anchors.py --manifest nam_sprite_manifest.json --sheets sheets --out build",
+          "```", "",
+          "Ghép đồ vật: nạp `anchors.json` của bộ PM (`prop/*`, `furn/*`) gộp với `anchors.json` của bộ này (`nam/*`), "
+          "rồi `PMCompose.create(anchors, manifest, base)`.", "",
+          "## 4. Gắn kết ô → đồ vật / nội thất (bộ PM)", "",
+          "| Nhóm tư thế | Đồ vật | Nội thất |", "|---|---|---|",
+          "| idle, walk, run, lap_hug, tired_idle, tired_walk / lap_carry | laptop_closed (ôm trước ngực / kẹp nách) | |",
+          "| lap_hold, lap_type, lap_close / lap_show | laptop_open_34 / laptop_open_front (vẽ lỗi lên màn hình) | |",
+          "| check_write, check_tick | checklist_sheet (tay trái) + pen | |",
+          "| check_read/point/give/hold/hug, proud, oneone_proud | checklist_sheet | |",
+          "| sit_*, desk_turn | | office_chair |",
+          "| desk_* / night_* | lamp_on trên bàn (night), mug_steam (night_coffee) | office_chair + desk_monitor |",
+          "| meet_table_* | pen + notebook_open (note) | meeting_chair + meeting_table |",
+          "| oneone_* | | meeting_chair |",
+          "| weary_03 | mug_plain | |", "",
+          "## 5. Mapping kịch bản → sprite", "", mapping_md(), "",
+          "## 6. Chi tiết từng sheet", ""]
+    for s in SHEETS:
+        L += [f"### Sheet {s['id']} – {s['title']}", ""] + cell_table(s) + [""]
+    return "\n".join(L)
+
+# ---------------------------------------------------------------- main
 def main():
     os.makedirs(f"{OUT}/prompts", exist_ok=True)
-    man = {"version": 3, "character": {"id": "SALE", "role": "SALE", "name": "Nam – Sales Executive"},
-           "shared": {"note": "Đồ vật, nội thất, icon dùng lại sheet P, O, F của bộ PM (docs/PM): prop/*, furn/*, icon/*"},
+    for f in os.listdir(f"{OUT}/prompts"):
+        if f.startswith("NAM_") and f.endswith(".txt"): os.remove(f"{OUT}/prompts/{f}")
+    man = {"version": 4, "character": {"id": "NAM", "role": "JUNIOR_DEV", "name": "Nam – Frontend Developer"},
+           "shared": {"note": "prop/*, furn/*, icon/* dùng lại sheet P, O, F của bộ PM (docs/PM)"},
+           "facing": "right",
            "markers": {"grip": "#FF00FF", "grip2": "#00FF00", "seat": "#00FFFF"},
-           "sheets": [], "animations": {}, "script_animations": SCRIPT_ANIM,
-           "scenes": [{"scenario": sc, "beat": b, "line": l, "use": a} for sc, b, l, a in SCENES]}
+           "sheets": [], "animations": {}}
     seen = set()
     for s in SHEETS:
-        open(f"{OUT}/prompts/NAM_{s['id']}_{s['key']}.txt", "w").write(prompt(s) + "\n")
+        open(f"{OUT}/prompts/NAM_{s['id']}_{s['key']}.txt", "w", encoding="utf-8").write(prompt(s) + "\n")
         cl = []
         for c in cells(s):
             assert c["name"] not in seen, f"trung ten o: {c['name']}"
@@ -367,21 +523,41 @@ def main():
             b = bindings(c["name"])
             if b: e["bind"] = b
             cl.append(e)
-        man["sheets"].append({"id": s["id"], "key": s["key"], "kind": "nam", "file": f"NAM_{s['id']}_{s['key']}.png",
-                              "attach": s["attach"], "cols": s["cols"], "rows": s["rows"], "cells": cl})
+        sh = {"id": s["id"], "key": s["key"], "kind": "nam", "file": f"NAM_{s['id']}_{s['key']}.png",
+              "attach": s["attach"], "cols": s["cols"], "rows": s["rows"], "cells": cl}
+        if s.get("aspect"): sh["aspect"] = s["aspect"]
+        man["sheets"].append(sh)
         if s.get("portrait"): continue
         for k, fr in groups(s).items():
             if k == "portrait": continue
-            fps, loop = FPS.get(k, (8, False) if len(fr) > 1 else (1, False))
+            fps, loop = FPS.get(k, (6, False) if len(fr) > 1 else (1, False))
             man["animations"][f"nam/{k}"] = {"frames": [f"nam/{f}" for f in fr], "fps": fps, "loop": loop}
-    # moi tham chieu trong SCENES phai ton tai (animation, o don hoac chan dung)
-    known = set(man["animations"]) | {f"nam/{n}" for n in seen}
-    for ref in [x for *_, a in SCENES for x in a]:
-        assert ref in known, f"tham chieu khong ton tai: {ref}"
-    json.dump(man, open(f"{OUT}/nam_sprite_manifest.json", "w"), ensure_ascii=False, indent=1)
-    open(f"{OUT}/README_NAM_SPRITE_PROMPTS.md", "w").write(readme(man))
-    n = sum(len(cells(s)) for s in SHEETS)
-    print(f"{len(SHEETS)} sheet, {n} o, {len(man['animations'])} animation, {len(SCENES)} canh -> prompts/ + nam_sprite_manifest.json + README")
+    KNOWN.update(k.split("/")[1] for k in man["animations"]); KNOWN.update(seen)
+    used = set()
+    for *_, anim in SCENES:                                       # moi tham chieu phai ton tai ...
+        for r in anim_refs(anim):
+            if "_" in r or r in KNOWN:
+                assert r in KNOWN, f"mapping tro toi animation khong co: {r}"
+                used.add(r)
+    grp = lambda n: re.sub(r"_\d\d$", "", n)
+    unused = sorted(n for n in seen if n != "portrait" and n not in used and grp(n) not in used)
+    assert not unused, f"o khong gan voi canh nao trong kich ban: {unused}"   # ... va moi o phai duoc dung
+    pm = json.load(open(os.path.join(HERE, "..", "..", "PM", "rolecraft_pm_sprite_prompts", "pm_sprite_manifest.json"),
+                        encoding="utf-8"))
+    have = {c["key"] for s in pm["sheets"] for c in s["cells"]}
+    for s in man["sheets"]:
+        for c in s["cells"]:
+            for b in c.get("bind", []):
+                k = f"prop/{b['prop']}" if "prop" in b else f"furn/{b['furniture']}"
+                assert k in have, f"{c['key']}: khong co {k} trong bo PM"
+    json.dump(man, open(f"{OUT}/nam_sprite_manifest.json", "w", encoding="utf-8"), ensure_ascii=False, indent=1)
+    open(f"{OUT}/SOL_ONE_SHOT_PROMPT.txt", "w", encoding="utf-8").write(SOL)
+    open(f"{OUT}/mapping_section.md", "w", encoding="utf-8").write(mapping_md() + "\n")
+    md = readme(man)
+    for p in (f"{OUT}/README_NAM_SPRITE_PROMPTS.md", os.path.join(OUT, "..", "README_NAM_SPRITE_PROMPTS.md")):
+        open(p, "w", encoding="utf-8").write(md + "\n")
+    n = sum(len(s["cells"]) for s in man["sheets"])
+    print(f"{len(SHEETS)} sheet, {n} o, {len(man['animations'])} animation, {len(SCENES)} dong mapping, 0 o thua")
 
 if __name__ == "__main__":
     main()

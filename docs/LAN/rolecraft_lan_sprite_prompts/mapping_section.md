@@ -1,34 +1,54 @@
-Tên trong bảng là **nhóm animation** (`lan/<nhóm>`) hoặc một ô cụ thể (`lan/<ô>_01`). `face_*` là chân dung hộp thoại (sheet D). Mũi tên `→` là chuỗi phát nối tiếp. Kịch bản gốc: `docs/KICH_BAN_ROLECRAFT_PM60.md`; thoại trong game: `THOAI_MAU.json`.
+Tên là **nhóm animation** `lan/<nhóm>` (bỏ hậu tố `_01`…) hoặc một ô `lan/<ô>_01`; `face_*` là chân dung hộp thoại (sheet D). `→` là chuỗi phát nối tiếp. Thoại theo `docs/KICH_BAN_ROLECRAFT_PM60.md`; dòng ghi “(… nói)” là phản ứng của Lan khi người khác nói.
 
 | Cảnh | Nhịp | Thoại / diễn biến | Animation · chân dung |
 |---|---|---|---|
-| `P1_INTRO` | Mở đầu | Một số requirement và test case chưa được xác nhận đầy đủ. | `lan/talk_03`, `lan/face_cautious` |
-| `P1_S01_PROJECT_TAKEOVER` | Mở cảnh | Tài liệu chưa phản ánh hết… requirement chỉ trao đổi qua tin nhắn. | `lan/doc_read` → `lan/doc_compare` → `lan/check_flag_01`, `lan/face_worried` |
-| `P1_S01_PROJECT_TAKEOVER` | Nhánh A | Em sẽ tổng hợp requirement, test status… | `lan/check_tick`, `lan/face_focused` |
-| `P1_S01_PROJECT_TAKEOVER` | Nhánh B | Em vẫn lo một số giả định cũ chưa được kiểm tra lại. | `lan/worry_01`, `lan/face_worried` |
-| `P1_S02_SENIOR_AUTONOMY` | Tin nhắn | Em chưa xác nhận thay đổi này… có thể phát sinh tranh chấp. | `lan/phone_type`, `lan/face_anxious` |
-| `P1_S03_SCOPE_CHANGE` | Mở cảnh | Hai chức năng này chưa nằm trong phạm vi… cần acceptance criteria. | `lan/meet_table_talk`, `lan/face_cautious` |
-| `P1_S04_TOOL_BUDGET` | Mở cảnh | Team quản lý test case thủ công. Em đề xuất mua bộ công cụ chung. | `lan/tab_present` → `lan/propose`, `lan/face_hopeful` |
-| `P2_S05_DUAL_DEADLINE` | Mở cảnh | Em cần hoàn tất test case và xác nhận requirement với chị Mai… | `lan/talk_02`, `lan/worry_02`, `lan/face_worried` |
-| `P2_S05_DUAL_DEADLINE` | Nhánh A/B/C | Tách requirement / regression bị dồn cuối ngày / workshop khách hàng B. | `lan/check_tick`, `lan/stress_02`, `lan/wb_sticky` |
-| `P2_S05_DUAL_DEADLINE` | Kết cảnh | Giữ deadline hay giữ đủ vòng kiểm thử. | `lan/think_01`, `lan/face_serious` |
-| `P2_S06_DEADLINE_QUALITY` | Mở cảnh | Chức năng mới pass, regression luồng cũ chưa chạy hết. | `lan/lap_show`, `lan/face_serious` |
-| `P2_S06_DEADLINE_QUALITY` | Nhánh A | Em sẽ theo dõi sau release, nhưng vẫn còn rủi ro. | `lan/release_watch_01`, `lan/face_worried` |
-| `P2_S06_DEADLINE_QUALITY` | Nhánh B | Em sẽ cung cấp test report từng ngày. | `lan/release_report_01`, `lan/face_focused` |
-| `P2_S06_DEADLINE_QUALITY` | Nhánh C | Em xác định test scope và tiêu chí go/no-go. | `lan/release_check`, `lan/count`, `lan/release_go` |
-| `P2_S08_CUSTOMER_COMPLAINT` | Mở cảnh | Requirement có một câu hiểu được theo hai cách. | `lan/doc_raise_01`, `lan/two_ways`, `lan/face_cautious` |
-| `P2_S08_CUSTOMER_COMPLAINT` | Nhánh A/B | Chưa giải quyết kỳ vọng thực tế / không làm rõ thì lần sau vẫn hiểu sai. | `lan/meet_table_worry_01`, `lan/firm_01` |
-| `P2_S08_CUSTOMER_COMPLAINT` | Nhánh C + kết | Cập nhật acceptance criteria bằng ví dụ; gửi biên bản mới. | `lan/meet_table_note`, `lan/doc_give`, `lan/face_relieved` |
-| `P3_S09_PRODUCTION_INCIDENT` | Mở cảnh | Sự cố production (QA_BA có mặt). | `lan/alert`, `lan/incident_lap_01`, `lan/face_surprised` |
-| `P3_S11_JUNIOR_MISTAKE` | Mở cảnh | Team sẽ mất gần một ngày để khôi phục. | `lan/incident_calc_01`, `lan/face_sigh` |
-| `P3_S11_JUNIOR_MISTAKE` | Nhánh C | Bổ sung checklist review/deploy. | `lan/support`, `lan/checklist_write_01`, `lan/checklist_show_01` |
-| `P4_S13_OPERATING_SYSTEM` | Mở cảnh | Checklist, requirement, deploy nằm rải rác, có bước chỉ nhắc trong chat. | `lan/talk_02`, `lan/face_serious` |
-| `P4_S13_OPERATING_SYSTEM` | Nhánh A | Lỗi regression vẫn phụ thuộc vào việc từng người tự nhớ. | `lan/disappoint_01`, `lan/face_sigh` |
-| `P4_S13_OPERATING_SYSTEM` | Nhánh B/C | Hợp nhất test checklist… mỗi quy trình có một chỉ số theo dõi. | `lan/check_hold_01`, `lan/own`, `lan/face_bright` |
-| `P4_S14_TEAM_DEVELOPMENT` | 1-1 | QA chỉ được đánh giá bằng số lỗi tìm thấy, phần ngăn lỗi chưa được ghi nhận. | `lan/oneone_talk`, `lan/oneone_hope_01`, `lan/face_hopeful` |
-| `P4_S14_TEAM_DEVELOPMENT` | Nhánh A | Việc QA ngăn lỗi không tạo ra ticket. | `lan/sigh_01`, `lan/face_sympathetic` |
-| `P4_S14_TEAM_DEVELOPMENT` | Nhánh B | Công việc chất lượng sẽ được ghi nhận đúng hơn. | `lan/oneone_relieved_01`, `lan/happy_01`, `lan/face_relieved` |
-| `P4_S14_TEAM_DEVELOPMENT` | Nhánh C | QA có quyền chặn release theo tiêu chí thống nhất. | `lan/gate_stop`, `lan/own`, `lan/face_firm` |
-| `P4_S15_CLIENT_EXPANSION` | Mở cảnh | Phạm vi mới chỉ ở mức mong muốn, chưa có acceptance criteria. | `lan/meet_table_talk`, `lan/caution_01`, `lan/face_cautious` |
-| `P4_S15_CLIENT_EXPANSION` | Nhánh A | Acceptance criteria chưa rõ, về sau khó xác định phạm vi. | `lan/worry_01`, `lan/face_worried` |
-| `END` | Kết thúc | Chúc mừng / chia tay PM (không có thoại trong docs – dùng cho màn kết). | `lan/cheer`, `lan/congrats`, `lan/sad_01`, `lan/bow_01` |
+| L1 S01 Tiếp quản | Vào cảnh | Ngày 1 · khu vực làm việc, PM gặp team lần đầu | `walk` → `idle` → `greet` · `face_polite_smile` |
+| L1 S01 Tiếp quản | Mở cảnh | Lan: “Nhưng tài liệu chưa phản ánh hết những gì team đang làm.” | `listen_02` (Huy nói) → `doc_read` → `doc_compare` → `talk_03` · `face_cautious` |
+| L1 S01 Tiếp quản | A | Review một ngày → sơ đồ hệ thống, phạm vi, checklist rủi ro | `wb_write` → `wb_point_01` → `wb_sticky` → `wb_review_01` → `check_tick` → `check_give_01` · `face_focused` |
+| L1 S01 Tiếp quản | B | Lan: “Em vẫn lo vài giả định cũ chưa được kiểm tra.” | `worry_01` → `check_flag_01` · `face_worried` |
+| L1 S01 Tiếp quản | C | PM tự đọc tài liệu ngoài giờ | `doc_stack_01` → `doc_give` · `face_anxious` |
+| L1 S03 Thay đổi phạm vi | Mở cảnh | Lan: “Hai chức năng này nằm ngoài phạm vi đã xác nhận.” | `meet_table_show_01` → `meet_table_talk` · `face_cautious` |
+| L1 S03 Thay đổi phạm vi | A / B / C | (PM, Anh Hiệp nói) | A: `meet_table_worry_01` · `face_worried` · B: `meet_table_listen_01` · C: `meet_table_note` → `meet_table_agree_01` · `face_relieved` |
+| L1 S04 Quỹ công cụ | Mở cảnh | Lan: “Team đang quản lý test case thủ công. Em đề xuất mua bộ công cụ.” | `tab_hold_01` → `tab_swipe_01` → `tab_present` → `propose` · `face_hopeful` |
+| L1 S04 Quỹ công cụ | Hệ thống | Đầy đủ 15 · dùng chung 5 · miễn phí 0 điểm | `count` · `face_thinking` → `point_01` (chờ PM quyết) |
+| L1 S04 Quỹ công cụ | A | Mua đầy đủ | `happy_01` → `hop` · `face_bright` → `face_laugh` |
+| L1 S04 Quỹ công cụ | B | Chỉ công cụ miễn phí → làm tay | `sigh_01` → `desk_type` · `face_sigh` |
+| L1 S04 Quỹ công cụ | C | Licence dùng chung → điểm nghẽn | `doubt_01` → `nod` · `face_doubtful` |
+| L1 S04 Quỹ công cụ | Sau cảnh | Test tay / test có công cụ | `walk` → `idle_back_01` (về bàn) → `sit` → `desk_type` → `desk_bug_01` → `desk_log_01` → `desk_frown_01` / `desk_pass_01` → `desk_turn_01` → `desk_stand_01` |
+| L2 S05 Hai dự án | Mở cảnh + nhánh | (QA_BA có mặt; Anh Minh, Huy, Nam nói) | `meet_table_listen_01` · A: `meet_table_note` · B: `meet_table_worry_01` · `face_worried` · C: `meet_table_agree_01` |
+| L2 S05 Hai dự án | B → team_ot_14_days | Dẫn truyện: Hai tuần OT liên tục. Cả team kiệt sức. | `night_type` → `night_rub_01` → `night_yawn_01` → `night_coffee_01` → `night_sleep` → `night_wake_01` · `face_tired`; từ đây `idle`/`talk`/`walk` → `tired_idle` / `tired_talk` / `tired_walk` |
+| L2 S05 Hai dự án | B → sáng hôm sau |  | `slump` → `lie_01` → `getup` → `stretch` · `face_tired` |
+| L2 S05 Hai dự án | Áp lực OT |  | `weary` → `stress_01` → `rushed_01` → `exhausted_01` · `face_tired` |
+| L2 S06 Deadline/chất lượng | Mở cảnh | (QA_BA có mặt) Huy: phải bỏ vòng regression cuối | `listen_01` → `release_check` → `tense_01` · `face_worried` |
+| L2 S06 Deadline/chất lượng | A | Bỏ regression, release đúng hạn | `release_nogo` → `uneasy_01` → `release_watch_01` · `face_anxious` |
+| L2 S06 Deadline/chất lượng | B | Delay ba ngày, chạy đủ regression | `night_type` → `release_report_01` → `release_go` · `face_relieved` |
+| L2 S06 Deadline/chất lượng | C | Test luồng critical, release từng phần | `check_hold_01` → `check_tick` → `two_ways_01` → `gate_go_01` · `face_focused` |
+| L2 S08 Complain | Mở cảnh | Lan: “Requirement có một câu hiểu được theo hai cách.” | `doc_raise_01` → `two_ways` · `face_cautious` |
+| L2 S08 Complain | A | PM: team đã làm đúng tài liệu | `firm_01` → `frown_01` · `face_frown` |
+| L2 S08 Complain | B | Lan: “Không làm rõ requirement thì lần sau vẫn sẽ hiểu sai.” | `object_01` → `firm_01` · `face_firm` |
+| L2 S08 Complain | C | Làm rõ kỳ vọng, chốt tiêu chí nghiệm thu | `meet_table_note` → `wb_write` → `wb_explain` · `face_relieved` |
+| L3 S09 Incident | Mở cảnh | Hệ thống: 14:00 production lỗi (QA_BA có mặt) | `alert` → `startle_01` → `run` → `incident_lap` · `face_surprised` |
+| L3 S09 Incident | critical_payment_incident | Cờ regression_test_skipped | `stress_02` → `bad_01` · `face_anxious` |
+| L3 S09 Incident | A / B / C | (PM nói) | A: `phone_call_01` (xác nhận lỗi với phía khách) → `desk_type` · B: `worry_02` · C: `release_watch_01` → `breath_01` → `relieved_01` · `face_relieved` |
+| L3 S11 Junior gây lỗi | Mở cảnh | Lan: “Team sẽ mất gần một ngày để khôi phục.” | `incident_calc_01` · `face_sigh` |
+| L3 S11 Junior gây lỗi | A | PM phê bình Nam trước team | `uneasy_01` → `disappoint_01` · `face_sympathetic` |
+| L3 S11 Junior gây lỗi | B | PM tự xử lý, bỏ qua | `sigh_01` · `face_worried` |
+| L3 S11 Junior gây lỗi | C | 1-1 và thêm checklist deploy | `support` → `checklist_write` → `checklist_show_01` · `face_warm` |
+| L4 S13 Hệ thống vận hành | Mở cảnh | Lan: “Checklist và quy trình deploy vẫn nằm rải rác, có bước chỉ nhắc trong nhóm chat.” | `phone_type_01` → `phone_show_01` → `phone_pocket_01` → `crouch` → `talk_02` · `face_serious` |
+| L4 S13 Hệ thống vận hành | deployment_checklist_added | Lan: “Sau sự cố mất dữ liệu test, team đã có checklist deploy mới…” | `check_show_01` → `check_tap_01` → `caution_01` · `face_serious` |
+| L4 S13 Hệ thống vận hành | process_gap_unresolved | Lan: “Lỗ hổng lần trước chưa được xử lý…” | `phone_read_01` → `phone_read_02` → `worry_02` · `face_anxious` |
+| L4 S13 Hệ thống vận hành | A | (Huy: điểm nghẽn cũ sẽ quay lại) | `disappoint_01` · `face_sigh` |
+| L4 S13 Hệ thống vận hành | B | Lan: “Em sẽ gộp test checklist và tiêu chí nghiệm thu về một chỗ.” | `merge` → `check_hug_01` → `own` · `face_bright` |
+| L4 S13 Hệ thống vận hành | C | Mỗi người sở hữu một phần: Lan chất lượng | `own_01` → `handoff_01` → `applaud_01` · `face_warm` |
+| L4 S14 Phát triển team | Mở cảnh | (1-1; Anh Minh, Huy nói) | `oneone_listen_01` · `face_neutral` |
+| L4 S14 Phát triển team | A | Lan: “Việc QA ngăn được lỗi sẽ không có ticket nào ghi nhận.” | `oneone_talk` → `oneone_sigh_01` · `face_sigh` |
+| L4 S14 Phát triển team | B | IDP 90 ngày cho từng người | `oneone_hope_01` → `oneone_relieved_01` → `oneone_nod_01` · `face_relieved` |
+| L4 S14 Phát triển team | C | PM: “…Lan được chặn release…” | `oneone_own_01` → `gate_stop` → `proud_01` · `face_firm` |
+| L4 S15 Mở rộng hợp tác | Mở cảnh | Lan: “Phạm vi mới chỉ là mong muốn, chưa có tiêu chí nghiệm thu.” | `meet_table_talk` → `caution_01` · `face_cautious` |
+| L4 S15 Mở rộng hợp tác | key_developer_left | Lan: “Hiện tại team chưa có người thay thế hoàn toàn phần kỹ thuật chủ chốt…” | `meet_table_worry_01` · `face_worried` |
+| L4 S15 Mở rộng hợp tác | A / B / C | (PM, Huy, Anh Hiệp, Linh nói) | A: `frown_01` · `face_worried` · B: `nod` → `determined` · C: `good_01` → `meet_table_agree_01` · `face_relieved` |
+| Chuyển ngày | Bình thường |  | `walk` → `coffee` → `sit` → `desk_type` |
+| Chuyển ngày | Chờ quyết định / câu hỏi | PM đang chọn A/B/C | `think` → `crossarms_01` → `front_hands_01` → `inspect_01` |
+| Popup chỉ số | Tăng / giảm (khi Lan có mặt) |  | `good` / `bad_01` |
+
+Lan không có trong S02, S07, S10, S12, S16 và các màn kết thúc (kịch bản mục 2) nên không có sprite cho các cảnh đó; bản cũ có `cheer`, `congrats`, `bow` cho màn kết — đã bỏ. Mọi ô trong 5 sheet đều xuất hiện trong bảng trên (`build.py` kiểm tra).

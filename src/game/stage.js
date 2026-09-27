@@ -1,6 +1,6 @@
 // San khau man tinh huong: canvas phu ca man, ve PM, emote, phu toi canh dem. Atlas sheets/game_pm.webp (build_preview.py) da xoa
 // cham neo va ghep san do cam tay + noi that theo `bind` trong manifest (but long, bang trang, ban lam viec, ban hop...).
-// NPC chua co sprite -> the UI tam (LevelScreen), khong ve o day.
+// NPC co sprite (npcAtlas.js) dung chung Actor + drawActor, ve tren canvas rieng cua tung NPC (LevelScreen); chua co -> the UI tam.
 import ATLAS from './atlas.js';
 import { DATA } from '../shared/sprites.js';
 import { IMG, ready, loadSheets } from '../shared/images.js';
@@ -13,12 +13,39 @@ DATA.cells.filter(c => c.s === 'F').forEach(c => { EMO[c.name] = DATA.rects.F[`$
 
 const STAND = ATLAS.stand;                                // cao dang dung chuan (idle_01) tren atlas, px
 
-// PM: vi tri x (ti le be ngang), animation dang phat, di chuyen
+// Lam muot ma khong can them anh: sprite AI ve it khung, nhay thang giua 2 dong tac se giat.
+export const FADE_MS = 140;        // do mo dan tu khung cu sang dong tac moi
+const SETTLE_MS = 220;             // nhun nhe khi vao dong tac moi (nen xuong roi bat len)
+const SETTLE = 0.018;              // bien do nhun, ti le chieu cao
+const BREATH_MS = 2600, BREATH = 0.007;   // tho: phong nhe theo chieu cao quanh goc chan khi dung yen
+
+// Nhan vat: vi tri x (ti le be ngang), animation dang phat, di chuyen. atlas: PM (mac dinh) hoac NPC (npcAtlas.js)
+// alias = bang thay dong tac (vd PM kiet suc: { idle: 'tired_idle', talk: 'tired_talk', walk: 'tired_walk' }), null = khong thay
 export class Actor {
-  constructor(x) { this.x = x; this.anim = 'idle'; this.t0 = 0; this.walk = null; this.then = null; this.flip = false; }
+  constructor(x, atlas = ATLAS) {
+    this.atlas = atlas; this.x = x; this.anim = 'idle'; this.t0 = 0; this.walk = null; this.then = null; this.flip = false;
+    this.last = null; this.prev = null;           // khung vua ve / khung cu dang mo dan
+    this.alias = null;
+  }
   play(anim, then = null) {
-    if (this.anim !== anim || then !== this.then) { this.anim = anim; this.t0 = performance.now(); }
+    anim = this.alias?.[anim] || anim;
+    if (this.anim !== anim || then !== this.then) {
+      const now = performance.now();
+      if (this.anim !== anim && this.last) this.prev = { ...this.last, t0: now };
+      this.anim = anim; this.t0 = now;
+    }
     this.then = then;
+  }
+  // Lop can ve tai now: khung cu (mo dan) + khung hien tai, kem he so tho/nhun (scaleY quanh goc chan)
+  layers(now) {
+    const cur = this.frame(now), out = [];
+    const p = this.prev ? (now - this.prev.t0) / FADE_MS : 1;
+    if (p < 1) out.push({ a: this.prev.a, i: this.prev.i, alpha: 1 - p });
+    else this.prev = null;
+    out.push({ ...cur, alpha: 1 });
+    const settle = Math.max(0, 1 - (now - this.t0) / SETTLE_MS);
+    const breath = this.walk ? 0 : Math.sin(now / BREATH_MS * Math.PI * 2) * BREATH;
+    return { layers: out, sy: 1 + breath - SETTLE * Math.sin(settle * Math.PI) };
   }
   // Di toi x trong ms; tra ve Promise khi toi noi
   walkTo(x, ms) {
@@ -34,12 +61,13 @@ export class Actor {
       this.x = p >= 1 ? w.to : w.from + (w.to - w.from) * p;    // toi noi thi dat dung dich (tranh sai so 0.2999...)
       if (p >= 1) { this.walk = null; this.flip = false; this.play('idle'); w.done(); }
     }
-    let a = ATLAS.anims[this.anim];
+    let a = this.atlas.anims[this.anim] || this.atlas.anims.idle;     // NPC thieu dong tac -> dung yen
     const i = Math.floor(Math.max(0, now - this.t0) * a.fps / 1000);
     if (!a.loop && i >= a.n && this.then) {
       const next = this.then; this.then = null; this.play(next); return this.frame(now);
     }
-    return { a, i: a.loop ? i % a.n : Math.min(a.n - 1, i) };
+    this.last = { a, i: a.loop ? i % a.n : Math.min(a.n - 1, i) };
+    return this.last;
   }
 }
 
@@ -65,13 +93,8 @@ export function drawStage(cv, pm, view, now) {
   }
   if (!PM_IMG.complete || !PM_IMG.naturalWidth) return;
 
-  // khung cua animation: goc (ox, oy) = giua day chan dat tai (pm.x, view.foot); lat quanh goc khi di sang trai
-  const { a, i } = pm.frame(now), { fw, fh, ox, oy } = a, cx = Math.round(pm.x * W);
-  ctx.save();
-  ctx.translate(cx, Math.round(view.foot));
-  if (pm.flip) ctx.scale(-1, 1);                         // sprite ve huong phai; di sang trai thi lat
-  ctx.drawImage(PM_IMG, i * fw, a.y, fw, fh, -ox * s, -oy * s, fw * s, fh * s);
-  ctx.restore();
+  const cx = Math.round(pm.x * W);
+  drawActor(ctx, pm, PM_IMG, s, cx, view.foot, now);
 
   // Emote = PM dang nghi: icon trong bong bong suy nghi (mat kinh vien muc nhu .px-bubble) + 2 cham tron dan xuong dau,
   // nhun em. Khong co bong bong thi icon (vd ly ca phe) trong nhu do vat lo lung trong canh.
@@ -95,6 +118,21 @@ export function drawStage(cv, pm, view, now) {
     ctx.restore();
     ctx.drawImage(IMG.F, x, y, w, h, bx + (bw - w * sc) / 2, by + (bh - h * sc) / 2, w * sc, h * sc);
   }
+}
+
+// Ve nhan vat: khung cua animation, goc (ox, oy) = giua day chan dat tai (x, foot) px, s = ti le atlas -> man hinh;
+// lat quanh goc khi actor.flip. Doi dong tac: khung cu mo dan (FADE_MS); dung yen: tho nhe; vao dong tac moi: nhun.
+export function drawActor(ctx, actor, img, s, x, foot, now) {
+  const { layers, sy } = actor.layers(now);
+  ctx.save();
+  ctx.translate(x, Math.round(foot));
+  ctx.scale(actor.flip ? -1 : 1, sy);                    // sprite ve huong phai; di sang trai / NPC nhin sang PM thi lat
+  for (const { a, i, alpha } of layers) {
+    const { fw, fh, ox, oy } = a;
+    ctx.globalAlpha = alpha;
+    ctx.drawImage(img, i * fw, a.y, fw, fh, -ox * s, -oy * s, fw * s, fh * s);
+  }
+  ctx.restore();
 }
 
 // Ve mot icon sheet F vua khit canvas (HUD chi so, bang ket qua)

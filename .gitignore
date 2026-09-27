@@ -2,3 +2,5 @@ node_modules/
 dist/
 __pycache__/
 *.tmp
+# Goi sprite goc (dau vao import_characters.py, ~15-20MB/goi) – de ngoai repo (thu muc goc hoac ~/Downloads)
+*.zip

@@ -18,14 +18,15 @@ function show(name, mount) {
 
 const go = {
   // Tiep tuc: con ban luu (session.game) va da co ten
-  start: () => show('start', () => mountStart(app, { onStart: go.name, onContinue: session.game && session.playerName ? go.level1 : null })),
+  start: () => show('start', () => mountStart(app, { onStart: go.name, onContinue: session.game && session.playerName ? go.play : null })),
   name: () => show('name', () => mountName(app, {
     onBack: go.start,
-    onEnter: () => { session.game = null; saveSession(); go.level1(); },   // Bat dau = van moi, bo ban luu cu
+    onEnter: () => { session.game = null; saveSession(); go.play(); },   // Bat dau = van moi, bo ban luu cu
   })),
-  // Chua co ten (mo thang #level1) thi quay ve man nhap ten
-  level1: () => (session.playerName ? show('level1', () => mountLevel(app, { onMenu: go.start })) : go.name()),
+  // Man choi: cac level noi tiep (Level 1 -> Level 2...), choi tiep phien dang do. Chua co ten (mo thang #play) thi ve man nhap ten
+  play: () => (session.playerName ? show('play', () => mountLevel(app, { onMenu: go.start })) : go.name()),
 };
+go.level1 = go.play;                                       // hash cu #level1
 (go[location.hash.slice(1)] || go.start)();
 
 function tick(now) { requestAnimationFrame(tick); screen?.update?.(now); }

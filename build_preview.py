@@ -275,7 +275,15 @@ GAME_ANIMS = ['idle', 'walk', 'greet', 'talk', 'nod', 'sigh', 'good',
               'stop', 'oneone_talk',                                                                # S02 (phone_read: man hinh la cham neo -> mang hong, khong dung)
               'meet_table_listen', 'meet_table_worry', 'meet_table_agree', 'meet_table_talk',       # S03 (ngoi, ve san ghe)
               'meet_table_present',
-              'tab_present', 'count', 'thumbs']                                                     # S04
+              'tab_present', 'count', 'thumbs',                                                     # S04
+              'night_sleep', 'night_wake', 'tired_idle', 'tired_talk', 'tired_walk',                # L2: pm_overloaded
+              'rally', 'bow', 'doc_raise', 'crossarms', 'bad', 'jump',           # L2: S05, S06, S08, tong ket
+              'oneone_listen', 'oneone_show', 'oneone_worry', 'desk_type',                          # L2: S07 (1-1, ket canh)
+              'alert', 'startle', 'command', 'delegate', 'rollback', 'relief', 'phone_call',       # L3: S09 (su co), goi khach
+              'facepalm', 'scold', 'checklist', 'headshake',                                       # L3: S11, S12
+              'meet_note', 'wb_explain', 'clap', 'formal_walk', 'adjust', 'present', 'reflect',     # L4: S13, S16
+              'answer', 'bowthank', 'wait', 'badge', 'celebrate', 'relieved', 'fail', 'leave',      # L4: phan bien, ket thuc
+              'leave_back', 'resolve']
 # Do vat / noi that ma hoa si DA VE SAN trong sprite nhan vat (trai voi quy uoc "tach roi") -> khong ghep them, tranh ve trung.
 DRAWN_IN_SPRITE = {('tablet_back', 'grip'), ('tablet_edge', 'grip'), ('tablet_screen_34', 'grip'), ('notebook_open', 'grip'),
                    ('office_chair', 'seat'), ('meeting_chair', 'seat'),

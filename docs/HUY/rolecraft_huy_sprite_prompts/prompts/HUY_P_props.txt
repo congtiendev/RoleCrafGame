@@ -1,0 +1,15 @@
+TASK: create a 4x2 sheet of separate items for a chibi pixel-art office game: Huy's own handheld and desk items.
+
+ATTACHED IMAGE: the approved master sheet of the character. Use it ONLY for art style and scale; do not draw the character.
+
+ART STYLE: exactly the style of the attached sheet: clean dark-brown pixel outline, soft cel shading, warm natural colors, top-left light, 3/4 view as seen by a character facing right.
+
+LAYOUT: square 1:1, fully TRANSPARENT background (PNG with alpha channel): no white, no color, no checkerboard pattern painted in. Exactly 4 columns x 2 rows = 8 cells, one item per cell, centred, never touching another item, no shadows. Each item at its real size relative to the chibi character (the laptop is about as wide as his torso).
+
+MARKERS: one small solid MAGENTA #FF00FF dot at the grip point (where the centre of a hand holds it) or, for items that stand on a surface, at the bottom-centre contact point. Screens are flat solid GREEN #00FF00. Never use these colors elsewhere.
+
+CELLS:
+Row 1 - Huy's navy laptop (navy lid with a small white round logo, no text): (1) closed laptop seen 3/4, as tucked under an arm; (2) open laptop seen 3/4 from behind-left, as balanced on a forearm (lid back visible, keyboard partly visible); (3) open laptop turned so the screen faces right at a 3/4 angle; visible screen is flat solid GREEN #00FF00; (4) open laptop with the screen facing the viewer; screen flat solid GREEN #00FF00.
+Row 2 - Huy's other items: (5) plain dark-blue energy drink can, no text; (6) open navy ring binder with colored tab dividers and grey lines (no readable text); (7) open cardboard box holding a small cactus, black headphones, a rolled cable and a mug; (8) black over-ear headphones lying on a desk.
+
+DO NOT: draw any character or hands; add text, letters, numbers or watermark; draw grid lines, borders, floors or backgrounds.

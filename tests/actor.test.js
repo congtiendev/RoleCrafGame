@@ -86,3 +86,29 @@ test('rAF co the goi voi now som hon luc bat dau: khong ra khung am', () => {
   const pm = new Actor(0.3); pm.play('walk');
   assert.equal(pm.frame(now - 50).i, 0);
 });
+
+test('doi dong tac: khung cu mo dan trong FADE_MS roi bien mat', async () => {
+  const { FADE_MS } = await import('../src/game/stage.js');
+  const pm = new Actor(0.3); pm.t0 = now; pm.frame(now);
+  pm.play('nod');
+  let { layers } = pm.layers(now);
+  assert.equal(layers.length, 2);
+  assert.equal(layers[0].a, ATLAS.anims.idle);
+  assert.ok(Math.abs(layers[0].alpha - 1) < 1e-9 && layers[1].alpha === 1);
+  now += FADE_MS / 2; ({ layers } = pm.layers(now));
+  assert.ok(Math.abs(layers[0].alpha - 0.5) < 1e-9);
+  now += FADE_MS; ({ layers } = pm.layers(now));
+  assert.equal(layers.length, 1);
+  assert.equal(pm.prev, null);
+});
+
+test('play cung animation khong tao lop mo dan; dung yen thi tho, di thi khong', () => {
+  const pm = new Actor(0.3); pm.play('talk'); pm.frame(now); now += 1000;
+  pm.play('talk');
+  assert.equal(pm.layers(now).layers.length, 1);
+  const sys = [0, 650, 1300, 1950].map(ms => pm.layers(now + ms).sy);
+  assert.ok(Math.max(...sys) > 1 && Math.min(...sys) < 1, 'dung yen: scaleY dao dong quanh 1');
+  assert.ok(sys.every(v => Math.abs(v - 1) < 0.02), 'bien do tho nho');
+  pm.walkTo(0.5, 5000); now += 1000;
+  assert.equal(pm.layers(now + 400).sy, 1);
+});

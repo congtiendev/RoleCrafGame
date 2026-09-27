@@ -23,6 +23,7 @@ export function summarize(run, level, phase) {
   const x = {
     risk: run.metrics.project_risk, budget: run.metrics.budget,
     dangers: dangers.length, zeroRating: ratings.some(r => r.rating === 0),
+    metrics: run.metrics, flags: run.flags, choices: run.choices,
   };
   const tier = level.summary.tiers.find(t => t.when(x));
 
@@ -41,8 +42,14 @@ export function summarize(run, level, phase) {
   }).filter(Boolean);
   const topCompetency = byComp.reduce((b, c) => (!b || c.score > b.score ? c : b), null);
 
+  // Hau qua tri hoan tu quyet dinh truoc da quay lai trong level nay (co loi bao): nguon 'P1_S03_SCOPE_CHANGE_A' -> 'L1 · S03 · A'
+  const returned = (run.fired || []).filter(f => ids.has(f.at) && f.note).map(f => {
+    const m = f.source?.match(/^P(\d)_(S\d\d)_.*_([A-C]\d?)$/);
+    return { at: f.at, from: m ? `L${m[1]} · ${m[2]} · ${m[3]}` : '', text: f.note };
+  });
+
   return {
-    tier, facts: x, dangers, decisions, best, topCompetency, competencies: byComp,
+    tier, facts: x, dangers, returned, decisions, best, topCompetency, competencies: byComp,
     changes: METRICS.map(m => ({ key: m.key, from: start[m.key], to: run.metrics[m.key] })),
     budgetUsed: Math.max(0, start.budget - run.metrics.budget),
   };

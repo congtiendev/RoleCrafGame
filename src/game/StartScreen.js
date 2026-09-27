@@ -25,7 +25,7 @@ const template = () => `
     <div class="absolute inset-0 bg-linear-to-b from-px-ink/80 via-transparent to-px-ink/70 portrait:via-px-ink/10 portrait:to-px-ink/90"></div>
 
     <!-- ten game -->
-    <header id="startTitle" class="absolute inset-x-0 top-[4vh] flex animate-rise flex-col items-center px-4 text-center [@media(max-height:560px)]:top-[2vh]">
+    <header id="startTitle" class="absolute inset-x-0 top-[calc(4vh+env(safe-area-inset-top))] flex animate-rise flex-col items-center px-4 text-center [@media(max-height:560px)]:top-[calc(2vh+env(safe-area-inset-top))]">
       <span class="art-btn art-red mb-5 px-4 pt-1.5 pb-2 font-pixel text-[1.5rem] leading-none tracking-[0.3em] [--bw:16px] [--bw2:18px] portrait:mb-4 portrait:text-[1.3rem] [@media(max-height:560px)]:mb-3 [@media(max-height:560px)]:text-[1.2rem]">ROLECRAFT</span>
       <!-- PC: mot dong, nam tron tren vung tran nha (khong de logo Innocom); mobile: hai dong -->
       <h1 class="px-title text-[clamp(3.4rem,6.2vw,7rem)] portrait:text-[clamp(2.6rem,13vw,4.6rem)] [@media(max-height:560px)]:text-[2.6rem]">
@@ -41,8 +41,8 @@ const template = () => `
 
     <!-- khung menu -->
     <nav aria-label="Menu" class="px-panel absolute top-[46vh] left-1/2 w-[min(400px,86vw)] -translate-x-1/2 animate-rise px-11 py-6 [animation-delay:.15s] max-sm:px-8
-         [@media(max-height:560px)]:top-auto [@media(max-height:560px)]:bottom-[9vh] [@media(max-height:560px)]:w-[min(760px,92vw)] [@media(max-height:560px)]:px-8 [@media(max-height:560px)]:py-4
-         portrait:top-auto portrait:bottom-[4vh]">
+         [@media(max-height:560px)]:top-auto [@media(max-height:560px)]:bottom-[calc(9vh+env(safe-area-inset-bottom))] [@media(max-height:560px)]:w-[min(760px,92vw)] [@media(max-height:560px)]:px-8 [@media(max-height:560px)]:py-4
+         portrait:top-auto portrait:bottom-[calc(4vh+env(safe-area-inset-bottom))]">
       <div class="flex flex-col gap-5 [@media(max-height:560px)]:flex-row [@media(max-height:560px)]:gap-7 [@media(max-height:560px)]:pl-7">
         <button id="startBtn" class="px-btn px-btn-primary px-btn-hint">${icon('play', 'size-6', { stroke: 2.25 })}Bắt đầu</button>
         <button id="contBtn" class="px-btn px-btn-blue" disabled title="Chưa có bản lưu">${icon('playPause', 'size-6', { stroke: 2.25 })}Tiếp tục</button>
@@ -52,7 +52,7 @@ const template = () => `
       <p class="mt-5 flex animate-blink items-center justify-center gap-1 text-center text-sm leading-tight font-bold tracking-wider text-brand-red portrait:hidden pointer-coarse:hidden [@media(max-height:560px)]:hidden">${icon('arrowUp', 'size-4', { stroke: 2.5 })}${icon('arrowDown', 'size-4', { stroke: 2.5 })} CHỌN · ENTER XÁC NHẬN</p>
     </nav>
 
-    <footer class="absolute inset-x-0 bottom-0 flex justify-between px-5 py-2.5 text-xs text-white/60 portrait:hidden [@media(max-height:560px)]:py-1">
+    <footer class="absolute inset-x-0 bottom-0 flex justify-between px-5 py-2.5 px-safe-5 pb-safe-2.5 text-xs text-white/60 portrait:hidden [@media(max-height:560px)]:py-1">
       <span>v0.1 · bản dựng thử</span><span>Innocom · RoleCraft PM60</span>
     </footer>
 

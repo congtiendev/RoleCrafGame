@@ -15,7 +15,7 @@
   ],
   [
    "Anh Minh",
-   "Em có team 3 người và 100 điểm ngân sách. Quyết định là của em."
+   "Em có team 3 người và ngân sách 100.000.000 VND. Quyết định là của em."
   ],
   [
    "PM",
@@ -136,8 +136,8 @@
    "Ngày 10 · Phòng họp kickoff."
   ],
   [
-   "Chị Mai",
-   "Chị muốn thêm hai chức năng vào bản demo. Chắc chỉ vài ngày thôi nhỉ?"
+   "Anh Hiệp",
+   "Anh muốn thêm hai chức năng vào bản demo. Chắc chỉ vài ngày thôi nhỉ?"
   ],
   [
    "Lan",
@@ -170,18 +170,18 @@
    "Yêu cầu này ngoài hợp đồng, team không làm được."
   ],
   [
-   "Chị Mai",
-   "Chị hiểu, nhưng cách xử lý này hơi cứng nhắc."
+   "Anh Hiệp",
+   "Anh hiểu, nhưng cách xử lý này hơi cứng nhắc."
   ]
  ],
  "L1 | S03 Thay đổi phạm vi | Nhánh C": [
   [
    "PM",
-   "Team sẽ estimate và gửi chị phương án: lùi deadline, giảm phạm vi hoặc thêm ngân sách."
+   "Team sẽ estimate và gửi anh phương án: lùi deadline, giảm phạm vi hoặc thêm ngân sách."
   ],
   [
-   "Chị Mai",
-   "Được, chị cần biết rõ tác động trước."
+   "Anh Hiệp",
+   "Được, anh cần biết rõ tác động trước."
   ]
  ],
  "L1 | S04 Quỹ công cụ | Mở cảnh": [
@@ -195,11 +195,11 @@
   ],
   [
    "Hệ thống",
-   "Đầy đủ: 15 điểm · Licence dùng chung: 5 điểm · Miễn phí: 0 điểm"
+   "Đầy đủ: 15.000.000 VND · Licence dùng chung: 5.000.000 VND · Miễn phí: 0 VND"
   ],
   [
    "PM",
-   "100 điểm phải dùng cho cả 60 ngày... tính sao đây."
+   "100.000.000 VND phải dùng cho cả 60 ngày... tính sao đây."
   ]
  ],
  "L1 | S04 Quỹ công cụ | Câu hỏi": {
@@ -338,7 +338,7 @@
    "Hai tuần tới cả team chia ca và OT để giữ cả hai deadline."
   ],
   [
-   "Linh",
+   "Nam",
    "Em sẽ cố, nhưng team đã căng từ đợt demo trước."
   ]
  ],
@@ -362,8 +362,8 @@
    "Muốn release đúng ngày thì phải bỏ vòng regression cuối."
   ],
   [
-   "Chị Mai",
-   "Lùi ba ngày thì bên chị phải đổi lịch đào tạo. Chị cần phương án ngay."
+   "Anh Hiệp",
+   "Lùi ba ngày thì bên anh phải đổi lịch đào tạo. Anh cần phương án ngay."
   ],
   [
    "PM",
@@ -392,8 +392,8 @@
    "Team cần thêm ba ngày để chạy đủ regression."
   ],
   [
-   "Chị Mai",
-   "Chị cần chắc ba ngày này thực sự giảm được rủi ro."
+   "Anh Hiệp",
+   "Anh cần chắc ba ngày này thực sự giảm được rủi ro."
   ]
  ],
  "L2 | S06 Deadline/chất lượng | Nhánh C": [
@@ -500,8 +500,8 @@
    "Ngày 30 · Cuộc họp với khách hàng."
   ],
   [
-   "Chị Mai",
-   "Kết quả không giống cách bên chị hiểu. Bên em giải quyết thế nào?"
+   "Anh Hiệp",
+   "Kết quả không giống cách bên anh hiểu. Bên em giải quyết thế nào?"
   ],
   [
    "Lan",
@@ -524,8 +524,8 @@
    "Ngày 30 · Cuộc họp với khách hàng."
   ],
   [
-   "Chị Mai",
-   "Chức năng này chạy khác với cách bên chị đã yêu cầu."
+   "Anh Hiệp",
+   "Chức năng này chạy khác với cách bên anh đã yêu cầu."
   ],
   [
    "Huy",
@@ -542,14 +542,14 @@
    "Team đã làm đúng tài liệu. Yêu cầu này là thay đổi mới."
   ],
   [
-   "Chị Mai",
-   "Chị không chấp nhận việc đẩy hết trách nhiệm sang khách hàng."
+   "Anh Hiệp",
+   "Anh không chấp nhận việc đẩy hết trách nhiệm sang khách hàng."
   ]
  ],
  "L2 | S08 Complain | Nhánh B": [
   [
    "PM",
-   "Bên em nhận lỗi và sửa miễn phí theo ý chị."
+   "Bên em nhận lỗi và sửa miễn phí theo ý anh."
   ],
   [
    "Lan",
@@ -562,8 +562,8 @@
    "Phần làm rõ tài liệu team chịu. Phần mở rộng mình làm change request."
   ],
   [
-   "Chị Mai",
-   "Chị đồng ý, miễn là trách nhiệm hai bên rõ ràng."
+   "Anh Hiệp",
+   "Anh đồng ý, miễn là trách nhiệm hai bên rõ ràng."
   ]
  ],
  "L2 | Tổng kết Level 2 (tốt) | Mở cảnh": [
@@ -665,17 +665,17 @@
  "L3 | S09 sau mọi nhánh | Mở cảnh": [
   [
    "PM",
-   "Chị Mai ơi, em báo về sự cố chiều nay và cách bên em đã xử lý ạ."
+   "Anh Hiệp ơi, em báo về sự cố chiều nay và cách bên em đã xử lý ạ."
   ]
  ],
  "L3 | S10 Sales hứa 10 ngày | Mở cảnh": [
   [
    "Dẫn truyện",
-   "Ngày 37 · Nam ghé qua bàn PM."
+   "Ngày 37 · Linh ghé qua bàn PM."
   ],
   [
-   "Nam",
-   "Anh chốt với khách rồi: tính năng AI xong trong mười ngày!"
+   "Linh",
+   "Chị chốt với khách rồi: tính năng AI xong trong mười ngày!"
   ],
   [
    "PM",
@@ -701,7 +701,7 @@
  "L3 | S10 Sales hứa 10 ngày | Nhánh B": [
   [
    "PM",
-   "Chị Mai, bên Sales đã hứa sai, mười ngày là không khả thi."
+   "Anh Hiệp, bên Sales đã hứa sai, mười ngày là không khả thi."
   ],
   [
    "Dẫn truyện",
@@ -724,7 +724,7 @@
    "Ngày 41 · Sáng sớm."
   ],
   [
-   "Linh",
+   "Nam",
    "Em xin lỗi... em push nhầm code, dữ liệu test mất hết rồi."
   ],
   [
@@ -745,7 +745,7 @@
  "L3 | S11 Junior gây lỗi | Nhánh A": [
   [
    "PM",
-   "Mọi người nghe đây: lỗi lần này là do Linh!"
+   "Mọi người nghe đây: lỗi lần này là do Nam!"
   ],
   [
    "Dẫn truyện",
@@ -765,7 +765,7 @@
  "L3 | S11 Junior gây lỗi | Nhánh C": [
   [
    "PM",
-   "Linh, mình nói chuyện riêng, cùng tìm nguyên nhân rồi thêm checklist deploy."
+   "Nam, mình nói chuyện riêng, cùng tìm nguyên nhân rồi thêm checklist deploy."
   ],
   [
    "Dẫn truyện",
@@ -887,10 +887,10 @@
  "L4 | S13 Hệ thống vận hành | Nhánh C": [
   [
    "PM",
-   "Mỗi người sở hữu một phần: Huy kỹ thuật, Lan chất lượng, Linh onboarding."
+   "Mỗi người sở hữu một phần: Huy kỹ thuật, Lan chất lượng, Nam onboarding."
   ],
   [
-   "Linh",
+   "Nam",
    "Em muốn phụ trách checklist cho thành viên mới."
   ]
  ],
@@ -934,14 +934,14 @@
    "Mỗi người có một kế hoạch phát triển 90 ngày với tiêu chí đo rõ ràng."
   ],
   [
-   "Linh",
+   "Nam",
    "Em đồng ý. Có tiêu chí em sẽ tự theo dõi được tiến bộ."
   ]
  ],
  "L4 | S14 Phát triển team | Nhánh C": [
   [
    "PM",
-   "Huy quyết kiến trúc, Lan được chặn release, Linh sở hữu một module."
+   "Huy quyết kiến trúc, Lan được chặn release, Nam sở hữu một module."
   ],
   [
    "Huy",
@@ -954,12 +954,12 @@
    "Ngày 56 · Phòng họp với khách hàng."
   ],
   [
-   "Chị Mai",
-   "Bên chị muốn mở rộng thêm module báo cáo và luồng phê duyệt."
+   "Anh Hiệp",
+   "Bên anh muốn mở rộng thêm module báo cáo và luồng phê duyệt."
   ],
   [
-   "Nam",
-   "Cơ hội tốt! Team xác nhận để anh làm báo giá nhé."
+   "Linh",
+   "Cơ hội tốt! Team xác nhận để chị làm báo giá nhé."
   ],
   [
    "Lan",
@@ -992,8 +992,8 @@
    "Bên em đề xuất khảo sát ba ngày, sau đó gửi roadmap và estimate."
   ],
   [
-   "Chị Mai",
-   "Được, nhưng chị cần mốc cụ thể để trình ngân sách."
+   "Anh Hiệp",
+   "Được, nhưng anh cần mốc cụ thể để trình ngân sách."
   ]
  ],
  "L4 | S15 Mở rộng hợp tác | Nhánh C": [
@@ -1002,8 +1002,8 @@
    "Chia hai phase: Phase 1 làm luồng báo cáo ưu tiên, Phase 2 mở rộng sau nghiệm thu."
   ],
   [
-   "Nam",
-   "Anh tách báo giá theo từng phase cho khách dễ duyệt."
+   "Linh",
+   "Chị tách báo giá theo từng phase cho khách dễ duyệt."
   ]
  ],
  "L4 | S16 Final Review | Mở cảnh": [

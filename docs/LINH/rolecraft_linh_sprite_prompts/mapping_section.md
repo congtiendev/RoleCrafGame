@@ -1,48 +1,26 @@
-Tên trong bảng là **nhóm animation** (bỏ hậu tố `_01`, `_02`…), đúng với khoá `linh/<nhóm>` trong manifest. `face_*` là chân dung hộp thoại (sheet D). Mũi tên `→` là chuỗi phát nối tiếp. Cột "Kịch bản" trích câu hoặc diễn biến trong docs, mỗi dòng là một lần Linh xuất hiện.
+Tên là **nhóm animation** `linh/<nhóm>` (bỏ hậu tố `_01`…) hoặc một ô `linh/<ô>_01`; `face_*` là chân dung hộp thoại (sheet D). `→` là chuỗi phát nối tiếp. Thoại theo `docs/KICH_BAN_ROLECRAFT_PM60.md`; dòng không ghi “Linh:” là phản ứng của Linh khi người khác nói hoặc theo kết quả lựa chọn.
 
-### Level 1 – Khởi động (docs/KICH_BAN_ROLECRAFT_PM60.md – mục 4)
+| Cảnh | Nhịp | Thoại / diễn biến | Animation · chân dung |
+|---|---|---|---|
+| L3 S10 Sales hứa 10 ngày | Vào cảnh | Dẫn truyện: Ngày 37 · Linh ghé qua bàn PM. | `walk` → `greet_01` · `face_grin` |
+| L3 S10 Sales hứa 10 ngày | Mở cảnh | Linh: “Chị chốt với khách rồi: tính năng AI xong trong mười ngày!” | `announce` → `phone_show_01` → `wink_01` · `face_excited` → `face_wink` |
+| L3 S10 Sales hứa 10 ngày |  | PM: “Mười ngày? Team còn chưa được hỏi!” | `shrug_01` → `persuade_01` → `sheepish_01` · `face_persuading` → `face_sheepish` |
+| L3 S10 Sales hứa 10 ngày | Câu hỏi | PM đang chọn (Anh Minh, Huy có mặt) | `listen` → `idle` · `face_neutral` |
+| L3 S10 Sales hứa 10 ngày | A | PM: “Nhận. Cả team chạy nước rút mười ngày.” | `cheer` → `highfive_01` · `face_laugh` |
+| L3 S10 Sales hứa 10 ngày | B | PM: “Anh Hiệp, bên Sales đã hứa sai, mười ngày là không khả thi.” | `shock_01` → `offended_01` → `angry_01` · `face_surprised` → `face_offended` → `face_frown` |
+| L3 S10 Sales hứa 10 ngày | B → gọi khách chữa cháy |  | `phone_call_01` → `phone_nervous_01` · `face_nervous` → `face_apologetic` |
+| L3 S10 Sales hứa 10 ngày | C | PM: “Mười ngày bên em giao MVP, phase 2 có estimate cụ thể.” | `calc_01` → `agree_01` → `nod` · `face_calculating` |
+| L3 S10 Sales hứa 10 ngày | C → báo lại khách |  | `phone_call_02` → `phone_type_01` → `relieved_01` · `face_relieved` |
+| L3 S10 Sales hứa 10 ngày | Rời cảnh |  | `phone_pocket_01` → `turn_01` → `idle_back_01` → `walk_back` |
+| L4 S15 Mở rộng hợp tác | Vào phòng | Ngày 56 · Phòng họp với khách hàng | `walk` → `greet_02` → `shake` → `sit_01` → `sit_02` → `sit_03` · `face_charming` |
+| L4 S15 Mở rộng hợp tác | Mở cảnh | Anh Hiệp muốn mở rộng module báo cáo · Linh: “Cơ hội tốt! Team xác nhận để chị làm báo giá nhé.” | `meet_eager` → `meet_rub_01` · `face_eager` |
+| L4 S15 Mở rộng hợp tác |  | Lan: “Phạm vi mới chỉ là mong muốn, chưa có tiêu chí nghiệm thu.” | `meet_listen_01` → `meet_impatient` · `face_impatient` |
+| L4 S15 Mở rộng hợp tác | large_project_without_resources | Huy: “Team đang chia nguồn lực cho dự án lớn vừa nhận…” | `meet_frown_01` · `face_frown` |
+| L4 S15 Mở rộng hợp tác | Câu hỏi | PM: “Cơ hội lớn, nhưng nhận thế nào cho an toàn?” | `meet_wait_01` · `face_thinking` |
+| L4 S15 Mở rộng hợp tác | A | PM nhận toàn bộ (budget +25) | `meet_celebrate` → `meet_calc_01` · `face_excited` |
+| L4 S15 Mở rộng hợp tác | B | Khảo sát ba ngày rồi gửi roadmap | `meet_disappointed` · `face_disappointed` |
+| L4 S15 Mở rộng hợp tác | C | Linh: “Chị tách báo giá theo từng phase cho khách dễ duyệt.” | `meet_think_01` → `meet_talk` → `meet_quote` → `meet_show` · `face_thinking` → `face_proud` |
+| L4 S15 Mở rộng hợp tác | C → khách đồng ý |  | `meet_pleased` → `meet_shake` · `face_proud` |
+| L4 S15 Mở rộng hợp tác | Rời phòng |  | `sit_04` → `shake` → `phone_read_01` → `talk` → `turn_01` → `walk_back` |
 
-Linh "xuất hiện trong cảnh team", không có thoại.
-
-| Cảnh | Kịch bản | Sprite Linh |
-|---|---|---|
-| Cảnh team (S01, S02…) | có mặt ở khu làm việc | `desk_type` / `idle` · — |
-
-### Level 2 – Hòa nhập (docs/KICH_BAN_ROLECRAFT_PM60.md – mục 5)
-
-| Cảnh | Kịch bản | Sprite Linh |
-|---|---|---|
-| S05 Hai dự án – phòng họp nội bộ | "Em có thể hỗ trợ thêm, nhưng hiện tại các task của dự án A đã kín trong tuần này." | `meet_table_busy` · face_unsure |
-| S05 · B (OT) | "Em sẽ cố gắng, nhưng team đã làm khá căng từ đợt demo trước." | `meet_table_try` · face_worried |
-| Sau S05 · B – cờ `team_ot_14_days` | team OT 2 tuần | `night_type` → `night_rub` → `tired_idle` · face_tired |
-| S06 Deadline/chất lượng – phòng họp release | "Em đã sửa các lỗi trong phạm vi task của mình. Một số luồng liên quan cần dữ liệu và công cụ test chung…" | `meet_table_report` · face_neutral |
-
-### Level 3 – Bứt phá (docs/KICH_BAN_ROLECRAFT_PM60.md – mục 6 – S11 "Thành viên mắc lỗi nghiêm trọng", `JUNIOR_DEV` là nhân vật chính)
-
-Docs không có thoại Level 3; thoại trong trang chơi (`THOAI_MAU.json`) do mình viết theo đúng ý lựa chọn.
-
-| Cảnh | Kịch bản (spec) | Sprite Linh |
-|---|---|---|
-| S11 mở cảnh | "Junior Developer push nhầm code, làm mất dữ liệu test…" | `desk_push` → `desk_panic` → `desk_stand` · face_panic |
-| | báo với PM | `mistake_shock` → `mistake_confess` · face_sorry |
-| S11 · A | "Phê bình nhân sự trước team" → cờ `junior_publicly_blamed` | `blamed` · face_ashamed |
-| S11 · B | "PM tự xử lý và bỏ qua để giữ hòa khí" | `forgiven` · face_relieved |
-| S11 · C | "1-1, phân tích nguyên nhân và bổ sung checklist review/deploy" | `oneone_listen` → `analyze` → `resolve` · face_determined |
-
-### Level 4 – Thu hoạch (docs/KICH_BAN_ROLECRAFT_PM60.md – mục 7)
-
-| Cảnh | Kịch bản | Sprite Linh |
-|---|---|---|
-| S13 – phòng họp nội bộ | "Có nhiều việc em làm được, nhưng em chưa rõ phần nào mình được tự quyết…" | `meet_table_unsure` · face_unsure |
-| S13 · A (cờ `team_ot_14_days`) | "Team vừa trải qua một giai đoạn làm việc kéo dài…" | `tired_talk` · face_tired |
-| S13 · B | "Em sẽ chạy thử theo tài liệu. Bước nào người mới không làm được thì team sửa lại ngay." | `checklist_read` → `checklist_tick` · face_determined |
-| S13 · C | "Em muốn phụ trách checklist dành cho thành viên mới…" | `meet_table_volunteer` → `guide` · face_eager |
-| S13 · C (cờ `junior_publicly_blamed`) | "Em hơi lo mình chưa đủ kinh nghiệm để nhận phần này…" | `hesitant` · face_hesitant |
-| S14 – phòng 1-1 | "Em muốn được giao task lớn hơn và có cơ hội trở thành Developer chính thức…" | `oneone_talk` · face_eager |
-| S14 (cờ `junior_publicly_blamed`) | "Sau lỗi lần trước, em không chắc team còn tin tưởng…" | `oneone_unsure` · face_anxious |
-| S14 (cờ `deployment_checklist_added`) | "Em đã hoàn thiện checklist deploy… Em muốn tiếp tục chịu trách nhiệm phần này." | `oneone_proud` · face_proud |
-| S14 · A | "Em sẽ cố hoàn thành nhiều task hơn, nhưng vẫn chưa biết mình cần phát triển năng lực nào…" | `oneone_confused` · face_confused |
-| S14 · B | "Em đồng ý. Em muốn biết rõ tiêu chí để có thể tự theo dõi tiến bộ." | `oneone_agree` · face_happy |
-| S14 · C | "Em muốn thử nhận module đó. Em sẽ cần review ở những mốc đầu tiên." | `oneone_accept` · face_determined |
-| S14 · C (cờ `junior_publicly_blamed`) | "Em vẫn hơi lo mắc lỗi. Nếu có checklist và người hỗ trợ…, em sẽ nhận." | `breath` → `accept` · face_hesitant |
-| S16 Final Review | chỉ được nhắc trong báo cáo ("Checklist deploy và bài học từ sai sót của Linh") | — (không có mặt) |
+Linh chỉ có ở L3 S10 và L4 S15 (kịch bản mục 2), nên không có làm đêm, sự cố, 1-1 hay màn kết thúc. Mọi ô trong các sheet đều xuất hiện trong bảng trên (`build.py` kiểm tra).

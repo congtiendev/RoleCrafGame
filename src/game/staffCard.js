@@ -20,7 +20,8 @@ export function closeStaffCard() {
   c.dlg.close(); c.dlg.remove();
 }
 
-// p: { name, role (chuc danh), desc (1 cau mo ta), tint? (NPC: mau the tam), face? (PM: ten bieu cam sheet D), client? (khach hang),
+// p: { name, role (chuc danh), desc (1 cau mo ta), tint? (NPC: mau the tam), face? (PM: ten bieu cam sheet D),
+//      avatar? (NPC co sprite: (canvas, size) => ve chan dung), client? (khach hang),
 //      facts: [[nhan, gia tri]] – chi thong tin dang du lieu (don vi, quan ly...), khong nhet mo ta vao day }
 // anchor: phan tu nhan vat (standee / vung bam PM) de dat the len tren
 export function openStaffCard(p, anchor) {
@@ -40,7 +41,7 @@ export function openStaffCard(p, anchor) {
     <button type="button" data-close class="px-btn px-btn-primary px-btn-sq absolute -top-[34px] -right-[26px] size-10 max-sm:-top-[29px] max-sm:-right-[23px]" aria-label="Đóng thẻ" title="Đóng">${icon('xMark', 'size-5', { stroke: 3 })}</button>
     <div class="mt-3 grid grid-cols-[auto_1fr] items-start gap-4">
       <div class="gm-plate h-[104px] w-[88px] [--f:6px]"><div data-in class="place-items-center" ${p.tint ? `style="background:${p.tint}"` : 'style="background:#1c2b60"'}>
-        ${p.face ? '<canvas aria-hidden="true"></canvas>' : icon('user', 'size-11 text-white/90', { stroke: 1.75 })}
+        ${p.face || p.avatar ? '<canvas aria-hidden="true"></canvas>' : icon('user', 'size-11 text-white/90', { stroke: 1.75 })}
       </div></div>
       <div class="min-w-0">
         <h2 class="text-[1.25rem] leading-tight font-black">${esc(p.name)}</h2>
@@ -50,7 +51,8 @@ export function openStaffCard(p, anchor) {
       </div>
     </div>`;
   document.body.append(dlg);
-  if (p.face) drawFace(dlg.querySelector('canvas'), p.face, AV);
+  if (p.avatar) p.avatar(dlg.querySelector('canvas'), AV);
+  else if (p.face) drawFace(dlg.querySelector('canvas'), p.face, AV);
   dlg.show();
 
   // can giua tren dau nhan vat, ep trong man hinh

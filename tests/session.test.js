@@ -35,7 +35,7 @@ test('suggestName: tra ve ten hop le, khong trung ten dang co', () => {
 });
 
 test('suggestName: tranh ten nhan vat trong kich ban', () => {
-  const npc = new Set(['Minh', 'Huy', 'Lan', 'Linh', 'Mai', 'Nam', 'Hà']);   // \b cua regex khong hieu chu co dau -> so tung tu
+  const npc = new Set(['Minh', 'Huy', 'Lan', 'Nam', 'Hiệp', 'Linh', 'Hà']);   // \b cua regex khong hieu chu co dau -> so tung tu
   for (let i = 0; i < 50; i++) {
     const n = suggestName('');
     assert.ok(!n.split(' ').some(w => npc.has(w)), n);

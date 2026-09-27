@@ -18,7 +18,6 @@
       "mobile": "lobby_mobile.webp",
       "scenarioIds": [
         "P1_INTRO",
-        "P2_INTRO",
         "P4_INTRO"
       ]
     },
@@ -28,7 +27,8 @@
       "scenarioIds": [
         "P1_S01_PROJECT_TAKEOVER",
         "P1_S04_TOOL_BUDGET",
-        "P4_S14_TEAM_DEVELOPMENT"
+        "P4_S14_TEAM_DEVELOPMENT",
+        "P3_SUMMARY"
       ]
     },
     "senior_desk": {
@@ -46,7 +46,6 @@
       "scenarioIds": [
         "P2_S05_DUAL_DEADLINE",
         "P2_S06_DEADLINE_QUALITY",
-        "P3_S12_BIG_PROJECT",
         "P4_S13_OPERATING_SYSTEM"
       ]
     },
@@ -56,7 +55,6 @@
       "scenarioIds": [
         "P1_S03_SCOPE_CHANGE",
         "P2_S08_CUSTOMER_COMPLAINT",
-        "P3_S10_SALES_OVERCOMMIT",
         "P4_S15_CLIENT_EXPANSION"
       ]
     },
@@ -72,7 +70,8 @@
       "pc": "final_review_pc.webp",
       "mobile": "final_review_mobile.webp",
       "scenarioIds": [
-        "P4_S16_FINAL_REVIEW"
+        "P4_S16_FINAL_REVIEW",
+        "P4_CAMPAIGN_RESULT"
       ]
     },
     "team_huddle": {
@@ -90,13 +89,20 @@
     "manager_office": {
       "pc": "manager_office_pc.webp",
       "mobile": "manager_office_mobile.webp",
-      "scenarioIds": [],
+      "scenarioIds": [
+        "P2_INTRO",
+        "P2_SUMMARY",
+        "P3_S12_BIG_PROJECT"
+      ],
       "note": "Phòng Anh Minh: bàn quản lý, kệ cúp, bàn tròn 1-1"
     },
     "dev_corner": {
       "pc": "dev_corner_pc.webp",
       "mobile": "dev_corner_mobile.webp",
-      "scenarioIds": [],
+      "scenarioIds": [
+        "P2_PM_OVERLOADED",
+        "P3_S10_SALES_OVERCOMMIT"
+      ],
       "note": "Khu bàn dev cạnh vách kính, bảng kế hoạch"
     }
   },

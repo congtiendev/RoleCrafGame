@@ -42,10 +42,11 @@ def inpaint(a, mask):
 def remove_bg(a, tol=34):
     rgb = a[..., :3].astype(int)
     white = (rgb.min(-1) > 255 - tol) & ((rgb.max(-1) - rgb.min(-1)) < 20)
+    white |= a[..., 3] < 16                                  # sheet nen trong suot cung la nen
     lab, _ = ndi.label(white)
     edge = set(np.unique(np.concatenate([lab[0], lab[-1], lab[:, 0], lab[:, -1]]))) - {0}
     bg = np.isin(lab, list(edge))
-    out = np.dstack([a[..., :3], np.where(bg, 0, 255).astype(np.uint8)])
+    out = np.dstack([a[..., :3], np.where(bg, 0, a[..., 3]).astype(np.uint8)])
     # khu vien trang 1px giap nen
     ring = ndi.binary_dilation(bg) & ~bg
     near = ring & (rgb.min(-1) > 225)

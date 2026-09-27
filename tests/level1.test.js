@@ -2,73 +2,18 @@
 // - docs/KICH_BAN_ROLECRAFT_PM60.md: ma tinh huong, ngay, hieu ung, co, nang luc, hau qua tri hoan, ket qua
 // - THOAI_MAU.json: thoai tung canh, cau hoi va ten lua chon
 // - atlas.js / data.js / bg: dong tac PM, chan dung, emote, do vat, anh nen co that
+// - npcAtlas.js: dong tac + chan dung NPC co sprite (npc / npcFace cua dong thoai)
 import { test, describe } from 'node:test';
 import assert from 'node:assert/strict';
-import { readFileSync, existsSync } from 'node:fs';
+import { existsSync } from 'node:fs';
 import { LEVEL1, CAST } from '../src/game/level1.js';
 import { METRIC, newRun, applyChoice, enterScenario } from '../src/game/rules.js';
 import ATLAS from '../src/game/atlas.js';
-import DATA from '../src/shared/data.js';
+import NPC from '../src/game/npcAtlas.js';
+import { root, DOC, THOAI, SCENES, COMPETENCY, FACES, EMOS, DOC_FLAGS, npcLine, checkDelayed, docScenario, thoai, thoaiKey as key, lines }
+  from './helpers/scenarioDoc.js';
 
-const root = new URL('../', import.meta.url);
-const read = f => readFileSync(new URL(f, root), 'utf8');
-const DOC = read('docs/KICH_BAN_ROLECRAFT_PM60.md');
-const THOAI = JSON.parse(read('THOAI_MAU.json'));
-const SCENES = JSON.parse(read('bg/scenes.json')).scenes;
-const COMPETENCY = ['SCOPE', 'RESOURCE', 'RISK', 'PEOPLE', 'STAKEHOLDER', 'DECISION'];
-const SPEAKER = { 'Anh Minh': 'MINH', Huy: 'HUY', Lan: 'LAN', Linh: 'LINH', 'Chị Mai': 'MAI', PM: 'PM', 'Dẫn truyện': 'NARR', 'Hệ thống': 'SYS' };
-const cellNames = s => new Set(DATA.cells.filter(c => c.s === s).map(c => c.name));
-const FACES = cellNames('D'), EMOS = cellNames('F');
-
-// Danh sach co trong muc "Co lich su quyet dinh"
-const DOC_FLAGS = new Set(DOC.split('### Cờ lịch sử quyết định')[1].split('```text')[1].split('```')[0].trim().split(/\s+/));
-
-// "Trước L2 · S05 ...; S08 mở bằng biến thể 1" -> ['P2_S05', 'P2_S08'] (ma thieu "L2 ·" lay level cua ma dung truoc)
-function triggers(text) {
-  let lv;
-  return [...text.matchAll(/(?:L(\d) · )?\b(S\d\d)\b/g)].map(m => `P${(lv = m[1] || lv)}_${m[2]}`);
-}
-// Ma tran hau qua tri hoan (muc 8): [{ source: 'L1 · S02', flag, at: ['P2_S08', ...], effects, variant, conditional }]
-const MATRIX = DOC.split('## 8. Ma trận hậu quả trì hoãn')[1].split('\n## ')[0].split('\n')
-  .filter(l => /^\| L\d · S\d\d \|/.test(l)).map(l => {
-    const [, source, flag, when, what] = l.split('|').map(c => c.trim());
-    return {
-      source, flags: [...flag.matchAll(/`(\w+)`/g)].map(m => m[1]),
-      at: triggers(when + ' ' + what),
-      effects: Object.fromEntries([...what.matchAll(/`(\w+) ([+-]\d+)`/g)].map(m => [m[1], +m[2]])),
-      variant: /biến thể/.test(what), conditional: /^Nếu /.test(what),
-    };
-  });
-
-// Muc "### S01 · ..." -> { title, id, day, next, choices: { A: { label, effects, set, flags, competency, result } } }
-function docScenario(no) {
-  const start = DOC.indexOf(`### ${no} · `);
-  assert.ok(start >= 0, `tai lieu khong co ${no}`);
-  const sec = DOC.slice(start, DOC.indexOf('\n### ', start + 1));
-  const cell = name => sec.match(new RegExp(`\\| ${name} \\| (.+?) \\|`))?.[1];
-  const choices = {};
-  for (const part of sec.split('\n#### ').slice(1)) {
-    const [head] = part.split('\n'), [id, label] = head.split(' · ');
-    const row = name => part.match(new RegExp(`\\| ${name} \\| (.+?) \\|`))?.[1] || '';
-    choices[id] = {
-      label,
-      effects: Object.fromEntries([...row('Hiệu ứng').matchAll(/`(\w+) ([+-]\d+)`/g)].map(m => [m[1], +m[2]])),
-      set: Object.fromEntries([...row('Hiệu ứng').matchAll(/`(\w+) = (\d+)`/g)].map(m => [m[1], +m[2]])),
-      flags: [...row('Cờ').matchAll(/`(\w+)`/g)].map(m => m[1]),
-      competency: Object.fromEntries([...row('Năng lực').matchAll(/`([A-Z]+): (\d)`/g)].map(m => [m[1], +m[2]])),
-      result: part.match(/^Kết quả: (.+)$/m)?.[1],
-    };
-  }
-  return {
-    title: sec.split('\n')[0].split(' · ')[1], id: cell('Scenario ID')?.replaceAll('`', ''),
-    day: +cell('Ngày'), place: cell('Địa điểm'), next: cell('Next (?:scenario|node)')?.replaceAll('`', ''), choices,
-  };
-}
-
-// Thoai trong THOAI_MAU.json -> [[who, text]]. Bo dong dan truyen "Ngay N · dia diem" (game hien bang the Ngay).
-const thoai = key => THOAI[key].map(([who, text]) => [SPEAKER[who] ?? who, text]).filter(([who, text]) => !(who === 'NARR' && /^Ngày \d+ · /.test(text)));
-const thoaiKey = (no, part) => Object.keys(THOAI).find(k => k.startsWith(`L1 | ${no} `) && k.endsWith(`| ${part}`));
-const lines = ls => ls.map(l => [l.who, l.text]);
+const thoaiKey = (no, part) => key('L1', no, part);
 
 test('Level 1: ma level va tieu de theo tai lieu', () => {
   assert.equal(LEVEL1.id, 'P1_STARTUP');
@@ -124,18 +69,7 @@ for (const s of LEVEL1.scenarios) {
           assert.equal(c.result, d.result);
         });
 
-        test('hau qua tri hoan khop ma tran muc 8', () => {
-          const rows = MATRIX.filter(r => r.source === `L1 · ${s.no}` && r.flags.some(f => (c.flags || []).includes(f)));
-          const ds = c.delayed || [];
-          const want = {}, got = {};
-          rows.forEach(r => Object.entries(r.effects).forEach(([k, v]) => { want[k] = (want[k] || 0) + v; }));
-          ds.forEach(x => Object.entries(x.effects || {}).forEach(([k, v]) => { got[k] = (got[k] || 0) + v; }));
-          assert.deepEqual(got, want, 'tong hieu ung tri hoan');
-          const at = rows.flatMap(r => r.at);
-          for (const x of ds) assert.ok(at.some(a => x.at.startsWith(a + '_')), `${x.at} khong co trong ma tran`);
-          assert.equal(ds.some(x => x.variant), rows.some(r => r.variant), 'bien the mo canh');
-          assert.equal(ds.some(x => x.ifChoice), rows.some(r => r.conditional), 'hau qua co dieu kien');
-        });
+        test('hau qua tri hoan khop ma tran muc 8', () => checkDelayed(`L1 · ${s.no}`, c));
 
         test('thoai nhanh khop THOAI_MAU.json', () => {
           assert.deepEqual(lines(c.lines), thoai(thoaiKey(s.no, `Nhánh ${c.id}`)));
@@ -159,6 +93,7 @@ for (const s of LEVEL1.scenarios) {
         assert.ok(['PM', 'NARR', 'SYS'].includes(l.who) || s.cast.includes(l.who), `${l.who} noi nhung khong co trong canh`);
         if (l.pm) assert.ok(ATLAS.anims[l.pm], `dong tac ${l.pm} chua co trong atlas (GAME_ANIMS)`);
         if (l.face) assert.ok(FACES.has(l.face), `chan dung ${l.face}`);
+        npcLine(l);
       }
       for (const c of s.choices) {
         for (const a of [c.after?.pm, c.after?.then].filter(Boolean)) assert.ok(ATLAS.anims[a], `dong tac ${a}`);
@@ -204,6 +139,7 @@ test('mo dau level + tong ket: nguoi noi, anh nen, dong tac hop le', () => {
     assert.ok(['PM', 'NARR'].includes(l.who) || it.cast.includes(l.who) || sm.cast.includes(l.who), l.who);
     if (l.pm) assert.ok(ATLAS.anims[l.pm], l.pm);
     if (l.face) assert.ok(FACES.has(l.face), l.face);
+    npcLine(l);
   }
 });
 
@@ -211,5 +147,15 @@ test('the nhan vat tam: du ten, vai tro, mau', () => {
   for (const [id, c] of Object.entries(CAST)) {
     assert.ok(c.name && c.role, id);
     assert.match(c.tint, /^#[0-9a-f]{6}$/i, id);
+  }
+});
+
+test('atlas NPC: moi NPC co sprite deu co trong CAST, du idle/talk/listen, chan dung face_neutral, goc chan trong khung', () => {
+  for (const [id, a] of Object.entries(NPC)) {
+    assert.ok(CAST[id], id);
+    for (const n of ['idle', 'talk', 'listen']) assert.ok(a.anims[n], `${id} thieu ${n}`);
+    assert.ok(a.faces.face_neutral, `${id} thieu face_neutral`);
+    assert.ok(existsSync(new URL(a.file, root)), a.file);
+    for (const [n, f] of Object.entries(a.anims)) assert.ok(f.ox > 0 && f.ox < f.fw && f.oy === f.fh && f.n >= 1 && f.fps > 0, `${id} ${n}`);
   }
 });

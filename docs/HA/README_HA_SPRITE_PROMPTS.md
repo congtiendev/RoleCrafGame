@@ -1,227 +1,181 @@
-# RoleCraft PM60 – Bộ prompt sprite Chị Hà – HR (Hội đồng đánh giá)
+# RoleCraft PM60 – Bộ prompt sprite Chị Hà v4 (HR)
 
-Cùng cơ chế v3 với bộ PM (`docs/PM`) và các bộ MINH, CLIENT, LINH: nhân vật chuyển từ **ảnh thật**, vẽ **tay không** kèm **chấm neo** (magenta = điểm cầm chính, green = điểm cầm thứ hai, cyan = điểm ngồi); đồ vật và nội thất là sprite riêng, ghép bằng `pm_compose.js`. **3 sheet nhân vật / 132 ô**; đồ vật (P), nội thất (O), icon (F) **dùng lại sheet của PM**. Kịch bản gốc: `docs/KICH_BAN_ROLECRAFT_PM60.md`.
+Sinh bởi `rolecraft_ha_sprite_prompts/build.py` – sửa ở đó rồi chạy `python build.py`, không sửa tay file này.
 
-**Các file**
+**3 sheet / 92 ô / 40 animation.** Mỗi ô gắn với một câu thoại hoặc diễn biến của Chị Hà trong kịch bản (mục 5). Đồ vật (P), nội thất (O), icon (F) dùng lại của bộ PM.
 
-| File | Dùng để |
-|---|---|
-| `rolecraft_ha_sprite_prompts/SOL_ONE_SHOT_PROMPT.txt` | Prompt gửi **một lần** cho GPT-5.6 Sol (đính kèm ảnh thật, `PM_A_master.png`, file zip thư mục này) |
-| `rolecraft_ha_sprite_prompts/prompts/HA_*.txt` | Prompt từng sheet, nếu muốn sinh thủ công |
-| `rolecraft_ha_sprite_prompts/ha_sprite_manifest.json` | Lưới, ảnh đính kèm, tên sprite `ha/*`, **bind** từng ô → `prop/*`, `furn/*` của bộ PM |
-| `rolecraft_ha_sprite_prompts/mapping_section.md` | Đối chiếu kịch bản → sprite (bản gốc của mục 5) |
-| `rolecraft_ha_sprite_prompts/tools/` | `extract_anchors.py` (bản nhận mọi nhân vật), `pm_compose.js` |
-| `rolecraft_ha_sprite_prompts/build.py`, `readme.py` | Nguồn sinh prompt/manifest/README: `python3 build.py && python3 readme.py` |
+## Thiết kế
 
----
+- **Tạo hình:** chuyên viên nhân sự khoảng 30–35 tuổi, áo blouse kem, blazer hồng đất cài một cúc, quần navy, giày gót thấp nâu, bông tai ngọc trai, đồng hồ vàng, thẻ xanh royal. Vật đặc trưng: folder navy đựng phiếu đánh giá.
+- **Theo kịch bản:** S16 ngồi bàn đánh giá cạnh Anh Minh (mở đầu, đọc báo cáo, phản ứng theo nhánh A/B/C và hậu quả trước review, 4 câu hỏi phản biện, trao đổi với Anh Minh); 4 màn kết thúc đứng (trao hợp đồng + lộ trình, trao hợp đồng, trao mục tiêu gia hạn, hỗ trợ thủ tục kết thúc).
+- **Quay PHẢI** như PM; khi ngồi đối diện PM thì game lật cả cụm (`flip: true`).
+- **Sheet:** A (8×6), C (8×3, ảnh ngang 3:2 – không độn ô), D (4×5). Nền trong suốt; quy tắc tiết kiệm token trong `SOL_ONE_SHOT_PROMPT.txt`.
+- **Thay bản cũ:** bản cũ quay trái + bind `beside_left` (không ghép được); chân dung `face_tired` (không có cảnh nào) đổi thành `face_listening`.
 
-## 1. Thứ tự sinh, ảnh đính kèm, tạo hình
-
-
-### Thứ tự tạo ảnh
+## 1. Thứ tự sinh và ảnh đính kèm
 
 | Sheet | File prompt | Đính kèm | Nội dung |
 |---|---|---|---|
-| A (8x7) | `prompts/HA_A_master.txt` | ảnh thật + `PM_A_master.png` (chỉ lấy style) | Master: chân dung, đứng, đi, nói/nghe, ngồi, cảm xúc |
-| B (8x7) | `prompts/HA_B_review_endings.txt` | ảnh thật + `HA_A_master.png` | Cầm nắm, Final Review (hội đồng + phản biện), 4 kết thúc |
-| D (4x5) | `prompts/HA_D_portraits.txt` | ảnh thật + `HA_A_master.png` | 20 chân dung cảm xúc cho hộp thoại |
+| A (8×6) | `prompts/HA_A_master.txt` | ảnh thật + `PM_A_master.png` | Master: chân dung, đứng, đi, rời đi, ngồi bàn đánh giá, 4 màn kết thúc (đứng), nói/nghe |
+| C (8×3) | `prompts/HA_C_review.txt` | `HA_A` đã duyệt + ảnh thật | Ngồi bàn Final Review S16: mở đầu, phản ứng báo cáo, 4 câu hỏi phản biện, trao đổi với Anh Minh |
+| D (4×5) | `prompts/HA_D_portraits.txt` | `HA_A` đã duyệt + ảnh thật | 20 chân dung hộp thoại |
 
-Tạo sheet A trước và duyệt, sau đó B, D đính kèm A làm chuẩn. Không có sheet C: chị Hà chỉ xuất hiện ở S16 và màn kết, nên cảnh bàn hội đồng và 4 kết thúc gộp vào sheet B.
+**Cách nhanh, ít token nhất:** chat mới với GPT-5.6 Sol, đính kèm ảnh thật, `sheets/PM_A_master.png` và zip thư mục `rolecraft_ha_sprite_prompts`, dán `SOL_ONE_SHOT_PROMPT.txt`, gửi một lần. Mỗi sheet 1 lần sinh, chỉ sinh lại 1 lần khi lỗi cứng (sai lưới, dính/cụt hình, không giống ảnh thật, có chữ, nền vẽ ô caro giả); nền trắng thì chỉ chạy `tools/make_transparent.py`; sửa chấm neo theo **hàng**, tối đa 2 lần cho cả bộ.
 
-### Tạo hình nhân vật
+**Sinh thủ công:** mỗi sheet dán nguyên văn file prompt, đính kèm như bảng trên. Duyệt A xong mới làm C, D.
 
-- Không có trong docs gốc: `THOAI_MAU.json` thêm chị Hà thay cho “Hội đồng đánh giá” (`REVIEW_PANEL`, docs/KICH_BAN_ROLECRAFT_PM60.md – L4 S16 và mục 9) – lời “Đại diện hội đồng” trong docs do chị Hà nói.
-- Xưng “chị” với PM → lớn tuổi hơn PM; chuyên nghiệp, trung lập, hỏi thẳng nhưng không gay gắt.
-- Đạo cụ đặc trưng: folder navy đựng phiếu đánh giá (`prop/folder_closed`); phiếu đánh giá dùng `prop/checklist_sheet`.
-- Ngồi cạnh anh Minh ở bàn hội đồng (anh Minh ở bên phải chị trong khung hình, ngoài ô).
+## 2. Điểm kiểm tra (chỉ các lỗi cứng mới sinh lại)
 
----
-
-## 2. Điểm kiểm tra
-
-> ✅ **Sheet A:** nhận ra người thật; nét vẽ, viền, bóng và cỡ người khớp sheet A của PM; ô 1 là chân dung có khung; các ô khác **không có đồ vật**, tay ở tư thế cầm; chấm màu đúng các ô có `[markers]`.
+> ✅ Đúng lưới (A: 8×6 vuông; C: 8×3 ảnh ngang; D: 4×5), mỗi ô một hình toàn thân, không dính ô bên, **nền trong suốt** (không trắng, không ô caro vẽ giả).
 >
-> ✅ **Các sheet còn lại:** khớp sheet A; không vẽ ghế, bàn, màn hình, đồ cầm tay; tư thế ngồi cùng độ cao trong một hàng; nhân vật khác nằm ngoài khung.
+> ✅ Nhận ra người thật; blazer hồng đất, blouse kem, thẻ xanh royal; ô 1 sheet A là chân dung khung xanh nhạt.
 >
-> ✅ **Sau khi chạy script:** mở `build/report.json`; mỗi dòng `missing grip/seat marker` là một ô cần sinh lại.
-
----
+> ✅ Không vẽ folder, giấy, bút, ghế, bàn (trừ ô chân dung); chấm neo có ở phần lớn ô có `[markers]`.
+>
+> ✅ Sau script: `build/report.json` – chỉ hàng có ≥3 ô thiếu chấm mới sửa hàng; còn lại chỉnh `dx`/`dy` trong bind.
 
 ## 3. Dùng tool
 
 ```bash
+cd docs/HA/rolecraft_ha_sprite_prompts
+python3 tools/make_transparent.py sheets/*.png
 python3 tools/extract_anchors.py --manifest ha_sprite_manifest.json --sheets sheets --out build
 ```
 
-Kết quả `build/sprites/ha/*.png`, `anim/*.png`, `anchors.json`, `animations.json`, `report.json`. Ghép với đồ vật: nạp `anchors.json` của cả bộ PM (có `prop/*`, `furn/*`) và bộ này, rồi `PMCompose.create(anchors, manifest, base)`.
+Ghép đồ vật: nạp `anchors.json` của bộ PM (`prop/*`, `furn/*`) gộp với `anchors.json` của bộ này (`ha/*`), rồi `PMCompose.create(anchors, manifest, base)`.
 
----
+## 4. Gắn kết ô → đồ vật / nội thất (bộ PM)
 
-## 4. Chấm neo theo ô
-
-Ô có `[markers]` trong prompt được gắn đồ vật/nội thất trong manifest (`cells[].bind`); danh sách đầy đủ ở mục 6.
-
----
+| Nhóm tư thế | Đồ vật | Nội thất |
+|---|---|---|
+| idle, walk, walk_back, turn_01, contract_give_01 | folder_closed | |
+| roadmap_show_01 / goals_* / procedure_give_01 | folder_open / contract_sheet / paper_stack | |
+| sit_01 | | meeting_chair (bên phải) |
+| sit_02, sit_03, panel_* | | meeting_chair + meeting_table |
+| panel_note / panel_tick, panel_evidence | pen + notebook_open / checklist_sheet trên bàn | meeting_chair + meeting_table |
+| panel_read, panel_flip / panel_point, panel_warn | folder_open trên tay / trên bàn | meeting_chair + meeting_table |
 
 ## 5. Mapping kịch bản → sprite
 
-Tên trong bảng là **nhóm animation** (`ha/<nhóm>`) hoặc một ô cụ thể (`ha/<ô>_01`). `face_*` là chân dung hộp thoại (sheet D). Mũi tên `→` là chuỗi phát nối tiếp. Kịch bản gốc: `docs/KICH_BAN_ROLECRAFT_PM60.md`; thoại trong game: `THOAI_MAU.json`.
+Tên là **nhóm animation** `ha/<nhóm>` (bỏ hậu tố `_01`…) hoặc một ô `ha/<ô>_01`; `face_*` là chân dung hộp thoại (sheet D). `→` là chuỗi phát nối tiếp. Thoại theo `docs/KICH_BAN_ROLECRAFT_PM60.md`; dòng không ghi “Chị Hà (HR):” là phản ứng của Chị Hà khi người khác nói hoặc theo kết quả.
 
 | Cảnh | Nhịp | Thoại / diễn biến | Animation · chân dung |
 |---|---|---|---|
-| `L4 | S16 Final Review | Mở cảnh` | Dẫn truyện | Anh Minh và Chị Hà ngồi ở bàn đánh giá. | `ha/panel_listen`, `ha/face_neutral` |
-| `L4 | S16 Final Review | Mở cảnh` | Chị Hà | Chị bên nhân sự, sẽ cùng anh Minh đánh giá kết quả thử việc của em. | `ha/panel_intro`, `ha/face_polite_smile` |
-| `L4 | S16 Final Review | Mở cảnh` | PM trình bày | (Hội đồng chờ PM trình bày.) | `ha/panel_note`, `ha/face_neutral` |
-| `L4 | S16 Final Review | Nhánh A` | Chị Hà | Báo cáo chưa nói gì về sự cố production và tải của team. | `ha/panel_frown_01`, `ha/face_skeptical` |
-| `L4 | S16 Final Review | Nhánh B` | (nghe) | Minh bạch là tốt, nhưng cần kế hoạch hành động (Anh Minh). | `ha/panel_listen`, `ha/face_concerned` |
-| `L4 | S16 Final Review | Nhánh C` | (nghe) | Đây là cách một PM chịu trách nhiệm (Anh Minh). | `ha/panel_nod_01`, `ha/face_pleased` |
-| `L4 | S16 phản biện | Mở cảnh` | Câu hỏi 1 | Quyết định nào trong 60 ngày tạo ra ảnh hưởng lớn nhất, và vì sao? | `ha/panel_ask`, `ha/face_questioning` |
-| `L4 | S16 phản biện | Mở cảnh` | Câu hỏi 2 | Nếu được làm lại một quyết định, em sẽ thay đổi điều gì? | `ha/panel_ask_03`, `ha/face_probing` |
-| `L4 | S16 phản biện | Mở cảnh` | Câu hỏi 3 | Team hiện tại có vận hành được mà không cần em không? | `ha/panel_ask_02`, `ha/face_skeptical` |
-| `L4 | S16 phản biện | Mở cảnh` | Câu hỏi 4 | Ba ưu tiên của em trong 90 ngày tới là gì? | `ha/panel_ask_04`, `ha/face_questioning` |
-| `L4 | S16 phản biện | Mở cảnh` | Dẫn truyện | Chị Hà và Anh Minh trao đổi với nhau... | `ha/panel_confer`, `ha/panel_score_01`, `ha/panel_close_01` |
-| `END | Pass xuất sắc | Trình tự dùng sheet` | Chị Hà | Gửi hợp đồng chính thức và lộ trình phát triển quản lý. | `ha/pass_contract`, `ha/pass_roadmap_01`, `ha/pass_applaud`, `ha/face_congrats` |
-| `END | Pass | Trình tự dùng sheet` | Chị Hà | Phòng nhân sự sẽ gửi em hợp đồng chính thức trong tuần này. | `ha/pass_smile_01`, `ha/pass_contract`, `ha/pass_shake`, `ha/face_warm` |
-| `END | Gia hạn thử việc | Trình tự dùng sheet` | Chị Hà | Chị sẽ gửi em mục tiêu và tiêu chí đánh giá cho giai đoạn gia hạn. | `ha/extend_talk_01`, `ha/extend_goals_01`, `ha/extend_count_01`, `ha/extend_encourage_01`, `ha/face_encouraging` |
-| `END | Không đạt | Trình tự dùng sheet` | Chị Hà | Chị sẽ hỗ trợ em các thủ tục kết thúc thử việc. | `ha/fail_talk_01`, `ha/fail_doc_01`, `ha/fail_pat_01`, `ha/fail_bow_01`, `ha/face_sympathetic` |
-| `END | Không đạt | Trình tự dùng sheet` | Dẫn truyện | Ôm thùng đồ ra cửa... | `ha/door_01`, `ha/wave_01`, `ha/face_regretful` |
+| L4 S16 Final Review | Trước cảnh | Chị Hà vào phòng đánh giá cùng Anh Minh | `walk` → `greet_01` → `sit_01` → `sit_02` · `face_formal` |
+| L4 S16 Final Review | Mở cảnh | Dẫn truyện: Anh Minh và Chị Hà bên nhân sự ngồi ở bàn đánh giá. | `panel_listen` · `face_neutral` |
+| L4 S16 Final Review |  | Chị Hà (HR): “Chị bên nhân sự, sẽ cùng anh Minh đánh giá kết quả thử việc của em.” | `panel_intro` · `face_polite_smile` |
+| L4 S16 Final Review |  | Anh Minh: “…Em có 10 phút cho kết quả, quyết định quan trọng và kế hoạch 90 ngày.” | `panel_read_01` → `panel_flip_01` · `face_listening` |
+| L4 S16 Final Review | Hậu quả trước review | team_ot_14_days + tinh thần dưới 40: báo cáo gắn cảnh báo burnout | `panel_warn_01` · `face_concerned` |
+| L4 S16 Final Review | Hậu quả trước review | process_gap_unresolved: hội đồng yêu cầu giải trình | `panel_probe_01` · `face_probing` |
+| L4 S16 Final Review | Hậu quả trước review | process_standardized / team_ownership / development_plan_created / ownership_delegated: bằng chứng tích cực | `panel_evidence_01` · `face_pleased` |
+| L4 S16 Final Review | Câu hỏi | PM: “Em xin bắt đầu ạ.” | `panel_note` · `face_serious` |
+| L4 S16 Final Review | A | Chị Hà (HR): “Báo cáo chưa nói gì về sự cố production và tải của team.” | `panel_frown_01` → `panel_point_01` · `face_skeptical` → `face_frown` |
+| L4 S16 Final Review | B | PM nhận trách nhiệm; Anh Minh: “Minh bạch là tốt, nhưng em cần biến nó thành kế hoạch hành động.” | `panel_consider_01` · `face_thinking` |
+| L4 S16 Final Review | C | PM báo cáo bốn phần; Anh Minh: “Đây là cách một PM chịu trách nhiệm.” | `panel_impressed_01` → `panel_pleased_01` · `face_impressed` |
+| L4 S16 Phản biện | Câu 1 | Chị Hà (HR): “Quyết định nào trong 60 ngày tạo ra ảnh hưởng lớn nhất, và vì sao?” | `panel_ask_01` · `face_questioning` |
+| L4 S16 Phản biện | Câu 2 | Chị Hà (HR): “Nếu được làm lại một quyết định, em sẽ thay đổi điều gì?” | `panel_ask_02` · `face_probing` |
+| L4 S16 Phản biện | Câu 3 | Chị Hà (HR): “Team hiện tại có vận hành được mà không cần em không?” | `panel_ask_03` · `face_skeptical` |
+| L4 S16 Phản biện | Câu 4 | Chị Hà (HR): “Ba ưu tiên của em trong 90 ngày tới là gì?” | `panel_ask_04` · `face_questioning` |
+| L4 S16 Phản biện | PM trả lời | sau mỗi câu trả lời | `panel_think_01` → `panel_tick_01` · `face_thinking` |
+| L4 S16 Phản biện | Kết cảnh | Dẫn truyện: Chị Hà và Anh Minh trao đổi với nhau... | `panel_confer` · `face_formal` → `sit_03` |
+| Kết thúc | Pass xuất sắc | Chị Hà (HR): “Phòng nhân sự sẽ gửi em hợp đồng chính thức và lộ trình phát triển quản lý.” | `congrats` → `contract_give` → `roadmap_show_01` · `face_congrats` |
+| Kết thúc | Pass | Chị Hà (HR): “Phòng nhân sự sẽ gửi em hợp đồng chính thức trong tuần này.” | `congrats_02` → `contract_give` → `shake` → `pleased_01` · `face_warm` |
+| Kết thúc | PM cảm ơn (Pass) | PM: “Em cảm ơn ạ!!” / “Phù... em cảm ơn anh ạ.” | `nod` → `greet_02` · `face_laugh` |
+| Kết thúc | Gia hạn | Chị Hà (HR): “Chị sẽ gửi em mục tiêu và tiêu chí đánh giá cho giai đoạn gia hạn.” | `goals_give_01` → `goals_explain_01` → `encourage_01` · `face_encouraging` |
+| Kết thúc | Không đạt | Chị Hà (HR): “Chị sẽ hỗ trợ em các thủ tục kết thúc thử việc.” | `sympathetic_01` → `procedure_give_01` → `comfort_01` → `sigh_01` · `face_sympathetic` → `face_regretful` |
+| Kết thúc | Chào tạm biệt | Dẫn truyện (Không đạt): Ôm thùng đồ ra cửa... / các kết thúc khác | `bow_01` → `turn_01` → `idle_back_01` → `walk_back` · `face_sigh` |
+| Hội thoại | Chị Hà đứng nói / nghe | Mặc định khi đứng ở màn kết thúc | `idle` · `talk` · `listen` · `face_formal` |
 
----
+Chị Hà chỉ có ở L4 S16 Final Review và các màn kết thúc (kịch bản mục 2), nên không có cảnh làm việc, họp team hay gặp khách. Mọi ô trong các sheet đều xuất hiện trong bảng trên (`build.py` kiểm tra).
 
 ## 6. Chi tiết từng sheet
 
-### Sheet A – Master: chân dung, đứng, đi, nói/nghe, ngồi, cảm xúc
-
-File `HA_A_master.png`, lưới 8×7, prompt `prompts/HA_A_master.txt`.
+### Sheet A – Master: chân dung, đứng, đi, rời đi, ngồi bàn đánh giá, 4 màn kết thúc (đứng), nói/nghe
 
 | # | Tên | Mô tả |
-|---|---|---|
-| 1 | `ha/portrait` | [portrait cell, see LAYOUT] calm professional smile, navy folder against the chest, a few sparkles |
-| 2 | `ha/idle_01` | idle loop 1/4: upright poised stance, folder held against the chest with the left arm [markers: magenta = folder] |
-| 3 | `ha/idle_02` | idle loop 2/4: slight inhale, shoulders a tiny bit higher [markers: magenta = folder] |
-| 4 | `ha/idle_03` | idle loop 3/4: glancing at the wristwatch on the left wrist for a moment [markers: magenta = folder] |
-| 5 | `ha/idle_back_01` | standing seen from behind (back view), folder in the left hand [markers: magenta = folder] |
-| 6 | `ha/idle_04` | idle loop 4/4: slight exhale, calm observant face [markers: magenta = folder] |
-| 7 | `ha/greet_01` | polite nod with a warm professional smile, free hand at the waist |
-| 8 | `ha/greet_02` | hand lightly on the chest, introducing oneself: 'I'm from HR' |
-| 9 | `ha/walk_01` | walk contact: left foot forward heel touching [markers: magenta = folder] |
-| 10 | `ha/walk_02` | walk down: weight on left leg, knee bent [markers: magenta = folder] |
-| 11 | `ha/walk_03` | walk passing: right leg passing the left [markers: magenta = folder] |
-| 12 | `ha/walk_04` | walk up: rising on left toes [markers: magenta = folder] |
-| 13 | `ha/walk_05` | walk contact: right foot forward heel touching [markers: magenta = folder] |
-| 14 | `ha/walk_06` | walk down: weight on right leg, knee bent [markers: magenta = folder] |
-| 15 | `ha/walk_07` | walk passing: left leg passing the right [markers: magenta = folder] |
-| 16 | `ha/walk_08` | walk up: rising on right toes [markers: magenta = folder] |
-| 17 | `ha/talk_01` | talking, right hand open at chest height, measured |
-| 18 | `ha/talk_02` | talking, both hands slightly open, explaining a procedure |
-| 19 | `ha/talk_03` | talking, index finger lightly raised, asking a pointed question |
-| 20 | `ha/talk_04` | talking, hand returning down, small polite smile |
-| 21 | `ha/listen_01` | listening, hands loosely clasped in front, neutral and attentive |
-| 22 | `ha/listen_02` | listening, head tilted, one hand at the chin, evaluating |
-| 23 | `ha/nod_01` | nodding, eyes half closed, noting it |
-| 24 | `ha/nod_02` | nodding, chin lifted back up |
-| 25 | `ha/sit_01` | standing next to the chair, about to sit, smoothing the blazer |
-| 26 | `ha/sit_02` | lowering onto the chair [markers: cyan = seat] |
-| 27 | `ha/sit_03` | seated upright, hands resting on the lap [markers: cyan = seat] |
-| 28 | `ha/sit_04` | seated, legs crossed, hands folded on the knee, evaluating [markers: cyan = seat] |
-| 29 | `ha/sit_05` | seated, leaning slightly forward, listening closely [markers: cyan = seat] |
-| 30 | `ha/sit_06` | seated, writing in a notebook on the lap with a pen [markers: cyan = seat; magenta = notebook; green = pen] |
-| 31 | `ha/sit_07` | seated, reading a phone held in the right hand [markers: cyan = seat; magenta = phone] |
-| 32 | `ha/sit_08` | standing up from the chair, buttoning the blazer [markers: cyan = seat] |
-| 33 | `ha/good_01` | approving small smile, soft nod, two golden sparkles |
-| 34 | `ha/good_02` | impressed, eyebrows raised, small 'oh' mouth, exclamation mark |
-| 35 | `ha/good_03` | warm smile, hands clasped in front |
-| 36 | `ha/good_04` | soft laugh, hand near the mouth |
-| 37 | `ha/applaud_01` | applauding politely, hands apart |
-| 38 | `ha/applaud_02` | applauding politely, hands together |
-| 39 | `ha/pleased_01` | pleased, chin slightly up, satisfied look |
-| 40 | `ha/relieved_01` | relieved exhale, hand on the chest, small smile |
-| 41 | `ha/neutral_01` | neutral poker face, hands clasped in front |
-| 42 | `ha/serious_01` | serious, lips pressed, direct gaze |
-| 43 | `ha/doubt_01` | skeptical raised eyebrow, small question mark |
-| 44 | `ha/frown_01` | slight frown, 'the report left something out' |
-| 45 | `ha/concern_01` | concerned, eyebrows tilted, hand at the collar |
-| 46 | `ha/sigh_01` | quiet sigh, eyes closed, small grey puff |
-| 47 | `ha/regret_01` | regretful, eyes lowered, hand on the chest |
-| 48 | `ha/headshake_01` | slow small head shake, calm |
-| 49 | `ha/think_01` | thinking, hand at the chin, looking up |
-| 50 | `ha/think_02` | thinking, eyes closed, finger tapping the chin |
-| 51 | `ha/watch_01` | raising the left wrist and checking the watch, 'you have ten minutes' |
-| 52 | `ha/crossarms_01` | arms loosely crossed, neutral, waiting for an answer |
-| 53 | `ha/front_hands_01` | hands folded in front, standing straight, formal |
-| 54 | `ha/behind_01` | hands clasped behind the back, calm observing look |
-| 55 | `ha/invite_01` | open palm toward the viewer, 'please begin' |
-| 56 | `ha/point_01` | open hand gesturing forward, 'the floor is yours' |
+|---:|---|---|
+| 1 | `ha/portrait` | [portrait cell, see LAYOUT] |
+| 2 | `ha/idle_01` | idle 1/4: upright, composed [markers: magenta = folder] |
+| 3 | `ha/idle_02` | idle 2/4: slight inhale, shoulders a tiny bit higher [markers: magenta = folder] |
+| 4 | `ha/idle_03` | idle 3/4: glancing down at the folder [markers: magenta = folder] |
+| 5 | `ha/idle_04` | idle 4/4: slight exhale, calm face [markers: magenta = folder] |
+| 6 | `ha/idle_back_01` | seen from BEHIND (back view), standing [markers: magenta = folder] |
+| 7 | `ha/greet_01` | polite nod with a professional smile |
+| 8 | `ha/greet_02` | small respectful bow of the head |
+| 9 | `ha/walk_01` | contact: right foot forward, heel touching [markers: magenta = folder] |
+| 10 | `ha/walk_02` | down: weight on right leg, knee bent [markers: magenta = folder] |
+| 11 | `ha/walk_03` | passing: left leg passing the right [markers: magenta = folder] |
+| 12 | `ha/walk_04` | up: rising on right toes [markers: magenta = folder] |
+| 13 | `ha/walk_05` | contact: left foot forward, heel touching [markers: magenta = folder] |
+| 14 | `ha/walk_06` | down: weight on left leg, knee bent [markers: magenta = folder] |
+| 15 | `ha/walk_07` | passing: right leg passing the left [markers: magenta = folder] |
+| 16 | `ha/walk_08` | up: rising on left toes [markers: magenta = folder] |
+| 17 | `ha/walk_back_01` | walking away seen from BEHIND, step 1, folder in the arm [markers: magenta = folder] |
+| 18 | `ha/walk_back_02` | walking away from behind, step 2 [markers: magenta = folder] |
+| 19 | `ha/walk_back_03` | walking away from behind, step 3 [markers: magenta = folder] |
+| 20 | `ha/walk_back_04` | walking away from behind, step 4 [markers: magenta = folder] |
+| 21 | `ha/turn_01` | turning away to leave, kind nod over the shoulder [markers: magenta = folder] |
+| 22 | `ha/sit_01` | standing in front of the chair, about to sit |
+| 23 | `ha/sit_02` | lowering onto the chair, smoothing the blazer [markers: cyan = seat] |
+| 24 | `ha/sit_03` | standing up from the chair [markers: cyan = seat] |
+| 25 | `ha/congrats_01` | applauding warmly, sparkles |
+| 26 | `ha/congrats_02` | hands clasped in front, big congratulating smile |
+| 27 | `ha/contract_give_01` | holding out a closed folder with the official contract with both hands [markers: magenta = folder] |
+| 28 | `ha/contract_give_02` | folder handed over, hands returning, warm nod |
+| 29 | `ha/roadmap_show_01` | holding an open folder toward the right, showing the management development path [markers: magenta = folder] |
+| 30 | `ha/shake_01` | reaching out the right hand for a handshake |
+| 31 | `ha/shake_02` | handshake, warm smile |
+| 32 | `ha/pleased_01` | pleased smile, small nod, sparkles |
+| 33 | `ha/goals_give_01` | holding out a single page of goals and criteria with both hands [markers: magenta = page] |
+| 34 | `ha/goals_explain_01` | pointing at one line on the page, explaining calmly [markers: magenta = page] |
+| 35 | `ha/encourage_01` | encouraging nod, one hand forward, 'focus on what is missing' |
+| 36 | `ha/sympathetic_01` | hand on the chest, sympathetic soft sad smile |
+| 37 | `ha/procedure_give_01` | holding out a small stack of papers for the procedures, gentle [markers: magenta = papers] |
+| 38 | `ha/comfort_01` | gentle hand reaching toward an offscreen shoulder on the right |
+| 39 | `ha/sigh_01` | quiet sigh, eyes closed, small grey puff |
+| 40 | `ha/bow_01` | respectful slight bow, goodbye |
+| 41 | `ha/talk_01` | talking, right hand open at chest height |
+| 42 | `ha/talk_02` | talking, both hands slightly open |
+| 43 | `ha/talk_03` | talking, index finger lightly raised |
+| 44 | `ha/talk_04` | talking, hand returning down, small smile |
+| 45 | `ha/listen_01` | listening, hands folded in front |
+| 46 | `ha/listen_02` | listening, head tilted |
+| 47 | `ha/nod_01` | nodding |
+| 48 | `ha/nod_02` | chin back up after the nod |
 
-### Sheet B – Cầm nắm, Final Review (hội đồng + phản biện), 4 kết thúc
-
-File `HA_B_review_endings.png`, lưới 8×7, prompt `prompts/HA_B_review_endings.txt`.
+### Sheet C – Ngồi bàn Final Review S16: mở đầu, phản ứng báo cáo, 4 câu hỏi phản biện, trao đổi với Anh Minh
 
 | # | Tên | Mô tả |
-|---|---|---|
-| 1 | `ha/doc_hold_01` | folder held in both hands at chest height [markers: magenta = folder] |
-| 2 | `ha/doc_read_01` | reading the open folder held in both hands [markers: magenta = folder] |
-| 3 | `ha/doc_read_02` | reading the open folder, flipping a page [markers: magenta = folder] |
-| 4 | `ha/form_note_01` | writing on an evaluation form with a pen [markers: magenta = form; green = pen] |
-| 5 | `ha/form_note_02` | underlining something on the form, thoughtful [markers: magenta = form; green = pen] |
-| 6 | `ha/doc_raise_01` | raising a single page to show it [markers: magenta = page] |
-| 7 | `ha/doc_give_01` | extending a closed folder forward with both hands [markers: magenta = folder] |
-| 8 | `ha/doc_give_02` | folder handed over, hands returning, polite smile [markers: magenta = folder] |
-| 9 | `ha/tab_hold_01` | holding the tablet at chest height with both hands [markers: magenta = tablet] |
-| 10 | `ha/tab_read_01` | reading the tablet, calm [markers: magenta = tablet] |
-| 11 | `ha/tab_present_01` | turning the tablet screen toward the viewer [markers: magenta = tablet] |
-| 12 | `ha/tab_present_02` | tablet turned, pointing at the screen with the free hand [markers: magenta = tablet] |
-| 13 | `ha/phone_read_01` | reading a message on the phone, neutral [markers: magenta = phone] |
-| 14 | `ha/phone_type_01` | typing a message with the thumb [markers: magenta = phone] |
-| 15 | `ha/phone_call_01` | phone at the ear, listening [markers: magenta = phone] |
-| 16 | `ha/phone_pocket_01` | putting the phone back into the blazer pocket [markers: magenta = phone] |
-| 17 | `ha/panel_intro_01` | seated, hand on the chest, introducing oneself to the PM [markers: cyan = seat] |
-| 18 | `ha/panel_intro_02` | seated, open palm forward, 'please begin' [markers: cyan = seat] |
-| 19 | `ha/panel_listen_01` | seated, listening, hands folded on the table [markers: cyan = seat] |
-| 20 | `ha/panel_listen_02` | seated, listening, slight head tilt [markers: cyan = seat] |
-| 21 | `ha/panel_note_01` | seated, writing notes on the evaluation form with a pen [markers: cyan = seat; magenta = pen] |
-| 22 | `ha/panel_note_02` | seated, pausing the pen, looking up at the speaker [markers: cyan = seat; magenta = pen] |
-| 23 | `ha/panel_frown_01` | seated, pen stopped, slight frown, 'something is missing' [markers: cyan = seat; magenta = pen] |
-| 24 | `ha/panel_nod_01` | seated, approving nod, small smile [markers: cyan = seat] |
-| 25 | `ha/panel_ask_01` | seated, asking a question with an open palm [markers: cyan = seat] |
-| 26 | `ha/panel_ask_02` | seated, asking a follow-up, index finger raised [markers: cyan = seat] |
-| 27 | `ha/panel_ask_03` | seated, leaning forward, probing 'what would you change?' [markers: cyan = seat] |
-| 28 | `ha/panel_ask_04` | seated, three fingers raised, 'your three priorities?' [markers: cyan = seat] |
-| 29 | `ha/panel_confer_01` | seated, turning to the right side to confer quietly with a colleague offscreen [markers: cyan = seat] |
-| 30 | `ha/panel_confer_02` | seated, hand beside the mouth, whispering to the side [markers: cyan = seat] |
-| 31 | `ha/panel_score_01` | seated, ticking a box on the evaluation form [markers: cyan = seat; magenta = pen] |
-| 32 | `ha/panel_close_01` | seated, closing the folder on the table, decision made [markers: cyan = seat] |
-| 33 | `ha/pass_smile_01` | standing, warm smile, 'congratulations' |
-| 34 | `ha/pass_contract_01` | holding out the official contract folder with both hands [markers: magenta = folder] |
-| 35 | `ha/pass_contract_02` | contract handed over, proud nod [markers: magenta = folder] |
-| 36 | `ha/pass_shake_01` | reaching out the right hand for a congratulating handshake |
-| 37 | `ha/pass_shake_02` | firm handshake, big smile |
-| 38 | `ha/pass_roadmap_01` | presenting the management development roadmap on a tablet [markers: magenta = tablet] |
-| 39 | `ha/pass_applaud_01` | applauding warmly, sparkles |
-| 40 | `ha/pass_applaud_02` | applauding, small thumbs up, sparkles |
-| 41 | `ha/extend_talk_01` | standing, calm serious explanation |
-| 42 | `ha/extend_goals_01` | handing over a sheet of goals and criteria [markers: magenta = form] |
-| 43 | `ha/extend_count_01` | counting the evaluation criteria on the fingers |
-| 44 | `ha/extend_encourage_01` | small encouraging fist, kind smile, 'you can do it' |
-| 45 | `ha/fail_talk_01` | standing, regretful, hand on the chest, soft voice |
-| 46 | `ha/fail_doc_01` | handing over the closing paperwork folder, sympathetic [markers: magenta = folder] |
-| 47 | `ha/fail_pat_01` | sympathetic gesture toward an offscreen shoulder |
-| 48 | `ha/fail_bow_01` | formal slight bow, respectful goodbye |
-| 49 | `ha/invite_sit_01` | gesturing to an offscreen chair, 'please take a seat' |
-| 50 | `ha/door_01` | gently gesturing toward a door on the LEFT, showing the way |
-| 51 | `ha/reassure_01` | palms down, calm reassuring smile |
-| 52 | `ha/wave_01` | small goodbye wave |
-| 53 | `ha/coffee_01` | holding a coffee mug, relaxed [markers: magenta = mug] |
-| 54 | `ha/coffee_02` | sipping the coffee, eyes closed [markers: magenta = mug] |
-| 55 | `ha/badge_give_01` | holding out a royal-blue official staff badge on a lanyard [markers: magenta = badge] |
-| 56 | `ha/badge_give_02` | badge handed over, proud smile [markers: magenta = badge] |
+|---:|---|---|
+| 1 | `ha/panel_intro_01` | hand on the chest, introducing herself, 'I'm from HR' [markers: cyan = seat] |
+| 2 | `ha/panel_intro_02` | open palm toward the other side, 'we'll evaluate your probation together' [markers: cyan = seat] |
+| 3 | `ha/panel_listen_01` | listening attentively, hands folded on the table [markers: cyan = seat] |
+| 4 | `ha/panel_listen_02` | listening, slight nod [markers: cyan = seat] |
+| 5 | `ha/panel_note_01` | writing notes with a pen [markers: cyan = seat; magenta = pen] |
+| 6 | `ha/panel_note_02` | writing, looking up to listen [markers: cyan = seat; magenta = pen] |
+| 7 | `ha/panel_read_01` | reading the report in an open folder held in both hands [markers: cyan = seat; magenta = folder] |
+| 8 | `ha/panel_flip_01` | flipping a page of the report [markers: cyan = seat; magenta = folder] |
+| 9 | `ha/panel_frown_01` | slight frown, lips pressed, the report hides the incident [markers: cyan = seat] |
+| 10 | `ha/panel_point_01` | tapping a page in the open folder on the table, 'nothing about the incident or the team's load' [markers: cyan = seat] |
+| 11 | `ha/panel_consider_01` | neutral, considering, hand at the chin [markers: cyan = seat] |
+| 12 | `ha/panel_impressed_01` | eyebrows up, pleasantly impressed [markers: cyan = seat] |
+| 13 | `ha/panel_pleased_01` | pleased smile, small nod [markers: cyan = seat] |
+| 14 | `ha/panel_warn_01` | tapping a line in the open folder with a concerned look, burnout warning [markers: cyan = seat] |
+| 15 | `ha/panel_probe_01` | leaning in, probing, 'please explain this gap' [markers: cyan = seat] |
+| 16 | `ha/panel_evidence_01` | satisfied nod, ticking a box on the form with a pen [markers: cyan = seat; magenta = pen] |
+| 17 | `ha/panel_ask_01` | index finger raised, asking, 'which decision had the biggest impact?' [markers: cyan = seat] |
+| 18 | `ha/panel_ask_02` | open palm up, asking, 'what would you change?' [markers: cyan = seat] |
+| 19 | `ha/panel_ask_03` | fingers laced on the table, probing, 'can the team run without you?' [markers: cyan = seat] |
+| 20 | `ha/panel_ask_04` | three fingers up, 'your three priorities for the next 90 days?' [markers: cyan = seat] |
+| 21 | `ha/panel_think_01` | weighing the answer, eyes narrowed slightly [markers: cyan = seat] |
+| 22 | `ha/panel_tick_01` | ticking the evaluation form with a pen [markers: cyan = seat; magenta = pen] |
+| 23 | `ha/panel_confer_01` | turning toward the viewer to confer with the manager beside her [markers: cyan = seat] |
+| 24 | `ha/panel_confer_02` | hand beside the mouth, speaking quietly to the manager [markers: cyan = seat] |
 
-### Sheet D – 20 chân dung cảm xúc cho hộp thoại
-
-File `HA_D_portraits.png`, lưới 4×5, prompt `prompts/HA_D_portraits.txt`.
+### Sheet D – 20 chân dung hộp thoại
 
 | # | Tên | Mô tả |
-|---|---|---|
+|---:|---|---|
 | 1 | `ha/face_neutral` | neutral, composed poker face |
 | 2 | `ha/face_polite_smile` | polite professional smile |
 | 3 | `ha/face_warm` | warm friendly smile |
@@ -241,5 +195,5 @@ File `HA_D_portraits.png`, lưới 4×5, prompt `prompts/HA_D_portraits.txt`.
 | 17 | `ha/face_encouraging` | encouraging, bright eyes, slight smile |
 | 18 | `ha/face_congrats` | congratulating, big smile, sparkles |
 | 19 | `ha/face_formal` | formal, blazer buttoned, neutral |
-| 20 | `ha/face_tired` | tired, faint dark circles |
+| 20 | `ha/face_listening` | attentive, listening, slight nod |
 

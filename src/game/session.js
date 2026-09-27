@@ -20,7 +20,7 @@ export function checkName(raw) {
   return { name: name.split(' ').map(w => w[0].toLocaleUpperCase('vi') + w.slice(1).toLocaleLowerCase('vi')).join(' ') };
 }
 
-// Goi y ten ngau nhien – tranh trung ten nhan vat trong kich ban (Minh, Huy, Lan, Linh, Mai, Nam, Ha)
+// Goi y ten ngau nhien – tranh trung ten nhan vat trong kich ban (Minh, Huy, Lan, Nam, Hiep, Linh, Ha)
 const IDEAS = ['Nguyễn Khánh An', 'Trần Quốc Bảo', 'Lê Ngọc Châu', 'Phạm Tuấn Dũng', 'Vũ Thảo Vy',
   'Đỗ Hoàng Long', 'Bùi Phương Thảo', 'Hoàng Gia Khang', 'Đặng Thanh Tâm', 'Ngô Bảo Ngọc'];
 export function suggestName(current) {

@@ -13,7 +13,8 @@ Các file cũ mâu thuẫn nhau ở vài chỗ; bản này chọn như sau:
 
 | Nội dung | File cũ | Bản thống nhất |
 |---|---|---|
-| Tên nhân vật | Spec: Anh Quân (Manager), Minh (Senior), Hương (Junior) · Chi tiết L1/L2/L4: Anh Minh, Huy, Linh | **Anh Minh, Huy, Linh, Lan, Chị Mai, Nam** (theo kịch bản chi tiết) |
+| Tên nhân vật | Spec: Anh Quân (Manager), Minh (Senior), Hương (Junior) · Chi tiết L1/L2/L4: Anh Minh, Huy, Linh | **Anh Minh, Huy, Nam, Lan, Anh Hiệp, Linh** (theo kịch bản chi tiết) |
+| Tên Sales / Frontend | Sales: Nam · Frontend Developer: Linh | **Sales: chị Linh (nữ, xưng “chị”) · Frontend Developer: Nam (nam, xưng “em”)** (đảo tên; vai trò và lời thoại giữ nguyên) |
 | Hội đồng đánh giá | `HR` – "Chị Hà (HR)" | **Chị Hà (HR)** đánh giá cùng Anh Minh |
 | Level 4 | Spec: S13 Bonus giao sớm, S14 Technical Debt, S15 Báo cáo, S16 Quyết định sau thử việc · V2: S13 Hệ thống vận hành, S14 Phát triển team, S15 Mở rộng hợp tác, S16 Final Review | **V2** |
 | Level 1, 2 | Spec (bảng) và kịch bản chi tiết | Kịch bản chi tiết (số liệu hai bên khớp nhau) |
@@ -120,27 +121,29 @@ Backend thực hiện render biến trước khi trả nội dung node cho front
 | `PLAYER` | PM (người chơi) | PM thử việc, đưa ra quyết định | Mọi cảnh |
 | `MANAGER` | **Anh Minh** | Trưởng phòng/PM Lead: bàn giao, giao việc, chủ trì đánh giá 60 ngày | L1 Intro, Tổng kết · L2 Intro, S05, S07, S08 · L3 S10, S12 · L4 mọi cảnh · Kết thúc |
 | `SENIOR_DEV` | **Huy** | Backend Developer chủ chốt, giỏi nhưng thích tự quyết; ứng viên Technical Lead | Hầu hết các cảnh team |
-| `JUNIOR_DEV` | **Linh** | Frontend Developer, nhiệt tình nhưng thiếu kinh nghiệm | L1 cảnh team · L2 S05, S06 · L3 S11 · L4 S13, S14 |
+| `JUNIOR_DEV` | **Nam** | Frontend Developer, nhiệt tình nhưng thiếu kinh nghiệm | L1 cảnh team · L2 S05, S06 · L3 S11 · L4 S13, S14 |
 | `QA_BA` | **Lan** | BA/QA: requirement, tài liệu, chất lượng, quy trình | Hầu hết các cảnh team |
-| `CLIENT` | **Chị Mai** | Đại diện khách hàng/PO: deadline, giá trị kinh doanh | L1 S03 · L2 S06, S08 · L3 S09, S10 · L4 S15 |
-| `SALE` | **Nam** | Sales Executive: thúc đẩy cơ hội hợp đồng | L3 S10 · L4 S15 |
+| `CLIENT` | **Anh Hiệp** | Đại diện khách hàng/PO: deadline, giá trị kinh doanh | L1 S03 · L2 S06, S08 · L3 S09, S10 · L4 S15 |
+| `SALE` | **Linh** | Sales Executive: thúc đẩy cơ hội hợp đồng | L3 S10 · L4 S15 |
 | `HR` | **Chị Hà** | Phòng nhân sự, đánh giá thử việc cùng Anh Minh (thay `HR`) | L4 S16, Kết thúc |
 
-Xưng hô: Anh Minh, Huy gọi PM là "em", xưng "anh"; Chị Mai, Chị Hà xưng "chị"; Linh, Lan xưng "em". Nếu `key_developer_left=true` (Huy nghỉ ở L2), thoại của Huy ở L3–L4 thay bằng thông báo thiếu nhân sự chủ chốt. Admin có thể đổi tên/avatar qua biến nội dung; node chỉ tham chiếu `character_id`.
+Xưng hô: Anh Minh, Huy gọi PM là "em", xưng "anh"; Anh Hiệp xưng "anh"; Chị Hà, chị Linh (Sales) xưng "chị"; Nam, Lan xưng "em". Nếu `key_developer_left=true` (Huy nghỉ ở L2), thoại của Huy ở L3–L4 thay bằng thông báo thiếu nhân sự chủ chốt. Admin có thể đổi tên/avatar qua biến nội dung; node chỉ tham chiếu `character_id`.
 
 ## 3. Trạng thái phiên chơi
 
 ### Chỉ số chính
 
-| Mã biến | Nhãn hiển thị | Giá trị đầu | Miền giá trị | Quy tắc |
-|---|---|---:|---:|---|
-| `budget` | Quỹ dự án | 100 | -100–200 | Không clamp tại 0 để phát hiện vượt ngân sách |
-| `project_progress` | Tiến độ | 40 | 0–100 | Clamp sau mỗi lựa chọn |
-| `product_quality` | Chất lượng | 60 | 0–100 | Clamp sau mỗi lựa chọn |
-| `team_morale` | Tinh thần đội ngũ | 70 | 0–100 | Clamp sau mỗi lựa chọn |
-| `client_trust` | Niềm tin khách hàng | 60 | 0–100 | Clamp sau mỗi lựa chọn |
-| `management_trust` | Niềm tin quản lý | 50 | 0–100 | Clamp sau mỗi lựa chọn |
-| `project_risk` | Rủi ro dự án | 10 | 0–100 | Điểm càng cao càng bất lợi |
+Chỉ số dùng **số liệu thực tế** thay cho điểm: quỹ tính bằng VND, lưu theo đơn vị triệu đồng (`budget -15` = chi 15.000.000 VND), tiến độ quy ra số ngày làm xong trên kế hoạch 60 ngày, 1 đơn vị = 0,6 ngày (`project_progress +5` = nhanh thêm 3 ngày), các chỉ số còn lại tính bằng % (`team_morale +5` = tăng 5%). Game hiển thị kèm đơn vị: `100.000.000 VND`, `24/60 ngày`, `70%`, `−15.000.000 VND`, `+3 ngày`, `+5%`.
+
+| Mã biến | Nhãn hiển thị | Đơn vị / ý nghĩa thực tế | Giá trị đầu | Miền giá trị | Quy tắc |
+|---|---|---|---:|---:|---|
+| `budget` | Quỹ dự án | VND (lưu theo triệu đồng) | 100.000.000 VND | -100–200 | Không clamp tại 0 để phát hiện vượt ngân sách |
+| `project_progress` | Tiến độ | Số ngày đã hoàn thành / kế hoạch 60 ngày (1 đơn vị = 0,6 ngày) | 24/60 ngày | 0–100 | Clamp sau mỗi lựa chọn |
+| `product_quality` | Chất lượng | % test case đạt | 60% | 0–100 | Clamp sau mỗi lựa chọn |
+| `team_morale` | Tinh thần đội ngũ | % hài lòng qua khảo sát nội bộ | 70% | 0–100 | Clamp sau mỗi lựa chọn |
+| `client_trust` | Niềm tin khách hàng | % hài lòng của khách hàng (CSAT) | 60% | 0–100 | Clamp sau mỗi lựa chọn |
+| `management_trust` | Niềm tin quản lý | % tín nhiệm của Anh Minh | 50% | 0–100 | Clamp sau mỗi lựa chọn |
+| `project_risk` | Rủi ro dự án | % khả năng gặp sự cố / trễ hạn | 10% | 0–100 | Càng cao càng bất lợi |
 
 ### Tài nguyên và biến ẩn
 
@@ -323,13 +326,13 @@ Thứ tự xử lý một lựa chọn:
 
 | Chỉ số | Mã | Giá trị |
 |---|---|---:|
-| Quỹ dự án | `budget` | 100 |
-| Tiến độ | `project_progress` | 40 |
-| Chất lượng | `product_quality` | 60 |
-| Tinh thần đội ngũ | `team_morale` | 70 |
-| Niềm tin khách hàng | `client_trust` | 60 |
-| Niềm tin quản lý | `management_trust` | 50 |
-| Rủi ro dự án | `project_risk` | 10 |
+| Quỹ dự án | `budget` | 100.000.000 VND |
+| Tiến độ | `project_progress` | 24/60 ngày |
+| Chất lượng | `product_quality` | 60% |
+| Tinh thần đội ngũ | `team_morale` | 70% |
+| Niềm tin khách hàng | `client_trust` | 60% |
+| Niềm tin quản lý | `management_trust` | 50% |
+| Rủi ro dự án | `project_risk` | 10% |
 | Quy mô team | `team_size` | 3 |
 | Mức công cụ | `tooling_level` | 0 |
 
@@ -354,13 +357,13 @@ Dự án đã hoàn thành khoảng 40%, nhưng:
 - Tài liệu bàn giao không đầy đủ.
 - Team có ba thành viên với kinh nghiệm khác nhau.
 - Khách hàng muốn xem bản demo sau 7 ngày.
-- Người chơi được cấp quỹ dự án 100 điểm.
+- Người chơi được cấp quỹ dự án 100.000.000 VND.
 - Kết quả 60 ngày quyết định người chơi có vượt qua thử việc hay không.
 
 - **Dẫn truyện:** LEVEL 1 · KHỞI ĐỘNG — Ngày 1 đến 15.
 - **Dẫn truyện:** Bạn vừa nhận vị trí PM thử việc. 60 ngày tới quyết định bạn có ở lại hay không.
 - **Anh Minh:** Dự án xong 40%, PM cũ nghỉ, tài liệu thiếu. Khách muốn demo sau 7 ngày.
-- **Anh Minh:** Em có team 3 người và 100 điểm ngân sách. Quyết định là của em.
+- **Anh Minh:** Em có team 3 người và ngân sách 100.000.000 VND. Quyết định là của em.
 - **PM:** Em hiểu rồi ạ. Để em gặp team trước.
 
 ### S01 · Team mới, deadline cũ
@@ -504,7 +507,7 @@ Kết quả: Senior được trao quyền nhưng vẫn có ranh giới kiểm so
 **Mở cảnh**
 
 - **Dẫn truyện:** Ngày 10 · Phòng họp kickoff.
-- **Chị Mai:** Chị muốn thêm hai chức năng vào bản demo. Chắc chỉ vài ngày thôi nhỉ?
+- **Anh Hiệp:** Anh muốn thêm hai chức năng vào bản demo. Chắc chỉ vài ngày thôi nhỉ?
 - **Lan:** Hai chức năng này nằm ngoài phạm vi đã xác nhận.
 - **PM:** Hai chức năng... mà demo chỉ còn vài ngày.
 
@@ -528,7 +531,7 @@ Hậu quả trước `P2_S05_DUAL_DEADLINE`:
 #### B · Từ chối vì ngoài hợp đồng
 
 - **PM:** Yêu cầu này ngoài hợp đồng, team không làm được.
-- **Chị Mai:** Chị hiểu, nhưng cách xử lý này hơi cứng nhắc.
+- **Anh Hiệp:** Anh hiểu, nhưng cách xử lý này hơi cứng nhắc.
 
 | | |
 |---|---|
@@ -540,8 +543,8 @@ Kết quả: Phạm vi được bảo vệ nhưng niềm tin của khách hàng 
 
 #### C · Tạo Change Request
 
-- **PM:** Team sẽ estimate và gửi chị phương án: lùi deadline, giảm phạm vi hoặc thêm ngân sách.
-- **Chị Mai:** Được, chị cần biết rõ tác động trước.
+- **PM:** Team sẽ estimate và gửi anh phương án: lùi deadline, giảm phạm vi hoặc thêm ngân sách.
+- **Anh Hiệp:** Được, anh cần biết rõ tác động trước.
 
 | | |
 |---|---|
@@ -567,8 +570,8 @@ Kết quả: Khách hàng có thể lựa chọn dựa trên tác động thực
 
 - **Dẫn truyện:** Ngày 15 · Khu vực làm việc của team.
 - **Lan:** Team đang quản lý test case thủ công. Em đề xuất mua bộ công cụ.
-- **Hệ thống:** Đầy đủ: 15 điểm · Licence dùng chung: 5 điểm · Miễn phí: 0 điểm
-- **PM:** 100 điểm phải dùng cho cả 60 ngày... tính sao đây.
+- **Hệ thống:** Đầy đủ: 15.000.000 VND · Licence dùng chung: 5.000.000 VND · Miễn phí: 0 VND
+- **PM:** 100.000.000 VND phải dùng cho cả 60 ngày... tính sao đây.
 
 **Câu hỏi:** Bạn sẽ phân bổ quỹ công cụ như thế nào?
 
@@ -801,7 +804,7 @@ Kết quả: Team có thêm năng lực thực thi. Tiến độ hai dự án đ
 #### B · Cho team OT trong hai tuần
 
 - **PM:** Hai tuần tới cả team chia ca và OT để giữ cả hai deadline.
-- **Linh:** Em sẽ cố, nhưng team đã căng từ đợt demo trước.
+- **Nam:** Em sẽ cố, nhưng team đã căng từ đợt demo trước.
 
 | | |
 |---|---|
@@ -849,7 +852,7 @@ THEN project_progress -5, project_risk +5
 
 - **Dẫn truyện:** Ngày 22 · Phòng họp release. Dự án A đang chậm 3 ngày.
 - **Huy:** Muốn release đúng ngày thì phải bỏ vòng regression cuối.
-- **Chị Mai:** Lùi ba ngày thì bên chị phải đổi lịch đào tạo. Chị cần phương án ngay.
+- **Anh Hiệp:** Lùi ba ngày thì bên anh phải đổi lịch đào tạo. Anh cần phương án ngay.
 - **PM:** Deadline hay chất lượng... phải chọn thôi.
 
 **Câu hỏi:** Bạn sẽ quyết định phương án release nào?
@@ -872,7 +875,7 @@ Hậu quả ẩn tại `P3_S09_PRODUCTION_INCIDENT`: `project_risk +20`, `client
 #### B · Xin delay ba ngày để test đầy đủ
 
 - **PM:** Team cần thêm ba ngày để chạy đủ regression.
-- **Chị Mai:** Chị cần chắc ba ngày này thực sự giảm được rủi ro.
+- **Anh Hiệp:** Anh cần chắc ba ngày này thực sự giảm được rủi ro.
 
 | | |
 |---|---|
@@ -1006,14 +1009,14 @@ IF team_morale >= 55 AND missing_flag(team_ot_14_days) THEN C1 ELSE C2
 **Mở cảnh**
 
 - **Dẫn truyện:** Ngày 30 · Cuộc họp với khách hàng.
-- **Chị Mai:** Kết quả không giống cách bên chị hiểu. Bên em giải quyết thế nào?
+- **Anh Hiệp:** Kết quả không giống cách bên anh hiểu. Bên em giải quyết thế nào?
 - **Lan:** Requirement có một câu hiểu được theo hai cách.
 - **PM:** Không phải lúc tranh luận ai đúng ai sai...
 
 *Biến thể 1 (khi `senior_uncontrolled` hoặc `scope_unestimated`):*
 
 - **Dẫn truyện:** Ngày 30 · Cuộc họp với khách hàng.
-- **Chị Mai:** Chức năng này chạy khác với cách bên chị đã yêu cầu.
+- **Anh Hiệp:** Chức năng này chạy khác với cách bên anh đã yêu cầu.
 - **Huy:** Team đổi cách xử lý để kịp demo nhưng chưa ghi nhận thành requirement.
 - **PM:** Không phải lúc tranh luận ai đúng ai sai...
 
@@ -1022,7 +1025,7 @@ IF team_morale >= 55 AND missing_flag(team_ot_14_days) THEN C1 ELSE C2
 #### A · Khẳng định team đã làm đúng tài liệu
 
 - **PM:** Team đã làm đúng tài liệu. Yêu cầu này là thay đổi mới.
-- **Chị Mai:** Chị không chấp nhận việc đẩy hết trách nhiệm sang khách hàng.
+- **Anh Hiệp:** Anh không chấp nhận việc đẩy hết trách nhiệm sang khách hàng.
 
 | | |
 |---|---|
@@ -1034,7 +1037,7 @@ Kết quả: Team bảo vệ được lập luận dựa trên tài liệu. Cu�
 
 #### B · Nhận toàn bộ lỗi và sửa miễn phí
 
-- **PM:** Bên em nhận lỗi và sửa miễn phí theo ý chị.
+- **PM:** Bên em nhận lỗi và sửa miễn phí theo ý anh.
 - **Lan:** Không làm rõ requirement thì lần sau vẫn sẽ hiểu sai.
 
 | | |
@@ -1048,7 +1051,7 @@ Kết quả: Khách hàng hài lòng vì yêu cầu được chấp nhận. Team
 #### C · Làm rõ kỳ vọng và chia sẻ trách nhiệm
 
 - **PM:** Phần làm rõ tài liệu team chịu. Phần mở rộng mình làm change request.
-- **Chị Mai:** Chị đồng ý, miễn là trách nhiệm hai bên rõ ràng.
+- **Anh Hiệp:** Anh đồng ý, miễn là trách nhiệm hai bên rõ ràng.
 
 | | |
 |---|---|
@@ -1244,7 +1247,7 @@ THEN project_progress -5, project_risk +10
 
 **S09 sau mọi nhánh**
 
-- **PM:** Chị Mai ơi, em báo về sự cố chiều nay và cách bên em đã xử lý ạ.
+- **PM:** Anh Hiệp ơi, em báo về sự cố chiều nay và cách bên em đã xử lý ạ.
 
 ### S10 · Sales hứa quá khả năng
 
@@ -1272,8 +1275,8 @@ THEN project_risk +10
 
 **Mở cảnh**
 
-- **Dẫn truyện:** Ngày 37 · Nam ghé qua bàn PM.
-- **Nam:** Anh chốt với khách rồi: tính năng AI xong trong mười ngày!
+- **Dẫn truyện:** Ngày 37 · Linh ghé qua bàn PM.
+- **Linh:** Chị chốt với khách rồi: tính năng AI xong trong mười ngày!
 - **PM:** Mười ngày? Team còn chưa được hỏi!
 
 **Câu hỏi:** Bạn sẽ xử lý cam kết này như thế nào?
@@ -1293,7 +1296,7 @@ Kết quả: Cam kết được giữ trước mắt nhưng áp lực lại chuy
 
 #### B · Nói với khách hàng rằng Sales đã hứa sai
 
-- **PM:** Chị Mai, bên Sales đã hứa sai, mười ngày là không khả thi.
+- **PM:** Anh Hiệp, bên Sales đã hứa sai, mười ngày là không khả thi.
 - **Dẫn truyện:** Sự thật được nói ra, nhưng tạo thêm xung đột.
 
 | | |
@@ -1339,7 +1342,7 @@ THEN project_progress -5, project_risk +10
 **Mở cảnh**
 
 - **Dẫn truyện:** Ngày 41 · Sáng sớm.
-- **Linh:** Em xin lỗi... em push nhầm code, dữ liệu test mất hết rồi.
+- **Nam:** Em xin lỗi... em push nhầm code, dữ liệu test mất hết rồi.
 - **Lan:** Team sẽ mất gần một ngày để khôi phục.
 - **PM:** Xử lý thế nào cho đúng đây...
 
@@ -1347,7 +1350,7 @@ THEN project_progress -5, project_risk +10
 
 #### A · Phê bình nhân sự trước team
 
-- **PM:** Mọi người nghe đây: lỗi lần này là do Linh!
+- **PM:** Mọi người nghe đây: lỗi lần này là do Nam!
 - **Dẫn truyện:** Team bắt đầu phòng thủ và ngại báo sai sót.
 
 | | |
@@ -1373,7 +1376,7 @@ Kết quả: Không khí tạm ổn nhưng nguyên nhân hệ thống chưa đư
 
 #### C · 1-1, phân tích nguyên nhân và bổ sung checklist review/deploy
 
-- **PM:** Linh, mình nói chuyện riêng, cùng tìm nguyên nhân rồi thêm checklist deploy.
+- **PM:** Nam, mình nói chuyện riêng, cùng tìm nguyên nhân rồi thêm checklist deploy.
 - **Dẫn truyện:** Lỗi được biến thành cải tiến quy trình.
 
 | | |
@@ -1498,7 +1501,7 @@ Các trạng thái quan trọng ảnh hưởng trực tiếp tới Level 4:
 | `sales_deadline_accepted` | Team còn áp lực từ cam kết 10 ngày |
 | `large_project_without_resources` | Team có nguy cơ quá tải khi nhận thêm phạm vi mới |
 | `large_project_resourced` | Team có thêm người và khả năng mở rộng phạm vi |
-| `junior_publicly_blamed` | Linh thiếu tự tin, ít chủ động nhận ownership |
+| `junior_publicly_blamed` | Nam thiếu tự tin, ít chủ động nhận ownership |
 | `rollback_used` | Báo cáo thử việc có bằng chứng xử lý incident có cấu trúc |
 
 ---
@@ -1578,7 +1581,7 @@ Hậu quả tại Final Review: `management_trust -10`
 
 *Biến thể thoại theo cờ:*
 
-- `team_ot_14_days=true` → **Linh:** Team vừa trải qua một giai đoạn làm việc kéo dài. Nếu tiếp tục tăng tốc, em lo mọi người sẽ không giữ được chất lượng.
+- `team_ot_14_days=true` → **Nam:** Team vừa trải qua một giai đoạn làm việc kéo dài. Nếu tiếp tục tăng tốc, em lo mọi người sẽ không giữ được chất lượng.
 
 #### B · Chuẩn hóa quy trình và checklist vận hành
 
@@ -1599,8 +1602,8 @@ Kết quả: Team chậm lại trong ngắn hạn để chuẩn hóa cách làm.
 
 #### C · Trao quyền để team cùng xây dựng cách vận hành
 
-- **PM:** Mỗi người sở hữu một phần: Huy kỹ thuật, Lan chất lượng, Linh onboarding.
-- **Linh:** Em muốn phụ trách checklist cho thành viên mới.
+- **PM:** Mỗi người sở hữu một phần: Huy kỹ thuật, Lan chất lượng, Nam onboarding.
+- **Nam:** Em muốn phụ trách checklist cho thành viên mới.
 
 | | |
 |---|---|
@@ -1612,7 +1615,7 @@ Kết quả: Team tham gia trực tiếp vào việc xây dựng cách vận hà
 
 *Biến thể thoại theo cờ:*
 
-- `junior_publicly_blamed=true` → **Linh:** Em hơi lo mình chưa đủ kinh nghiệm để nhận phần này. Nếu có người review cùng, em sẽ thử.
+- `junior_publicly_blamed=true` → **Nam:** Em hơi lo mình chưa đủ kinh nghiệm để nhận phần này. Nếu có người review cùng, em sẽ thử.
 
 ### S14 · Đánh giá và phát triển thành viên
 
@@ -1630,8 +1633,8 @@ Kết quả: Team tham gia trực tiếp vào việc xây dựng cách vận hà
 
 - Nếu `key_developer_retained=true`, Huy đề xuất phát triển theo hướng Technical Lead.
 - Nếu `key_developer_left=true`, team yêu cầu kế hoạch bù đắp khoảng trống năng lực.
-- Nếu `junior_publicly_blamed=true`, Linh ít chủ động và lo ngại khi được giao trách nhiệm.
-- Nếu `deployment_checklist_added=true`, Linh có bằng chứng đã cải thiện sau sai sót.
+- Nếu `junior_publicly_blamed=true`, Nam ít chủ động và lo ngại khi được giao trách nhiệm.
+- Nếu `deployment_checklist_added=true`, Nam có bằng chứng đã cải thiện sau sai sót.
 - Nếu `team_ownership=true`, từng thành viên đã có phạm vi trách nhiệm rõ hơn.
 
 **Mở cảnh**
@@ -1643,8 +1646,8 @@ Kết quả: Team tham gia trực tiếp vào việc xây dựng cách vận hà
 
 *Biến thể thoại theo cờ:*
 
-- `junior_publicly_blamed=true` → **Linh:** Sau lỗi lần trước, em không chắc team còn tin tưởng giao việc quan trọng cho em không.
-- `deployment_checklist_added=true` → **Linh:** Em đã hoàn thiện checklist deploy và hỗ trợ team dùng trong các lần release gần đây. Em muốn tiếp tục chịu trách nhiệm phần này.
+- `junior_publicly_blamed=true` → **Nam:** Sau lỗi lần trước, em không chắc team còn tin tưởng giao việc quan trọng cho em không.
+- `deployment_checklist_added=true` → **Nam:** Em đã hoàn thiện checklist deploy và hỗ trợ team dùng trong các lần release gần đây. Em muốn tiếp tục chịu trách nhiệm phần này.
 
 **Câu hỏi:** Bạn sẽ đánh giá và phát triển đội ngũ theo cách nào?
 
@@ -1664,7 +1667,7 @@ Kết quả: Báo cáo đánh giá được hoàn thành nhanh. Tiêu chí dễ 
 #### B · Xây dựng Individual Development Plan cho từng người
 
 - **PM:** Mỗi người có một kế hoạch phát triển 90 ngày với tiêu chí đo rõ ràng.
-- **Linh:** Em đồng ý. Có tiêu chí em sẽ tự theo dõi được tiến bộ.
+- **Nam:** Em đồng ý. Có tiêu chí em sẽ tự theo dõi được tiến bộ.
 
 | | |
 |---|---|
@@ -1676,7 +1679,7 @@ Kết quả: Mỗi thành viên có mục tiêu phát triển cụ thể. Việc
 
 #### C · Giao ownership và quyền quyết định theo vai trò
 
-- **PM:** Huy quyết kiến trúc, Lan được chặn release, Linh sở hữu một module.
+- **PM:** Huy quyết kiến trúc, Lan được chặn release, Nam sở hữu một module.
 - **Huy:** Anh đồng ý nếu phạm vi quyết định được ghi rõ.
 
 | | |
@@ -1689,7 +1692,7 @@ Kết quả: Team có phạm vi ownership rõ ràng. Quyền quyết định kh�
 
 *Biến thể thoại theo cờ:*
 
-- `junior_publicly_blamed=true` → **Linh:** Em vẫn hơi lo mắc lỗi. Nếu có checklist và người hỗ trợ ở các mốc quan trọng, em sẽ nhận.
+- `junior_publicly_blamed=true` → **Nam:** Em vẫn hơi lo mắc lỗi. Nếu có checklist và người hỗ trợ ở các mốc quan trọng, em sẽ nhận.
 
 ### S15 · Khách hàng đề nghị mở rộng hợp tác
 
@@ -1709,13 +1712,13 @@ Kết quả: Team có phạm vi ownership rõ ràng. Quyền quyết định kh�
 - Nếu `sales_deadline_accepted=true`, khách hàng vẫn kỳ vọng tốc độ cao từ cam kết trước.
 - Nếu `large_project_without_resources=true`, team đang quá tải và không đủ capacity cho phạm vi mới.
 - Nếu `large_project_resourced=true`, team có thêm một nhân sự nhưng vẫn cần phân bổ rõ.
-- Nếu `client_trust` thấp, chị Mai yêu cầu bảo đảm mạnh hơn trước khi mở rộng.
+- Nếu `client_trust` thấp, anh Hiệp yêu cầu bảo đảm mạnh hơn trước khi mở rộng.
 
 **Mở cảnh**
 
 - **Dẫn truyện:** Ngày 56 · Phòng họp với khách hàng.
-- **Chị Mai:** Bên chị muốn mở rộng thêm module báo cáo và luồng phê duyệt.
-- **Nam:** Cơ hội tốt! Team xác nhận để anh làm báo giá nhé.
+- **Anh Hiệp:** Bên anh muốn mở rộng thêm module báo cáo và luồng phê duyệt.
+- **Linh:** Cơ hội tốt! Team xác nhận để chị làm báo giá nhé.
 - **Lan:** Phạm vi mới chỉ là mong muốn, chưa có tiêu chí nghiệm thu.
 - **PM:** Cơ hội lớn, nhưng nhận thế nào cho an toàn?
 
@@ -1744,7 +1747,7 @@ Hậu quả tại Final Review: `project_risk +10`
 #### B · Khảo sát lại và gửi roadmap sau
 
 - **PM:** Bên em đề xuất khảo sát ba ngày, sau đó gửi roadmap và estimate.
-- **Chị Mai:** Được, nhưng chị cần mốc cụ thể để trình ngân sách.
+- **Anh Hiệp:** Được, nhưng anh cần mốc cụ thể để trình ngân sách.
 
 | | |
 |---|---|
@@ -1757,7 +1760,7 @@ Kết quả: Phạm vi được khảo sát trước khi ký cam kết. Team có
 #### C · Chia phase và chốt phạm vi ưu tiên
 
 - **PM:** Chia hai phase: Phase 1 làm luồng báo cáo ưu tiên, Phase 2 mở rộng sau nghiệm thu.
-- **Nam:** Anh tách báo giá theo từng phase cho khách dễ duyệt.
+- **Linh:** Chị tách báo giá theo từng phase cho khách dễ duyệt.
 
 | | |
 |---|---|
@@ -1769,7 +1772,7 @@ Kết quả: Khách hàng nhận được giá trị sớm với phạm vi rõ r
 
 *Biến thể thoại theo cờ:*
 
-- `mvp_plan_agreed=true` → **Chị Mai:** Cách chia phase này giống phương án MVP trước và bên chị thấy hiệu quả. Chị đồng ý nếu tiêu chí nghiệm thu của từng phase được ghi rõ.
+- `mvp_plan_agreed=true` → **Anh Hiệp:** Cách chia phase này giống phương án MVP trước và bên anh thấy hiệu quả. Anh đồng ý nếu tiêu chí nghiệm thu của từng phase được ghi rõ.
 
 ### S16 · Final Review 60 ngày
 
@@ -1909,8 +1912,8 @@ Level 4 cần giúp người chơi nhận ra sáu nguyên tắc:
 | L2 · S07 | `key_developer_retained` | L3 · S09, L4 | Huy hỗ trợ xử lý incident; sẵn sàng vai trò mentor/Technical Lead |
 | L3 · S10 | `sales_deadline_accepted` / `mvp_plan_agreed` | L4 · S15 | Áp lực cam kết 10 ngày còn lại / khách hàng cởi mở với chia phase |
 | L3 · S11 | `process_gap_unresolved` | L4 · S13, S16 | Lỗi quy trình tái diễn; hội đồng yêu cầu giải trình |
-| L3 · S11 | `deployment_checklist_added` | L4 · S13, S14 | Checklist deploy làm nền chuẩn hóa; Linh có bằng chứng tiến bộ |
-| L3 · S11 | `junior_publicly_blamed` | L4 · S13, S14 | Linh thiếu tự tin, ít nhận ownership |
+| L3 · S11 | `deployment_checklist_added` | L4 · S13, S14 | Checklist deploy làm nền chuẩn hóa; Nam có bằng chứng tiến bộ |
+| L3 · S11 | `junior_publicly_blamed` | L4 · S13, S14 | Nam thiếu tự tin, ít nhận ownership |
 | L3 · S12 | `large_project_without_resources` | L4 · S15, trước S16 | Team dễ quá tải; nếu `team_morale < 40`: `project_risk +10` |
 | L4 · S13 | `process_not_improved` | Trước S16 | `management_trust -10` |
 | L4 · S15 | `expansion_unscoped` | Trước S16 | `project_risk +10` |

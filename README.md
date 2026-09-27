@@ -3,15 +3,24 @@
 Bộ sprite nhân vật PM (8 sheet) cùng trang xem thử hành động và kịch bản.
 
 ```
-game.html               trang GAME: Start → nhập tên nhân vật + mở đầu (#name) → Level 1 (#level1): mở đầu → S01–S04 → tổng kết (Level 2: bước sau)
+game.html               trang GAME: Start → nhập tên nhân vật + mở đầu (#name) → màn chơi (#play): Level 1 (S01–S04 → tổng kết)
+                        → Level 2 kế thừa trạng thái (S05–S08 → tổng kết) → Level 3 (S09–S12 → tổng kết)
+                        → Level 4 (S13–S16 + phản biện) → kết quả thử việc (Pass xuất sắc / Pass / Gia hạn / Không đạt)
+                        → báo cáo cuối 3 trang (chỉ số ngày 1→60, 6 năng lực, hành trình) → tải báo cáo / chơi lại
 index.html              trang XEM NHÂN VẬT (Hành động / Ô tĩnh / Sheet gốc) — đã build, không sửa tay
 scenario-test.html      trang TEST KỊCH BẢN (không phải gameplay): mở cảnh → câu hỏi → chọn A/B/C → cảnh tiếp — đã build
 assets/                 JS/CSS đã build (app.* / scenario-test.* / game.*)
 src/                    mã nguồn (Vite + Tailwind CSS 4), chia theo trang
   game.html             khung trang game → game/main.js
   game/                 trang GAME: main (điều hướng màn), StartScreen, NameScreen, session (tên + lưu phiên), pmSprite,
-                        LevelScreen (màn tình huống: HUD, thoại, lựa chọn A/B/C, kết quả), level1 (nội dung Level 1),
-                        rules (chỉ số, cờ, năng lực, hậu quả trì hoãn), summary (xếp loại + báo cáo tổng kết level),
+                        LevelScreen (màn tình huống: chơi nối tiếp các level, HUD, thoại, lựa chọn A/B/C, kết quả,
+                        cảnh kết, lưu điểm đầu level để chơi lại), level1 / level2 / level3 (nội dung từng level: CAST ở level1;
+                        level2 thêm thoại theo cờ, biến thể mở cảnh, kết quả rẽ nhánh C1/C2, cảnh chuyển theo cờ;
+                        level3 thêm NPC vắng mặt theo cờ, phản ứng NPC, tổng kết không nhận xét;
+                        level4 thêm câu thay thế khi Huy đã nghỉ, điều kiện theo chỉ số, phản biện theo hành trình, kết thúc),
+                        campaign (kết quả 60 ngày theo mục 9: critical, hard fail, báo cáo cuối + bản .txt),
+                        rules (chỉ số, tài nguyên, cờ, năng lực, hậu quả trì hoãn, kế thừa trạng thái giữa level),
+                        summary (xếp loại + báo cáo tổng kết level),
                         stage (vẽ PM + đồ vật), hudTour (hướng dẫn chỉ số lần đầu),
                         atlas.js (do build_preview.py sinh — không sửa tay)
   index.html            khung trang xem nhân vật → preview/main.js
@@ -60,8 +69,11 @@ Unit test (node:test có sẵn trong Node, không cần cài thêm) — chạy s
 ```bash
 npm test           # tests/: rules (chỉ số, cờ, hậu quả trì hoãn), session (tên), actor (PM di chuyển/animation),
                    # summary (xếp loại tổng kết, chạy đủ 81 đường đi Level 1),
-                   # level1 (đối chiếu docs/KICH_BAN_ROLECRAFT_PM60.md – kể cả ma trận hậu quả trì hoãn mục 8 –
-                   #         + THOAI_MAU.json + atlas/ảnh nền)
+                   # level1…level4 (đối chiếu docs/KICH_BAN_ROLECRAFT_PM60.md – kể cả ma trận hậu quả trì hoãn mục 8 –
+                   #         + THOAI_MAU.json + atlas/ảnh nền; phần đọc tài liệu dùng chung: tests/helpers/scenarioDoc.js),
+                   # campaign (chơi nối Level 1 → 2 → 3: hậu quả trì hoãn, C1/C2, xếp loại, đủ 81 × 81 đường đi L1→L2
+                   #           và 4 × 81 × 81 đường đi L1→L2→L3),
+                   # ending (kết quả campaign mục 9: thứ tự xét, hard fail, báo cáo, 20.000 đường đi đủ 4 level)
 ```
 
 ## Lưu ý khi cắt sprite

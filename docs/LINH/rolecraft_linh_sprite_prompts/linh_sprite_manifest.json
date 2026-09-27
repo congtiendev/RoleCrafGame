@@ -1,13 +1,14 @@
 {
- "version": 3,
+ "version": 4,
  "character": {
   "id": "LINH",
-  "role": "JUNIOR_DEV",
-  "name": "Linh – Junior Frontend Developer"
+  "role": "SALE",
+  "name": "Linh – Sales Executive"
  },
  "shared": {
-  "note": "Đồ vật, nội thất, icon dùng lại sheet P, O, F của bộ PM (docs/PM): prop/*, furn/*, icon/*"
+  "note": "prop/*, furn/*, icon/* dùng lại sheet P, O, F của bộ PM (docs/PM)"
  },
+ "facing": "right",
  "markers": {
   "grip": "#FF00FF",
   "grip2": "#00FF00",
@@ -38,10 +39,9 @@
      "key": "linh/idle_01",
      "bind": [
       {
-       "prop": "laptop_closed",
+       "prop": "phone_back",
        "at": "grip",
-       "z": "front",
-       "rot": 0
+       "z": "front"
       }
      ]
     },
@@ -53,10 +53,9 @@
      "key": "linh/idle_02",
      "bind": [
       {
-       "prop": "laptop_closed",
+       "prop": "phone_back",
        "at": "grip",
-       "z": "front",
-       "rot": 0
+       "z": "front"
       }
      ]
     },
@@ -68,10 +67,9 @@
      "key": "linh/idle_03",
      "bind": [
       {
-       "prop": "laptop_closed",
+       "prop": "phone_back",
        "at": "grip",
-       "z": "front",
-       "rot": 0
+       "z": "front"
       }
      ]
     },
@@ -79,14 +77,13 @@
      "index": 5,
      "row": 1,
      "col": 5,
-     "name": "idle_back_01",
-     "key": "linh/idle_back_01",
+     "name": "idle_04",
+     "key": "linh/idle_04",
      "bind": [
       {
-       "prop": "laptop_closed",
+       "prop": "phone_back",
        "at": "grip",
-       "z": "front",
-       "rot": 0
+       "z": "front"
       }
      ]
     },
@@ -94,14 +91,13 @@
      "index": 6,
      "row": 1,
      "col": 6,
-     "name": "idle_04",
-     "key": "linh/idle_04",
+     "name": "idle_back_01",
+     "key": "linh/idle_back_01",
      "bind": [
       {
-       "prop": "laptop_closed",
+       "prop": "phone_back",
        "at": "grip",
-       "z": "front",
-       "rot": 0
+       "z": "front"
       }
      ]
     },
@@ -127,10 +123,9 @@
      "key": "linh/walk_01",
      "bind": [
       {
-       "prop": "laptop_closed",
+       "prop": "phone_back",
        "at": "grip",
-       "z": "front",
-       "rot": 0
+       "z": "front"
       }
      ]
     },
@@ -142,10 +137,9 @@
      "key": "linh/walk_02",
      "bind": [
       {
-       "prop": "laptop_closed",
+       "prop": "phone_back",
        "at": "grip",
-       "z": "front",
-       "rot": 0
+       "z": "front"
       }
      ]
     },
@@ -157,10 +151,9 @@
      "key": "linh/walk_03",
      "bind": [
       {
-       "prop": "laptop_closed",
+       "prop": "phone_back",
        "at": "grip",
-       "z": "front",
-       "rot": 0
+       "z": "front"
       }
      ]
     },
@@ -172,10 +165,9 @@
      "key": "linh/walk_04",
      "bind": [
       {
-       "prop": "laptop_closed",
+       "prop": "phone_back",
        "at": "grip",
-       "z": "front",
-       "rot": 0
+       "z": "front"
       }
      ]
     },
@@ -187,10 +179,9 @@
      "key": "linh/walk_05",
      "bind": [
       {
-       "prop": "laptop_closed",
+       "prop": "phone_back",
        "at": "grip",
-       "z": "front",
-       "rot": 0
+       "z": "front"
       }
      ]
     },
@@ -202,10 +193,9 @@
      "key": "linh/walk_06",
      "bind": [
       {
-       "prop": "laptop_closed",
+       "prop": "phone_back",
        "at": "grip",
-       "z": "front",
-       "rot": 0
+       "z": "front"
       }
      ]
     },
@@ -217,10 +207,9 @@
      "key": "linh/walk_07",
      "bind": [
       {
-       "prop": "laptop_closed",
+       "prop": "phone_back",
        "at": "grip",
-       "z": "front",
-       "rot": 0
+       "z": "front"
       }
      ]
     },
@@ -232,10 +221,9 @@
      "key": "linh/walk_08",
      "bind": [
       {
-       "prop": "laptop_closed",
+       "prop": "phone_back",
        "at": "grip",
-       "z": "front",
-       "rot": 0
+       "z": "front"
       }
      ]
     },
@@ -243,69 +231,104 @@
      "index": 17,
      "row": 3,
      "col": 1,
-     "name": "talk_01",
-     "key": "linh/talk_01"
+     "name": "walk_back_01",
+     "key": "linh/walk_back_01",
+     "bind": [
+      {
+       "prop": "phone_back",
+       "at": "grip",
+       "z": "front"
+      }
+     ]
     },
     {
      "index": 18,
      "row": 3,
      "col": 2,
-     "name": "talk_02",
-     "key": "linh/talk_02"
+     "name": "walk_back_02",
+     "key": "linh/walk_back_02",
+     "bind": [
+      {
+       "prop": "phone_back",
+       "at": "grip",
+       "z": "front"
+      }
+     ]
     },
     {
      "index": 19,
      "row": 3,
      "col": 3,
-     "name": "talk_03",
-     "key": "linh/talk_03"
+     "name": "walk_back_03",
+     "key": "linh/walk_back_03",
+     "bind": [
+      {
+       "prop": "phone_back",
+       "at": "grip",
+       "z": "front"
+      }
+     ]
     },
     {
      "index": 20,
      "row": 3,
      "col": 4,
-     "name": "talk_04",
-     "key": "linh/talk_04"
+     "name": "walk_back_04",
+     "key": "linh/walk_back_04",
+     "bind": [
+      {
+       "prop": "phone_back",
+       "at": "grip",
+       "z": "front"
+      }
+     ]
     },
     {
      "index": 21,
      "row": 3,
      "col": 5,
-     "name": "listen_01",
-     "key": "linh/listen_01"
+     "name": "turn_01",
+     "key": "linh/turn_01",
+     "bind": [
+      {
+       "prop": "phone_back",
+       "at": "grip",
+       "z": "front"
+      }
+     ]
     },
     {
      "index": 22,
      "row": 3,
      "col": 6,
-     "name": "listen_02",
-     "key": "linh/listen_02"
+     "name": "shake_01",
+     "key": "linh/shake_01"
     },
     {
      "index": 23,
      "row": 3,
      "col": 7,
-     "name": "nod_01",
-     "key": "linh/nod_01"
+     "name": "shake_02",
+     "key": "linh/shake_02"
     },
     {
      "index": 24,
      "row": 3,
      "col": 8,
-     "name": "nod_02",
-     "key": "linh/nod_02"
+     "name": "highfive_01",
+     "key": "linh/highfive_01"
     },
     {
      "index": 25,
      "row": 4,
      "col": 1,
-     "name": "sit_01",
-     "key": "linh/sit_01",
+     "name": "announce_01",
+     "key": "linh/announce_01",
      "bind": [
       {
-       "furniture": "office_chair",
-       "at": "beside_left",
-       "z": "back"
+       "prop": "phone_back",
+       "at": "grip",
+       "z": "front"
       }
      ]
     },
@@ -313,41 +336,27 @@
      "index": 26,
      "row": 4,
      "col": 2,
-     "name": "sit_02",
-     "key": "linh/sit_02",
-     "bind": [
-      {
-       "furniture": "office_chair",
-       "at": "seat",
-       "z": "back"
-      }
-     ]
+     "name": "announce_02",
+     "key": "linh/announce_02"
     },
     {
      "index": 27,
      "row": 4,
      "col": 3,
-     "name": "sit_03",
-     "key": "linh/sit_03",
-     "bind": [
-      {
-       "furniture": "office_chair",
-       "at": "seat",
-       "z": "back"
-      }
-     ]
+     "name": "announce_03",
+     "key": "linh/announce_03"
     },
     {
      "index": 28,
      "row": 4,
      "col": 4,
-     "name": "sit_04",
-     "key": "linh/sit_04",
+     "name": "phone_show_01",
+     "key": "linh/phone_show_01",
      "bind": [
       {
-       "furniture": "office_chair",
-       "at": "seat",
-       "z": "back"
+       "prop": "phone_screen",
+       "at": "grip",
+       "z": "front"
       }
      ]
     },
@@ -355,761 +364,282 @@
      "index": 29,
      "row": 4,
      "col": 5,
-     "name": "sit_05",
-     "key": "linh/sit_05",
-     "bind": [
-      {
-       "furniture": "office_chair",
-       "at": "seat",
-       "z": "back"
-      }
-     ]
+     "name": "wink_01",
+     "key": "linh/wink_01"
     },
     {
      "index": 30,
      "row": 4,
      "col": 6,
-     "name": "sit_06",
-     "key": "linh/sit_06",
-     "bind": [
-      {
-       "furniture": "office_chair",
-       "at": "seat",
-       "z": "back"
-      }
-     ]
+     "name": "persuade_01",
+     "key": "linh/persuade_01"
     },
     {
      "index": 31,
      "row": 4,
      "col": 7,
-     "name": "sit_07",
-     "key": "linh/sit_07",
-     "bind": [
-      {
-       "furniture": "office_chair",
-       "at": "seat",
-       "z": "back"
-      }
-     ]
+     "name": "shrug_01",
+     "key": "linh/shrug_01"
     },
     {
      "index": 32,
      "row": 4,
      "col": 8,
-     "name": "sit_08",
-     "key": "linh/sit_08",
-     "bind": [
-      {
-       "furniture": "office_chair",
-       "at": "seat",
-       "z": "back"
-      }
-     ]
+     "name": "sheepish_01",
+     "key": "linh/sheepish_01"
     },
     {
      "index": 33,
      "row": 5,
      "col": 1,
-     "name": "eager_01",
-     "key": "linh/eager_01"
+     "name": "cheer_01",
+     "key": "linh/cheer_01"
     },
     {
      "index": 34,
      "row": 5,
      "col": 2,
-     "name": "happy_01",
-     "key": "linh/happy_01"
+     "name": "cheer_02",
+     "key": "linh/cheer_02"
     },
     {
      "index": 35,
      "row": 5,
      "col": 3,
-     "name": "proud_01",
-     "key": "linh/proud_01"
+     "name": "shock_01",
+     "key": "linh/shock_01"
     },
     {
      "index": 36,
      "row": 5,
      "col": 4,
-     "name": "relieved_01",
-     "key": "linh/relieved_01"
+     "name": "offended_01",
+     "key": "linh/offended_01"
     },
     {
      "index": 37,
      "row": 5,
      "col": 5,
-     "name": "determined_01",
-     "key": "linh/determined_01"
+     "name": "angry_01",
+     "key": "linh/angry_01"
     },
     {
      "index": 38,
      "row": 5,
      "col": 6,
-     "name": "thankful_01",
-     "key": "linh/thankful_01"
+     "name": "calc_01",
+     "key": "linh/calc_01"
     },
     {
      "index": 39,
      "row": 5,
      "col": 7,
-     "name": "confident_01",
-     "key": "linh/confident_01"
+     "name": "agree_01",
+     "key": "linh/agree_01"
     },
     {
      "index": 40,
      "row": 5,
      "col": 8,
-     "name": "excited_01",
-     "key": "linh/excited_01"
+     "name": "relieved_01",
+     "key": "linh/relieved_01"
     },
     {
      "index": 41,
      "row": 6,
      "col": 1,
-     "name": "worried_01",
-     "key": "linh/worried_01"
+     "name": "phone_call_01",
+     "key": "linh/phone_call_01",
+     "bind": [
+      {
+       "prop": "phone_back",
+       "at": "grip",
+       "z": "front"
+      }
+     ]
     },
     {
      "index": 42,
      "row": 6,
      "col": 2,
-     "name": "anxious_01",
-     "key": "linh/anxious_01"
+     "name": "phone_call_02",
+     "key": "linh/phone_call_02",
+     "bind": [
+      {
+       "prop": "phone_back",
+       "at": "grip",
+       "z": "front"
+      }
+     ]
     },
     {
      "index": 43,
      "row": 6,
      "col": 3,
-     "name": "ashamed_01",
-     "key": "linh/ashamed_01"
+     "name": "phone_nervous_01",
+     "key": "linh/phone_nervous_01",
+     "bind": [
+      {
+       "prop": "phone_back",
+       "at": "grip",
+       "z": "front"
+      }
+     ]
     },
     {
      "index": 44,
      "row": 6,
      "col": 4,
-     "name": "ashamed_02",
-     "key": "linh/ashamed_02"
+     "name": "phone_type_01",
+     "key": "linh/phone_type_01",
+     "bind": [
+      {
+       "prop": "phone_back",
+       "at": "grip",
+       "z": "front"
+      }
+     ]
     },
     {
      "index": 45,
      "row": 6,
      "col": 5,
-     "name": "apologize_01",
-     "key": "linh/apologize_01"
+     "name": "phone_read_01",
+     "key": "linh/phone_read_01",
+     "bind": [
+      {
+       "prop": "phone_back",
+       "at": "grip",
+       "z": "front"
+      }
+     ]
     },
     {
      "index": 46,
      "row": 6,
      "col": 6,
-     "name": "apologize_02",
-     "key": "linh/apologize_02"
+     "name": "phone_pocket_01",
+     "key": "linh/phone_pocket_01",
+     "bind": [
+      {
+       "prop": "phone_back",
+       "at": "grip",
+       "z": "front"
+      }
+     ]
     },
     {
      "index": 47,
      "row": 6,
      "col": 7,
-     "name": "hesitant_01",
-     "key": "linh/hesitant_01"
+     "name": "talk_01",
+     "key": "linh/talk_01"
     },
     {
      "index": 48,
      "row": 6,
      "col": 8,
-     "name": "stressed_01",
-     "key": "linh/stressed_01"
+     "name": "talk_02",
+     "key": "linh/talk_02"
     },
     {
      "index": 49,
      "row": 7,
      "col": 1,
-     "name": "unsure_01",
-     "key": "linh/unsure_01"
+     "name": "sit_01",
+     "key": "linh/sit_01",
+     "bind": [
+      {
+       "furniture": "meeting_chair",
+       "at": "beside",
+       "z": "back"
+      }
+     ]
     },
     {
      "index": 50,
      "row": 7,
      "col": 2,
-     "name": "confused_01",
-     "key": "linh/confused_01"
+     "name": "sit_02",
+     "key": "linh/sit_02",
+     "bind": [
+      {
+       "furniture": "meeting_chair",
+       "at": "seat",
+       "z": "back"
+      },
+      {
+       "furniture": "meeting_table",
+       "at": "seat",
+       "z": "front"
+      }
+     ]
     },
     {
      "index": 51,
      "row": 7,
      "col": 3,
-     "name": "ask_01",
-     "key": "linh/ask_01"
+     "name": "sit_03",
+     "key": "linh/sit_03",
+     "bind": [
+      {
+       "furniture": "meeting_chair",
+       "at": "seat",
+       "z": "back"
+      },
+      {
+       "furniture": "meeting_table",
+       "at": "seat",
+       "z": "front"
+      }
+     ]
     },
     {
      "index": 52,
      "row": 7,
      "col": 4,
-     "name": "ask_02",
-     "key": "linh/ask_02"
+     "name": "sit_04",
+     "key": "linh/sit_04",
+     "bind": [
+      {
+       "furniture": "meeting_chair",
+       "at": "seat",
+       "z": "back"
+      },
+      {
+       "furniture": "meeting_table",
+       "at": "seat",
+       "z": "front"
+      }
+     ]
     },
     {
      "index": 53,
      "row": 7,
      "col": 5,
-     "name": "busy_01",
-     "key": "linh/busy_01"
+     "name": "listen_01",
+     "key": "linh/listen_01"
     },
     {
      "index": 54,
      "row": 7,
      "col": 6,
-     "name": "try_01",
-     "key": "linh/try_01"
+     "name": "listen_02",
+     "key": "linh/listen_02"
     },
     {
      "index": 55,
      "row": 7,
      "col": 7,
-     "name": "accept_01",
-     "key": "linh/accept_01"
+     "name": "nod_01",
+     "key": "linh/nod_01"
     },
     {
      "index": 56,
      "row": 7,
      "col": 8,
-     "name": "breath_01",
-     "key": "linh/breath_01"
-    }
-   ]
-  },
-  {
-   "id": "B",
-   "key": "desk_work",
-   "kind": "linh",
-   "file": "LINH_B_desk_work.png",
-   "attach": "master",
-   "cols": 8,
-   "rows": 4,
-   "cells": [
-    {
-     "index": 1,
-     "row": 1,
-     "col": 1,
-     "name": "desk_type_01",
-     "key": "linh/desk_type_01",
-     "bind": [
-      {
-       "furniture": "office_chair",
-       "at": "seat",
-       "z": "back"
-      },
-      {
-       "furniture": "desk_monitor",
-       "at": "seat",
-       "z": "front"
-      }
-     ]
-    },
-    {
-     "index": 2,
-     "row": 1,
-     "col": 2,
-     "name": "desk_type_02",
-     "key": "linh/desk_type_02",
-     "bind": [
-      {
-       "furniture": "office_chair",
-       "at": "seat",
-       "z": "back"
-      },
-      {
-       "furniture": "desk_monitor",
-       "at": "seat",
-       "z": "front"
-      }
-     ]
-    },
-    {
-     "index": 3,
-     "row": 1,
-     "col": 3,
-     "name": "desk_fix_01",
-     "key": "linh/desk_fix_01",
-     "bind": [
-      {
-       "furniture": "office_chair",
-       "at": "seat",
-       "z": "back"
-      },
-      {
-       "furniture": "desk_monitor",
-       "at": "seat",
-       "z": "front"
-      }
-     ]
-    },
-    {
-     "index": 4,
-     "row": 1,
-     "col": 4,
-     "name": "desk_think_01",
-     "key": "linh/desk_think_01",
-     "bind": [
-      {
-       "furniture": "office_chair",
-       "at": "seat",
-       "z": "back"
-      },
-      {
-       "furniture": "desk_monitor",
-       "at": "seat",
-       "z": "front"
-      }
-     ]
-    },
-    {
-     "index": 5,
-     "row": 1,
-     "col": 5,
-     "name": "desk_push_01",
-     "key": "linh/desk_push_01",
-     "bind": [
-      {
-       "furniture": "office_chair",
-       "at": "seat",
-       "z": "back"
-      },
-      {
-       "furniture": "desk_monitor",
-       "at": "seat",
-       "z": "front"
-      }
-     ]
-    },
-    {
-     "index": 6,
-     "row": 1,
-     "col": 6,
-     "name": "desk_panic_01",
-     "key": "linh/desk_panic_01",
-     "bind": [
-      {
-       "furniture": "office_chair",
-       "at": "seat",
-       "z": "back"
-      },
-      {
-       "furniture": "desk_monitor",
-       "at": "seat",
-       "z": "front"
-      }
-     ]
-    },
-    {
-     "index": 7,
-     "row": 1,
-     "col": 7,
-     "name": "desk_panic_02",
-     "key": "linh/desk_panic_02",
-     "bind": [
-      {
-       "furniture": "office_chair",
-       "at": "seat",
-       "z": "back"
-      },
-      {
-       "furniture": "desk_monitor",
-       "at": "seat",
-       "z": "front"
-      }
-     ]
-    },
-    {
-     "index": 8,
-     "row": 1,
-     "col": 8,
-     "name": "desk_stand_01",
-     "key": "linh/desk_stand_01",
-     "bind": [
-      {
-       "furniture": "desk_monitor",
-       "at": "beside_left",
-       "z": "back"
-      }
-     ]
-    },
-    {
-     "index": 9,
-     "row": 2,
-     "col": 1,
-     "name": "night_type_01",
-     "key": "linh/night_type_01",
-     "bind": [
-      {
-       "furniture": "office_chair",
-       "at": "seat",
-       "z": "back"
-      },
-      {
-       "furniture": "desk_monitor",
-       "at": "seat",
-       "z": "front"
-      },
-      {
-       "prop": "lamp_on",
-       "at": "surface:desk_monitor",
-       "z": "front",
-       "rot": 0
-      },
-      {
-       "prop": "mugs_pair",
-       "at": "surface:desk_monitor",
-       "z": "front",
-       "rot": 0
-      }
-     ]
-    },
-    {
-     "index": 10,
-     "row": 2,
-     "col": 2,
-     "name": "night_type_02",
-     "key": "linh/night_type_02",
-     "bind": [
-      {
-       "furniture": "office_chair",
-       "at": "seat",
-       "z": "back"
-      },
-      {
-       "furniture": "desk_monitor",
-       "at": "seat",
-       "z": "front"
-      },
-      {
-       "prop": "lamp_on",
-       "at": "surface:desk_monitor",
-       "z": "front",
-       "rot": 0
-      },
-      {
-       "prop": "mugs_pair",
-       "at": "surface:desk_monitor",
-       "z": "front",
-       "rot": 0
-      }
-     ]
-    },
-    {
-     "index": 11,
-     "row": 2,
-     "col": 3,
-     "name": "night_rub_01",
-     "key": "linh/night_rub_01",
-     "bind": [
-      {
-       "furniture": "office_chair",
-       "at": "seat",
-       "z": "back"
-      },
-      {
-       "furniture": "desk_monitor",
-       "at": "seat",
-       "z": "front"
-      },
-      {
-       "prop": "lamp_on",
-       "at": "surface:desk_monitor",
-       "z": "front",
-       "rot": 0
-      },
-      {
-       "prop": "mugs_pair",
-       "at": "surface:desk_monitor",
-       "z": "front",
-       "rot": 0
-      }
-     ]
-    },
-    {
-     "index": 12,
-     "row": 2,
-     "col": 4,
-     "name": "tired_idle_01",
-     "key": "linh/tired_idle_01"
-    },
-    {
-     "index": 13,
-     "row": 2,
-     "col": 5,
-     "name": "tired_idle_02",
-     "key": "linh/tired_idle_02"
-    },
-    {
-     "index": 14,
-     "row": 2,
-     "col": 6,
-     "name": "tired_talk_01",
-     "key": "linh/tired_talk_01"
-    },
-    {
-     "index": 15,
-     "row": 2,
-     "col": 7,
-     "name": "tired_yawn_01",
-     "key": "linh/tired_yawn_01"
-    },
-    {
-     "index": 16,
-     "row": 2,
-     "col": 8,
-     "name": "tired_slump_01",
-     "key": "linh/tired_slump_01",
-     "bind": [
-      {
-       "furniture": "office_chair",
-       "at": "seat",
-       "z": "back"
-      },
-      {
-       "furniture": "desk_monitor",
-       "at": "seat",
-       "z": "front"
-      },
-      {
-       "prop": "lamp_on",
-       "at": "surface:desk_monitor",
-       "z": "front",
-       "rot": 0
-      },
-      {
-       "prop": "mugs_pair",
-       "at": "surface:desk_monitor",
-       "z": "front",
-       "rot": 0
-      }
-     ]
-    },
-    {
-     "index": 17,
-     "row": 3,
-     "col": 1,
-     "name": "checklist_read_01",
-     "key": "linh/checklist_read_01",
-     "bind": [
-      {
-       "prop": "checklist_sheet",
-       "at": "grip",
-       "z": "front",
-       "rot": 0
-      }
-     ]
-    },
-    {
-     "index": 18,
-     "row": 3,
-     "col": 2,
-     "name": "checklist_tick_01",
-     "key": "linh/checklist_tick_01",
-     "bind": [
-      {
-       "prop": "checklist_sheet",
-       "at": "grip",
-       "z": "front",
-       "rot": 0
-      },
-      {
-       "prop": "pen",
-       "at": "grip2",
-       "z": "front",
-       "rot": 0
-      }
-     ]
-    },
-    {
-     "index": 19,
-     "row": 3,
-     "col": 3,
-     "name": "checklist_tick_02",
-     "key": "linh/checklist_tick_02",
-     "bind": [
-      {
-       "prop": "checklist_sheet",
-       "at": "grip",
-       "z": "front",
-       "rot": 0
-      },
-      {
-       "prop": "pen",
-       "at": "grip2",
-       "z": "front",
-       "rot": 0
-      }
-     ]
-    },
-    {
-     "index": 20,
-     "row": 3,
-     "col": 4,
-     "name": "checklist_show_01",
-     "key": "linh/checklist_show_01",
-     "bind": [
-      {
-       "prop": "checklist_sheet",
-       "at": "grip",
-       "z": "front",
-       "rot": 0
-      }
-     ]
-    },
-    {
-     "index": 21,
-     "row": 3,
-     "col": 5,
-     "name": "note_01",
-     "key": "linh/note_01",
-     "bind": [
-      {
-       "prop": "notebook_open",
-       "at": "grip",
-       "z": "front",
-       "rot": 0
-      },
-      {
-       "prop": "pen",
-       "at": "grip2",
-       "z": "front",
-       "rot": 0
-      }
-     ]
-    },
-    {
-     "index": 22,
-     "row": 3,
-     "col": 6,
-     "name": "tab_read_01",
-     "key": "linh/tab_read_01",
-     "bind": [
-      {
-       "prop": "tablet_back",
-       "at": "grip",
-       "z": "front",
-       "rot": 0
-      }
-     ]
-    },
-    {
-     "index": 23,
-     "row": 3,
-     "col": 7,
-     "name": "guide_01",
-     "key": "linh/guide_01",
-     "bind": [
-      {
-       "prop": "checklist_sheet",
-       "at": "grip",
-       "z": "front",
-       "rot": 0
-      }
-     ]
-    },
-    {
-     "index": 24,
-     "row": 3,
-     "col": 8,
-     "name": "laptop_show_01",
-     "key": "linh/laptop_show_01",
-     "bind": [
-      {
-       "prop": "laptop_open_front",
-       "at": "grip",
-       "z": "front",
-       "rot": 0
-      }
-     ]
-    },
-    {
-     "index": 25,
-     "row": 4,
-     "col": 1,
-     "name": "mistake_shock_01",
-     "key": "linh/mistake_shock_01"
-    },
-    {
-     "index": 26,
-     "row": 4,
-     "col": 2,
-     "name": "mistake_confess_01",
-     "key": "linh/mistake_confess_01",
-     "bind": [
-      {
-       "prop": "laptop_closed",
-       "at": "grip",
-       "z": "front",
-       "rot": 0
-      }
-     ]
-    },
-    {
-     "index": 27,
-     "row": 4,
-     "col": 3,
-     "name": "blamed_01",
-     "key": "linh/blamed_01"
-    },
-    {
-     "index": 28,
-     "row": 4,
-     "col": 4,
-     "name": "blamed_02",
-     "key": "linh/blamed_02",
-     "bind": [
-      {
-       "prop": "laptop_closed",
-       "at": "grip",
-       "z": "front",
-       "rot": 0
-      }
-     ]
-    },
-    {
-     "index": 29,
-     "row": 4,
-     "col": 5,
-     "name": "forgiven_01",
-     "key": "linh/forgiven_01"
-    },
-    {
-     "index": 30,
-     "row": 4,
-     "col": 6,
-     "name": "analyze_01",
-     "key": "linh/analyze_01",
-     "bind": [
-      {
-       "prop": "laptop_open_front",
-       "at": "grip",
-       "z": "front",
-       "rot": 0
-      }
-     ]
-    },
-    {
-     "index": 31,
-     "row": 4,
-     "col": 7,
-     "name": "analyze_02",
-     "key": "linh/analyze_02"
-    },
-    {
-     "index": 32,
-     "row": 4,
-     "col": 8,
-     "name": "resolve_01",
-     "key": "linh/resolve_01",
-     "bind": [
-      {
-       "prop": "checklist_sheet",
-       "at": "grip",
-       "z": "front",
-       "rot": 0
-      }
-     ]
+     "name": "nod_02",
+     "key": "linh/nod_02"
     }
    ]
   },
@@ -1120,14 +650,14 @@
    "file": "LINH_C_meetings.png",
    "attach": "master",
    "cols": 8,
-   "rows": 2,
+   "rows": 3,
    "cells": [
     {
      "index": 1,
      "row": 1,
      "col": 1,
-     "name": "meet_table_listen_01",
-     "key": "linh/meet_table_listen_01",
+     "name": "meet_eager_01",
+     "key": "linh/meet_eager_01",
      "bind": [
       {
        "furniture": "meeting_chair",
@@ -1138,12 +668,6 @@
        "furniture": "meeting_table",
        "at": "seat",
        "z": "front"
-      },
-      {
-       "prop": "notebook_open",
-       "at": "surface:meeting_table",
-       "z": "front",
-       "rot": 0
       }
      ]
     },
@@ -1151,8 +675,8 @@
      "index": 2,
      "row": 1,
      "col": 2,
-     "name": "meet_table_listen_02",
-     "key": "linh/meet_table_listen_02",
+     "name": "meet_eager_02",
+     "key": "linh/meet_eager_02",
      "bind": [
       {
        "furniture": "meeting_chair",
@@ -1163,18 +687,6 @@
        "furniture": "meeting_table",
        "at": "seat",
        "z": "front"
-      },
-      {
-       "prop": "pen",
-       "at": "grip",
-       "z": "front",
-       "rot": 0
-      },
-      {
-       "prop": "notebook_open",
-       "at": "surface:meeting_table",
-       "z": "front",
-       "rot": 0
       }
      ]
     },
@@ -1182,8 +694,8 @@
      "index": 3,
      "row": 1,
      "col": 3,
-     "name": "meet_table_talk_01",
-     "key": "linh/meet_table_talk_01",
+     "name": "meet_rub_01",
+     "key": "linh/meet_rub_01",
      "bind": [
       {
        "furniture": "meeting_chair",
@@ -1201,8 +713,8 @@
      "index": 4,
      "row": 1,
      "col": 4,
-     "name": "meet_table_busy_01",
-     "key": "linh/meet_table_busy_01",
+     "name": "meet_listen_01",
+     "key": "linh/meet_listen_01",
      "bind": [
       {
        "furniture": "meeting_chair",
@@ -1220,8 +732,8 @@
      "index": 5,
      "row": 1,
      "col": 5,
-     "name": "meet_table_try_01",
-     "key": "linh/meet_table_try_01",
+     "name": "meet_impatient_01",
+     "key": "linh/meet_impatient_01",
      "bind": [
       {
        "furniture": "meeting_chair",
@@ -1239,8 +751,8 @@
      "index": 6,
      "row": 1,
      "col": 6,
-     "name": "meet_table_report_01",
-     "key": "linh/meet_table_report_01",
+     "name": "meet_impatient_02",
+     "key": "linh/meet_impatient_02",
      "bind": [
       {
        "furniture": "meeting_chair",
@@ -1258,8 +770,8 @@
      "index": 7,
      "row": 1,
      "col": 7,
-     "name": "meet_table_unsure_01",
-     "key": "linh/meet_table_unsure_01",
+     "name": "meet_frown_01",
+     "key": "linh/meet_frown_01",
      "bind": [
       {
        "furniture": "meeting_chair",
@@ -1277,8 +789,8 @@
      "index": 8,
      "row": 1,
      "col": 8,
-     "name": "meet_table_volunteer_01",
-     "key": "linh/meet_table_volunteer_01",
+     "name": "meet_wait_01",
+     "key": "linh/meet_wait_01",
      "bind": [
       {
        "furniture": "meeting_chair",
@@ -1296,8 +808,8 @@
      "index": 9,
      "row": 2,
      "col": 1,
-     "name": "oneone_listen_01",
-     "key": "linh/oneone_listen_01",
+     "name": "meet_celebrate_01",
+     "key": "linh/meet_celebrate_01",
      "bind": [
       {
        "furniture": "meeting_chair",
@@ -1305,10 +817,9 @@
        "z": "back"
       },
       {
-       "prop": "notebook_open",
-       "at": "grip",
-       "z": "front",
-       "rot": 0
+       "furniture": "meeting_table",
+       "at": "seat",
+       "z": "front"
       }
      ]
     },
@@ -1316,50 +827,8 @@
      "index": 10,
      "row": 2,
      "col": 2,
-     "name": "oneone_listen_02",
-     "key": "linh/oneone_listen_02",
-     "bind": [
-      {
-       "furniture": "meeting_chair",
-       "at": "seat",
-       "z": "back"
-      }
-     ]
-    },
-    {
-     "index": 11,
-     "row": 2,
-     "col": 3,
-     "name": "oneone_talk_01",
-     "key": "linh/oneone_talk_01",
-     "bind": [
-      {
-       "furniture": "meeting_chair",
-       "at": "seat",
-       "z": "back"
-      }
-     ]
-    },
-    {
-     "index": 12,
-     "row": 2,
-     "col": 4,
-     "name": "oneone_unsure_01",
-     "key": "linh/oneone_unsure_01",
-     "bind": [
-      {
-       "furniture": "meeting_chair",
-       "at": "seat",
-       "z": "back"
-      }
-     ]
-    },
-    {
-     "index": 13,
-     "row": 2,
-     "col": 5,
-     "name": "oneone_proud_01",
-     "key": "linh/oneone_proud_01",
+     "name": "meet_celebrate_02",
+     "key": "linh/meet_celebrate_02",
      "bind": [
       {
        "furniture": "meeting_chair",
@@ -1367,10 +836,71 @@
        "z": "back"
       },
       {
-       "prop": "checklist_sheet",
+       "furniture": "meeting_table",
+       "at": "seat",
+       "z": "front"
+      }
+     ]
+    },
+    {
+     "index": 11,
+     "row": 2,
+     "col": 3,
+     "name": "meet_disappointed_01",
+     "key": "linh/meet_disappointed_01",
+     "bind": [
+      {
+       "furniture": "meeting_chair",
+       "at": "seat",
+       "z": "back"
+      },
+      {
+       "furniture": "meeting_table",
+       "at": "seat",
+       "z": "front"
+      }
+     ]
+    },
+    {
+     "index": 12,
+     "row": 2,
+     "col": 4,
+     "name": "meet_disappointed_02",
+     "key": "linh/meet_disappointed_02",
+     "bind": [
+      {
+       "furniture": "meeting_chair",
+       "at": "seat",
+       "z": "back"
+      },
+      {
+       "furniture": "meeting_table",
+       "at": "seat",
+       "z": "front"
+      }
+     ]
+    },
+    {
+     "index": 13,
+     "row": 2,
+     "col": 5,
+     "name": "meet_calc_01",
+     "key": "linh/meet_calc_01",
+     "bind": [
+      {
+       "furniture": "meeting_chair",
+       "at": "seat",
+       "z": "back"
+      },
+      {
+       "furniture": "meeting_table",
+       "at": "seat",
+       "z": "front"
+      },
+      {
+       "prop": "phone_back",
        "at": "grip",
-       "z": "front",
-       "rot": 0
+       "z": "front"
       }
      ]
     },
@@ -1378,13 +908,18 @@
      "index": 14,
      "row": 2,
      "col": 6,
-     "name": "oneone_agree_01",
-     "key": "linh/oneone_agree_01",
+     "name": "meet_think_01",
+     "key": "linh/meet_think_01",
      "bind": [
       {
        "furniture": "meeting_chair",
        "at": "seat",
        "z": "back"
+      },
+      {
+       "furniture": "meeting_table",
+       "at": "seat",
+       "z": "front"
       }
      ]
     },
@@ -1392,13 +927,18 @@
      "index": 15,
      "row": 2,
      "col": 7,
-     "name": "oneone_accept_01",
-     "key": "linh/oneone_accept_01",
+     "name": "meet_talk_01",
+     "key": "linh/meet_talk_01",
      "bind": [
       {
        "furniture": "meeting_chair",
        "at": "seat",
        "z": "back"
+      },
+      {
+       "furniture": "meeting_table",
+       "at": "seat",
+       "z": "front"
       }
      ]
     },
@@ -1406,17 +946,205 @@
      "index": 16,
      "row": 2,
      "col": 8,
-     "name": "oneone_confused_01",
-     "key": "linh/oneone_confused_01",
+     "name": "meet_talk_02",
+     "key": "linh/meet_talk_02",
      "bind": [
       {
        "furniture": "meeting_chair",
        "at": "seat",
        "z": "back"
+      },
+      {
+       "furniture": "meeting_table",
+       "at": "seat",
+       "z": "front"
+      }
+     ]
+    },
+    {
+     "index": 17,
+     "row": 3,
+     "col": 1,
+     "name": "meet_quote_01",
+     "key": "linh/meet_quote_01",
+     "bind": [
+      {
+       "furniture": "meeting_chair",
+       "at": "seat",
+       "z": "back"
+      },
+      {
+       "furniture": "meeting_table",
+       "at": "seat",
+       "z": "front"
+      },
+      {
+       "prop": "pen",
+       "at": "grip",
+       "z": "front"
+      },
+      {
+       "prop": "contract_sheet",
+       "at": "surface:meeting_table",
+       "z": "front"
+      }
+     ]
+    },
+    {
+     "index": 18,
+     "row": 3,
+     "col": 2,
+     "name": "meet_quote_02",
+     "key": "linh/meet_quote_02",
+     "bind": [
+      {
+       "furniture": "meeting_chair",
+       "at": "seat",
+       "z": "back"
+      },
+      {
+       "furniture": "meeting_table",
+       "at": "seat",
+       "z": "front"
+      },
+      {
+       "prop": "contract_sheet",
+       "at": "grip",
+       "z": "front"
+      },
+      {
+       "prop": "contract_sheet",
+       "at": "grip2",
+       "z": "front"
+      }
+     ]
+    },
+    {
+     "index": 19,
+     "row": 3,
+     "col": 3,
+     "name": "meet_show_01",
+     "key": "linh/meet_show_01",
+     "bind": [
+      {
+       "furniture": "meeting_chair",
+       "at": "seat",
+       "z": "back"
+      },
+      {
+       "furniture": "meeting_table",
+       "at": "seat",
+       "z": "front"
+      },
+      {
+       "prop": "tablet_screen_34",
+       "at": "grip",
+       "z": "front"
+      }
+     ]
+    },
+    {
+     "index": 20,
+     "row": 3,
+     "col": 4,
+     "name": "meet_show_02",
+     "key": "linh/meet_show_02",
+     "bind": [
+      {
+       "furniture": "meeting_chair",
+       "at": "seat",
+       "z": "back"
+      },
+      {
+       "furniture": "meeting_table",
+       "at": "seat",
+       "z": "front"
+      },
+      {
+       "prop": "tablet_screen_34",
+       "at": "grip",
+       "z": "front"
+      }
+     ]
+    },
+    {
+     "index": 21,
+     "row": 3,
+     "col": 5,
+     "name": "meet_pleased_01",
+     "key": "linh/meet_pleased_01",
+     "bind": [
+      {
+       "furniture": "meeting_chair",
+       "at": "seat",
+       "z": "back"
+      },
+      {
+       "furniture": "meeting_table",
+       "at": "seat",
+       "z": "front"
+      }
+     ]
+    },
+    {
+     "index": 22,
+     "row": 3,
+     "col": 6,
+     "name": "meet_pleased_02",
+     "key": "linh/meet_pleased_02",
+     "bind": [
+      {
+       "furniture": "meeting_chair",
+       "at": "seat",
+       "z": "back"
+      },
+      {
+       "furniture": "meeting_table",
+       "at": "seat",
+       "z": "front"
+      }
+     ]
+    },
+    {
+     "index": 23,
+     "row": 3,
+     "col": 7,
+     "name": "meet_shake_01",
+     "key": "linh/meet_shake_01",
+     "bind": [
+      {
+       "furniture": "meeting_chair",
+       "at": "seat",
+       "z": "back"
+      },
+      {
+       "furniture": "meeting_table",
+       "at": "seat",
+       "z": "front"
+      }
+     ]
+    },
+    {
+     "index": 24,
+     "row": 3,
+     "col": 8,
+     "name": "meet_shake_02",
+     "key": "linh/meet_shake_02",
+     "bind": [
+      {
+       "furniture": "meeting_chair",
+       "at": "seat",
+       "z": "back"
+      },
+      {
+       "furniture": "meeting_table",
+       "at": "seat",
+       "z": "front"
       }
      ]
     }
-   ]
+   ],
+   "aspect": "3:2"
   },
   {
    "id": "D",
@@ -1438,134 +1166,134 @@
      "index": 2,
      "row": 1,
      "col": 2,
-     "name": "face_eager",
-     "key": "linh/face_eager"
+     "name": "face_grin",
+     "key": "linh/face_grin"
     },
     {
      "index": 3,
      "row": 1,
      "col": 3,
-     "name": "face_happy",
-     "key": "linh/face_happy"
+     "name": "face_wink",
+     "key": "linh/face_wink"
     },
     {
      "index": 4,
      "row": 1,
      "col": 4,
-     "name": "face_proud",
-     "key": "linh/face_proud"
+     "name": "face_excited",
+     "key": "linh/face_excited"
     },
     {
      "index": 5,
      "row": 2,
      "col": 1,
-     "name": "face_shy",
-     "key": "linh/face_shy"
+     "name": "face_laugh",
+     "key": "linh/face_laugh"
     },
     {
      "index": 6,
      "row": 2,
      "col": 2,
-     "name": "face_unsure",
-     "key": "linh/face_unsure"
+     "name": "face_charming",
+     "key": "linh/face_charming"
     },
     {
      "index": 7,
      "row": 2,
      "col": 3,
-     "name": "face_confused",
-     "key": "linh/face_confused"
+     "name": "face_eager",
+     "key": "linh/face_eager"
     },
     {
      "index": 8,
      "row": 2,
      "col": 4,
-     "name": "face_thinking",
-     "key": "linh/face_thinking"
+     "name": "face_persuading",
+     "key": "linh/face_persuading"
     },
     {
      "index": 9,
      "row": 3,
      "col": 1,
-     "name": "face_worried",
-     "key": "linh/face_worried"
+     "name": "face_thinking",
+     "key": "linh/face_thinking"
     },
     {
      "index": 10,
      "row": 3,
      "col": 2,
-     "name": "face_anxious",
-     "key": "linh/face_anxious"
+     "name": "face_calculating",
+     "key": "linh/face_calculating"
     },
     {
      "index": 11,
      "row": 3,
      "col": 3,
-     "name": "face_shocked",
-     "key": "linh/face_shocked"
+     "name": "face_surprised",
+     "key": "linh/face_surprised"
     },
     {
      "index": 12,
      "row": 3,
      "col": 4,
-     "name": "face_panic",
-     "key": "linh/face_panic"
+     "name": "face_sheepish",
+     "key": "linh/face_sheepish"
     },
     {
      "index": 13,
      "row": 4,
      "col": 1,
-     "name": "face_ashamed",
-     "key": "linh/face_ashamed"
+     "name": "face_nervous",
+     "key": "linh/face_nervous"
     },
     {
      "index": 14,
      "row": 4,
      "col": 2,
-     "name": "face_sorry",
-     "key": "linh/face_sorry"
+     "name": "face_frown",
+     "key": "linh/face_frown"
     },
     {
      "index": 15,
      "row": 4,
      "col": 3,
-     "name": "face_tired",
-     "key": "linh/face_tired"
+     "name": "face_offended",
+     "key": "linh/face_offended"
     },
     {
      "index": 16,
      "row": 4,
      "col": 4,
-     "name": "face_relieved",
-     "key": "linh/face_relieved"
+     "name": "face_disappointed",
+     "key": "linh/face_disappointed"
     },
     {
      "index": 17,
      "row": 5,
      "col": 1,
-     "name": "face_determined",
-     "key": "linh/face_determined"
+     "name": "face_relieved",
+     "key": "linh/face_relieved"
     },
     {
      "index": 18,
      "row": 5,
      "col": 2,
-     "name": "face_confident",
-     "key": "linh/face_confident"
+     "name": "face_impatient",
+     "key": "linh/face_impatient"
     },
     {
      "index": 19,
      "row": 5,
      "col": 3,
-     "name": "face_thankful",
-     "key": "linh/face_thankful"
+     "name": "face_apologetic",
+     "key": "linh/face_apologetic"
     },
     {
      "index": 20,
      "row": 5,
      "col": 4,
-     "name": "face_hesitant",
-     "key": "linh/face_hesitant"
+     "name": "face_proud",
+     "key": "linh/face_proud"
     }
    ]
   }
@@ -1593,7 +1321,7 @@
     "linh/greet_01",
     "linh/greet_02"
    ],
-   "fps": 8,
+   "fps": 6,
    "loop": false
   },
   "linh/walk": {
@@ -1610,63 +1338,121 @@
    "fps": 11,
    "loop": true
   },
-  "linh/talk": {
+  "linh/walk_back": {
    "frames": [
-    "linh/talk_01",
-    "linh/talk_02",
-    "linh/talk_03",
-    "linh/talk_04"
+    "linh/walk_back_01",
+    "linh/walk_back_02",
+    "linh/walk_back_03",
+    "linh/walk_back_04"
+   ],
+   "fps": 9,
+   "loop": true
+  },
+  "linh/turn": {
+   "frames": [
+    "linh/turn_01"
+   ],
+   "fps": 1,
+   "loop": false
+  },
+  "linh/shake": {
+   "frames": [
+    "linh/shake_01",
+    "linh/shake_02"
    ],
    "fps": 6,
-   "loop": true
+   "loop": false
   },
-  "linh/listen": {
+  "linh/highfive": {
    "frames": [
-    "linh/listen_01",
-    "linh/listen_02"
+    "linh/highfive_01"
    ],
-   "fps": 4,
-   "loop": true
+   "fps": 1,
+   "loop": false
   },
-  "linh/nod": {
+  "linh/announce": {
    "frames": [
-    "linh/nod_01",
-    "linh/nod_02"
+    "linh/announce_01",
+    "linh/announce_02",
+    "linh/announce_03"
    ],
-   "fps": 7,
-   "loop": true
+   "fps": 6,
+   "loop": false
   },
-  "linh/sit": {
+  "linh/phone_show": {
    "frames": [
-    "linh/sit_01",
-    "linh/sit_02",
-    "linh/sit_03",
-    "linh/sit_04",
-    "linh/sit_05",
-    "linh/sit_06",
-    "linh/sit_07",
-    "linh/sit_08"
+    "linh/phone_show_01"
+   ],
+   "fps": 1,
+   "loop": false
+  },
+  "linh/wink": {
+   "frames": [
+    "linh/wink_01"
+   ],
+   "fps": 1,
+   "loop": false
+  },
+  "linh/persuade": {
+   "frames": [
+    "linh/persuade_01"
+   ],
+   "fps": 1,
+   "loop": false
+  },
+  "linh/shrug": {
+   "frames": [
+    "linh/shrug_01"
+   ],
+   "fps": 1,
+   "loop": false
+  },
+  "linh/sheepish": {
+   "frames": [
+    "linh/sheepish_01"
+   ],
+   "fps": 1,
+   "loop": false
+  },
+  "linh/cheer": {
+   "frames": [
+    "linh/cheer_01",
+    "linh/cheer_02"
    ],
    "fps": 8,
-   "loop": false
+   "loop": true
   },
-  "linh/eager": {
+  "linh/shock": {
    "frames": [
-    "linh/eager_01"
+    "linh/shock_01"
    ],
    "fps": 1,
    "loop": false
   },
-  "linh/happy": {
+  "linh/offended": {
    "frames": [
-    "linh/happy_01"
+    "linh/offended_01"
    ],
    "fps": 1,
    "loop": false
   },
-  "linh/proud": {
+  "linh/angry": {
    "frames": [
-    "linh/proud_01"
+    "linh/angry_01"
+   ],
+   "fps": 1,
+   "loop": false
+  },
+  "linh/calc": {
+   "frames": [
+    "linh/calc_01"
+   ],
+   "fps": 1,
+   "loop": false
+  },
+  "linh/agree": {
+   "frames": [
+    "linh/agree_01"
    ],
    "fps": 1,
    "loop": false
@@ -1678,408 +1464,188 @@
    "fps": 1,
    "loop": false
   },
-  "linh/determined": {
+  "linh/phone_call": {
    "frames": [
-    "linh/determined_01"
+    "linh/phone_call_01",
+    "linh/phone_call_02"
+   ],
+   "fps": 4,
+   "loop": true
+  },
+  "linh/phone_nervous": {
+   "frames": [
+    "linh/phone_nervous_01"
    ],
    "fps": 1,
    "loop": false
   },
-  "linh/thankful": {
+  "linh/phone_type": {
    "frames": [
-    "linh/thankful_01"
+    "linh/phone_type_01"
    ],
    "fps": 1,
    "loop": false
   },
-  "linh/confident": {
+  "linh/phone_read": {
    "frames": [
-    "linh/confident_01"
+    "linh/phone_read_01"
    ],
    "fps": 1,
    "loop": false
   },
-  "linh/excited": {
+  "linh/phone_pocket": {
    "frames": [
-    "linh/excited_01"
+    "linh/phone_pocket_01"
    ],
    "fps": 1,
    "loop": false
   },
-  "linh/worried": {
+  "linh/talk": {
    "frames": [
-    "linh/worried_01"
+    "linh/talk_01",
+    "linh/talk_02"
+   ],
+   "fps": 6,
+   "loop": true
+  },
+  "linh/sit": {
+   "frames": [
+    "linh/sit_01",
+    "linh/sit_02",
+    "linh/sit_03",
+    "linh/sit_04"
+   ],
+   "fps": 8,
+   "loop": false
+  },
+  "linh/listen": {
+   "frames": [
+    "linh/listen_01",
+    "linh/listen_02"
+   ],
+   "fps": 3,
+   "loop": true
+  },
+  "linh/nod": {
+   "frames": [
+    "linh/nod_01",
+    "linh/nod_02"
+   ],
+   "fps": 6,
+   "loop": false
+  },
+  "linh/meet_eager": {
+   "frames": [
+    "linh/meet_eager_01",
+    "linh/meet_eager_02"
+   ],
+   "fps": 6,
+   "loop": false
+  },
+  "linh/meet_rub": {
+   "frames": [
+    "linh/meet_rub_01"
    ],
    "fps": 1,
    "loop": false
   },
-  "linh/anxious": {
+  "linh/meet_listen": {
    "frames": [
-    "linh/anxious_01"
+    "linh/meet_listen_01"
    ],
    "fps": 1,
    "loop": false
   },
-  "linh/ashamed": {
+  "linh/meet_impatient": {
    "frames": [
-    "linh/ashamed_01",
-    "linh/ashamed_02"
+    "linh/meet_impatient_01",
+    "linh/meet_impatient_02"
+   ],
+   "fps": 4,
+   "loop": true
+  },
+  "linh/meet_frown": {
+   "frames": [
+    "linh/meet_frown_01"
+   ],
+   "fps": 1,
+   "loop": false
+  },
+  "linh/meet_wait": {
+   "frames": [
+    "linh/meet_wait_01"
+   ],
+   "fps": 1,
+   "loop": false
+  },
+  "linh/meet_celebrate": {
+   "frames": [
+    "linh/meet_celebrate_01",
+    "linh/meet_celebrate_02"
+   ],
+   "fps": 6,
+   "loop": false
+  },
+  "linh/meet_disappointed": {
+   "frames": [
+    "linh/meet_disappointed_01",
+    "linh/meet_disappointed_02"
    ],
    "fps": 4,
    "loop": false
   },
-  "linh/apologize": {
+  "linh/meet_calc": {
    "frames": [
-    "linh/apologize_01",
-    "linh/apologize_02"
-   ],
-   "fps": 6,
-   "loop": false
-  },
-  "linh/hesitant": {
-   "frames": [
-    "linh/hesitant_01"
+    "linh/meet_calc_01"
    ],
    "fps": 1,
    "loop": false
   },
-  "linh/stressed": {
+  "linh/meet_think": {
    "frames": [
-    "linh/stressed_01"
+    "linh/meet_think_01"
    ],
    "fps": 1,
    "loop": false
   },
-  "linh/unsure": {
+  "linh/meet_talk": {
    "frames": [
-    "linh/unsure_01"
-   ],
-   "fps": 1,
-   "loop": false
-  },
-  "linh/confused": {
-   "frames": [
-    "linh/confused_01"
-   ],
-   "fps": 1,
-   "loop": false
-  },
-  "linh/ask": {
-   "frames": [
-    "linh/ask_01",
-    "linh/ask_02"
-   ],
-   "fps": 6,
-   "loop": false
-  },
-  "linh/busy": {
-   "frames": [
-    "linh/busy_01"
-   ],
-   "fps": 1,
-   "loop": false
-  },
-  "linh/try": {
-   "frames": [
-    "linh/try_01"
-   ],
-   "fps": 1,
-   "loop": false
-  },
-  "linh/accept": {
-   "frames": [
-    "linh/accept_01"
-   ],
-   "fps": 1,
-   "loop": false
-  },
-  "linh/breath": {
-   "frames": [
-    "linh/breath_01"
-   ],
-   "fps": 1,
-   "loop": false
-  },
-  "linh/desk_type": {
-   "frames": [
-    "linh/desk_type_01",
-    "linh/desk_type_02"
-   ],
-   "fps": 8,
-   "loop": true
-  },
-  "linh/desk_fix": {
-   "frames": [
-    "linh/desk_fix_01"
-   ],
-   "fps": 1,
-   "loop": false
-  },
-  "linh/desk_think": {
-   "frames": [
-    "linh/desk_think_01"
-   ],
-   "fps": 1,
-   "loop": false
-  },
-  "linh/desk_push": {
-   "frames": [
-    "linh/desk_push_01"
-   ],
-   "fps": 1,
-   "loop": false
-  },
-  "linh/desk_panic": {
-   "frames": [
-    "linh/desk_panic_01",
-    "linh/desk_panic_02"
-   ],
-   "fps": 8,
-   "loop": false
-  },
-  "linh/desk_stand": {
-   "frames": [
-    "linh/desk_stand_01"
-   ],
-   "fps": 1,
-   "loop": false
-  },
-  "linh/night_type": {
-   "frames": [
-    "linh/night_type_01",
-    "linh/night_type_02"
+    "linh/meet_talk_01",
+    "linh/meet_talk_02"
    ],
    "fps": 6,
    "loop": true
   },
-  "linh/night_rub": {
+  "linh/meet_quote": {
    "frames": [
-    "linh/night_rub_01"
-   ],
-   "fps": 1,
-   "loop": false
-  },
-  "linh/tired_idle": {
-   "frames": [
-    "linh/tired_idle_01",
-    "linh/tired_idle_02"
+    "linh/meet_quote_01",
+    "linh/meet_quote_02"
    ],
    "fps": 5,
-   "loop": true
-  },
-  "linh/tired_talk": {
-   "frames": [
-    "linh/tired_talk_01"
-   ],
-   "fps": 1,
    "loop": false
   },
-  "linh/tired_yawn": {
+  "linh/meet_show": {
    "frames": [
-    "linh/tired_yawn_01"
-   ],
-   "fps": 1,
-   "loop": false
-  },
-  "linh/tired_slump": {
-   "frames": [
-    "linh/tired_slump_01"
-   ],
-   "fps": 1,
-   "loop": false
-  },
-  "linh/checklist_read": {
-   "frames": [
-    "linh/checklist_read_01"
-   ],
-   "fps": 1,
-   "loop": false
-  },
-  "linh/checklist_tick": {
-   "frames": [
-    "linh/checklist_tick_01",
-    "linh/checklist_tick_02"
+    "linh/meet_show_01",
+    "linh/meet_show_02"
    ],
    "fps": 6,
    "loop": false
   },
-  "linh/checklist_show": {
+  "linh/meet_pleased": {
    "frames": [
-    "linh/checklist_show_01"
-   ],
-   "fps": 1,
-   "loop": false
-  },
-  "linh/note": {
-   "frames": [
-    "linh/note_01"
-   ],
-   "fps": 1,
-   "loop": false
-  },
-  "linh/tab_read": {
-   "frames": [
-    "linh/tab_read_01"
-   ],
-   "fps": 1,
-   "loop": false
-  },
-  "linh/guide": {
-   "frames": [
-    "linh/guide_01"
-   ],
-   "fps": 1,
-   "loop": false
-  },
-  "linh/laptop_show": {
-   "frames": [
-    "linh/laptop_show_01"
-   ],
-   "fps": 1,
-   "loop": false
-  },
-  "linh/mistake_shock": {
-   "frames": [
-    "linh/mistake_shock_01"
-   ],
-   "fps": 1,
-   "loop": false
-  },
-  "linh/mistake_confess": {
-   "frames": [
-    "linh/mistake_confess_01"
-   ],
-   "fps": 1,
-   "loop": false
-  },
-  "linh/blamed": {
-   "frames": [
-    "linh/blamed_01",
-    "linh/blamed_02"
-   ],
-   "fps": 4,
-   "loop": true
-  },
-  "linh/forgiven": {
-   "frames": [
-    "linh/forgiven_01"
-   ],
-   "fps": 1,
-   "loop": false
-  },
-  "linh/analyze": {
-   "frames": [
-    "linh/analyze_01",
-    "linh/analyze_02"
+    "linh/meet_pleased_01",
+    "linh/meet_pleased_02"
    ],
    "fps": 6,
    "loop": false
   },
-  "linh/resolve": {
+  "linh/meet_shake": {
    "frames": [
-    "linh/resolve_01"
+    "linh/meet_shake_01",
+    "linh/meet_shake_02"
    ],
-   "fps": 1,
-   "loop": false
-  },
-  "linh/meet_table_listen": {
-   "frames": [
-    "linh/meet_table_listen_01",
-    "linh/meet_table_listen_02"
-   ],
-   "fps": 4,
-   "loop": true
-  },
-  "linh/meet_table_talk": {
-   "frames": [
-    "linh/meet_table_talk_01"
-   ],
-   "fps": 1,
-   "loop": false
-  },
-  "linh/meet_table_busy": {
-   "frames": [
-    "linh/meet_table_busy_01"
-   ],
-   "fps": 1,
-   "loop": false
-  },
-  "linh/meet_table_try": {
-   "frames": [
-    "linh/meet_table_try_01"
-   ],
-   "fps": 1,
-   "loop": false
-  },
-  "linh/meet_table_report": {
-   "frames": [
-    "linh/meet_table_report_01"
-   ],
-   "fps": 1,
-   "loop": false
-  },
-  "linh/meet_table_unsure": {
-   "frames": [
-    "linh/meet_table_unsure_01"
-   ],
-   "fps": 1,
-   "loop": false
-  },
-  "linh/meet_table_volunteer": {
-   "frames": [
-    "linh/meet_table_volunteer_01"
-   ],
-   "fps": 1,
-   "loop": false
-  },
-  "linh/oneone_listen": {
-   "frames": [
-    "linh/oneone_listen_01",
-    "linh/oneone_listen_02"
-   ],
-   "fps": 4,
-   "loop": true
-  },
-  "linh/oneone_talk": {
-   "frames": [
-    "linh/oneone_talk_01"
-   ],
-   "fps": 1,
-   "loop": false
-  },
-  "linh/oneone_unsure": {
-   "frames": [
-    "linh/oneone_unsure_01"
-   ],
-   "fps": 1,
-   "loop": false
-  },
-  "linh/oneone_proud": {
-   "frames": [
-    "linh/oneone_proud_01"
-   ],
-   "fps": 1,
-   "loop": false
-  },
-  "linh/oneone_agree": {
-   "frames": [
-    "linh/oneone_agree_01"
-   ],
-   "fps": 1,
-   "loop": false
-  },
-  "linh/oneone_accept": {
-   "frames": [
-    "linh/oneone_accept_01"
-   ],
-   "fps": 1,
-   "loop": false
-  },
-  "linh/oneone_confused": {
-   "frames": [
-    "linh/oneone_confused_01"
-   ],
-   "fps": 1,
+   "fps": 6,
    "loop": false
   }
  }

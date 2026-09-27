@@ -1,22 +1,34 @@
-Work autonomously until everything is done. Do not ask me questions.
+Work autonomously. Do not ask questions. Keep chat output short.
+
+GOAL: sprite sheets A, C, D for the game character "Anh Hiep – client representative / product owner".
 
 ATTACHMENTS
-1. The photo: a real person (who agreed to this) to be turned into the game character "Chi Mai" (client representative / product owner).
-2. PM_A_master.png: the approved master sheet of the game's main character (the young PM). Style and scale reference ONLY.
-3. rolecraft_client_sprite_prompts.zip: prompts/MAI_*.txt (one image prompt per sheet), mai_sprite_manifest.json (grid, attachments, sprite names, prop/furniture bindings), tools/extract_anchors.py (cutting + anchor extraction) and tools/pm_compose.js.
+1. The photo of the real person (who agreed to this): face source.
+2. PM_A_master.png – another character's master sheet: grid, size and style reference only.
+3. rolecraft_client_sprite_prompts.zip – prompts/HIEP_*.txt, hiep_sprite_manifest.json, tools/.
+Props, furniture and icons already exist in the PM set: never generate them.
 
-IMPORTANT: handheld objects and furniture are SEPARATE sprites and already exist (the PM set's props, furniture and icon sheets are reused). Character sheets must show empty hands in grip poses with small marker dots (MAGENTA = main grip, GREEN = second grip, CYAN = seat point), exactly as each prompt describes. Chi Mai faces LEFT in 3/4 view.
+TOKEN BUDGET RULES (follow strictly)
+- Always ask the image tool for a TRANSPARENT background (PNG with alpha). If a sheet still comes back on plain white, do NOT regenerate it: remove the white with tools/make_transparent.py (step below).
+- One image call per sheet, using the prompt file text EXACTLY. Do not rewrite, shorten or "improve" prompts. All sheets are square 1:1.
+- Regenerate a whole sheet ONLY for a HARD FAIL: wrong grid (not the stated columns x rows), figures overlapping or cut off, a face that does not resemble the photo, drawn objects/furniture in many cells, visible text, or a checkerboard pattern / scenery painted as the background. Maximum 1 retry per sheet; keep the better of the two.
+- On a retry, append this line to the prompt and nothing else: "GRID CHECK: exactly the stated columns and rows, one figure per cell, nothing crosses a cell edge."
+- Everything else is a SOFT issue (a pose slightly off, a missing or extra dot, small color drift): do not regenerate, just list it.
+- Never regenerate a sheet that passed. Never regenerate A after C has started.
+- Do not describe images or repeat prompts in chat. After each sheet print one line: `<sheet> | attempts | PASS / FAIL: reason`.
 
 STEPS
-1. Unzip and read every prompt file and the manifest.
-2. Sheet A: call the image generation tool with the exact text of MAI_A_master.txt, attaching the photo as Image 1 and PM_A_master.png as Image 2. Check: 8x7 cells; cell 1 is a framed portrait on pastel mint; the face, hair and glasses (if any) are recognizable; outfit is cream blouse + open wine-red blazer + navy trousers + white visitor badge on a grey lanyard; the art style, outline and sprite size match PM_A_master.png; no smartphone or other object drawn outside the portrait; marker dots present where the [markers] tags ask; no text. If a check fails, regenerate (max 3 attempts) and keep the best.
-3. Sheets B, C, D: exact prompt text, attach the photo as Image 1 and the approved Mai Sheet A as Image 2. Same checks, plus the character matches Sheet A. Max 3 attempts each.
-4. Save the approved images into sheets/ using the file names in the manifest (MAI_A_master.png, ...). Run:
-   python3 tools/extract_anchors.py --manifest mai_sprite_manifest.json --sheets sheets --out build
-   Read build/report.json. For every sprite with a missing marker, regenerate only that row of its sheet (max 2 attempts per sheet), then run the script again.
-5. DELIVER
-   - Show all final sheets in the chat.
-   - One file rolecraft_mai_sprites.zip containing sheets/, build/ (sprites/, anim/, anchors.json, animations.json, report.json), mai_sprite_manifest.json and tools/pm_compose.js.
-   - A short table: sheet, attempts, checks passed, remaining warnings from report.json.
+1. Unzip; read the manifest (file names) and prompts.
+2. Sheet A: HIEP_A_master.txt with Image 1 = the photo, Image 2 = PM_A_master.png.
+3. Sheets C, D: their prompt files with Image 1 = approved HIEP_A_master.png, Image 2 = the photo.
+4. Save to sheets/ with the manifest file names. Make every saved sheet transparent (no image call needed):
+   python3 tools/make_transparent.py sheets/*.png
+   Then run once:
+   python3 tools/extract_anchors.py --manifest hiep_sprite_manifest.json --sheets sheets --out build
+5. Read build/report.json. Only for a ROW where 3 or more cells report "missing ... marker", make ONE edit call on that sheet with the ROW FIX prompt below (max 2 row fixes in total for the whole job), then run the script once more. Leave all other warnings as they are.
+6. DELIVER: show the final sheets; one file rolecraft_hiep_sprites.zip with sheets/, build/, hiep_sprite_manifest.json, tools/pm_compose.js; a table: sheet, attempts, result, remaining warnings.
 
-If you cannot finish in one reply, stop after the last completed step and state exactly which step to resume from.
+ROW FIX PROMPT (Image 1 = HIEP_A_master.png, Image 2 = the sheet to fix):
+"Edit Image 2: redraw ONLY row {N}; keep every other row pixel-identical. Same character as Image 1. Draw no objects or furniture: empty hands in the grip pose. Add the marker dots exactly as tagged: {paste the Row N line from the prompt file}. Dots are small solid flat circles: MAGENTA #FF00FF, GREEN #00FF00, CYAN #00FFFF."
+
+If you run out of room, stop after the last finished step and write: "Resume from step X."
