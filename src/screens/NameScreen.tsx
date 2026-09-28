@@ -13,6 +13,8 @@ import { GuideDialog } from '../components/GuideDialog.tsx';
 import { Face, PmIdle } from '../components/canvases.tsx';
 import { TapHint } from '../components/TierBadge.tsx';
 import { useKey, useRaf, useViewport } from '../hooks/index.ts';
+import { hold } from '../lib/sound.ts';
+import { SoundToggle } from '../components/SoundToggle.tsx';
 
 // Doan dan truyen mo dau (docs/KICH_BAN_ROLECRAFT_PM60.md – Level 1, boi canh). {name} = ten nguoi choi.
 const INTRO = [
@@ -64,7 +66,8 @@ export function NameScreen({ card, locked, onCard, onEnter, onContinue, onExit }
         {/* mot cot giua man: hang nut tren (rong bang the) · the · hang nut duoi -> 4 nut doi xung tren mobile */}
         {/* doan mo dau: cot cao toi da bang man hinh (max-h-full), khung chu cuon ben trong (Intro) */}
         <div className={`m-auto flex w-full flex-col gap-5 max-sm:gap-3 ${card ? 'max-w-[780px]' : 'max-h-full max-w-[860px]'}`}>
-        <nav aria-label="Menu" className="flex justify-end gap-5 max-sm:gap-3 max-sm:[&>button]:flex-1">
+        <nav aria-label="Menu" className="flex justify-end gap-5 max-sm:gap-3 max-sm:[&>button:not(.px-btn-sq)]:flex-1">
+          <SoundToggle sq className="size-[52px] max-sm:size-[46px]" />
           {onContinue && <button id="contBtn" className={TOOL} onClick={onContinue}><Icon name="playPause" className="size-6" stroke={2.25} />Tiếp tục</button>}
           <button id="guideBtn" className={TOOL} onClick={() => guide.current!.showModal()}><Icon name="bookOpen" className="size-6" stroke={2.25} />Hướng dẫn</button>
           {onExit && <button id="exitBtn" className={TOOL} onClick={onExit}><Icon name="xMark" className="size-6" stroke={2.25} />Thoát</button>}
@@ -97,7 +100,9 @@ function Welcome({ known, locked, narrow, onBack, onDone }: { known: string; loc
   const text = useRef<HTMLParagraphElement>(null), t0 = useRef(performance.now());
   const input = useRef<HTMLInputElement>(null), take = useRef<HTMLButtonElement>(null);
   const finish = () => { if (text.current) text.current.textContent = line; setFace('face_pleased'); setTyped(true); };
+  useEffect(() => () => hold('typing', false, 'hr'), []);
   useRaf(now => {
+    hold('typing', !typed && !modalOpen(), 'hr');                 // tieng go phim khi Chi Ha dang noi
     if (typed || !text.current) return;
     const n = Math.floor((now - t0.current) * CPS / 1000);
     if (n >= line.length) { finish(); return; }
@@ -214,7 +219,9 @@ function Intro({ name, narrow, onEnter }: { name: string; narrow: boolean; onEnt
   };
   useEffect(() => { if (done) enter.current?.focus(); }, [done]);
   useKey(e => { if (!done && !modalOpen() && (e.key === 'Enter' || e.key === ' ')) { e.preventDefault(); finish(); } });
+  useEffect(() => () => hold('typing', false, 'intro'), []);
   useRaf(now => {
+    hold('typing', !done && !modalOpen(), 'intro');               // tieng go phim khi doan mo dau dang chay
     if (done) return;
     let n = Math.floor((now - t0.current) * CPS / 1000), cur = -1;   // so ky tu da hien, cau dang go
     lines.forEach((l, i) => {

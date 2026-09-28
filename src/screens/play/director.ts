@@ -21,6 +21,7 @@ import type { Change, Run } from '../../game/types.ts';
 import type { NpcAtlas } from '../../lib/spriteTypes.ts';
 import type { StageView } from '../../canvas/stage.ts';
 import { HUD_COL_Q } from './Hud.tsx';
+import { hold, stopLoops } from '../../lib/sound.ts';
 import type { PlayHooks } from '../../types.ts';
 import type { CardAct, CardState, PagesState, PlayRefs, PlayState } from './playTypes.ts';
 
@@ -105,7 +106,7 @@ export class Director {
   }
   arm(t: Timer) { t.h = setTimeout(() => { this.timers.delete(t); t.f(); }, Math.max(0, t.due - this.clock())); }
   sleep(ms: number) { return new Promise<void>(r => this.later(ms, r)); }
-  stop() { this.alive = false; this.timers.forEach(t => t.h && clearTimeout(t.h)); this.timers.clear(); this.waiter = null; }
+  stop() { this.alive = false; this.timers.forEach(t => t.h && clearTimeout(t.h)); this.timers.clear(); this.waiter = null; stopLoops(); }
   pause() {
     if (this.paused || !this.alive) return;
     this.pausedAt = performance.now(); this.paused = true;
@@ -631,6 +632,7 @@ export class Director {
   // ---------- moi khung hinh ----------
   frame() {
     const { refs, view, pm } = this, now = this.clock();
+    hold('walk', this.alive && !this.paused && !!pm.walk, 'pm');    // tieng buoc chan khi PM dang di
     if (!refs.stage || this.paused) return;                    // tam dung: giu nguyen khung dang ve
     // san khau truot toi mep bang dang mo (ease-out theo thoi gian, ~250ms)
     const goal = this.stageFoot(), dt = Math.min(64, now - (this.lastNow || now)); this.lastNow = now;

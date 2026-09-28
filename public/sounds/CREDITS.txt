@@ -1,0 +1,8 @@
+Am thanh game (Pixabay, Pixabay Content License) – ten goc -> ten trong game:
+  typing.mp3   <- dragon-studio-keyboard-typing-sound-effect-335503.mp3
+  win.mp3      <- floraphonic-marimba-win-f-2-209688.mp3
+  warning.mp3  <- tithuh-warning-545568.mp3
+  walk.mp3     <- u_3x9ga8wevj-walking-sound-effect-272246.mp3
+  lose.mp3     <- u_l5xum8z250-losing-horn-313723.mp3
+  pop.mp3      <- universfield-bubble-pop-04-323580.mp3
+Cach dung / doan cat: src/lib/sound.ts

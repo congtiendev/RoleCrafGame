@@ -8,6 +8,7 @@ import { isGood, fmtNum, fmtDelta } from '../../game/format.ts';
 import { Icon } from '../../components/Icon.tsx';
 import { SheetIcon } from '../../components/canvases.tsx';
 import { useMedia, useViewport } from '../../hooks/index.ts';
+import { play } from '../../lib/sound.ts';
 import type { IconName } from '../../lib/icons.ts';
 import type { Change } from '../../game/types.ts';
 import type { ResultState } from './playTypes.ts';
@@ -40,6 +41,8 @@ export function Result({ data, onNext, boxRef }: { data: ResultState; onNext: ()
     setSmall(smMedia || r.hasAttribute('data-fit'));
   }, [vp, smMedia]);
   useEffect(() => {
+    // tot nhieu hon xau -> marimba; xau nhieu hon -> 1 tieng bip; ngang nhau / khong doi -> im
+    if (good > bad) play('win'); else if (bad > good) play('warn');
     next.current?.focus({ preventScroll: true });
     const t = setTimeout(() => setGrown(true), 420);
     return () => clearTimeout(t);

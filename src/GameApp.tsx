@@ -18,6 +18,8 @@ import { NameScreen } from './screens/NameScreen.tsx';
 import { LoadingScreen } from './screens/LoadingScreen.tsx';
 import { PlayScreen } from './screens/play/PlayScreen.tsx';
 import { preload } from './lib/images.ts';
+import { initSound, play, stopLoops } from './lib/sound.ts';
+import { evTarget } from './lib/ui.ts';
 import type { GameAppProps, PlayHooks } from './types.ts';
 
 // Anh nap truoc trong man tai: man Start, the nhap ten (nen + PM dung cho), atlas PM man choi. Nen theo huong man hinh luc mo.
@@ -57,8 +59,18 @@ export function GameApp(props: GameAppProps) {
     return () => { live = false; };
   }, [storageKey]);                                               // eslint-disable-line react-hooks/exhaustive-deps
 
+  // Am thanh: nap luc mo game; moi nut bam (con bat duoc) keu "pop". Nghe o pha capture tren window: ban nhung (ShadowRoot)
+  // lay phan tu that qua composedPath (evTarget)
+  useEffect(() => {
+    initSound();
+    const pop = (e: MouseEvent) => { if (evTarget(e).closest?.('button:not(:disabled)')) play('pop'); };
+    addEventListener('click', pop, true);
+    return () => { removeEventListener('click', pop, true); stopLoops(); };
+  }, []);
+
   const go = (name: Screen) => {
     if (!session.playerName) name = 'card';                        // chua co ten thi ve man nhan the (nhap ten)
+    stopLoops();                                                   // doi man: tat go phim / buoc chan dang keu
     setScreen(name);
     if (hash) history.replaceState(null, '', location.pathname + location.search + (name === 'start' || name === 'card' ? '' : '#' + name));
   };

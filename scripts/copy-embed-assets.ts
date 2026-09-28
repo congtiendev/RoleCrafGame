@@ -11,6 +11,7 @@ const files = [
     .filter(f => /\.(webp|png)$/.test(f)),
   ...readdirSync(resolve(PUB, 'characters')).filter(d => existsSync(resolve(PUB, 'characters', d, 'game.webp'))).map(d => `characters/${d}/game.webp`),
   'characters/team/main_character_runner.webp',                 // runner man tai
+  ...readdirSync(resolve(PUB, 'sounds')).filter(f => f.endsWith('.mp3')).map(f => `sounds/${f}`),   // am thanh (lib/sound.ts)
   'sheets/game_pm.webp', 'sheets/start_pm_idle.webp', 'sheets/PM_D_portraits.webp', 'sheets/PM_F_icons.webp',
 ];
 let bytes = 0;

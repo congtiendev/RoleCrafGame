@@ -8,12 +8,16 @@ import { npcAtlas } from '../../canvas/npc.ts';
 import { Icon } from '../../components/Icon.tsx';
 import { Face } from '../../components/canvases.tsx';
 import { useRaf, useViewport } from '../../hooks/index.ts';
+import { hold, play } from '../../lib/sound.ts';
 import type { CastMember } from '../../content/schema.ts';
 import type { Director } from './director.ts';
 import type { DialogState } from './playTypes.ts';
 
 const CPS = 45;                                          // ky tu / giay khi chu hien dan
 const SYS: Pick<CastMember, 'name' | 'tint'> & { role?: string } = { name: 'Thông báo', tint: 'var(--color-brand-blue)' };
+// tieu de thong bao SYS mang tinh canh bao (levels.ts / director.ts: MISSING). "Hau qua tu quyet dinh truoc" co ca tot lan
+// xau nen khong keu – HUD da nhay xanh / do
+const ALARM = /Cảnh báo|Thiếu nhân sự|giải trình/i;
 
 // line = dong thoai dang hien (null = an); director.typing = { busy, finish } de cham / Enter hien het chu truoc
 export function Dialog({ line, name, director, panelRef, onNext }: {
@@ -31,14 +35,18 @@ export function Dialog({ line, name, director, panelRef, onNext }: {
     setTyped(false);
     if (!line) { typing.current = null; return; }
     typing.current = { text: line.text, t: director.clock(), done: false };   // dong ho game: tam dung thi chu dung
+    // thong bao he thong dang canh bao (su co, burnout, thieu nhan su, hoi dong yeu cau giai trinh): 2 tieng bip
+    if (line.who === 'SYS' && (line.pm === 'alert' || ALARM.test(line.title || ''))) play('alert');
     text.current!.textContent = '';
     director.typing = {
       busy: () => !!typing.current && !typing.current.done,
       finish: () => { if (typing.current) { typing.current.done = true; text.current!.textContent = typing.current.text; setTyped(true); } },
     };
   }, [line?.key]);                                               // eslint-disable-line react-hooks/exhaustive-deps
+  useEffect(() => () => hold('typing', false, 'dialog'), []);
   useRaf(() => {
     const t = typing.current;
+    hold('typing', !!t && !t.done && !director.paused, 'dialog');   // tieng go phim khi chu dang chay (tam dung: im)
     if (!t || t.done) return;
     const n = Math.floor((director.clock() - t.t) * CPS / 1000);
     const el = text.current!;

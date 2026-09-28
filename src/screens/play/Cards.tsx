@@ -4,6 +4,7 @@
 import { useEffect, useRef, useState } from 'react';
 import { Icon } from '../../components/Icon.tsx';
 import { MOOD, TapHint, TierBadge } from '../../components/TierBadge.tsx';
+import { play } from '../../lib/sound.ts';
 import type { ReactNode, RefObject } from 'react';
 import type { Level, Scenario } from '../../content/schema.ts';
 import type { CampaignResult } from '../../game/campaign.ts';
@@ -55,7 +56,12 @@ function DayCard({ s, from }: { s: Scenario; from: number }) {
   </>;
 }
 
-const EndingCard = ({ res }: { res: CampaignResult }) => <>
+// ket qua thu viec: Pass -> marimba, khong dat / buoc thoi viec -> ken "wah wah"; gia han -> im
+function EndingCard({ res }: { res: CampaignResult }) {
+  useEffect(() => { if (res.mood === 'good') play('win'); else if (res.mood === 'bad') play('lose'); }, [res]);
+  return <EndingBody res={res} />;
+}
+const EndingBody = ({ res }: { res: CampaignResult }) => <>
   <p className="font-pixel text-[1.4rem] leading-none tracking-[0.25em] text-px-hi">KẾT QUẢ THỬ VIỆC · NGÀY {res.forced?.day ?? 60}</p>
   <TierBadge no={res.forced?.day ?? 60} mood={res.mood} className="mt-6 size-[132px]" numClass="text-[3.2rem] text-white" />
   <h1 className="px-title mt-4 text-[clamp(2.2rem,7vw,4.2rem)]">{res.label.toUpperCase()}</h1>

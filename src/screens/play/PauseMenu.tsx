@@ -3,6 +3,7 @@
 // "Choi lai man nay" / "Xoa du lieu choi" hoi xac nhan ngay trong bang (mat lua chon cua level / toan bo tien do).
 import { useEffect, useRef, useState } from 'react';
 import { Icon } from '../../components/Icon.tsx';
+import { SoundToggle } from '../../components/SoundToggle.tsx';
 import type { ReactNode, Ref } from 'react';
 import type { IconName } from '../../lib/icons.ts';
 
@@ -51,11 +52,13 @@ export function PauseMenu({ level, day, canReplay, onResume, onReplay, onHome, o
             title={canReplay ? undefined : 'Bản lưu cũ chưa có điểm lưu đầu level'}>Chơi lại màn này</Item>
           <Item ic="home" onClick={onHome}>Về trang chủ</Item>
           {onExit && <Item ic="arrowRightStartOnRectangle" onClick={onExit}>Thoát</Item>}
-          {/* hanh dong pha huy: nut art vang (canh bao; do da la nut chinh Tiep tuc), gon hon, tach khoi cac nut dieu huong */}
-          <button id="resetBtn" type="button" onClick={() => setConfirm('reset')}
-            className="px-btn px-btn-yellow col-span-2 mx-auto mt-1 w-auto gap-2 px-6 py-2 text-sm">
-            <Icon name="trash" className="size-5" stroke={2.25} />Xoá dữ liệu chơi
-          </button>
+          <SoundToggle />
+          {/* hanh dong pha huy: nut do (Tiep tuc la xanh la), tach khoi cac nut dieu huong bang vach mo */}
+          <div className="col-span-2 flex flex-col gap-4 border-t-2 border-px-panel/10 pt-4 [@media(max-height:560px)]:pt-3">
+            <button id="resetBtn" type="button" className="px-btn px-btn-primary" onClick={() => setConfirm('reset')}>
+              <Icon name="trash" className="size-6" stroke={2.25} />Xoá dữ liệu chơi
+            </button>
+          </div>
         </div>
       )}
       <p className="mt-5 text-center text-xs font-bold tracking-wider text-px-panel/45 pointer-coarse:hidden [@media(max-height:560px)]:hidden">ESC ĐỂ {confirm ? 'HUỶ' : 'TIẾP TỤC'}</p>
@@ -67,7 +70,7 @@ const Item = ({ ic, children, primary, refEl, ...rest }: {
   ic: IconName; children: ReactNode; primary?: boolean; refEl?: Ref<HTMLButtonElement>;
   onClick: () => void; disabled?: boolean; title?: string;
 }) => (
-  <button ref={refEl} className={`px-btn ${primary ? 'px-btn-primary' : 'px-btn-blue'}`} {...rest}>
+  <button ref={refEl} className={`px-btn ${primary ? 'px-btn-green' : 'px-btn-blue'}`} {...rest}>   {/* chinh = Tiep tuc (xanh la) */}
     <Icon name={ic} className="size-6" stroke={2.25} />{children}
   </button>
 );

@@ -4,6 +4,7 @@
 import { useEffect, useLayoutEffect, useRef } from 'react';
 import { Icon } from '../../../components/Icon.tsx';
 import { useViewport } from '../../../hooks/index.ts';
+import { play } from '../../../lib/sound.ts';
 import { reportPage } from './ReportPage.tsx';
 import { summaryPage } from './SummaryPage.tsx';
 import { at } from './parts.tsx';
@@ -16,6 +17,9 @@ const MIN_ZOOM = 0.88;
 export function Pages({ pages, onNext }: { pages: PagesState; onNext: () => void }) {
   const { kind, page } = pages;
   const content = pages.kind === 'summary' ? summaryPage(pages.data, page) : reportPage(pages.data, page);
+  // mo tong ket level (trang dau): xep loai tot -> marimba, xau -> ken "wah wah" (bao cao cuoi: da keu o the ket qua)
+  const mood = pages.kind === 'summary' && page === 0 ? pages.data.r.tier.mood : null;
+  useEffect(() => { if (mood === 'good') play('win'); else if (mood === 'bad') play('lose'); }, [mood]);
   return <Modal key={`${kind}-${page}`} cta={content.cta} ctaAt={content.ctaAt} onNext={onNext}>{content.body}</Modal>;
 }
 

@@ -55,7 +55,7 @@ docs/
   HUONG_DAN_KICH_BAN.md       hành động từng tình huống / nhánh (build_preview.py đọc)
   THOAI_MAU.json              thoại từng cảnh + khoá '… | Câu hỏi' (câu hỏi và tên lựa chọn A/B/C)
   CHI_MUC_ATLAS.csv           chỉ mục 312 ô
-  NHUNG_GAME_REACT.md         cách nhúng game vào web khác
+  HUONG_DAN_TICH_HOP.md       hướng dẫn tích hợp game vào web khác (props, sự kiện, lưu tiến độ, backend)
   bg/, ui/                    mô tả bộ ảnh nền (scenes.json) và bộ UI (ui.json)
 examples/react-host/    web chủ mẫu dùng bản nhúng
 scripts/                chép ảnh runtime vào dist/embed/assets/ sau build:embed
@@ -121,4 +121,4 @@ npm test           # tests/: rules (chỉ số, cờ, hậu quả trì hoãn), s
 ## Nhúng vào web khác (React)
 
 Giao diện game viết bằng React (`src/GameApp.tsx`). `npm run build:embed` tạo `dist/embed/`: component `<RoleCraftGame />`
-(Shadow DOM, phủ toàn màn hình, props nối API) và hàm `mountRoleCraft()`. Cách dùng xem [docs/NHUNG_GAME_REACT.md](docs/NHUNG_GAME_REACT.md).
+(Shadow DOM, phủ toàn màn hình, props nối API) và hàm `mountRoleCraft()`. Cách tích hợp xem [docs/HUONG_DAN_TICH_HOP.md](docs/HUONG_DAN_TICH_HOP.md).

@@ -34,10 +34,12 @@ import arrowDownTray from 'heroicons/24/outline/arrow-down-tray.svg?raw';
 import pencilSquare from 'heroicons/24/outline/pencil-square.svg?raw';
 import lockClosed from 'heroicons/24/outline/lock-closed.svg?raw';
 import trash from 'heroicons/24/outline/trash.svg?raw';
+import speakerWave from 'heroicons/24/outline/speaker-wave.svg?raw';
+import speakerXMark from 'heroicons/24/outline/speaker-x-mark.svg?raw';
 
 export const SVG = { arrowDown, arrowLeft, arrowPath, arrowRight, arrowTrendingDown, arrowTrendingUp, arrowUp, bellAlert, bookOpen, chatBubbleLeft, chevronDown, clock, chevronLeft, chevronRight,
   lightBulb, pause, play, playPause, questionMarkCircle, sparkles, user, xMark, trophy, academicCap, exclamationTriangle, checkCircle,
-  home, arrowRightStartOnRectangle, documentText, arrowDownTray, pencilSquare, lockClosed, trash };
+  home, arrowRightStartOnRectangle, documentText, arrowDownTray, pencilSquare, lockClosed, trash, speakerWave, speakerXMark };
 
 // icon('play', 'size-6') -> chuoi <svg>. cls = class Tailwind (co, mau); stroke = do day net (Heroicons mac dinh 1.5,
 // UI pixel chu to nen dung 2 cho ro). Icon trang tri -> aria-hidden; nut chi co icon thi dat aria-label cho nut.
