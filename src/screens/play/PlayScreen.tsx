@@ -106,13 +106,13 @@ function Play({ d, onReplay, onReset }: { d: Director; onReplay: () => void; onR
       <button ref={r.pmHit} type="button" className="absolute rounded-xl outline-none focus-visible:outline-[3px] focus-visible:outline-[#5ec8ff]"
         aria-label="Xem thẻ nhân viên của bạn" title="Thẻ nhân viên của bạn" onClick={e => d.openStaff('PM', e.currentTarget)} />
 
-      <Hud hud={st.hud} fx={st.fx} hudRef={r.hud} onPause={() => d.pause()} onTour={() => d.tour()} />
+      <Hud hud={st.hud} fx={st.fx} hudRef={r.hud} onPause={() => d.pause()} onTour={() => d.openTour()} />
       <Dialog line={st.dialog} name={d.name} director={d} panelRef={r.dlgPanel} onNext={() => d.advance()} />
       {st.choice && <Choice s={st.choice} onPick={(c: ChoiceData) => d.answer('choice', c)} />}
       {st.result && <Result data={st.result} boxRef={r.result} onNext={() => d.answer('result')} />}
       {st.pages && <Pages pages={st.pages} onNext={() => d.answer('page')} />}
       {st.card && <Card card={st.card} onAct={(a: CardAct) => d.answer('act', a)} />}
-      {st.tour && <HudTour root={d.refs.lv ?? null} onDone={() => d.answer('tour')} />}
+      {st.tour && <HudTour root={d.refs.lv ?? null} onDone={() => d.closeTour()} />}
       {st.staff && <StaffCard staff={st.staff} onClose={closeStaff}
         pm={{ name: d.name, team: d.teamFact(), day: d.run?.day ?? 1 }} />}
       <div className={`pointer-events-none absolute inset-0 z-40 bg-black transition-opacity duration-500 ${st.fade ? '' : 'opacity-0'}`} />

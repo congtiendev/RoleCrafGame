@@ -44,7 +44,7 @@
 |---|---|
 | `loading` | Màn tải khi mở game (`src/screens/LoadingScreen.tsx`): runner chạy theo `integration/loading_route_points.json` |
 | `banner` | Màn Start (`src/screens/StartScreen.tsx`) — khung rộng hơn `start`, thấy đủ biển Innocom |
-| `qr_join` | Màn nhập tên + đoạn mở đầu (`src/screens/NameScreen.tsx`) |
+| `qr_join` | Các màn ở sảnh (khung chung `src/screens/lobby.tsx`): kết nối điện thoại bằng QR (`QrScreen.tsx`), nhận thẻ + đoạn mở đầu (`NameScreen.tsx`) |
 
 Chưa có màn dùng nên không đưa vào `public/`, chỉ giữ PNG gốc trong `tools/ui-source/redesign_v4/screens/`: `start` (cùng bố cục 8 nhân vật nhưng zoom sát, cắt biển Innocom — đã thay bằng `banner`) và `participants` (vòng tập hợp 8 vị trí, cho màn danh sách người chơi nếu có chế độ nhiều người). Tương tự 8 nhân vật rời `assets/characters/character_01..08.png`. Khi cần: chuyển sang WebP lossless, đặt vào `public/bg/<mã>_{pc,mobile}.webp`.
 

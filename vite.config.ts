@@ -3,6 +3,7 @@ import { resolve } from 'node:path';
 import { defineConfig } from 'vite';
 import tailwindcss from '@tailwindcss/vite';
 import react from '@vitejs/plugin-react';
+import { createLiveServer } from './dev/mock-live-server.ts';
 
 const ROOT = import.meta.dirname;
 
@@ -25,6 +26,16 @@ export default defineConfig({
   plugins: [
     react(),
     tailwindcss(),
+    {
+      // Che do trinh chieu luc dev: mock may chu realtime (dev/mock-live-server.ts) gan vao chinh dev server, WebSocket /live
+      // cung cong -> npm run dev la du (may chu that do BE lam: docs/BE_REALTIME_TRINH_CHIEU.md)
+      name: 'mock-live',
+      apply: 'serve',
+      configureServer(server) {
+        const live = createLiveServer({ server: server.httpServer, log: m => server.config.logger.info(`[live] ${m}`, { timestamp: true }) });
+        server.httpServer?.once('close', () => { void live.close(); });
+      },
+    },
     {
       // Luc dev: sua kich ban / thoai / manifest / sheet PNG goc -> tu chay tools/build_preview.py.
       // No ghi src/generated/data.ts + atlas.ts, Vite thay file doi va tu tai lai trang.

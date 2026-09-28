@@ -11,16 +11,16 @@ export interface RoleCraftGameProps extends Omit<MountOptions, 'hash' | 'start'>
 
 const CALLBACKS = ['loadProgress', 'saveProgress', 'onChoice', 'onLevelComplete', 'onFinish', 'onExit'] as const;
 
-export function RoleCraftGame({ assetBase = '', storageKey, player, zIndex, lockScroll, className, style, ...cb }: RoleCraftGameProps) {
+export function RoleCraftGame({ assetBase = '', storageKey, player, qrUrl, presenter, liveUrl, zIndex, lockScroll, className, style, ...cb }: RoleCraftGameProps) {
   const host = useRef<HTMLDivElement>(null), latest = useRef<GameHooks>(cb), game = useRef<RoleCraftHandle | null>(null);
   latest.current = cb;
   useEffect(() => {
     // callback boc qua ref: luon goi ban moi nhat; chi truyen callback web chu co khai bao (onExit -> nut Thoat)
     const wrapped: GameHooks = Object.fromEntries(CALLBACKS.filter(k => cb[k]).map(k =>
       [k, (...a: unknown[]) => (latest.current[k] as ((...x: unknown[]) => unknown) | undefined)?.(...a)]));
-    game.current = mountRoleCraft(host.current!, { assetBase, storageKey, player, zIndex, lockScroll, ...wrapped });
+    game.current = mountRoleCraft(host.current!, { assetBase, storageKey, player, qrUrl, presenter, liveUrl, zIndex, lockScroll, ...wrapped });
     return () => { game.current?.destroy(); game.current = null; };
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [assetBase, storageKey, player?.name, zIndex, lockScroll]);
+  }, [assetBase, storageKey, player?.name, qrUrl, presenter, liveUrl, zIndex, lockScroll]);
   return <div ref={host} className={className} style={style} data-rolecraft="" />;
 }

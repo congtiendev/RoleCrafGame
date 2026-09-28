@@ -163,6 +163,9 @@ Mọi prop đều tuỳ chọn. Kiểu đầy đủ: `RoleCraftGameProps` / `Mou
 | `onChoice` | `(e: ChoiceEvent) => void` | – | Sau mỗi lựa chọn trong tình huống. |
 | `onLevelComplete` | `(e: LevelCompleteEvent) => void` | – | Khi xong một giai đoạn. |
 | `onFinish` | `(report: FinishReport) => void` | – | Khi có kết quả thử việc (hết 60 ngày hoặc bị buộc thôi việc giữa chừng). |
+| `qrUrl` | `string \| false` | trang hiện tại | Link trong mã QR của màn **Kết nối điện thoại** (xem [mục 7](#7-luồng-chơi-và-thời-điểm-sự-kiện)). Link cố định, mỗi lần quét máy chủ tự sinh phiên. `false` = bỏ màn này. |
+| `presenter` | `boolean` | `false` | Hiện **màn trình chiếu** thay cho game (xem [mục Màn trình chiếu](#màn-trình-chiếu)). Web chủ tự kiểm tra quyền admin trước khi bật. |
+| `liveUrl` | `string` | – | Máy chủ realtime của màn trình chiếu (`wss://…/live` hoặc đường dẫn `/live`). Có → game báo trạng thái người chơi lên máy chủ. Màn trình chiếu mặc định `/live`. |
 | `onExit` | `() => void` | – | Có prop này thì game hiện nút **Thoát** (thanh trên màn giới thiệu và bảng tạm dừng). Web chủ đóng game trong hàm này. Không truyền thì không có nút Thoát. |
 | `zIndex` | `number` | `2147483000` | Lớp phủ của game. |
 | `lockScroll` | `boolean` | `true` | Khoá cuộn trang chủ khi đang chơi, trả lại khi đóng. |
@@ -175,7 +178,9 @@ Chiến dịch gồm **4 giai đoạn (level), 16 tình huống**, mỗi tình h
 ```mermaid
 flowchart TD
     A["Màn tải: loadProgress + nạp ảnh"] --> B{"Đã có tên?"}
-    B -- "chưa" --> C["Thẻ nhân viên (nhập tên)"]
+    B -- "chưa, máy tính" --> Q["Kết nối điện thoại (QR)"]
+    Q -- "Chơi trên máy này" --> C
+    B -- "chưa, điện thoại" --> C["Thẻ nhân viên (nhập tên)"]
     B -- "có" --> D["Màn bắt đầu → giới thiệu"]
     C --> D
     D --> E["Giai đoạn 1…4: mỗi tình huống 1 lựa chọn"]
@@ -196,6 +201,8 @@ flowchart TD
 | Xong giai đoạn 4 | `onLevelComplete(e)` với `tier = null`, `summary = null`, rồi `onFinish(report)` |
 | Bị buộc thôi việc giữa chừng | `onFinish(report)` với `report.result.forced` (**không** có `onLevelComplete` cho giai đoạn dở) |
 | Người chơi bấm Thoát | `onExit()` |
+
+**Kết nối điện thoại.** Trên máy tính (có chuột), người chơi mới thấy màn QR trước màn nhận thẻ: quét mã bằng điện thoại để dùng điện thoại làm tay cầm, màn hình máy tính chuyển động theo. Phần đồng bộ realtime giữa điện thoại và máy tính **chưa có** (cần máy chủ realtime); hiện tại quét mã chỉ mở link `qrUrl` trên điện thoại, còn máy tính chơi tiếp bằng nút **Chơi trên máy này**. Điện thoại và máy tính bảng (màn cảm ứng) không thấy màn này.
 
 **Buộc thôi việc** (game dừng ngay, kết quả `FAIL`): quỹ dự án dưới 20.000.000 VND hoặc rủi ro đạt 100% sau một lựa chọn; tiến độ dưới 18/60 ngày ở mốc cuối giai đoạn 2, 3, 4. Chi tiết: `docs/KICH_BAN_ROLECRAFT_PM60.md` mục 9.
 
@@ -352,6 +359,21 @@ Game không quy định API; dưới đây là một cách tổ chức đủ dù
 
 - **Không tin dữ liệu từ client** cho các mục đích có hệ quả (chấm điểm chính thức, cấp chứng nhận): mọi sự kiện đều phát ra từ trình duyệt và người dùng có thể sửa. Nếu cần, đối chiếu chuỗi `onChoice` với kết quả, hoặc chỉ dùng số liệu cho mục đích đào tạo và tham khảo.
 - Lựa chọn và kết quả có thể lặp lại khi người chơi chơi lại ([mục 7](#7-luồng-chơi-và-thời-điểm-sự-kiện)): lưu theo lượt (thêm `created_at`), không đặt ràng buộc duy nhất theo `(user_id, scenario)`.
+
+## Màn trình chiếu
+
+Màn cho admin chiếu lên màn lớn trong buổi đào tạo: **mã QR cố định** (link game, prop `qrUrl`) và **danh sách người chơi realtime**: đang chơi (ở sảnh hoặc giai đoạn/ngày), hoàn thành (kèm kết quả), đã rời, cùng dòng hoạt động gần đây. Người chơi chơi độc lập; màn này chỉ để xem.
+
+```tsx
+{/* trang admin của web chủ (đã kiểm tra quyền) */}
+<RoleCraftGame presenter assetBase="/rolecraft/assets/" liveUrl="wss://game.example.com/live" qrUrl="https://game.example.com/rolecraft" onExit={close} />
+
+{/* trang người chơi: thêm liveUrl để báo trạng thái lên màn trình chiếu */}
+<RoleCraftGame assetBase="/rolecraft/assets/" liveUrl="wss://game.example.com/live" onExit={close} />
+```
+
+- Cần máy chủ realtime (WebSocket) do BE làm theo [BE_REALTIME_TRINH_CHIEU.md](BE_REALTIME_TRINH_CHIEU.md). Khi phát triển, `npm run dev` gắn sẵn máy chủ giả lập ở `/live`; trang game riêng mở màn trình chiếu bằng `/#admin`.
+- Mất kết nối không ảnh hưởng việc chơi; game tự nối lại. Danh sách chỉ để theo dõi, không dùng để chấm điểm (kết quả chính thức: `onFinish`).
 
 ## 11. Lưu ý kỹ thuật
 

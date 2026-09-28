@@ -37,6 +37,14 @@ export interface GameAppProps extends GameHooks {
   storageKey?: string;                     // khoa localStorage luu tien do (mac dinh 'rolecraft.pm60.session')
   hash?: boolean;                          // trang rieng: dong bo #ten man tren URL
   start?: string;                          // man mo dau (trang rieng)
+  // Man ket noi dien thoai truoc man nhan the (chi may tinh): link trong ma QR (co dinh; moi lan quet may chu tu sinh
+  // phien). Mac dinh trang hien tai; false = khong co man nay
+  qrUrl?: string | false;
+  // Man trinh chieu (docs/HUONG_DAN_TICH_HOP.md, docs/BE_REALTIME_TRINH_CHIEU.md): presenter = man admin chieu QR co dinh + danh
+  // sach nguoi choi realtime (web chu tu kiem tra quyen). liveUrl = may chu realtime (ws(s)://… hoac duong dan, vd '/live'):
+  // co -> game bao trang thai nguoi choi len may chu; man trinh chieu mac dinh '/live'
+  presenter?: boolean;
+  liveUrl?: string;
 }
 
 // Callback dang dung trong man choi (ban moi nhat qua ref) + ve menu, xoa du lieu choi (ve man nhan the)

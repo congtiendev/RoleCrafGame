@@ -50,3 +50,38 @@
   50% { scale: 1.045; filter: drop-shadow(0 4px 6px rgb(6 10 28 / .5)) drop-shadow(0 0 16px rgb(90 230 255 / .9)); }
 }
 @keyframes start-shine { 0%, 15% { background-position: 150% 0; } 55%, 100% { background-position: -50% 0; } }
+
+/* Vach quet ma QR (components/QrCode.tsx, kieu vi MoMo): tia sang chay xuong roi len, 2 lop cung nhip 3.6s:
+   .qr-scan-trail – vet sang phia sau vach (cao --h), blend screen: nen trang giu nguyen, o ma navy duoi vet anh xanh len.
+     Di xuong: vet tren vach (vach o day khoi); di len lat doc (scale y -1) -> vet duoi vach. Luc lat dat lai top de mep khoi
+     van trung vach (xuong: top = vach - h; len: top = vach).
+   .qr-scan-line – vach sang (khong blend, thay ro tren nen trang), mo dan hai dau, glow theo hinh vach (drop-shadow).
+   Long [data-in] overflow-hidden cat phan thua; may bat giam chuyen dong: an */
+@layer components {
+  .qr-scan-trail {
+    --h: 30%;
+    @apply pointer-events-none absolute inset-x-0 h-(--h);
+    background: linear-gradient(to bottom, rgb(62 200 255 / 0), rgb(62 200 255 / .55));
+    mix-blend-mode: screen;
+    mask-image: linear-gradient(to right, transparent, #000 14%, #000 86%, transparent);
+    animation: qr-scan-trail 3.6s infinite;
+  }
+  .qr-scan-line {
+    @apply pointer-events-none absolute inset-x-[4%] h-[3px] -translate-y-1/2 rounded-full;
+    background: linear-gradient(to right, rgb(29 139 255 / 0), #1d8bff 18%, #3ec8ff 50%, #1d8bff 82%, rgb(29 139 255 / 0));
+    filter: drop-shadow(0 0 3px #3ec8ff) drop-shadow(0 0 6px rgb(29 139 255 / .6));
+    animation: qr-scan-line 3.6s infinite;
+  }
+  @media (prefers-reduced-motion: reduce) { .qr-scan-trail, .qr-scan-line { display: none; } }
+}
+@keyframes qr-scan-trail {
+  0% { top: calc(2% - var(--h)); scale: 1 1; animation-timing-function: ease-in-out; }
+  49.99% { top: calc(98% - var(--h)); scale: 1 1; }
+  50% { top: 98%; scale: 1 -1; animation-timing-function: ease-in-out; }
+  100% { top: 2%; scale: 1 -1; }
+}
+@keyframes qr-scan-line {
+  0% { top: 2%; animation-timing-function: ease-in-out; }
+  50% { top: 98%; animation-timing-function: ease-in-out; }
+  100% { top: 2%; }
+}

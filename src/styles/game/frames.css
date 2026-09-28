@@ -21,6 +21,16 @@
   @media (width < 40rem) {
     .px-panel { --ht: 4px; --hb: 13px; border-width: 19px 11px 8px; border-image-width: 27px 18px 19px 53px; }
   }
+  /* The nho (the nguoi choi o man trinh chieu): cung art + lop lot nhu .px-panel, 9-slice co nho (~0.72 ban mobile) */
+  .px-tile {
+    @apply text-px-panel;
+    --ht: 3px; --hb: 9px;
+    background: linear-gradient(#0070f5, #0070f5) 5px var(--ht) / calc(100% - 10px) var(--hb) no-repeat border-box,
+      linear-gradient(#f7fbfd, #daeefd) padding-box;
+    border: solid transparent;
+    border-width: 14px 8px 6px;
+    border-image: url("/ui/cards/card_panel_wide_normal.webp") 80 52 55 155 fill / 20px 13px 14px 38px;
+  }
   /* Nut = anh trong ui/buttons (cat tu tools/ui-source/button.png), keo gian 9-slice bang border-image nen rong bao nhieu
      cung giu goc vat. Moi mau 4 anh: --btn thuong, --btn-hi hover/focus (vien phat sang), --btn-lo bam, --btn-off khoa. */
   .px-btn {

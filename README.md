@@ -9,6 +9,7 @@ index.html              trang game (entry Vite) → src/main.tsx
 dev/                    hai trang công cụ, không thuộc module phát hành:
   preview.html            XEM NHÂN VẬT (Hành động / Ô tĩnh / Sheet gốc) → src/dev/preview/
   scenario-test.html      TEST KỊCH BẢN (không phải gameplay): mở cảnh → câu hỏi → A/B/C → cảnh tiếp
+  mock-live-server.ts     máy chủ realtime GIẢ LẬP cho màn trình chiếu (/#admin), tự chạy cùng npm run dev ở /live
 public/                 ảnh nạp lúc chạy, phục vụ nguyên trạng ở gốc site
   bg/                     11 cảnh nền + 5 nền màn hệ thống v4 (loading, start, qr_join, banner, participants) × PC/mobile (WebP)
   ui/                     khung, nút, badge, thanh, con trỏ (cắt từ tools/ui-source/); brand/, loading/, qr/... của redesign v4
@@ -56,6 +57,7 @@ docs/
   THOAI_MAU.json              thoại từng cảnh + khoá '… | Câu hỏi' (câu hỏi và tên lựa chọn A/B/C)
   CHI_MUC_ATLAS.csv           chỉ mục 312 ô
   HUONG_DAN_TICH_HOP.md       hướng dẫn tích hợp game vào web khác (props, sự kiện, lưu tiến độ, backend)
+  BE_REALTIME_TRINH_CHIEU.md  máy chủ realtime cho màn trình chiếu (giao thức WebSocket, quy tắc, Node.js) – cho BE
   bg/, ui/                    mô tả bộ ảnh nền (scenes.json) và bộ UI (ui.json)
 examples/react-host/    web chủ mẫu dùng bản nhúng
 scripts/                chép ảnh runtime vào dist/embed/assets/ sau build:embed

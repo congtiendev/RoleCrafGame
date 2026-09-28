@@ -1,20 +1,19 @@
-// Nen sanh (bg/qr_join_*, redesign v4), 2 che do: (1) truoc man Start – Chi Ha (HR) chao don va trao the nhan vien thu viec;
-// (2) sau man Start (#name) – doan gioi thieu game co ten. Logic ten (kiem tra, goi y, luu) o session.ts.
+// Nen sanh (bg/qr_join_*, redesign v4; khung chung: lobby.tsx), 2 che do: (1) truoc man Start – Chi Ha (HR) chao don va trao
+// the nhan vien thu viec; (2) sau man Start (#name) – doan gioi thieu game co ten. Logic ten (kiem tra, goi y, luu) o session.ts.
 // Ten da cap tu API (web chu truyen prop player, GameApp ghi vao session) -> in san tren the, khong nhap lai. Khong co
 // (trang game rieng / dev) -> the co o nhap ten, bat buoc.
 // Thanh cong cu tren cung (chuyen tu man Start): Tiep tuc (co ban luu) · Huong dan · Thoat (ban nhung co onExit).
 import { useEffect, useRef, useState } from 'react';
 import type { FormEvent, ReactNode } from 'react';
-import { asset, modalOpen } from '../lib/ui.ts';
+import { modalOpen } from '../lib/ui.ts';
 import { session, saveSession, checkName, suggestName } from '../game/session.ts';
 import { Icon } from '../components/Icon.tsx';
 import { Logo } from '../components/Logo.tsx';
-import { GuideDialog } from '../components/GuideDialog.tsx';
 import { Face, PmIdle } from '../components/canvases.tsx';
 import { TapHint } from '../components/TierBadge.tsx';
 import { useKey, useRaf, useViewport } from '../hooks/index.ts';
 import { hold } from '../lib/sound.ts';
-import { SoundToggle } from '../components/SoundToggle.tsx';
+import { CPS, HrSays, Lobby, TALK_MS, useHrLine } from './lobby.tsx';
 
 // Doan dan truyen mo dau (docs/KICH_BAN_ROLECRAFT_PM60.md – Level 1, boi canh). {name} = ten nguoi choi.
 const INTRO = [
@@ -34,81 +33,53 @@ const INTRO_FACE = [
   ['face_worried', 'face_stressed'],
   ['face_determined', 'face_confident'],
 ];
-const TALK_MS = 220;                             // doi khung mat moi 220ms (~4.5 lan/giay)
-const CPS = 45;                                  // ky tu / giay khi chu hien dan
 
 // short: noi dung rut gon cho the ngang tren mobile (cot phai hep)
 const Fact = ({ k, short, children }: { k: string; short?: string; children: ReactNode }) => (
   <><dt className="text-px-panel/60">{k}</dt><dd className="font-semibold">{short ? <><span className="sm:hidden">{short}</span><span className="max-sm:hidden">{children}</span></> : children}</dd></>
 );
 
-const TOOL = 'px-btn px-btn-blue w-auto gap-2.5 px-6 py-2.5 text-base max-sm:gap-2 max-sm:px-4 max-sm:text-[0.95rem]';
-
 // Hai che do (GameApp):
 //   card  – TRUOC man Start: Chi Ha chao + trao the. Co ten (API / da luu) -> the in san ten, bam Nhan the; chua co ->
 //           bat buoc nhap ten (khong co Quay lai). Xong -> onCard (sang man Start)
 //   intro – SAU man Start (bam Bat dau): doan gioi thieu game co ten, roi onEnter vao choi
-// locked: ten tu API -> the khong cho sua ten
-export function NameScreen({ card, locked, onCard, onEnter, onContinue, onExit }: {
-  card?: boolean; locked?: boolean; onCard?: () => void; onEnter?: (name: string) => void; onContinue?: (() => void) | null; onExit?: () => void;
+// locked: ten tu API -> the khong cho sua ten; met: Chi Ha da chao o man QR (QrScreen) -> khong chao lai
+export function NameScreen({ card, locked, met, onCard, onEnter, onContinue, onExit }: {
+  card?: boolean; locked?: boolean; met?: boolean; onCard?: () => void; onEnter?: (name: string) => void;
+  onContinue?: (() => void) | null; onExit?: () => void;
 }) {
-  const vp = useViewport(), narrow = vp.w < 640, guide = useRef<HTMLDialogElement>(null);
+  const vp = useViewport(), narrow = vp.w < 640;
   const name = session.playerName || '';
+  // doan mo dau: cot cao toi da bang man hinh (max-h-full), khung chu cuon ben trong (Intro)
   return (
-    <section className="relative h-dvh w-full overflow-hidden">
-      <picture>
-        <source media="(orientation: portrait)" srcSet={asset('bg/qr_join_mobile.webp')} />
-        <img src={asset('bg/qr_join_pc.webp')} alt="" className="absolute inset-0 size-full object-cover" draggable="false" />
-      </picture>
-      <div className="absolute inset-0 bg-px-ink/50" />
-      {/* flex + m-auto: can giua nhung van cuon duoc tu mep tren khi khung cao hon man hinh */}
-      <div className="absolute inset-0 flex overflow-y-auto p-safe-5 max-sm:p-safe-3">
-        {/* mot cot giua man: hang nut tren (rong bang the) · the · hang nut duoi -> 4 nut doi xung tren mobile */}
-        {/* doan mo dau: cot cao toi da bang man hinh (max-h-full), khung chu cuon ben trong (Intro) */}
-        <div className={`m-auto flex w-full flex-col gap-5 max-sm:gap-3 ${card ? 'max-w-[780px]' : 'max-h-full max-w-[860px]'}`}>
-        <nav aria-label="Menu" className="flex justify-end gap-5 max-sm:gap-3 max-sm:[&>button:not(.px-btn-sq)]:flex-1">
-          <SoundToggle sq className="size-[52px] max-sm:size-[46px]" />
-          {onContinue && <button id="contBtn" className={TOOL} onClick={onContinue}><Icon name="playPause" className="size-6" stroke={2.25} />Tiếp tục</button>}
-          <button id="guideBtn" className={TOOL} onClick={() => guide.current!.showModal()}><Icon name="bookOpen" className="size-6" stroke={2.25} />Hướng dẫn</button>
-          {onExit && <button id="exitBtn" className={TOOL} onClick={onExit}><Icon name="xMark" className="size-6" stroke={2.25} />Thoát</button>}
-        </nav>
-        {card
-          ? <Welcome known={name} locked={locked} narrow={narrow} onDone={(n: string) => { session.playerName = n; saveSession(); onCard?.(); }} />
-          : <Intro name={name} narrow={narrow} onEnter={() => onEnter?.(name)} />}
-        </div>
-      </div>
-      <GuideDialog ref={guide} />
-    </section>
+    <Lobby col={card ? 'max-w-[780px]' : 'max-h-full max-w-[860px]'} onContinue={onContinue} onExit={onExit}>
+      {card
+        ? <Welcome known={name} locked={locked} met={met} narrow={narrow} onDone={(n: string) => { session.playerName = n; saveSession(); onCard?.(); }} />
+        : <Intro name={name} narrow={narrow} onEnter={() => onEnter?.(name)} />}
+    </Lobby>
   );
 }
 
-// Loi chao cua Chi Ha (HR) luc trao the. known = ten da cap tu API (web chu); khong co (trang game rieng / dev) -> xin ten
-const hrLine = (known: string) => (known
-  ? `Chào mừng ${known} đến với Innocom! Chị là Hà bên nhân sự. Đây là thẻ nhân viên thử việc của em – 60 ngày tới cố lên nhé.`
-  : 'Chào mừng em đến với Innocom! Chị là Hà bên nhân sự. Em cho chị họ tên để in thẻ nhân viên nhé.');
-const HR_FACE = ['face_warm', 'face_pleased'];                  // luan phien khi dang noi (nhep mieng)
+// Loi chao cua Chi Ha (HR) luc trao the. known = ten da cap tu API (web chu); khong co (trang game rieng / dev) -> xin ten.
+// met = da chao o man QR -> vao thang viec in the
+const hrLine = (known: string, met?: boolean) => {
+  const hello = met ? '' : `Chào mừng ${known || 'em'} đến với Innocom! Chị là Hà bên nhân sự. `;
+  return hello + (known
+    ? `Đây là thẻ nhân viên thử việc của em – 60 ngày tới cố lên nhé.`
+    : met ? 'Giờ em cho chị họ tên để in thẻ nhân viên nhé.' : 'Em cho chị họ tên để in thẻ nhân viên nhé.');
+};
 
 // Chi Ha chao + trao the nhan vien: chu chay het -> the truot len (nhu duoc dua tay), nut Nhan the.
 // known: ten in san tren the (khong nhap lai); rong: the co o nhap ten (kiem tra, goi y, luu o session.ts).
 // locked: ten tu API (tai khoan web chu) -> khong sua trong game (doi o web chu); khong khoa (ten tu nhap, da luu) ->
 // nut but chi canh ten chuyen the ve o nhap (dien san ten cu)
-function Welcome({ known, locked, narrow, onBack, onDone }: { known: string; locked?: boolean; narrow: boolean; onBack?: () => void; onDone: (name: string) => void }) {
-  const line = hrLine(known);
+function Welcome({ known, locked, met, narrow, onBack, onDone }: {
+  known: string; locked?: boolean; met?: boolean; narrow: boolean; onBack?: () => void; onDone: (name: string) => void;
+}) {
+  const hr = useHrLine(hrLine(known, met), 'hr'), { typed, finish } = hr;
   const [value, setValue] = useState(session.playerName || ''), [error, setError] = useState('');
   const [editing, setEditing] = useState(false), printed = !!known && !editing;
-  const [typed, setTyped] = useState(false), [face, setFace] = useState(HR_FACE[0]);
-  const text = useRef<HTMLParagraphElement>(null), t0 = useRef(performance.now());
   const input = useRef<HTMLInputElement>(null), take = useRef<HTMLButtonElement>(null);
-  const finish = () => { if (text.current) text.current.textContent = line; setFace('face_pleased'); setTyped(true); };
-  useEffect(() => () => hold('typing', false, 'hr'), []);
-  useRaf(now => {
-    hold('typing', !typed && !modalOpen(), 'hr');                 // tieng go phim khi Chi Ha dang noi
-    if (typed || !text.current) return;
-    const n = Math.floor((now - t0.current) * CPS / 1000);
-    if (n >= line.length) { finish(); return; }
-    if (text.current.textContent!.length !== n) text.current.textContent = line.slice(0, n);
-    const f = HR_FACE[Math.floor(now / TALK_MS) % 2]; if (f !== face) setFace(f);
-  });
   useEffect(() => { if (typed) (printed ? take : input).current?.focus({ preventScroll: true }); }, [typed, editing]);   // eslint-disable-line react-hooks/exhaustive-deps
   // Esc = quay lai (trong hop thoai Huong dan: chi dong hop thoai); Enter/Space luc chu dang chay = hien het chu
   useKey(e => {
@@ -127,18 +98,7 @@ function Welcome({ known, locked, narrow, onBack, onDone }: { known: string; loc
   return (
     <form id="nameForm" noValidate onSubmit={submit} className="flex w-full animate-rise flex-col gap-5 max-sm:gap-3">
       {/* Chi Ha (HR): chan dung + bong bong thoai, bam vao = hien het chu */}
-      <div className="flex items-start gap-4 max-sm:gap-2.5" onClick={() => !typed && finish()}>
-        <figure className="flex shrink-0 flex-col items-center gap-1">
-          <div className="gm-plate size-[92px] max-sm:size-[64px]"><div data-in="" className="place-items-center bg-[#e0a458]">
-            <Face who="HA" face={face} size={narrow ? 52 : 76} />
-          </div></div>
-          <figcaption className="gm-tag gm-yellow px-1.5 pt-0.5 pb-1 text-[0.7rem] leading-none font-bold whitespace-nowrap uppercase">Chị Hà · HR</figcaption>
-        </figure>
-        <div className="px-bubble relative mt-1 min-h-[4.5rem] flex-1 px-4 py-3 max-sm:min-h-[4rem] max-sm:px-3 max-sm:py-2 max-sm:text-sm" aria-live="polite">
-          <span aria-hidden="true" className="absolute top-5 -left-[9px] size-3.5 rotate-45 rounded-bl-[3px] border-b-[2.5px] border-l-[2.5px] border-[#0b1d4d] bg-white max-sm:top-4" />
-          <p ref={text} />
-        </div>
-      </div>
+      <HrSays hr={hr} narrow={narrow} />
 
       {/* the nhan vien: an cho toi khi Chi Ha noi xong (giu cho, khong nhay bo cuc) roi truot len nhu duoc trao tay (.card-hand) */}
       <div className={`px-panel px-8 py-7 max-sm:px-2.5 max-sm:py-4 ${typed ? 'card-hand' : 'invisible'}`}>

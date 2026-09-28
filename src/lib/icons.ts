@@ -36,10 +36,18 @@ import lockClosed from 'heroicons/24/outline/lock-closed.svg?raw';
 import trash from 'heroicons/24/outline/trash.svg?raw';
 import speakerWave from 'heroicons/24/outline/speaker-wave.svg?raw';
 import speakerXMark from 'heroicons/24/outline/speaker-x-mark.svg?raw';
+import camera from 'heroicons/24/outline/camera.svg?raw';
+import check from 'heroicons/24/outline/check.svg?raw';
+import computerDesktop from 'heroicons/24/outline/computer-desktop.svg?raw';
+import devicePhoneMobile from 'heroicons/24/outline/device-phone-mobile.svg?raw';
+import documentDuplicate from 'heroicons/24/outline/document-duplicate.svg?raw';
+import link from 'heroicons/24/outline/link.svg?raw';
+import qrCode from 'heroicons/24/outline/qr-code.svg?raw';
 
 export const SVG = { arrowDown, arrowLeft, arrowPath, arrowRight, arrowTrendingDown, arrowTrendingUp, arrowUp, bellAlert, bookOpen, chatBubbleLeft, chevronDown, clock, chevronLeft, chevronRight,
   lightBulb, pause, play, playPause, questionMarkCircle, sparkles, user, xMark, trophy, academicCap, exclamationTriangle, checkCircle,
-  home, arrowRightStartOnRectangle, documentText, arrowDownTray, pencilSquare, lockClosed, trash, speakerWave, speakerXMark };
+  home, arrowRightStartOnRectangle, documentText, arrowDownTray, pencilSquare, lockClosed, trash, speakerWave, speakerXMark,
+  camera, check, computerDesktop, devicePhoneMobile, documentDuplicate, link, qrCode };
 
 // icon('play', 'size-6') -> chuoi <svg>. cls = class Tailwind (co, mau); stroke = do day net (Heroicons mac dinh 1.5,
 // UI pixel chu to nen dung 2 cho ro). Icon trang tri -> aria-hidden; nut chi co icon thi dat aria-label cho nut.

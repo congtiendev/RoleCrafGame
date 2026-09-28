@@ -58,6 +58,7 @@ export class Director {
   npcs: Record<string, NpcSlot>; refs: PlayRefs;
   alive: boolean; timers: Set<Timer>; waiter: Waiter | null;
   paused = false; pausedAt = 0; pausedTotal = 0;                   // tam dung: dong ho game dung lai
+  userTour = false;                                                // tour do nguoi choi mo (nut ?), xem openTour
   typing: { busy: () => boolean; finish: () => void } | null;       // Dialog.tsx gan: dang go chu
   pmBaseX: number | null; lastNow: number; tall: boolean; baseAlias: Record<string, string> | null; fxId: number;
   level: Level; run: Run | null; state: PlayState; subs: Set<() => void>;
@@ -107,17 +108,24 @@ export class Director {
   arm(t: Timer) { t.h = setTimeout(() => { this.timers.delete(t); t.f(); }, Math.max(0, t.due - this.clock())); }
   sleep(ms: number) { return new Promise<void>(r => this.later(ms, r)); }
   stop() { this.alive = false; this.timers.forEach(t => t.h && clearTimeout(t.h)); this.timers.clear(); this.waiter = null; stopLoops(); }
-  pause() {
-    if (this.paused || !this.alive) return;
+  // Dung / chay lai dong ho game (khong dong cham giao dien). Dong ho dung khi co bang tam dung HOAC tour do nguoi choi mo
+  freeze() {
+    if (this.paused) return;
     this.pausedAt = performance.now(); this.paused = true;
     this.timers.forEach(t => { if (t.h) clearTimeout(t.h); t.h = null; });
-    this.set({ paused: true });
   }
-  resume() {
-    if (!this.paused) return;
+  thaw() {
+    if (!this.paused || this.state.paused || this.userTour) return;   // con bang tam dung / tour dang mo: van dung
     this.pausedTotal += performance.now() - this.pausedAt; this.paused = false;
     this.timers.forEach(t => this.arm(t));
-    this.set({ paused: false });
+  }
+  pause() {
+    if (this.state.paused || !this.alive) return;
+    this.freeze(); this.set({ paused: true });
+  }
+  resume() {
+    if (!this.state.paused) return;
+    this.set({ paused: false }); this.thaw();
   }
   // Choi lai level dang choi: level dau = phien moi; level sau = diem luu dau level (khong co thi khong choi lai duoc).
   // Ghi phien roi dung director nay; man choi tao director moi (PlayScreen) doc phien vua ghi.
@@ -362,9 +370,21 @@ export class Director {
     }
     this.set({ pages: null });
   }
+  // Tour lan dau (kich ban cho luot 'tour')
   tour() {
     this.set({ tour: true });
     return this.wait('tour').then(() => this.set({ tour: false }));
+  }
+  // Tour do nguoi choi mo (nut ? tren HUD) luc nao cung duoc – ca giua chuyen canh: KHONG chiem luot cho cua kich ban
+  // (dang cho cau thoai / the ngay...; chiem thi kich ban ghi de luot cho -> tour khong dong duoc, hoi thoai ket),
+  // chi dung dong ho game trong luc xem (PM dung buoc, chu dung chay, hen gio the dung), dong thi chay tiep
+  openTour() {
+    if (this.state.tour || !this.alive) return;
+    this.freeze(); this.userTour = true; this.set({ tour: true });
+  }
+  closeTour() {
+    if (!this.userTour) { this.answer('tour'); return; }             // tour lan dau cua kich ban
+    this.userTour = false; this.set({ tour: false }); this.thaw();
   }
   openStaff(id: string, anchor: HTMLElement) {
     const same = this.state.staff?.anchor === anchor;
