@@ -4,12 +4,19 @@
 // (luc dev: may chu mock chay cung npm run dev; ban build: can may chu that o /live cung domain).
 import './styles/index.css';
 import './assets/fonts/vt323.css';
-import { StrictMode } from 'react';
+import { StrictMode, useSyncExternalStore } from 'react';
 import { createRoot } from 'react-dom/client';
 import { GameApp } from './GameApp.tsx';
 
 const playerName = new URLSearchParams(location.search).get('player');
 
-createRoot(document.getElementById('app')!).render(
-  <StrictMode><GameApp hash start={location.hash.slice(1)} presenter={location.hash === '#admin'} liveUrl="/live" player={playerName ? { name: playerName } : undefined} /></StrictMode>,
-);
+// Doi hash tren tab dang mo (vd go them #admin roi Enter: trinh duyet khong tai lai trang) -> chuyen man ngay.
+// GameApp tu doi hash (#name, #play) bang history.replaceState: khong phat hashchange nen khong gan lai game.
+const onHash = (f: () => void) => { addEventListener('hashchange', f); return () => removeEventListener('hashchange', f); };
+function Root() {
+  const admin = useSyncExternalStore(onHash, () => location.hash === '#admin');
+  return <GameApp key={admin ? 'admin' : 'game'} hash start={admin ? '' : location.hash.slice(1)} presenter={admin} liveUrl="/live"
+    player={playerName ? { name: playerName } : undefined} />;
+}
+
+createRoot(document.getElementById('app')!).render(<StrictMode><Root /></StrictMode>);
