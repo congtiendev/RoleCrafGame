@@ -1,4 +1,16 @@
-/* Chi quet ma nguon trong src/: tai lieu, anh va ban build o goc khong chua class, quet vao chi sinh CSS thua */
+/* Chi quet ma nguon trong src/ + cac trang HTML (class tren <body>): tai lieu, anh, tools/ khong chua class, quet vao chi sinh CSS thua */
 @import "tailwindcss" source("../");
+@source "../../index.html";
+@source "../../dev/*.html";
 @import "./theme.css";
-@import "./components.css";
+@import "./base.css";
+@import "./tools.css";
+@import "./game/frames.css";
+@import "./game/scene.css";
+@import "./game/summary.css";
+@import "./game/effects.css";
+@import "./game/hud.css";
+@import "./game/cursors.css";
+@import "./game/blocks.css";
+@import "./game/result.css";
+@import "./game/art.css";

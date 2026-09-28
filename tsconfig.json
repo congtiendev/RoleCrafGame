@@ -1,0 +1,22 @@
+{
+  // Chi kiem tra kieu (noEmit): Vite build ma nguon, Node 24 chay thang tests/*.test.ts (bo kieu, khong bien dich) –
+  // vi vay chi dung cu phap xoa duoc (erasableSyntaxOnly: khong enum / namespace / parameter property), import kem duoi .ts,
+  // import kieu phai la `import type` (verbatimModuleSyntax).
+  "compilerOptions": {
+    "target": "ES2022",
+    "lib": ["ES2023", "DOM", "DOM.Iterable"],
+    "module": "ESNext",
+    "moduleResolution": "bundler",
+    "jsx": "react-jsx",
+    "strict": true,
+    "noEmit": true,
+    "allowImportingTsExtensions": true,
+    "verbatimModuleSyntax": true,
+    "erasableSyntaxOnly": true,
+    "noUnusedLocals": true,
+    "noFallthroughCasesInSwitch": true,
+    "skipLibCheck": true,
+    "types": ["vite/client", "node"]
+  },
+  "include": ["src", "tests", "scripts", "vite.config.ts", "vite.embed.config.ts", "vite.demo.config.ts"]
+}

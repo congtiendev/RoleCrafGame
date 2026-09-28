@@ -1,0 +1,58 @@
+/* ---------- Thanh phan dung ART trong ui/ (keo gian 9-slice bang border-image) ----------
+   Quy tac: co art thi dung art; chi thu khong co art (thanh progress, de icon) moi ve CSS (.gm-*).
+   So cat (slice) do tu anh goc: card co khia "tab" tren-trai nen goc trai cat rong toi het khia.
+   --k = ti le hien thi so voi anh goc (be day khung tren man hinh = so cat * --k). */
+@layer components {
+  /* Card ngang: ui/cards/card_landscape_normal (358x222, khia toi x=130) · _selected: them quang sang tran ra ngoai */
+  .art-card {
+    --k: .34;
+    border-style: solid; border-color: transparent;
+    border-width: calc(40px * var(--k)) calc(26px * var(--k)) calc(22px * var(--k)) calc(20px * var(--k));
+    border-image-source: url("/ui/cards/card_landscape_normal.webp");
+    border-image-slice: 56 30 26 150 fill;
+    border-image-width: calc(56px * var(--k)) calc(30px * var(--k)) calc(26px * var(--k)) calc(150px * var(--k));
+  }
+  /* Card dung: ui/cards/card_portrait_normal (237x314, khia toi x=128) · data-sel = card_portrait_selected */
+  .art-card-tall {
+    --k: .25;
+    border-style: solid; border-color: transparent;
+    border-width: calc(32px * var(--k)) calc(32px * var(--k)) calc(24px * var(--k)) calc(21px * var(--k));
+    border-image-source: url("/ui/cards/card_portrait_normal.webp");
+    border-image-slice: 64 35 27 145 fill;
+    border-image-width: calc(64px * var(--k)) calc(35px * var(--k)) calc(27px * var(--k)) calc(145px * var(--k));
+  }
+  .art-card-tall[data-sel] {
+    border-image-source: url("/ui/cards/card_portrait_selected.webp");
+    border-image-slice: 79 35 40 156 fill;
+    border-image-width: calc(79px * var(--k)) calc(35px * var(--k)) calc(40px * var(--k)) calc(156px * var(--k));
+    border-image-outset: calc(15px * var(--k)) 0 calc(13px * var(--k)) calc(11px * var(--k));
+  }
+  /* Card vuong: ui/cards/card_square_normal (285x289, khia toi x=123) */
+  .art-card-sq {
+    --k: .3;
+    border-style: solid; border-color: transparent;
+    border-width: calc(46px * var(--k)) calc(30px * var(--k)) calc(24px * var(--k)) calc(22px * var(--k));
+    border-image: url("/ui/cards/card_square_normal.webp") 70 34 28 140 fill /
+      calc(70px * var(--k)) calc(34px * var(--k)) calc(28px * var(--k)) calc(140px * var(--k));
+  }
+  /* Nut dai lam nhan / chip / o thong bao: ui/buttons/btn_<mau>_normal (cung so cat voi .px-btn) */
+  .art-btn {
+    @apply text-white [text-shadow:0_1px_0_rgb(0_0_0/.35)];
+    border-style: solid; border-color: transparent; border-width: 4px 7px 5px;
+    border-image: var(--art) 26 30 fill / var(--bw, 11px) var(--bw2, 13px);
+  }
+  /* Nut vuong lam o so / chu cai: ui/buttons/square/square_<mau>_normal */
+  .art-sq {
+    @apply text-white [text-shadow:0_1px_0_rgb(0_0_0/.35)];
+    border-style: solid; border-color: transparent; border-width: 4px 5px 6px;
+    border-image: var(--art) 24 fill / var(--bw, 11px);
+  }
+  .art-btn.art-red    { --art: url("/ui/buttons/btn_red_normal.webp"); }
+  .art-btn.art-green  { --art: url("/ui/buttons/btn_green_normal.webp"); }
+  .art-btn.art-yellow { --art: url("/ui/buttons/btn_yellow_normal.webp"); }
+  .art-btn.art-blue   { --art: url("/ui/buttons/btn_blue_normal.webp"); }
+  .art-sq.art-red     { --art: url("/ui/buttons/square/square_red_normal.webp"); }
+  .art-sq.art-green   { --art: url("/ui/buttons/square/square_green_normal.webp"); }
+  .art-sq.art-blue    { --art: url("/ui/buttons/square/square_blue_normal.webp"); }
+  .art-sq.art-yellow  { --art: url("/ui/buttons/square/square_yellow_normal.webp"); }
+}

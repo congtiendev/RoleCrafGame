@@ -1,0 +1,49 @@
+/* San khau man choi: the lua chon, standee / sprite NPC, mui ten tour huong dan */
+/* The lua chon A/B/C trong man tinh huong: khung pixel nhu .px-btn nhung chu font-sans (cau lua chon can doc ro).
+   Hover/focus: vien do nhan + go day hon; bam: lun xuong. */
+@layer components {
+  /* The lua chon A/B/C: tu thiet ke bang CSS (art card keo gian bi meo va trung kieu voi khung panel ben ngoai).
+     The trang phang vien muc + go duoi, khac han khung xanh cua panel; hover/focus: nhac len, vien xanh + vong sang, nen xanh nhat */
+  .px-choice {
+    @apply relative isolate flex w-full cursor-pointer items-start gap-3 overflow-hidden rounded-xl px-3.5 py-3 text-left text-px-panel outline-none
+      transition-[translate,box-shadow,border-color] duration-150
+      border-[3px] border-[#040c26]
+      shadow-[inset_0_-4px_0_#bcd4f2,inset_0_2px_0_#fff,0_3px_0_rgb(4_12_38/.5)]
+      hover:-translate-y-0.5 hover:border-[#0a3fb0] hover:shadow-[inset_0_-4px_0_#bcd4f2,0_0_0_3px_#5ee0ff,0_0_16px_3px_rgb(60_194_255/.7)]
+      focus-visible:-translate-y-0.5 focus-visible:border-[#0a3fb0] focus-visible:shadow-[inset_0_-4px_0_#bcd4f2,0_0_0_3px_#5ee0ff,0_0_16px_3px_rgb(60_194_255/.7)]
+      active:translate-y-0.5 disabled:pointer-events-none disabled:opacity-45;
+    background: linear-gradient(to bottom, #ffffff, #deedfc);
+  }
+  /* The nhan vat tam (NPC chua co sprite) = card CSS .gm-card (clone art card_portrait, net o moi co – anh art thu nho bi mo/meo).
+     La nut: bam -> the nhan vien (screens/play/StaffCard.tsx). Co/vi tri do JS dat (director.ts placeNpc, ti le 237x314 nhu art).
+     Dang noi (data-sel) / focus: quang cyan nhu art _selected. Rule nay phai dung SAU .gm-card de ghi de grid -> flex. */
+  /* The nhan vat tam: khung .gm-plate (art track_sm); dang noi / focus = quang cyan om theo hinh khung (drop-shadow) */
+  .px-standee {
+    --f: 6px;
+    @apply pointer-events-auto absolute outline-none transition-[translate,opacity,filter] duration-300
+      data-talk:-translate-y-2 hover:-translate-y-1.5 hover:brightness-110 focus-visible:-translate-y-1.5;
+  }
+  .px-standee[data-sel], .px-standee:focus-visible { filter: drop-shadow(0 0 3px #5ee0ff) drop-shadow(0 0 10px rgb(60 194 255 / .8)); }
+  .px-standee > [data-in] { @apply flex flex-col p-0.5; }
+  .px-standee [data-av] { @apply rounded-[4px]; }
+  /* NPC co sprite (director.ts: setCast): nut = vung bam quanh than, canvas ve nhan vat tran ra ngoai nut. Dung tren san
+     nen khong nhac len khi noi / hover; quang cyan (data-sel) om theo dang nguoi nho drop-shadow */
+  .px-standee.npc-sprite { @apply translate-y-0 data-talk:translate-y-0 hover:translate-y-0 focus-visible:translate-y-0; }
+  .npc-sprite > canvas { @apply pointer-events-none absolute max-w-none; }
+}
+
+/* Mui ten bong bong huong dan (screens/play/HudTour.tsx): tam giac vien muc, than xanh mau dai header card (.px-panel); mac dinh chi len,
+   data-dir="left" / "right" xoay 90 do. Day tam giac dat de len mep khung vai px (JS) de liem vao vien, khong co vach ngan */
+@layer components {
+  .tip-arrow {
+    @apply pointer-events-none absolute z-10 h-[15px] w-[28px];
+    background: #040c26; clip-path: polygon(50% 0, 100% 100%, 0 100%);
+  }
+  .tip-arrow::after {
+    @apply absolute content-[''];
+    inset: 3.5px 4.5px 0; background: linear-gradient(to bottom, #36aaff, #0197f9);
+    clip-path: polygon(50% 0, 100% 100%, 0 100%);
+  }
+  .tip-arrow[data-dir="left"] { rotate: -90deg; }
+  .tip-arrow[data-dir="right"] { rotate: 90deg; }
+}

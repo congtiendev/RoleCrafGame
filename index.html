@@ -1,18 +1,15 @@
 <!doctype html>
-<html lang="vi">
+<html lang="vi" data-theme="dark">
 <head>
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>PM Sprite Preview</title>
-  <script defer src="./assets/app.js"></script>
-  <link rel="stylesheet" href="./assets/app.css">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>RoleCraft · PM 60 ngày thử việc</title>
+<link rel="preload" as="image" href="bg/loading_pc.webp" media="(orientation: landscape)">
+<link rel="preload" as="image" href="bg/loading_mobile.webp" media="(orientation: portrait)">
+<script type="module" src="/src/main.tsx"></script>
 </head>
-<body data-bg="checker" class="bg-page font-sans text-[14px] leading-[1.45] text-ink">
-<!-- Khung trang; noi dung tung phan do src/preview/ dung -->
-<header id="hdr"></header>
-<div id="notice"></div>
-<main id="main" class="p-4"></main>
-<div id="tip"></div>
-<dialog id="dlg"></dialog>
+<body class="px-cursors overflow-hidden bg-black font-sans text-white">
+<!-- Trang GAME: Start -> nhap ten -> man choi 4 level (src/GameApp.tsx) -->
+<main id="app"></main>
 </body>
 </html>

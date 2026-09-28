@@ -1,0 +1,195 @@
+/* ---------- UI trang game theo art trong ui/ ----------
+   Co art thi dung art (border-image 9-slice); thu chua co art ve bang CSS cung cong thuc voi art:
+   LOP LOT: moi khung 9-slice co background cung mau mat anh, lui vao trong (khong lo o goc bo). Man hinh ti le diem anh le
+   (zoom trinh duyet, Android 2.625x...) cac lat cua border-image lech nhau nua diem anh -> khe ho lo nen phia sau thanh
+   duong ke ngang doc; co lop lot thi khe ho chi lo dung mau mat khung, khong con thay.
+   vien muc dam bo goc, mat kinh sang (trang -> xanh nhat) hoac long navy vien xanh, go toi o day, bong do nhe. */
+@layer components {
+  /* Khung = ui/cards/card_panel_wide_normal.webp keo gian 9-slice: goc trai giu bac "tab" cua dai header xanh,
+     goc cam tren-phai / duoi-trai giu nguyen. Nen trong kinh sang -> chu mac dinh navy; border trong suot = do day
+     vien + dai header, de padding cua tung panel tinh tu mep vung trang. */
+  .px-panel {
+    @apply text-px-panel;
+    /* lop lot: dai header xanh (vung vien tren, --ht/--hb) + mat kinh (padding-box) cua card art */
+    --ht: 5px; --hb: 17px;
+    background: linear-gradient(#0070f5, #0070f5) 6px var(--ht) / calc(100% - 12px) var(--hb) no-repeat border-box,
+      linear-gradient(#f7fbfd, #daeefd) padding-box;
+    border: solid transparent;
+    border-width: 24px 13px 10px;
+    border-image: url("/ui/cards/card_panel_wide_normal.webp") 80 52 55 155 fill / 34px 22px 23px 65px;
+  }
+  @media (width < 40rem) {
+    .px-panel { --ht: 4px; --hb: 13px; border-width: 19px 11px 8px; border-image-width: 27px 18px 19px 53px; }
+  }
+  /* Nut = anh trong ui/buttons (cat tu tools/ui-source/button.png), keo gian 9-slice bang border-image nen rong bao nhieu
+     cung giu goc vat. Moi mau 4 anh: --btn thuong, --btn-hi hover/focus (vien phat sang), --btn-lo bam, --btn-off khoa. */
+  .px-btn {
+    @apply relative flex w-full cursor-pointer items-center justify-center gap-3 px-6 py-3 font-sans text-lg leading-snug font-bold tracking-wide text-white uppercase
+      [text-shadow:0_2px_0_rgb(0_0_0/.35)] outline-none active:translate-y-0.5
+      disabled:pointer-events-none disabled:text-white/60
+      before:pointer-events-none before:absolute before:-left-11 before:hidden before:size-9 before:animate-nudge before:content-[''] max-sm:before:-left-8;
+    border: 0 solid transparent;
+    border-image: var(--btn) 26 30 fill / 17px 20px;
+    /* lop lot = mau mat nut, hinh dau cong (2 dai) tranh 4 goc vat cua art (~10px): dai doc lui 14/4px, dai ngang lui 5/11px.
+       Van phu cac duong noi lat (x = 20px, y = 17px tu mep) ma khong lo ra goc */
+    background:
+      linear-gradient(var(--under), var(--under)) center / calc(100% - 28px) calc(100% - 8px) no-repeat,
+      linear-gradient(var(--under), var(--under)) center / calc(100% - 10px) calc(100% - 22px) no-repeat;
+  }
+  /* hover chi tren may co chuot: iOS giu :hover sau khi cham -> nut sang mai (focus-visible van dung cho ban phim) */
+  .px-btn:focus-visible { border-image-source: var(--btn-hi); }
+  @media (hover: hover) { .px-btn:hover { border-image-source: var(--btn-hi); } }
+  .px-btn:active { border-image-source: var(--btn-lo); }
+  .px-btn:disabled { border-image-source: var(--btn-off); }
+  /* Tai san anh cac trang thai khac de hover/bam lan dau khong nhay trang */
+  .px-btn::after { @apply pointer-events-none absolute size-px opacity-0 content-['']; background-image: var(--btn-hi), var(--btn-lo); }
+  /* Ban tay huong dan = ui/cursors/point_e (cung bo con tro chuot) chi vao nut, nhun lien tuc.
+     Chi hien o nut can dan nguoi choi buoc tiep theo: them class .px-btn-hint; nut thuong khong co */
+  .px-btn-hint { @apply before:block; }
+  .px-btn::before { background: url("/ui/cursors/point_e@2x.png") center / contain no-repeat; }
+  /* Chinh = do, phu = xanh duong (gan mau logo nhat trong bo nut) */
+  .px-btn-primary {
+    --under: #fd3c2e;
+    --btn: url("/ui/buttons/btn_red_normal.webp");
+    --btn-hi: url("/ui/buttons/btn_red_selected.webp");
+    --btn-lo: url("/ui/buttons/btn_red_pressed.webp");
+    --btn-off: url("/ui/buttons/btn_red_disabled.webp");
+  }
+  .px-btn-blue {
+    --under: #0083fd;
+    --btn: url("/ui/buttons/btn_blue_normal.webp");
+    --btn-hi: url("/ui/buttons/btn_blue_selected.webp");
+    --btn-lo: url("/ui/buttons/btn_blue_pressed.webp");
+    --btn-off: url("/ui/buttons/btn_blue_disabled.webp");
+  }
+  /* Mau phu cho man nhieu hanh dong (vd the cuoi 60 ngay): xanh la = tai / xac nhan an toan, vang = diem nhan (chu nau muc:
+     chu trang tren vang khong du tuong phan), navy = thoat / ve menu */
+  .px-btn-green {
+    --under: #02b479;
+    --btn: url("/ui/buttons/btn_green_normal.webp");
+    --btn-hi: url("/ui/buttons/btn_green_selected.webp");
+    --btn-lo: url("/ui/buttons/btn_green_pressed.webp");
+    --btn-off: url("/ui/buttons/btn_green_disabled.webp");
+  }
+  .px-btn-yellow {
+    @apply text-[#4a2703] [text-shadow:0_1px_0_rgb(255_255_255/.35)];
+    --under: #fdaf18;
+    --btn: url("/ui/buttons/btn_yellow_normal.webp");
+    --btn-hi: url("/ui/buttons/btn_yellow_selected.webp");
+    --btn-lo: url("/ui/buttons/btn_yellow_pressed.webp");
+    --btn-off: url("/ui/buttons/btn_yellow_disabled.webp");
+  }
+  .px-btn-navy {
+    --under: #20538d;
+    --btn: url("/ui/buttons/btn_navy_normal.webp");
+    --btn-hi: url("/ui/buttons/btn_navy_selected.webp");
+    --btn-lo: url("/ui/buttons/btn_navy_pressed.webp");
+    --btn-off: url("/ui/buttons/btn_navy_disabled.webp");
+  }
+  .px-btn-green:active { --under: #028f6b; }
+  .px-btn-yellow:active { --under: #fd8c19; }
+  .px-btn-navy:active { --under: #083e74; }
+  .px-btn-primary:active { --under: #da262d; }
+  .px-btn-primary:disabled { --under: #b0574f; }
+  .px-btn-blue:active { --under: #0067df; }
+  .px-btn-blue:disabled { --under: #6783b0; }
+  /* Nut chi co icon (Heroicons): anh nut vuong ui/buttons/square, co dinh 48px, khong con tro chon */
+  .px-btn-sq { @apply size-12 shrink-0 p-0; border-image: var(--btn) 24 fill / 15px; }
+  .px-btn-sq.px-btn-primary {
+    --btn: url("/ui/buttons/square/square_red_normal.webp");
+    --btn-hi: url("/ui/buttons/square/square_red_selected.webp");
+    --btn-lo: url("/ui/buttons/square/square_red_pressed.webp");
+    --btn-off: url("/ui/buttons/square/square_red_disabled.webp");
+  }
+  .px-btn-sq.px-btn-blue {
+    --btn: url("/ui/buttons/square/square_blue_normal.webp");
+    --btn-hi: url("/ui/buttons/square/square_blue_selected.webp");
+    --btn-lo: url("/ui/buttons/square/square_blue_pressed.webp");
+    --btn-off: url("/ui/buttons/square/square_blue_disabled.webp");
+  }
+  .px-title {
+    @apply font-pixel leading-[0.85] text-white
+      [text-shadow:4px_0_0_var(--color-px-deep),-4px_0_0_var(--color-px-deep),0_4px_0_var(--color-px-deep),0_-4px_0_var(--color-px-deep),4px_4px_0_var(--color-px-deep),-4px_4px_0_var(--color-px-deep),4px_-4px_0_var(--color-px-deep),-4px_-4px_0_var(--color-px-deep),0_10px_0_var(--color-brand-red),4px_10px_0_var(--color-brand-red),-4px_10px_0_var(--color-brand-red),0_16px_0_rgba(0,0,0,.45)];
+  }
+  /* Bong bong thoai: mat kinh nhu long card (giong .gm-tile), duoi = .px-bubble-tail (JS dat left) */
+  .px-bubble {
+    @apply rounded-xl font-sans text-base leading-snug font-semibold text-px-panel;
+    border: 2.5px solid #0b1d4d;
+    background: linear-gradient(to bottom, #ffffff, #e4f0ff);
+    box-shadow: inset 0 -3px 0 #c3d9f7, inset 0 2px 0 #fff, 0 3px 0 rgb(8 16 51 / .25);
+  }
+  .px-bubble-tail {
+    @apply absolute -bottom-[9px] size-3.5 rotate-45 rounded-br-[3px];
+    background: #d9e8fb; border-right: 2.5px solid #0b1d4d; border-bottom: 2.5px solid #0b1d4d;
+  }
+  /* Card ve bang CSS (clone card art ui/cards/card_*_normal) cho khung NHO: anh art thu nho bi mo + bop khia "tab".
+     Lop: vien muc bo goc > khung xanh bong (dai header day o tren) > 2 goc cam (tren-phai, duoi-trai) > long kinh
+     [data-in] vien toi, co bac "tab" (phan trai thap hon). Co chinh bang bien:
+     --f be day khung canh/day, --hd dai header, --cn canh goc cam, --tab do sau bac tab. */
+  .gm-card {
+    --f: 7px; --hd: 16px; --cn: 18px; --tab: 9px;
+    @apply relative isolate shrink-0 overflow-hidden rounded-[12px];
+    border: 2.5px solid #040c26;
+    background: linear-gradient(to bottom, #2aa0ff, #0a74f5 30%, #0662e6 80%, #0450cf);
+    box-shadow: inset 0 2px 0 rgb(255 255 255 / .5), inset 0 -2px 0 #033ca8, 0 3px 0 rgb(8 16 51 / .3);
+  }
+  /* goc cam: tam giac vuong o goc tren-phai va duoi-trai, mat sang tren */
+  .gm-card::before, .gm-card::after {
+    @apply pointer-events-none absolute z-10 content-[''];
+    width: var(--cn); height: var(--cn);
+    background: linear-gradient(to bottom, #ffc93a, #ff9a06);
+  }
+  .gm-card::before { top: 0; right: 0; clip-path: polygon(0 0, 100% 0, 100% 100%); }
+  .gm-card::after { bottom: 0; left: 0; clip-path: polygon(0 0, 100% 100%, 0 100%); }
+  .gm-card > [data-in] {
+    @apply absolute grid overflow-hidden rounded-[6px];
+    inset: var(--hd) var(--f) var(--f);
+    border: 2px solid #06163f;
+    background: linear-gradient(to bottom, #ffffff, #e2effc);
+  }
+  /* bac "tab": khoi xanh (mau khung) phu goc tren-trai cua long, canh phai vat cheo, vien toi o day */
+  .gm-card > [data-in]::before {
+    @apply pointer-events-none absolute top-0 left-0 z-10 content-[''];
+    width: 44%; height: var(--tab);
+    background: #0a70f2; border-bottom: 2px solid #06163f;
+    clip-path: polygon(0 0, 100% 0, calc(100% - var(--tab)) 100%, 0 100%);
+  }
+}
+
+/* Khung avatar = art ui/progress/track_sm.webp (cung khung o chi so HUD): vien xanh sang quanh long navy.
+   Art khong co khia / goc trang tri nen keo gian 9-slice o co nao cung khong meo. Bien: --f be day khung hien thi. */
+@layer components {
+  .gm-plate {
+    --f: 8px;
+    @apply relative shrink-0;
+    border: var(--f) solid transparent;
+    border-image: url("/ui/progress/track_sm.webp") 30 fill / calc(var(--f) * 2);
+    background: #0f2a50 padding-box;                                    /* lop lot = long navy cua track_sm */
+  }
+  .gm-plate > [data-in] {
+    @apply absolute inset-0 grid overflow-hidden rounded-[5px];
+  }
+}
+
+
+
+
+/* O nhap: CSS theo tinh than khung art (khong cat anh – cat mep mong cua track_sm bi gay goc):
+   vien muc ngoai, vong xanh sang ben trong (nhu vien o HUD), long trang, bong lom nhe o mep tren.
+   Focus = vong cyan + quang sang; loi = vong do. Chu font-sans cho de doc tieng Viet */
+@layer components {
+  .px-input {
+    @apply w-full min-w-0 rounded-[12px] bg-white px-4 py-3 font-sans text-xl font-semibold text-px-panel outline-none
+      transition-[box-shadow] duration-150 placeholder:font-normal placeholder:text-px-panel/40;
+    border: 2.5px solid #040c26;
+    box-shadow: inset 0 0 0 3px #1a8cff, inset 0 0 0 4.5px #0a3a8f, inset 0 7px 6px -4px rgb(11 29 77 / .18), 0 3px 0 rgb(4 12 38 / .35);
+  }
+  .px-input:focus {
+    box-shadow: inset 0 0 0 3px #3cc8ff, inset 0 0 0 4.5px #0a3a8f, inset 0 7px 6px -4px rgb(11 29 77 / .18), 0 3px 0 rgb(4 12 38 / .35),
+      0 0 0 3px #5ee0ff, 0 0 14px 2px rgb(60 194 255 / .7);
+  }
+  .px-input[aria-invalid]:not([aria-invalid="false"]) {
+    box-shadow: inset 0 0 0 3px #f2432f, inset 0 0 0 4.5px #8a1a14, inset 0 7px 6px -4px rgb(11 29 77 / .18), 0 3px 0 rgb(4 12 38 / .35),
+      0 0 0 3px rgb(255 122 92 / .55);
+  }
+}

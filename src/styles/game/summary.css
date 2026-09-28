@@ -1,0 +1,48 @@
+/* Bang tong ket level (screens/play/pages/): tieu de muc, o chi so, the noi bat, dong thoi gian quyet dinh */
+@layer components {
+  .sm-h { @apply mt-5 mb-2 text-xs leading-none font-bold tracking-[0.18em] text-px-panel/55 uppercase; }
+  /* nut tong ket: dung rieng ngay duoi khung modal, khong nen */
+  .sm-foot { @apply flex w-full shrink-0 justify-center pt-3; }
+  .sm-tile { @apply relative isolate flex items-center gap-2 px-1.5 py-1 text-white; }
+  /* rui ro: phu lop do len nen khung (anh 9-slice ve fill nen khong doi background duoc; ::before z -1 nam tren khung, duoi chu) */
+  .sm-tile[data-bad]::before, .sm-card[data-bad]::before {
+    @apply pointer-events-none absolute -z-10 rounded-[9px] content-['']; inset: -1px -3px; background: linear-gradient(to bottom, #b3261e, #7f1712);
+  }
+  /* the noi bat: khung HUD (.px-hud, nen navy), icon dat trong long badge art (ui/badges) o goc tren-phai */
+  .sm-card { @apply relative isolate px-3 pt-2.5 pb-3 text-white; }
+  .sm-badge { @apply absolute -top-1 right-0 grid size-12 place-items-center text-white [filter:drop-shadow(0_1px_0_rgb(0_0_0/.45))]; }
+  .sm-badge > img { @apply absolute inset-0 size-full object-contain; }
+  .sm-badge > svg { @apply relative -mt-0.5; }
+  /* dong thoi gian: cac cham noi bang vach, nhan day du hien trong bong bong khi re / focus / cham */
+  .sm-line { @apply relative flex justify-between gap-2 px-2; }
+  .sm-line::before { @apply absolute top-[18px] right-8 left-8 h-1 rounded-full bg-[#b9cfee] content-['']; }
+  .sm-node { @apply relative flex flex-col items-center outline-none; }
+  .sm-tip {
+    @apply pointer-events-none absolute bottom-[calc(100%+8px)] z-20 w-max max-w-[16rem] px-3 py-2 text-sm leading-snug opacity-0 transition-[opacity,translate] duration-200;
+    translate: 0 4px;
+  }
+  .sm-node:first-child .sm-tip { left: 0; } .sm-node:last-child .sm-tip { right: 0; }
+  .sm-node:not(:first-child, :last-child) .sm-tip { left: 50%; translate: -50% 4px; }
+  /* :focus – cham (iOS) vao nut cung hien bong bong, cham cho khac thi an */
+  .sm-node:is(:hover, :focus, :focus-visible) .sm-tip { opacity: 1; translate: 0 0; }
+  .sm-node:not(:first-child, :last-child):is(:hover, :focus, :focus-visible) .sm-tip { translate: -50% 0; }
+  /* muc bao cao 2 tang (pages/parts.tsx: Entry): the trang vien muc, vach mau ben trai (--acc), dong nhan mau dam (--ink2,
+     tuong phan >= 4.5:1 tren nen the) */
+  .sm-entry {
+    @apply relative rounded-lg border-2 border-[#0b1d4d] py-2 pr-3 pl-4.5 text-[#0b1d4d];
+    background: var(--bg, #fff); box-shadow: inset 0 -3px 0 var(--lo, #c9d8f0);
+  }
+  .sm-entry::before { @apply absolute inset-y-2 left-1.5 w-1 rounded-full content-['']; background: var(--acc); }
+  .sm-entry[data-tone="good"] { --acc: #1fbf73; --ink2: #0b6b3c; }
+  .sm-entry[data-tone="bad"] { --acc: #f2432f; --ink2: #b3261e; }
+  .sm-entry[data-tone="link"] { --acc: #ffb21c; --ink2: #7a4600; --bg: #fff8e3; --lo: #f5dc9a; }
+  .sm-entry-head { @apply flex items-center gap-1.5 text-[0.72rem] leading-none font-extrabold tracking-[0.06em] uppercase; color: var(--ink2); }
+  /* nhan nhom nut tren nen toi (the cuoi 60 ngay): chu nho viet hoa, vach mo hai ben */
+  .sm-cap {
+    @apply flex items-center gap-3 text-[0.7rem] leading-none font-bold tracking-[0.2em] text-white/55 uppercase
+      before:h-px before:flex-1 before:bg-white/20 before:content-[''] after:h-px after:flex-1 after:bg-white/20 after:content-[''];
+  }
+  /* chu thich mau dong thoi gian */
+  .sm-key { @apply inline-flex items-center gap-1.5; }
+  .sm-key > i { @apply size-2.5 rounded-[3px] border border-[#0b1d4d]; }
+}

@@ -1,0 +1,19 @@
+{
+  "version": "4.0-full-redesign",
+  "screen_sizes": {
+    "pc": [1920, 1080],
+    "mobile": [1080, 1920]
+  },
+  "game_logo_text": "ROLECRAFT",
+  "forbidden_subtitle": "PM60",
+  "main_character": "assets/characters/character_05.png",
+  "runner": "assets/characters/main_character_runner.png",
+  "official_innocom_logo": "assets/branding/innocom_logo_official.png",
+  "screens": {
+    "start": ["screens/start/start_pc_1920x1080.png", "screens/start/start_mobile_1080x1920.png"],
+    "banner": ["screens/banner/banner_pc_1920x1080.png", "screens/banner/banner_mobile_1080x1920.png"],
+    "loading": ["screens/loading/loading_pc_1920x1080.png", "screens/loading/loading_mobile_1080x1920.png"],
+    "qr_join": ["screens/qr_join/qr_join_pc_1920x1080.png", "screens/qr_join/qr_join_mobile_1080x1920.png"],
+    "participants": ["screens/participants/participants_pc_1920x1080.png", "screens/participants/participants_mobile_1080x1920.png"]
+  }
+}

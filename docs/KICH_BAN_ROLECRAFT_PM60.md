@@ -5,7 +5,7 @@
 > `KICH_BAN_CHI_TIET_LEVEL_2_HOA_NHAP_ROLECRAFT.md`, `KICH_BAN_LEVEL_3_BUT_PHA_ROLECRAFT_API_TECHNICAL_SPEC.md`,
 > `KICH_BAN_CHI_TIET_LEVEL_4_THU_HOACH_ROLECRAFT_V2.md`.
 >
-> Thoại trong file này là **bản rút gọn** trong `THOAI_MAU.json` (xem thử ở trang test `scenario-test.html` — trang đó chỉ để kiểm tra kịch bản, không phải gameplay). Hình ảnh / animation: xem `HUONG_DAN_KICH_BAN.md` và các bộ prompt sprite trong `docs/PM`, `docs/MINH`, `docs/CLIENT`, `docs/LINH`.
+> Thoại trong file này là **bản rút gọn** trong `THOAI_MAU.json` (xem thử ở trang test `dev/scenario-test.html` — trang đó chỉ để kiểm tra kịch bản, không phải gameplay). Hình ảnh / animation: xem `HUONG_DAN_KICH_BAN.md` và các bộ prompt sprite trong `docs/PM`, `docs/MINH`, `docs/CLIENT`, `docs/LINH`.
 
 ## 0. Quy ước thống nhất
 
@@ -66,8 +66,9 @@ Mỗi giai đoạn gồm:
 1. Một node giới thiệu giai đoạn.
 2. Bốn tình huống chính.
 3. Các node phản hồi sau lựa chọn.
-4. Một node tổng kết giai đoạn.
-5. Kiểm tra điều kiện thất bại sớm nếu chế độ này được bật.
+4. Nhịp làm việc của team cuối giai đoạn (mục 9).
+5. Một node tổng kết giai đoạn.
+6. Kiểm tra điều kiện thất bại sớm nếu chế độ này được bật.
 
 Các ngày không có tình huống được mô phỏng bằng hiệu ứng chuyển thời gian trên timeline, không yêu cầu tạo đủ 60 màn hình.
 
@@ -89,7 +90,7 @@ Các ngày không có tình huống được mô phỏng bằng hiệu ứng chu
 | `cover_image_url` | asset URL | Không | Ảnh mặc định |
 | `result_certificate_enabled` | boolean | Có | `true` |
 | `show_metric_values` | boolean | Có | `true` |
-| `allow_early_fail` | boolean | Có | `false` |
+| `allow_early_fail` | boolean | Có | `false` (trừ 3 điều kiện buộc thôi việc ở mục 9) |
 
 #### Biến nội dung dùng trong câu thoại
 
@@ -1949,6 +1950,49 @@ critical_metric_count = count([
 | `FAIL_MANAGEMENT_TRUST` | `management_trust <= 0` |
 
 Nếu `allow_early_fail=false`, hệ thống ghi nhận điều kiện nhưng vẫn cho người chơi hoàn thành để phục vụ mục tiêu đào tạo. Kết quả cuối vẫn là FAIL.
+
+### Nhịp làm việc của team
+
+Lựa chọn tốt thường đánh đổi tiến độ lấy chất lượng, con người hoặc kiểm soát rủi ro (cộng lại cả 16 tình huống, phương án tốt nhất làm tiến độ giảm 10 đơn vị). Nhịp làm việc trả lại tiến độ cho cách quản lý đó: team khỏe thì làm nhanh hơn.
+
+Cuối mỗi giai đoạn, sau tình huống cuối và trước khi xét huỷ hợp đồng / tổng kết, mỗi điều kiện đúng cộng thêm tiến độ. Các điều kiện xét trên cùng một trạng thái, mỗi giai đoạn chỉ tính một lần. Game hiện thông báo hệ thống **Nhịp làm việc của team** ngay trong cảnh cuối, HUD cộng cùng lúc.
+
+| Điều kiện | Hiệu ứng |
+|---|---|
+| `team_morale >= 80` | `project_progress +5` |
+| `project_risk < 20` | `project_progress +5` |
+| `product_quality >= 80` | `project_progress +5` |
+
+Thông báo:
+
+- Có điều kiện đúng: `Cuối giai đoạn, team làm thêm được 9 ngày khối lượng nhờ tinh thần team từ 80%, rủi ro dưới 20% và chất lượng từ 80%.`
+- Không có điều kiện nào: `Cuối giai đoạn, team chỉ đủ sức xử lý việc phát sinh, không làm thêm được khối lượng. Tinh thần team, chất lượng từ 80% và rủi ro dưới 20% giúp team làm nhanh hơn.`
+
+Mức cộng và ngưỡng chọn theo mô phỏng 20.000 lượt chơi cho mỗi kiểu người chơi (kiểm tra tự động: `tests/balance.test.ts`). "Chọn đúng x%" = chọn phương án có điểm năng lực cao nhất x% số lần, còn lại chọn ngẫu nhiên hai phương án kia.
+
+| Kiểu người chơi | Pass xuất sắc | Pass | Gia hạn | Không đạt | Buộc thôi việc | **Đạt thử việc** |
+|---|---|---|---|---|---|---|
+| Chọn ngẫu nhiên | 2,9% | 31,9% | 27,4% | 7,8% | 30,0% | **34,8%** |
+| Chọn đúng 50% | 15,4% | 49,1% | 22,0% | 2,0% | 11,4% | **64,5%** |
+| Chọn đúng 60% | 29,0% | 48,4% | 16,7% | 1,5% | 4,4% | **77,4%** |
+| Chọn đúng 70% | 40,9% | 43,5% | 12,3% | 0,5% | 2,8% | **84,4%** |
+| Chọn đúng 85% | 68,0% | 26,4% | 5,1% | 0% | 0,5% | **94,4%** |
+| Chọn đúng hết | 100% | 0% | 0% | 0% | 0% | **100%** |
+
+Mức khó tổng thể: Trung bình. Trước khi có nhịp làm việc, chọn đúng hết cũng chỉ được Gia hạn (tiến độ cuối 18/60 ngày) và người chơi chọn đúng 85% vẫn bị huỷ hợp đồng khoảng 30%.
+
+### Buộc thôi việc giữa chừng
+
+Ba điều kiện dưới đây dừng game ngay, không chơi tiếp tới ngày 60 (các hard fail còn lại vẫn theo `allow_early_fail=false`).
+Không thêm màn chơi: người chơi xem bảng kết quả của lựa chọn vừa chọn, sau đó vào cảnh kết thúc có sẵn (phòng đánh giá, Anh Minh và Chị Hà), với thoại riêng theo lý do. Kết quả là `FAIL`, nhãn **Buộc thôi việc**, kèm ngày dừng game. Tiếp theo là báo cáo và nút Chơi lại màn này / Chơi lại từ đầu / Về menu.
+
+| Mã | Điều kiện | Thời điểm xét |
+|---|---|---|
+| `EXIT_BUDGET_DEPLETED` | `budget < 20` (quỹ còn dưới 20.000.000 VND) | Sau mỗi lựa chọn |
+| `EXIT_RISK_OUT_OF_CONTROL` | `project_risk >= 100` | Sau mỗi lựa chọn |
+| `EXIT_CONTRACT_CANCELLED` | `project_progress < 30` (dưới 18/60 ngày): khách hàng huỷ hợp đồng | Mốc cuối giai đoạn 2, 3, 4 (sau nhịp làm việc của team, trước tổng kết / kết quả) |
+
+Với người chọn ngẫu nhiên: khoảng 0,4% lượt chạm ngưỡng quỹ, 25% chạm ngưỡng rủi ro, 4% chạm ngưỡng tiến độ.
 
 ### Điều kiện
 

@@ -1,0 +1,47 @@
+/* Nen chung moi trang: bien the man hinh (hud-col, rs-sm), utility vung an toan iOS, base, thanh cuon */
+/* HUD man tinh huong xep 2 cot doc hai ben khi man hinh doc (dien thoai, tablet dung) hoac hep < 768px */
+@custom-variant hud-col (@media (orientation: portrait), (width < 48rem));
+/* nguoc lai hud-col: man ngang >= 768px (PC, tablet xoay ngang) – chi so xep ngang tren cung */
+@custom-variant hud-row (@media (orientation: landscape) and (width >= 48rem));
+/* Bang ket qua ban gon: dien thoai dung (hep < 640px), man thap (dien thoai xoay ngang), hoac ban day du khong vua cho
+   trong (#result[data-fit], screens/play/Result.tsx) – vd laptop scale 150% chi con ~620px chieu cao */
+@custom-variant rs-sm {
+  @media ((orientation: portrait) and (width < 40rem)), (height <= 560px) { @slot; }
+  &:where(#result[data-fit] *) { @slot; }
+}
+
+/* iOS / mobile: vung an toan (tai tho, Dynamic Island, thanh home – viewport-fit=cover trong *.html) va cam ung.
+   p-safe-N = padding N (thang --spacing) nhung khong nho hon vung an toan tung canh; px/pt/pb-safe-N = rieng canh do.
+   Tren may khong co vung an toan (env = 0) giong het p-N. */
+@utility p-safe-* {
+  padding-top: max(calc(var(--spacing) * --value(number)), env(safe-area-inset-top));
+  padding-right: max(calc(var(--spacing) * --value(number)), env(safe-area-inset-right));
+  padding-bottom: max(calc(var(--spacing) * --value(number)), env(safe-area-inset-bottom));
+  padding-left: max(calc(var(--spacing) * --value(number)), env(safe-area-inset-left));
+}
+@utility px-safe-* {
+  padding-right: max(calc(var(--spacing) * --value(number)), env(safe-area-inset-right));
+  padding-left: max(calc(var(--spacing) * --value(number)), env(safe-area-inset-left));
+}
+@utility pt-safe-* { padding-top: max(calc(var(--spacing) * --value(number)), env(safe-area-inset-top)); }
+@utility pb-safe-* { padding-bottom: max(calc(var(--spacing) * --value(number)), env(safe-area-inset-bottom)); }
+@layer base {
+  /* khong keo nay / pull-to-refresh (Safari iOS 16+, Chrome Android), cham dup khong phong to (van zoom 2 ngon duoc) */
+  html, body { overscroll-behavior: none; }
+  html { touch-action: manipulation; }
+  /* giu tay tren anh / canvas / nut khong bat menu "Luu anh" cua iOS (o nhap van chon chu binh thuong) */
+  img, canvas, button, [data-tap] { -webkit-touch-callout: none; }
+}
+
+/* Thanh cuon mong, mo cho toan project (preview, scenario-test, game): Chromium/Safari dung ::-webkit-scrollbar
+   (6px, bo nut mui ten, ray trong suot, dam hon khi re); Firefox khong co ::-webkit-scrollbar -> dung scrollbar-width/color */
+@layer base {
+  ::-webkit-scrollbar { width: 6px; height: 6px; }
+  ::-webkit-scrollbar-track, ::-webkit-scrollbar-corner { background: transparent; }
+  ::-webkit-scrollbar-button { display: none; }
+  ::-webkit-scrollbar-thumb { border-radius: 999px; background: rgb(100 116 160 / .35); }
+  ::-webkit-scrollbar-thumb:hover { background: rgb(100 116 160 / .6); }
+  @supports not selector(::-webkit-scrollbar) {
+    * { scrollbar-width: thin; scrollbar-color: rgb(100 116 160 / .35) transparent; }
+  }
+}

@@ -1,0 +1,1550 @@
+{
+ "version": 4,
+ "character": {
+  "id": "HA",
+  "role": "HR",
+  "name": "Chị Hà – Nhân sự (HR)"
+ },
+ "shared": {
+  "note": "prop/*, furn/*, icon/* dùng lại sheet P, O, F của bộ PM (tools/prompts/PM)"
+ },
+ "facing": "right",
+ "markers": {
+  "grip": "#FF00FF",
+  "grip2": "#00FF00",
+  "seat": "#00FFFF"
+ },
+ "sheets": [
+  {
+   "id": "A",
+   "key": "master",
+   "kind": "ha",
+   "file": "HA_A_master.png",
+   "attach": "photo+pm",
+   "cols": 8,
+   "rows": 6,
+   "cells": [
+    {
+     "index": 1,
+     "row": 1,
+     "col": 1,
+     "name": "portrait",
+     "key": "ha/portrait"
+    },
+    {
+     "index": 2,
+     "row": 1,
+     "col": 2,
+     "name": "idle_01",
+     "key": "ha/idle_01",
+     "bind": [
+      {
+       "prop": "folder_closed",
+       "at": "grip",
+       "z": "front"
+      }
+     ]
+    },
+    {
+     "index": 3,
+     "row": 1,
+     "col": 3,
+     "name": "idle_02",
+     "key": "ha/idle_02",
+     "bind": [
+      {
+       "prop": "folder_closed",
+       "at": "grip",
+       "z": "front"
+      }
+     ]
+    },
+    {
+     "index": 4,
+     "row": 1,
+     "col": 4,
+     "name": "idle_03",
+     "key": "ha/idle_03",
+     "bind": [
+      {
+       "prop": "folder_closed",
+       "at": "grip",
+       "z": "front"
+      }
+     ]
+    },
+    {
+     "index": 5,
+     "row": 1,
+     "col": 5,
+     "name": "idle_04",
+     "key": "ha/idle_04",
+     "bind": [
+      {
+       "prop": "folder_closed",
+       "at": "grip",
+       "z": "front"
+      }
+     ]
+    },
+    {
+     "index": 6,
+     "row": 1,
+     "col": 6,
+     "name": "idle_back_01",
+     "key": "ha/idle_back_01",
+     "bind": [
+      {
+       "prop": "folder_closed",
+       "at": "grip",
+       "z": "front"
+      }
+     ]
+    },
+    {
+     "index": 7,
+     "row": 1,
+     "col": 7,
+     "name": "greet_01",
+     "key": "ha/greet_01"
+    },
+    {
+     "index": 8,
+     "row": 1,
+     "col": 8,
+     "name": "greet_02",
+     "key": "ha/greet_02"
+    },
+    {
+     "index": 9,
+     "row": 2,
+     "col": 1,
+     "name": "walk_01",
+     "key": "ha/walk_01",
+     "bind": [
+      {
+       "prop": "folder_closed",
+       "at": "grip",
+       "z": "front"
+      }
+     ]
+    },
+    {
+     "index": 10,
+     "row": 2,
+     "col": 2,
+     "name": "walk_02",
+     "key": "ha/walk_02",
+     "bind": [
+      {
+       "prop": "folder_closed",
+       "at": "grip",
+       "z": "front"
+      }
+     ]
+    },
+    {
+     "index": 11,
+     "row": 2,
+     "col": 3,
+     "name": "walk_03",
+     "key": "ha/walk_03",
+     "bind": [
+      {
+       "prop": "folder_closed",
+       "at": "grip",
+       "z": "front"
+      }
+     ]
+    },
+    {
+     "index": 12,
+     "row": 2,
+     "col": 4,
+     "name": "walk_04",
+     "key": "ha/walk_04",
+     "bind": [
+      {
+       "prop": "folder_closed",
+       "at": "grip",
+       "z": "front"
+      }
+     ]
+    },
+    {
+     "index": 13,
+     "row": 2,
+     "col": 5,
+     "name": "walk_05",
+     "key": "ha/walk_05",
+     "bind": [
+      {
+       "prop": "folder_closed",
+       "at": "grip",
+       "z": "front"
+      }
+     ]
+    },
+    {
+     "index": 14,
+     "row": 2,
+     "col": 6,
+     "name": "walk_06",
+     "key": "ha/walk_06",
+     "bind": [
+      {
+       "prop": "folder_closed",
+       "at": "grip",
+       "z": "front"
+      }
+     ]
+    },
+    {
+     "index": 15,
+     "row": 2,
+     "col": 7,
+     "name": "walk_07",
+     "key": "ha/walk_07",
+     "bind": [
+      {
+       "prop": "folder_closed",
+       "at": "grip",
+       "z": "front"
+      }
+     ]
+    },
+    {
+     "index": 16,
+     "row": 2,
+     "col": 8,
+     "name": "walk_08",
+     "key": "ha/walk_08",
+     "bind": [
+      {
+       "prop": "folder_closed",
+       "at": "grip",
+       "z": "front"
+      }
+     ]
+    },
+    {
+     "index": 17,
+     "row": 3,
+     "col": 1,
+     "name": "walk_back_01",
+     "key": "ha/walk_back_01",
+     "bind": [
+      {
+       "prop": "folder_closed",
+       "at": "grip",
+       "z": "front"
+      }
+     ]
+    },
+    {
+     "index": 18,
+     "row": 3,
+     "col": 2,
+     "name": "walk_back_02",
+     "key": "ha/walk_back_02",
+     "bind": [
+      {
+       "prop": "folder_closed",
+       "at": "grip",
+       "z": "front"
+      }
+     ]
+    },
+    {
+     "index": 19,
+     "row": 3,
+     "col": 3,
+     "name": "walk_back_03",
+     "key": "ha/walk_back_03",
+     "bind": [
+      {
+       "prop": "folder_closed",
+       "at": "grip",
+       "z": "front"
+      }
+     ]
+    },
+    {
+     "index": 20,
+     "row": 3,
+     "col": 4,
+     "name": "walk_back_04",
+     "key": "ha/walk_back_04",
+     "bind": [
+      {
+       "prop": "folder_closed",
+       "at": "grip",
+       "z": "front"
+      }
+     ]
+    },
+    {
+     "index": 21,
+     "row": 3,
+     "col": 5,
+     "name": "turn_01",
+     "key": "ha/turn_01",
+     "bind": [
+      {
+       "prop": "folder_closed",
+       "at": "grip",
+       "z": "front"
+      }
+     ]
+    },
+    {
+     "index": 22,
+     "row": 3,
+     "col": 6,
+     "name": "sit_01",
+     "key": "ha/sit_01",
+     "bind": [
+      {
+       "furniture": "meeting_chair",
+       "at": "beside",
+       "z": "back"
+      }
+     ]
+    },
+    {
+     "index": 23,
+     "row": 3,
+     "col": 7,
+     "name": "sit_02",
+     "key": "ha/sit_02",
+     "bind": [
+      {
+       "furniture": "meeting_chair",
+       "at": "seat",
+       "z": "back"
+      },
+      {
+       "furniture": "meeting_table",
+       "at": "seat",
+       "z": "front"
+      }
+     ]
+    },
+    {
+     "index": 24,
+     "row": 3,
+     "col": 8,
+     "name": "sit_03",
+     "key": "ha/sit_03",
+     "bind": [
+      {
+       "furniture": "meeting_chair",
+       "at": "seat",
+       "z": "back"
+      },
+      {
+       "furniture": "meeting_table",
+       "at": "seat",
+       "z": "front"
+      }
+     ]
+    },
+    {
+     "index": 25,
+     "row": 4,
+     "col": 1,
+     "name": "congrats_01",
+     "key": "ha/congrats_01"
+    },
+    {
+     "index": 26,
+     "row": 4,
+     "col": 2,
+     "name": "congrats_02",
+     "key": "ha/congrats_02"
+    },
+    {
+     "index": 27,
+     "row": 4,
+     "col": 3,
+     "name": "contract_give_01",
+     "key": "ha/contract_give_01",
+     "bind": [
+      {
+       "prop": "folder_closed",
+       "at": "grip",
+       "z": "front"
+      }
+     ]
+    },
+    {
+     "index": 28,
+     "row": 4,
+     "col": 4,
+     "name": "contract_give_02",
+     "key": "ha/contract_give_02"
+    },
+    {
+     "index": 29,
+     "row": 4,
+     "col": 5,
+     "name": "roadmap_show_01",
+     "key": "ha/roadmap_show_01",
+     "bind": [
+      {
+       "prop": "folder_open",
+       "at": "grip",
+       "z": "front"
+      }
+     ]
+    },
+    {
+     "index": 30,
+     "row": 4,
+     "col": 6,
+     "name": "shake_01",
+     "key": "ha/shake_01"
+    },
+    {
+     "index": 31,
+     "row": 4,
+     "col": 7,
+     "name": "shake_02",
+     "key": "ha/shake_02"
+    },
+    {
+     "index": 32,
+     "row": 4,
+     "col": 8,
+     "name": "pleased_01",
+     "key": "ha/pleased_01"
+    },
+    {
+     "index": 33,
+     "row": 5,
+     "col": 1,
+     "name": "goals_give_01",
+     "key": "ha/goals_give_01",
+     "bind": [
+      {
+       "prop": "contract_sheet",
+       "at": "grip",
+       "z": "front"
+      }
+     ]
+    },
+    {
+     "index": 34,
+     "row": 5,
+     "col": 2,
+     "name": "goals_explain_01",
+     "key": "ha/goals_explain_01",
+     "bind": [
+      {
+       "prop": "contract_sheet",
+       "at": "grip",
+       "z": "front"
+      }
+     ]
+    },
+    {
+     "index": 35,
+     "row": 5,
+     "col": 3,
+     "name": "encourage_01",
+     "key": "ha/encourage_01"
+    },
+    {
+     "index": 36,
+     "row": 5,
+     "col": 4,
+     "name": "sympathetic_01",
+     "key": "ha/sympathetic_01"
+    },
+    {
+     "index": 37,
+     "row": 5,
+     "col": 5,
+     "name": "procedure_give_01",
+     "key": "ha/procedure_give_01",
+     "bind": [
+      {
+       "prop": "paper_stack",
+       "at": "grip",
+       "z": "front"
+      }
+     ]
+    },
+    {
+     "index": 38,
+     "row": 5,
+     "col": 6,
+     "name": "comfort_01",
+     "key": "ha/comfort_01"
+    },
+    {
+     "index": 39,
+     "row": 5,
+     "col": 7,
+     "name": "sigh_01",
+     "key": "ha/sigh_01"
+    },
+    {
+     "index": 40,
+     "row": 5,
+     "col": 8,
+     "name": "bow_01",
+     "key": "ha/bow_01"
+    },
+    {
+     "index": 41,
+     "row": 6,
+     "col": 1,
+     "name": "talk_01",
+     "key": "ha/talk_01"
+    },
+    {
+     "index": 42,
+     "row": 6,
+     "col": 2,
+     "name": "talk_02",
+     "key": "ha/talk_02"
+    },
+    {
+     "index": 43,
+     "row": 6,
+     "col": 3,
+     "name": "talk_03",
+     "key": "ha/talk_03"
+    },
+    {
+     "index": 44,
+     "row": 6,
+     "col": 4,
+     "name": "talk_04",
+     "key": "ha/talk_04"
+    },
+    {
+     "index": 45,
+     "row": 6,
+     "col": 5,
+     "name": "listen_01",
+     "key": "ha/listen_01"
+    },
+    {
+     "index": 46,
+     "row": 6,
+     "col": 6,
+     "name": "listen_02",
+     "key": "ha/listen_02"
+    },
+    {
+     "index": 47,
+     "row": 6,
+     "col": 7,
+     "name": "nod_01",
+     "key": "ha/nod_01"
+    },
+    {
+     "index": 48,
+     "row": 6,
+     "col": 8,
+     "name": "nod_02",
+     "key": "ha/nod_02"
+    }
+   ]
+  },
+  {
+   "id": "C",
+   "key": "review",
+   "kind": "ha",
+   "file": "HA_C_review.png",
+   "attach": "master",
+   "cols": 8,
+   "rows": 3,
+   "cells": [
+    {
+     "index": 1,
+     "row": 1,
+     "col": 1,
+     "name": "panel_intro_01",
+     "key": "ha/panel_intro_01",
+     "bind": [
+      {
+       "furniture": "meeting_chair",
+       "at": "seat",
+       "z": "back"
+      },
+      {
+       "furniture": "meeting_table",
+       "at": "seat",
+       "z": "front"
+      }
+     ]
+    },
+    {
+     "index": 2,
+     "row": 1,
+     "col": 2,
+     "name": "panel_intro_02",
+     "key": "ha/panel_intro_02",
+     "bind": [
+      {
+       "furniture": "meeting_chair",
+       "at": "seat",
+       "z": "back"
+      },
+      {
+       "furniture": "meeting_table",
+       "at": "seat",
+       "z": "front"
+      }
+     ]
+    },
+    {
+     "index": 3,
+     "row": 1,
+     "col": 3,
+     "name": "panel_listen_01",
+     "key": "ha/panel_listen_01",
+     "bind": [
+      {
+       "furniture": "meeting_chair",
+       "at": "seat",
+       "z": "back"
+      },
+      {
+       "furniture": "meeting_table",
+       "at": "seat",
+       "z": "front"
+      }
+     ]
+    },
+    {
+     "index": 4,
+     "row": 1,
+     "col": 4,
+     "name": "panel_listen_02",
+     "key": "ha/panel_listen_02",
+     "bind": [
+      {
+       "furniture": "meeting_chair",
+       "at": "seat",
+       "z": "back"
+      },
+      {
+       "furniture": "meeting_table",
+       "at": "seat",
+       "z": "front"
+      }
+     ]
+    },
+    {
+     "index": 5,
+     "row": 1,
+     "col": 5,
+     "name": "panel_note_01",
+     "key": "ha/panel_note_01",
+     "bind": [
+      {
+       "furniture": "meeting_chair",
+       "at": "seat",
+       "z": "back"
+      },
+      {
+       "furniture": "meeting_table",
+       "at": "seat",
+       "z": "front"
+      },
+      {
+       "prop": "pen",
+       "at": "grip",
+       "z": "front"
+      },
+      {
+       "prop": "notebook_open",
+       "at": "surface:meeting_table",
+       "z": "front"
+      }
+     ]
+    },
+    {
+     "index": 6,
+     "row": 1,
+     "col": 6,
+     "name": "panel_note_02",
+     "key": "ha/panel_note_02",
+     "bind": [
+      {
+       "furniture": "meeting_chair",
+       "at": "seat",
+       "z": "back"
+      },
+      {
+       "furniture": "meeting_table",
+       "at": "seat",
+       "z": "front"
+      },
+      {
+       "prop": "pen",
+       "at": "grip",
+       "z": "front"
+      },
+      {
+       "prop": "notebook_open",
+       "at": "surface:meeting_table",
+       "z": "front"
+      }
+     ]
+    },
+    {
+     "index": 7,
+     "row": 1,
+     "col": 7,
+     "name": "panel_read_01",
+     "key": "ha/panel_read_01",
+     "bind": [
+      {
+       "furniture": "meeting_chair",
+       "at": "seat",
+       "z": "back"
+      },
+      {
+       "furniture": "meeting_table",
+       "at": "seat",
+       "z": "front"
+      },
+      {
+       "prop": "folder_open",
+       "at": "grip",
+       "z": "front"
+      }
+     ]
+    },
+    {
+     "index": 8,
+     "row": 1,
+     "col": 8,
+     "name": "panel_flip_01",
+     "key": "ha/panel_flip_01",
+     "bind": [
+      {
+       "furniture": "meeting_chair",
+       "at": "seat",
+       "z": "back"
+      },
+      {
+       "furniture": "meeting_table",
+       "at": "seat",
+       "z": "front"
+      },
+      {
+       "prop": "folder_open",
+       "at": "grip",
+       "z": "front"
+      }
+     ]
+    },
+    {
+     "index": 9,
+     "row": 2,
+     "col": 1,
+     "name": "panel_frown_01",
+     "key": "ha/panel_frown_01",
+     "bind": [
+      {
+       "furniture": "meeting_chair",
+       "at": "seat",
+       "z": "back"
+      },
+      {
+       "furniture": "meeting_table",
+       "at": "seat",
+       "z": "front"
+      }
+     ]
+    },
+    {
+     "index": 10,
+     "row": 2,
+     "col": 2,
+     "name": "panel_point_01",
+     "key": "ha/panel_point_01",
+     "bind": [
+      {
+       "furniture": "meeting_chair",
+       "at": "seat",
+       "z": "back"
+      },
+      {
+       "furniture": "meeting_table",
+       "at": "seat",
+       "z": "front"
+      },
+      {
+       "prop": "folder_open",
+       "at": "surface:meeting_table",
+       "z": "front"
+      }
+     ]
+    },
+    {
+     "index": 11,
+     "row": 2,
+     "col": 3,
+     "name": "panel_consider_01",
+     "key": "ha/panel_consider_01",
+     "bind": [
+      {
+       "furniture": "meeting_chair",
+       "at": "seat",
+       "z": "back"
+      },
+      {
+       "furniture": "meeting_table",
+       "at": "seat",
+       "z": "front"
+      }
+     ]
+    },
+    {
+     "index": 12,
+     "row": 2,
+     "col": 4,
+     "name": "panel_impressed_01",
+     "key": "ha/panel_impressed_01",
+     "bind": [
+      {
+       "furniture": "meeting_chair",
+       "at": "seat",
+       "z": "back"
+      },
+      {
+       "furniture": "meeting_table",
+       "at": "seat",
+       "z": "front"
+      }
+     ]
+    },
+    {
+     "index": 13,
+     "row": 2,
+     "col": 5,
+     "name": "panel_pleased_01",
+     "key": "ha/panel_pleased_01",
+     "bind": [
+      {
+       "furniture": "meeting_chair",
+       "at": "seat",
+       "z": "back"
+      },
+      {
+       "furniture": "meeting_table",
+       "at": "seat",
+       "z": "front"
+      }
+     ]
+    },
+    {
+     "index": 14,
+     "row": 2,
+     "col": 6,
+     "name": "panel_warn_01",
+     "key": "ha/panel_warn_01",
+     "bind": [
+      {
+       "furniture": "meeting_chair",
+       "at": "seat",
+       "z": "back"
+      },
+      {
+       "furniture": "meeting_table",
+       "at": "seat",
+       "z": "front"
+      },
+      {
+       "prop": "folder_open",
+       "at": "surface:meeting_table",
+       "z": "front"
+      }
+     ]
+    },
+    {
+     "index": 15,
+     "row": 2,
+     "col": 7,
+     "name": "panel_probe_01",
+     "key": "ha/panel_probe_01",
+     "bind": [
+      {
+       "furniture": "meeting_chair",
+       "at": "seat",
+       "z": "back"
+      },
+      {
+       "furniture": "meeting_table",
+       "at": "seat",
+       "z": "front"
+      }
+     ]
+    },
+    {
+     "index": 16,
+     "row": 2,
+     "col": 8,
+     "name": "panel_evidence_01",
+     "key": "ha/panel_evidence_01",
+     "bind": [
+      {
+       "furniture": "meeting_chair",
+       "at": "seat",
+       "z": "back"
+      },
+      {
+       "furniture": "meeting_table",
+       "at": "seat",
+       "z": "front"
+      },
+      {
+       "prop": "pen",
+       "at": "grip",
+       "z": "front"
+      },
+      {
+       "prop": "checklist_sheet",
+       "at": "surface:meeting_table",
+       "z": "front"
+      }
+     ]
+    },
+    {
+     "index": 17,
+     "row": 3,
+     "col": 1,
+     "name": "panel_ask_01",
+     "key": "ha/panel_ask_01",
+     "bind": [
+      {
+       "furniture": "meeting_chair",
+       "at": "seat",
+       "z": "back"
+      },
+      {
+       "furniture": "meeting_table",
+       "at": "seat",
+       "z": "front"
+      }
+     ]
+    },
+    {
+     "index": 18,
+     "row": 3,
+     "col": 2,
+     "name": "panel_ask_02",
+     "key": "ha/panel_ask_02",
+     "bind": [
+      {
+       "furniture": "meeting_chair",
+       "at": "seat",
+       "z": "back"
+      },
+      {
+       "furniture": "meeting_table",
+       "at": "seat",
+       "z": "front"
+      }
+     ]
+    },
+    {
+     "index": 19,
+     "row": 3,
+     "col": 3,
+     "name": "panel_ask_03",
+     "key": "ha/panel_ask_03",
+     "bind": [
+      {
+       "furniture": "meeting_chair",
+       "at": "seat",
+       "z": "back"
+      },
+      {
+       "furniture": "meeting_table",
+       "at": "seat",
+       "z": "front"
+      }
+     ]
+    },
+    {
+     "index": 20,
+     "row": 3,
+     "col": 4,
+     "name": "panel_ask_04",
+     "key": "ha/panel_ask_04",
+     "bind": [
+      {
+       "furniture": "meeting_chair",
+       "at": "seat",
+       "z": "back"
+      },
+      {
+       "furniture": "meeting_table",
+       "at": "seat",
+       "z": "front"
+      }
+     ]
+    },
+    {
+     "index": 21,
+     "row": 3,
+     "col": 5,
+     "name": "panel_think_01",
+     "key": "ha/panel_think_01",
+     "bind": [
+      {
+       "furniture": "meeting_chair",
+       "at": "seat",
+       "z": "back"
+      },
+      {
+       "furniture": "meeting_table",
+       "at": "seat",
+       "z": "front"
+      }
+     ]
+    },
+    {
+     "index": 22,
+     "row": 3,
+     "col": 6,
+     "name": "panel_tick_01",
+     "key": "ha/panel_tick_01",
+     "bind": [
+      {
+       "furniture": "meeting_chair",
+       "at": "seat",
+       "z": "back"
+      },
+      {
+       "furniture": "meeting_table",
+       "at": "seat",
+       "z": "front"
+      },
+      {
+       "prop": "pen",
+       "at": "grip",
+       "z": "front"
+      },
+      {
+       "prop": "checklist_sheet",
+       "at": "surface:meeting_table",
+       "z": "front"
+      }
+     ]
+    },
+    {
+     "index": 23,
+     "row": 3,
+     "col": 7,
+     "name": "panel_confer_01",
+     "key": "ha/panel_confer_01",
+     "bind": [
+      {
+       "furniture": "meeting_chair",
+       "at": "seat",
+       "z": "back"
+      },
+      {
+       "furniture": "meeting_table",
+       "at": "seat",
+       "z": "front"
+      }
+     ]
+    },
+    {
+     "index": 24,
+     "row": 3,
+     "col": 8,
+     "name": "panel_confer_02",
+     "key": "ha/panel_confer_02",
+     "bind": [
+      {
+       "furniture": "meeting_chair",
+       "at": "seat",
+       "z": "back"
+      },
+      {
+       "furniture": "meeting_table",
+       "at": "seat",
+       "z": "front"
+      }
+     ]
+    }
+   ],
+   "aspect": "3:2"
+  },
+  {
+   "id": "D",
+   "key": "portraits",
+   "kind": "ha",
+   "file": "HA_D_portraits.png",
+   "attach": "master",
+   "cols": 4,
+   "rows": 5,
+   "cells": [
+    {
+     "index": 1,
+     "row": 1,
+     "col": 1,
+     "name": "face_neutral",
+     "key": "ha/face_neutral"
+    },
+    {
+     "index": 2,
+     "row": 1,
+     "col": 2,
+     "name": "face_polite_smile",
+     "key": "ha/face_polite_smile"
+    },
+    {
+     "index": 3,
+     "row": 1,
+     "col": 3,
+     "name": "face_warm",
+     "key": "ha/face_warm"
+    },
+    {
+     "index": 4,
+     "row": 1,
+     "col": 4,
+     "name": "face_pleased",
+     "key": "ha/face_pleased"
+    },
+    {
+     "index": 5,
+     "row": 2,
+     "col": 1,
+     "name": "face_laugh",
+     "key": "ha/face_laugh"
+    },
+    {
+     "index": 6,
+     "row": 2,
+     "col": 2,
+     "name": "face_serious",
+     "key": "ha/face_serious"
+    },
+    {
+     "index": 7,
+     "row": 2,
+     "col": 3,
+     "name": "face_probing",
+     "key": "ha/face_probing"
+    },
+    {
+     "index": 8,
+     "row": 2,
+     "col": 4,
+     "name": "face_questioning",
+     "key": "ha/face_questioning"
+    },
+    {
+     "index": 9,
+     "row": 3,
+     "col": 1,
+     "name": "face_skeptical",
+     "key": "ha/face_skeptical"
+    },
+    {
+     "index": 10,
+     "row": 3,
+     "col": 2,
+     "name": "face_thinking",
+     "key": "ha/face_thinking"
+    },
+    {
+     "index": 11,
+     "row": 3,
+     "col": 3,
+     "name": "face_impressed",
+     "key": "ha/face_impressed"
+    },
+    {
+     "index": 12,
+     "row": 3,
+     "col": 4,
+     "name": "face_concerned",
+     "key": "ha/face_concerned"
+    },
+    {
+     "index": 13,
+     "row": 4,
+     "col": 1,
+     "name": "face_frown",
+     "key": "ha/face_frown"
+    },
+    {
+     "index": 14,
+     "row": 4,
+     "col": 2,
+     "name": "face_sigh",
+     "key": "ha/face_sigh"
+    },
+    {
+     "index": 15,
+     "row": 4,
+     "col": 3,
+     "name": "face_regretful",
+     "key": "ha/face_regretful"
+    },
+    {
+     "index": 16,
+     "row": 4,
+     "col": 4,
+     "name": "face_sympathetic",
+     "key": "ha/face_sympathetic"
+    },
+    {
+     "index": 17,
+     "row": 5,
+     "col": 1,
+     "name": "face_encouraging",
+     "key": "ha/face_encouraging"
+    },
+    {
+     "index": 18,
+     "row": 5,
+     "col": 2,
+     "name": "face_congrats",
+     "key": "ha/face_congrats"
+    },
+    {
+     "index": 19,
+     "row": 5,
+     "col": 3,
+     "name": "face_formal",
+     "key": "ha/face_formal"
+    },
+    {
+     "index": 20,
+     "row": 5,
+     "col": 4,
+     "name": "face_listening",
+     "key": "ha/face_listening"
+    }
+   ]
+  }
+ ],
+ "animations": {
+  "ha/idle": {
+   "frames": [
+    "ha/idle_01",
+    "ha/idle_02",
+    "ha/idle_03",
+    "ha/idle_04"
+   ],
+   "fps": 6,
+   "loop": true
+  },
+  "ha/idle_back": {
+   "frames": [
+    "ha/idle_back_01"
+   ],
+   "fps": 1,
+   "loop": false
+  },
+  "ha/greet": {
+   "frames": [
+    "ha/greet_01",
+    "ha/greet_02"
+   ],
+   "fps": 6,
+   "loop": false
+  },
+  "ha/walk": {
+   "frames": [
+    "ha/walk_01",
+    "ha/walk_02",
+    "ha/walk_03",
+    "ha/walk_04",
+    "ha/walk_05",
+    "ha/walk_06",
+    "ha/walk_07",
+    "ha/walk_08"
+   ],
+   "fps": 9,
+   "loop": true
+  },
+  "ha/walk_back": {
+   "frames": [
+    "ha/walk_back_01",
+    "ha/walk_back_02",
+    "ha/walk_back_03",
+    "ha/walk_back_04"
+   ],
+   "fps": 8,
+   "loop": true
+  },
+  "ha/turn": {
+   "frames": [
+    "ha/turn_01"
+   ],
+   "fps": 1,
+   "loop": false
+  },
+  "ha/sit": {
+   "frames": [
+    "ha/sit_01",
+    "ha/sit_02",
+    "ha/sit_03"
+   ],
+   "fps": 8,
+   "loop": false
+  },
+  "ha/congrats": {
+   "frames": [
+    "ha/congrats_01",
+    "ha/congrats_02"
+   ],
+   "fps": 6,
+   "loop": true
+  },
+  "ha/contract_give": {
+   "frames": [
+    "ha/contract_give_01",
+    "ha/contract_give_02"
+   ],
+   "fps": 6,
+   "loop": false
+  },
+  "ha/roadmap_show": {
+   "frames": [
+    "ha/roadmap_show_01"
+   ],
+   "fps": 1,
+   "loop": false
+  },
+  "ha/shake": {
+   "frames": [
+    "ha/shake_01",
+    "ha/shake_02"
+   ],
+   "fps": 6,
+   "loop": false
+  },
+  "ha/pleased": {
+   "frames": [
+    "ha/pleased_01"
+   ],
+   "fps": 1,
+   "loop": false
+  },
+  "ha/goals_give": {
+   "frames": [
+    "ha/goals_give_01"
+   ],
+   "fps": 1,
+   "loop": false
+  },
+  "ha/goals_explain": {
+   "frames": [
+    "ha/goals_explain_01"
+   ],
+   "fps": 1,
+   "loop": false
+  },
+  "ha/encourage": {
+   "frames": [
+    "ha/encourage_01"
+   ],
+   "fps": 1,
+   "loop": false
+  },
+  "ha/sympathetic": {
+   "frames": [
+    "ha/sympathetic_01"
+   ],
+   "fps": 1,
+   "loop": false
+  },
+  "ha/procedure_give": {
+   "frames": [
+    "ha/procedure_give_01"
+   ],
+   "fps": 1,
+   "loop": false
+  },
+  "ha/comfort": {
+   "frames": [
+    "ha/comfort_01"
+   ],
+   "fps": 1,
+   "loop": false
+  },
+  "ha/sigh": {
+   "frames": [
+    "ha/sigh_01"
+   ],
+   "fps": 1,
+   "loop": false
+  },
+  "ha/bow": {
+   "frames": [
+    "ha/bow_01"
+   ],
+   "fps": 1,
+   "loop": false
+  },
+  "ha/talk": {
+   "frames": [
+    "ha/talk_01",
+    "ha/talk_02",
+    "ha/talk_03",
+    "ha/talk_04"
+   ],
+   "fps": 6,
+   "loop": true
+  },
+  "ha/listen": {
+   "frames": [
+    "ha/listen_01",
+    "ha/listen_02"
+   ],
+   "fps": 3,
+   "loop": true
+  },
+  "ha/nod": {
+   "frames": [
+    "ha/nod_01",
+    "ha/nod_02"
+   ],
+   "fps": 6,
+   "loop": false
+  },
+  "ha/panel_intro": {
+   "frames": [
+    "ha/panel_intro_01",
+    "ha/panel_intro_02"
+   ],
+   "fps": 5,
+   "loop": false
+  },
+  "ha/panel_listen": {
+   "frames": [
+    "ha/panel_listen_01",
+    "ha/panel_listen_02"
+   ],
+   "fps": 3,
+   "loop": true
+  },
+  "ha/panel_note": {
+   "frames": [
+    "ha/panel_note_01",
+    "ha/panel_note_02"
+   ],
+   "fps": 5,
+   "loop": true
+  },
+  "ha/panel_read": {
+   "frames": [
+    "ha/panel_read_01"
+   ],
+   "fps": 1,
+   "loop": false
+  },
+  "ha/panel_flip": {
+   "frames": [
+    "ha/panel_flip_01"
+   ],
+   "fps": 1,
+   "loop": false
+  },
+  "ha/panel_frown": {
+   "frames": [
+    "ha/panel_frown_01"
+   ],
+   "fps": 1,
+   "loop": false
+  },
+  "ha/panel_point": {
+   "frames": [
+    "ha/panel_point_01"
+   ],
+   "fps": 1,
+   "loop": false
+  },
+  "ha/panel_consider": {
+   "frames": [
+    "ha/panel_consider_01"
+   ],
+   "fps": 1,
+   "loop": false
+  },
+  "ha/panel_impressed": {
+   "frames": [
+    "ha/panel_impressed_01"
+   ],
+   "fps": 1,
+   "loop": false
+  },
+  "ha/panel_pleased": {
+   "frames": [
+    "ha/panel_pleased_01"
+   ],
+   "fps": 1,
+   "loop": false
+  },
+  "ha/panel_warn": {
+   "frames": [
+    "ha/panel_warn_01"
+   ],
+   "fps": 1,
+   "loop": false
+  },
+  "ha/panel_probe": {
+   "frames": [
+    "ha/panel_probe_01"
+   ],
+   "fps": 1,
+   "loop": false
+  },
+  "ha/panel_evidence": {
+   "frames": [
+    "ha/panel_evidence_01"
+   ],
+   "fps": 1,
+   "loop": false
+  },
+  "ha/panel_ask": {
+   "frames": [
+    "ha/panel_ask_01",
+    "ha/panel_ask_02",
+    "ha/panel_ask_03",
+    "ha/panel_ask_04"
+   ],
+   "fps": 6,
+   "loop": false
+  },
+  "ha/panel_think": {
+   "frames": [
+    "ha/panel_think_01"
+   ],
+   "fps": 1,
+   "loop": false
+  },
+  "ha/panel_tick": {
+   "frames": [
+    "ha/panel_tick_01"
+   ],
+   "fps": 1,
+   "loop": false
+  },
+  "ha/panel_confer": {
+   "frames": [
+    "ha/panel_confer_01",
+    "ha/panel_confer_02"
+   ],
+   "fps": 4,
+   "loop": true
+  }
+ }
+}

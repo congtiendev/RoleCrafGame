@@ -1,0 +1,66 @@
+/* HUD man tinh huong (moi chi so mot badge): vua doi -> o phat sang xanh (tot) / do (xau) 2 nhip em, icon nay dan hoi,
+   so dem + thanh chay ease-out (JS), the +/- (.hud-delta) noi canh o: PC duoi o, mobile (cot doc hai ben) phia trong man hinh.
+   Moi chuyen dong deu dung easing muot (khong steps) va khong doi kich thuoc o (the +/- luon absolute). */
+@layer components {
+  /* Khung o HUD (o chi so, o level) = ui/progress/track_sm.webp keo gian 9-slice: nen navy, vien xanh sang */
+  .px-hud {
+    border: solid transparent;
+    border-width: 5px 7px;
+    border-image: url("/ui/progress/track_sm.webp") 30 fill / 14px;
+    background: #0f2a50 padding-box;                                    /* lop lot chong khe ho 9-slice (xem frames.css) */
+  }
+  /* Nhay mau nam o lop ::before duoi noi dung (z -1 trong isolate): anh khung ve de len background nen khong nhay nen duoc */
+  .hud-stat { @apply relative isolate; }
+  /* lop phat sang phu ca khung o (lech am = vien .px-hud 5/7px) */
+  .hud-stat::before { @apply pointer-events-none absolute -z-10 rounded-[10px] content-['']; inset: -5px -7px; }
+  .hud-stat[data-fx="good"]::before { animation: hud-flash-good 1.8s ease-in-out both; }
+  .hud-stat[data-fx="bad"]::before { animation: hud-flash-bad 1.8s ease-in-out both; }
+  /* Thanh chi so mini: ve hoan toan bang CSS (khong dung anh). Ranh toi vien xanh mo; ruot = dai mau co vet sang tren,
+     do dai + mau (data-tone) do JS dat tung khung hinh (Hud.tsx: meter; director.ts: animateHud) */
+  .hud-meter {
+    @apply relative block h-[7px] w-full overflow-hidden rounded-full;
+    border: 1.5px solid #050b24; background: #0b1438; box-shadow: inset 0 1px 0 rgb(0 0 0 / .4);
+  }
+  .hud-meter > i {
+    @apply absolute inset-y-0 left-0 rounded-full;
+    background: linear-gradient(to bottom, var(--hi) 0 40%, var(--c) 40% 75%, var(--lo) 75%);
+    --hi: #4ee39a; --c: #1fbf73; --lo: #0f8a4f;                      /* xanh (bang mau .gm-green) */
+  }
+  .hud-meter > i[data-tone="yellow"] { --hi: #ffd65a; --c: #ffb21c; --lo: #d9800c; }
+  .hud-meter > i[data-tone="red"] { --hi: #ff7a5c; --c: #f2432f; --lo: #b8261b; }
+  .hud-stat[data-fx] [data-ic] { animation: hud-bump .8s ease-in-out both; }
+  /* the +/- noi len canh o chi so: the phang .gm-tag xanh/do (lop dat trong JS). Selector 2 lop de thang
+     position:relative cua .gm-tag (dung sau trong file) -> the khong chui vao o lam o phinh ra */
+  .hud-stat > .hud-delta {
+    @apply pointer-events-none absolute top-full left-1/2 z-10 mt-2 flex items-center gap-0.5 px-1.5 pt-1 pb-1.5 text-sm leading-none font-extrabold whitespace-nowrap;
+    translate: -50% 0;
+    animation: hud-delta 2.6s cubic-bezier(.2, .8, .2, 1) both;
+  }
+  @media (orientation: portrait), (width < 48rem) {
+    .hud-stat[data-side="project"] .hud-delta { top: 50%; left: 100%; margin: 0 0 0 10px; translate: 0 -50%; }
+    .hud-stat[data-side="people"] .hud-delta { top: 50%; left: auto; right: 100%; margin: 0 10px 0 0; translate: 0 -50%; }
+  }
+}
+/* 2 nhip sang em (manh -> diu -> manh vua -> tat), mau theo bang .gm-green / .gm-red */
+@keyframes hud-flash-good {
+  0%, 100% { background: rgb(31 191 115 / 0); box-shadow: 0 0 0 0 rgb(78 227 154 / 0); }
+  20% { background: rgb(31 191 115 / .5); box-shadow: 0 0 0 2px #4ee39a, 0 0 16px 3px rgb(78 227 154 / .7); }
+  45% { background: rgb(31 191 115 / .15); box-shadow: 0 0 0 1px rgb(78 227 154 / .45), 0 0 8px rgb(78 227 154 / .3); }
+  65% { background: rgb(31 191 115 / .35); box-shadow: 0 0 0 2px rgb(78 227 154 / .85), 0 0 12px 2px rgb(78 227 154 / .5); }
+}
+@keyframes hud-flash-bad {
+  0%, 100% { background: rgb(242 67 47 / 0); box-shadow: 0 0 0 0 rgb(255 122 92 / 0); }
+  20% { background: rgb(242 67 47 / .5); box-shadow: 0 0 0 2px #ff7a5c, 0 0 16px 3px rgb(255 122 92 / .7); }
+  45% { background: rgb(242 67 47 / .15); box-shadow: 0 0 0 1px rgb(255 122 92 / .45), 0 0 8px rgb(255 122 92 / .3); }
+  65% { background: rgb(242 67 47 / .35); box-shadow: 0 0 0 2px rgb(255 122 92 / .85), 0 0 12px 2px rgb(255 122 92 / .5); }
+}
+/* nay dan hoi: phong len, hoi lun, ve cu */
+@keyframes hud-bump { 0%, 100% { scale: 1; } 30% { scale: 1.32; } 60% { scale: .94; } 80% { scale: 1.05; } }
+/* noi len nhe -> dung -> troi len va mo dan */
+@keyframes hud-delta {
+  0% { opacity: 0; transform: translateY(6px) scale(.85); }
+  10% { opacity: 1; transform: translateY(0) scale(1.06); }
+  18% { transform: translateY(0) scale(1); }
+  78% { opacity: 1; transform: translateY(0); }
+  100% { opacity: 0; transform: translateY(-8px); }
+}

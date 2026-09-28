@@ -1,0 +1,42 @@
+/* Con tro chuot trang game: mot ho hinh cua Kenney Cursor Pack (CC0, ui/cursors/LICENSE_kenney.txt) to lai mau Innocom:
+   than xanh bong, ky hieu trang thai (? / dong ho cat / cam) do. Cach ve: ui/README.md muc "Con tro chuot".
+   Chi bat khi body co .px-cursors (index.html). Ngoai @layer de thang utility cursor-* cua Tailwind (layer utilities).
+   Moi rule: url() cho trinh duyet cu, image-set() de man retina dung ban @2x; so sau anh = diem nong tren ban 32px.
+   Moi selector boc :where() -> cung do uu tien voi rule mac dinh, thu tu rule quyet dinh: busy cuoi cung de che het. */
+.px-cursors, .px-cursors * {
+  cursor: url("/ui/cursors/arrow.png") 10 6, default;
+  cursor: image-set(url("/ui/cursors/arrow.png") 1x, url("/ui/cursors/arrow@2x.png") 2x) 10 6, default;
+}
+/* vung cham duoc khong phai nut: [data-tap] (man level dang cho cham, khung mo dau dang chay chu) */
+.px-cursors :where([data-tap], [data-tap] *) {
+  cursor: url("/ui/cursors/link.png") 11 5, pointer;
+  cursor: image-set(url("/ui/cursors/link.png") 1x, url("/ui/cursors/link@2x.png") 2x) 11 5, pointer;
+}
+/* co tooltip nhung khong bam duoc (vd o chi so HUD) */
+.px-cursors :where([title]:not(button, a, input, [role="button"]), [title]:not(button, a, input, [role="button"]) *) {
+  cursor: url("/ui/cursors/help.png") 5 2, help;
+  cursor: image-set(url("/ui/cursors/help.png") 1x, url("/ui/cursors/help@2x.png") 2x) 5 2, help;
+}
+/* ca phan tu con trong nut (chu, chu cai A/B/C, icon) cung la ban tay – khong thi .px-cursors * tra ve mui ten */
+.px-cursors :where(:is(button, a[href], summary, label[for], [role="button"], .cursor-pointer):not(:disabled),
+                   :is(button, a[href], summary, label[for], [role="button"], .cursor-pointer):not(:disabled) *) {
+  cursor: url("/ui/cursors/link.png") 11 5, pointer;
+  cursor: image-set(url("/ui/cursors/link.png") 1x, url("/ui/cursors/link@2x.png") 2x) 11 5, pointer;
+}
+.px-cursors :where(:is(button, a[href], [role="button"]):not(:disabled):active, :is(button, a[href], [role="button"]):not(:disabled):active *) {
+  cursor: url("/ui/cursors/press.png") 16 16, grabbing;
+  cursor: image-set(url("/ui/cursors/press.png") 1x, url("/ui/cursors/press@2x.png") 2x) 16 16, grabbing;
+}
+.px-cursors :where(input:not([type="button"], [type="submit"], [type="checkbox"], [type="radio"]), textarea) {
+  cursor: url("/ui/cursors/text.png") 16 16, text;
+  cursor: image-set(url("/ui/cursors/text.png") 1x, url("/ui/cursors/text@2x.png") 2x) 16 16, text;
+}
+.px-cursors :where(:disabled, [aria-disabled="true"], :disabled *, [aria-disabled="true"] *) {
+  cursor: url("/ui/cursors/disabled.png") 3 2, not-allowed;
+  cursor: image-set(url("/ui/cursors/disabled.png") 1x, url("/ui/cursors/disabled@2x.png") 2x) 3 2, not-allowed;
+}
+/* dang chuyen canh (director.ts: fade) */
+.px-cursors :where([aria-busy="true"], [aria-busy="true"] *) {
+  cursor: url("/ui/cursors/busy.png") 4 2, wait;
+  cursor: image-set(url("/ui/cursors/busy.png") 1x, url("/ui/cursors/busy@2x.png") 2x) 4 2, wait;
+}

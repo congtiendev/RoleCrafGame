@@ -1,27 +1,44 @@
 {
   "name": "rolecraft-pm",
+  "version": "0.1.0",
   "private": true,
   "type": "module",
+  "description": "RoleCraft PM60 – game React nhung vao web khac (<RoleCraftGame />, mountRoleCraft)",
+  "module": "./dist/embed/rolecraft-game.js",
+  "types": "./dist/embed/types/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/embed/types/index.d.ts",
+      "import": "./dist/embed/rolecraft-game.js"
+    }
+  },
+  "files": [
+    "dist/embed"
+  ],
   "scripts": {
     "dev": "vite",
-    "build": "vite build && PAGE=scenario-test vite build && PAGE=game vite build",
+    "typecheck": "tsc -p .",
+    "build": "tsc -p . && vite build",
     "preview": "vite preview",
-    "watch": "vite build --watch & PAGE=scenario-test vite build --watch & PAGE=game vite build --watch",
-    "test": "node --test tests/*.test.js",
-    "build:embed": "vite build --config vite.embed.config.js && node scripts/copy-embed-assets.mjs",
-    "demo:embed": "npm run build:embed && vite --config vite.demo.config.js"
+    "test": "node --test tests/*.test.ts",
+    "build:embed": "tsc -p . && vite build --config vite.embed.config.ts && tsc -p tsconfig.lib.json && node scripts/copy-embed-assets.ts",
+    "demo:embed": "npm run build:embed && vite --config vite.demo.config.ts"
+  },
+  "peerDependencies": {
+    "react": ">=18",
+    "react-dom": ">=18"
   },
   "devDependencies": {
     "@tailwindcss/vite": "4.1.12",
+    "@types/node": "^24.19.0",
+    "@types/react": "^19.3.0",
+    "@types/react-dom": "^19.3.0",
     "@vitejs/plugin-react": "^5.2.0",
     "heroicons": "^2.2.0",
     "react": "^19.3.0",
     "react-dom": "^19.3.0",
     "tailwindcss": "4.1.12",
+    "typescript": "^7.0.2",
     "vite": "^7.1.0"
-  },
-  "peerDependencies": {
-    "react": ">=18",
-    "react-dom": ">=18"
   }
 }

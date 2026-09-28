@@ -1,0 +1,54 @@
+/* ---------- Khoi "game" ve bang CSS theo ngon ngu art trong ui/ (nut, card, thanh progress) ----------
+   Vien muc dam day, khoi bo goc chac, mat bong: sang tren, go toi duoi, vet sang cheo. Mau theo --c/--hi/--lo/--ink. */
+@layer components {
+  .gm-red    { --c: #f2432f; --hi: #ff7a5c; --lo: #b8261b; --ink: #5c0d0a; }
+  .gm-green  { --c: #1fbf73; --hi: #4ee39a; --lo: #0f8a4f; --ink: #0b4a2b; }
+  .gm-yellow { --c: #ffb21c; --hi: #ffd65a; --lo: #d9800c; --ink: #6b3a05; }
+  .gm-blue   { --c: #1a8cff; --hi: #5cb8ff; --lo: #0a5fd1; --ink: #0a2b6b; }
+  /* Khoi bong (nut vuong, chip, o +/-): nen doc sang -> dam, go toi o duoi, vien muc 2.5px, bong do nhe */
+  .gm-block {
+    @apply relative isolate overflow-hidden text-white;
+    border: 2.5px solid var(--ink); border-radius: 10px;
+    background: linear-gradient(to bottom, var(--hi), var(--c) 55%);
+    box-shadow: inset 0 -4px 0 var(--lo), inset 0 2px 0 rgb(255 255 255 / .45), 0 2px 0 rgb(8 16 51 / .25);
+    text-shadow: 0 2px 0 var(--lo);
+  }
+  /* vet sang cheo nhu art */
+  .gm-block::after {
+    @apply pointer-events-none absolute -z-10 content-[''];
+    inset: 0; background: linear-gradient(115deg, transparent 18%, rgb(255 255 255 / .28) 18% 34%, transparent 34%);
+  }
+  /* The sang (long card): vien muc xanh, mat kinh trang -> xanh nhat, go duoi */
+  .gm-tile {
+    @apply relative rounded-xl;
+    border: 2.5px solid #0b1d4d;
+    background: linear-gradient(to bottom, #ffffff, #e4f0ff);
+    box-shadow: inset 0 -3px 0 #c3d9f7, inset 0 2px 0 #fff, 0 3px 0 rgb(8 16 51 / .18);
+  }
+  /* The pixel phang – KIEU CHUAN cho moi nhan / chip / o so / chu cai (nguoi dung chon, 2026-09-26): vien muc, nen mau dac,
+     go day mong, khong mat bong, khong vet sang cheo. Mat bong / art nut chi danh cho nut bam that. */
+  .gm-tag {
+    @apply relative text-white;
+    border: 2px solid var(--ink); border-radius: 6px; background: var(--c);
+    box-shadow: inset 0 -3px 0 var(--lo), inset 0 1px 0 rgb(255 255 255 / .3);
+  }
+  /* the vang: chu trang tren #ffb21c chi ~1.9:1 -> chu nau muc (--ink cua .gm-yellow, ~5.2:1) */
+  .gm-tag.gm-yellow { color: var(--ink); }
+  /* Ranh thanh: vien muc, long xanh dam lom */
+  .gm-track {
+    @apply relative block overflow-hidden rounded-full;
+    border: 2px solid #0a1438; background: #1b2b5e;
+    box-shadow: inset 0 2px 0 rgb(0 0 0 / .35);
+  }
+  /* Ruot thanh: vien muc mong, mat bong (sang tren / go toi duoi) */
+  .gm-fill {
+    @apply absolute inset-y-0 left-0;
+    background: linear-gradient(to bottom, var(--hi) 0 35%, var(--c) 35% 75%, var(--lo) 75%);
+    box-shadow: inset 0 1px 0 rgb(255 255 255 / .5);
+  }
+  .gm-fill[data-stripes] {
+    background:
+      repeating-linear-gradient(-45deg, rgb(255 255 255 / .28) 0 4px, transparent 4px 9px),
+      linear-gradient(to bottom, var(--hi) 0 35%, var(--c) 35% 75%, var(--lo) 75%);
+  }
+}

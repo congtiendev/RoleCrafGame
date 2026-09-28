@@ -11,7 +11,7 @@
   --color-px-frame: #2c63b0;    /* vien trong khung: xanh duong logo */
   --color-px-hi: #ff6f76;       /* chu nhan / diem nhan tren nen toi: do logo sang hon (tuong phan 5.8:1) */
   --color-px-deep: #182a6e;     /* vien chu tieu de */
-  --font-pixel: "VT323", ui-monospace, monospace;       /* font pixel co dau tieng Viet (src/fonts): CHI cho tieu de game (ten game, tieu de man/khung). Moi chu noi dung (nut, nhan, goi y, doan van, thoai, so lieu) dung font-sans */
+  --font-pixel: "VT323", ui-monospace, monospace;       /* font pixel co dau tieng Viet (src/assets/fonts): CHI cho tieu de game (ten game, tieu de man/khung). Moi chu noi dung (nut, nhan, goi y, doan van, thoai, so lieu) dung font-sans */
   --animate-rise: rise .7s cubic-bezier(.2,.8,.2,1) both;
   --animate-bob: bob 1.2s steps(2) infinite;               /* nhun 2 buoc kieu pixel */
   --animate-blink: blink 1s steps(1) infinite;              /* nhap nhay tat/bat nhu man cho game */

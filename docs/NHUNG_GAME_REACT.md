@@ -4,7 +4,7 @@ Toàn bộ giao diện game được viết bằng React (JSX): màn bắt đầ
 
 Có hai cách dùng:
 
-- **Trang riêng** `game.html`: game chiếm cả trang (`src/game/main.jsx`).
+- **Trang riêng** `index.html`: game chiếm cả trang (`src/main.tsx`). Chạy bằng `npm run dev`, build ra `dist/app/` bằng `npm run build`.
 - **Nhúng vào web khác**: component `<RoleCraftGame />` hoặc hàm `mountRoleCraft()`. Game chạy trong Shadow DOM, nên CSS và id của game không đụng tới web chủ, và ngược lại. Khi mở, game phủ toàn màn hình.
 
 ## Build bản nhúng
@@ -15,6 +15,7 @@ npm run build:embed
 
 | File | Nội dung |
 |---|---|
+| `dist/embed/types/` | Khai báo TypeScript (`index.d.ts`): kiểu props (`RoleCraftGameProps`, `MountOptions`) và dữ liệu sự kiện (`ChoiceEvent`, `LevelCompleteEvent`, `FinishReport`). |
 | `dist/embed/rolecraft-game.js` | Module ES, khoảng 445 KB (gzip khoảng 150 KB). Đã gồm CSS và font; không gồm React (web chủ cung cấp `react` và `react-dom` bản 18 trở lên). |
 | `dist/embed/assets/` | Ảnh game nạp lúc chạy (`bg/`, `ui/`, `characters/`, `sheets/`), khoảng 43 MB. Web chủ phục vụ thư mục này và truyền đường dẫn qua `assetBase`. |
 
@@ -61,7 +62,7 @@ Game không tự gọi API. Nó chỉ báo sự kiện ra ngoài và nhận dữ
 | `onChoice(e)` | Sau mỗi lựa chọn. `e` gồm `level`, `levelId`, `scenario`, `no`, `title`, `day`, `choice`, `label`, `outcome`, `changes`, `metrics`, `flags`. |
 | `onLevelComplete(e)` | Khi xong một level. `e` gồm `level`, `levelId`, `tier`, `summary` (xếp loại, quyết định tốt nhất, năng lực, rủi ro), `metrics`. |
 | `onFinish(report)` | Khi hết 60 ngày. `report` gồm `result`, `changes`, `competencies`, `decisions`, `best`, `worst`, `links`, `learning` và `text` (báo cáo dạng chữ). |
-| `onExit()` | Khi có, màn bắt đầu hiện nút **Thoát** và gọi hàm này khi người chơi bấm. |
+| `onExit()` | Khi có, màn nhập tên (ngay sau màn bắt đầu) và bảng tạm dừng (nút ⏸ góc phải khi đang chơi, hoặc phím Esc) hiện nút **Thoát**, gọi hàm này khi người chơi bấm. |
 | `zIndex`, `lockScroll` | Lớp phủ của game (mặc định `2147483000`) và việc khoá cuộn trang chủ khi đang chơi (mặc định bật). |
 
 Các callback đổi lúc nào cũng được, game không bị khởi động lại. Game chỉ gắn lại từ đầu khi `assetBase`, `storageKey` hoặc `player.name` thay đổi.
@@ -99,11 +100,18 @@ npm run demo:embed      # build:embed rồi mở web chủ mẫu: /examples/reac
 
 | Thư mục / file | Vai trò |
 |---|---|
-| `src/game/GameApp.jsx` | Ứng dụng: điều hướng giữa các màn, nạp và lưu tiến độ, props nối API. |
-| `src/game/screens/` | `StartScreen.jsx`, `NameScreen.jsx`. |
-| `src/game/play/director.js` | "Đạo diễn" màn chơi: chạy kịch bản bằng async/await (nói, hỏi, chờ bấm) và điều khiển sân khấu canvas (vị trí PM và NPC, đi lại, cảnh đêm). Đổi state để React vẽ lại, rồi chờ component báo thao tác của người chơi. |
-| `src/game/play/*.jsx` | `PlayScreen` (ráp các phần), `Hud`, `Dialog`, `Choice`, `Result`, `Pages` (tổng kết, báo cáo), `Cards` (thẻ chuyển cảnh), `HudTour`, `StaffCard`. |
-| `src/game/components/` | `Icon`, `Logo`, `TierBadge`, các canvas sprite (`PmIdle`, `Face`, `SheetIcon`) và hook dùng chung. |
-| `src/game/*.js` | Logic có test (`rules`, `summary`, `campaign`, `level1–4`, `session`) và phần vẽ canvas (`stage`, `npc`, `portrait`, `pmSprite`). |
-| `src/embed/` | `mount.js` (ShadowRoot, CSS, root React riêng), `RoleCraftGame.jsx`, `index.js`. |
-| `vite.embed.config.js` | Build dạng thư viện; React để ngoài; ảnh trong CSS không nhúng base64. |
+| `src/index.ts` | Entry của thư viện: `RoleCraftGame`, `mountRoleCraft`, `GameApp`. |
+| `src/GameApp.tsx` | Ứng dụng: điều hướng giữa các màn, nạp và lưu tiến độ, props nối API. |
+| `src/screens/` | `StartScreen.tsx`, `NameScreen.tsx`. |
+| `src/screens/play/director.ts` | "Đạo diễn" màn chơi: chạy kịch bản bằng async/await (nói, hỏi, chờ bấm) và điều khiển sân khấu canvas (vị trí PM và NPC, đi lại, cảnh đêm). Đổi state để React vẽ lại, rồi chờ component báo thao tác của người chơi. |
+| `src/screens/play/*.tsx` | `PlayScreen` (ráp các phần), `Hud`, `Dialog`, `Choice`, `Result`, `Cards` (thẻ chuyển cảnh), `HudTour`, `StaffCard`; `pages/` = tổng kết level, báo cáo cuối. |
+| `src/components/` | `Icon`, `Logo`, `TierBadge`, các canvas sprite (`PmIdle`, `Face`, `SheetIcon`). |
+| `src/hooks/` | Hook dùng chung (`useRaf`, `useViewport`, `useMedia`, `useKey`). |
+| `src/content/` | Nội dung game, chỉ là dữ liệu (không có hàm): `levels.ts` (mọi level trong một mảng), `cast`, `metrics`, `competencies`, `campaign`. |
+| `src/game/` | Engine logic có test: `levels` (xử lý chung mọi level), `conditions` (điều kiện dạng dữ liệu), `rules`, `summary`, `campaign`, `format`, `session`. |
+| `src/canvas/` | Vẽ canvas: `stage`, `npc`, `portrait`, `pmSprite`. |
+| `src/generated/` | File do `tools/` sinh (atlas, dữ liệu sprite) — không sửa tay. |
+| `src/lib/` | Tiện ích dùng chung với hai trang công cụ: DOM/asset (`ui.ts`), icon, sprite. |
+| `src/embed/` | `mount.ts` (ShadowRoot, CSS, root React riêng), `RoleCraftGame.tsx`. |
+| `public/` | Ảnh nạp lúc chạy (`bg/ ui/ characters/ sheets/`); `build:embed` chép phần game dùng sang `dist/embed/assets/`. |
+| `vite.embed.config.ts` | Build dạng thư viện; React để ngoài; ảnh trong CSS không nhúng base64. |

@@ -1,0 +1,52 @@
+/* Lop toi mo lam noi PM khi bang ket qua mo (#focus, director.ts dat --fx/--fy tam, --rx/--ry ban kinh elip).
+   Toi dan qua nhieu moc theo duong cong em (khong co mep sang/toi ro rang) nhu vung anh den, toi da 62% */
+@layer components {
+  .stage-focus {
+    background: radial-gradient(ellipse var(--rx, 360px) var(--ry, 260px) at var(--fx, 30%) var(--fy, 60%),
+      rgb(4 7 20 / 0) 0%, rgb(4 7 20 / .04) 25%, rgb(4 7 20 / .12) 42%, rgb(4 7 20 / .25) 58%,
+      rgb(4 7 20 / .4) 74%, rgb(4 7 20 / .53) 88%, rgb(4 7 20 / .62) 100%);
+  }
+}
+
+/* Vong song "cham vao day" cua nut sang cau hoi thoai (#dlgNext): 2 vong xanh lech nhip toa ra tu diem ngon tay go;
+   hover/focus: toa nhanh hon */
+@layer components {
+  .tap-ripple {
+    @apply pointer-events-none absolute top-[calc(16%-5px)] left-[calc(34%-5px)] size-7 -translate-1/2 rounded-full
+      border-2 border-[#1d8bff] bg-[#5ec8ff]/35;
+    animation: tap-ripple 1.2s cubic-bezier(0, 0, .2, 1) infinite;
+  }
+  .group:is(:hover, :focus-visible) .tap-ripple { animation-duration: .7s; }
+}
+@keyframes tap-ripple { 0% { scale: .3; opacity: 1; } 100% { scale: 2.2; opacity: 0; } }
+
+/* The nhan vien duoc Chi Ha trao (NameScreen): truot len tu duoi, hoi nghieng roi thang lai */
+@layer components {
+  .card-hand { animation: card-hand .65s cubic-bezier(.2, .9, .25, 1.05) both; }
+  @media (prefers-reduced-motion: reduce) { .card-hand { animation: none; } }
+}
+@keyframes card-hand { from { opacity: 0; transform: translateY(48px) rotate(-3deg) scale(.96); } }
+
+/* Nut art "BAT DAU" man Start: nhip tho (phong nhe + quang cyan sang dan) va vet sang cheo luot qua moi ~3s.
+   .start-shine phu dung hinh nut: mask = chinh anh nut (StartScreen dat mask-image inline theo assetBase).
+   Hover/focus: dung nhip, phong to + quang sang han; may bat giam chuyen dong: dung yen */
+@layer components {
+  .start-cta { animation: start-breathe 1.6s ease-in-out infinite; }
+  .start-cta:is(:focus-visible, :active) { animation: none; scale: 1.06; filter: drop-shadow(0 0 18px rgb(90 230 255 / .95)); }
+  @media (hover: hover) { .start-cta:hover { animation: none; scale: 1.06; filter: drop-shadow(0 0 18px rgb(90 230 255 / .95)); } }
+  .start-cta:active { scale: .97; }
+  .start-shine {
+    @apply pointer-events-none absolute inset-0;
+    mask-size: 100% 100%; -webkit-mask-size: 100% 100%;
+    background: linear-gradient(105deg, transparent 40%, rgb(255 255 255 / .45) 47%, rgb(255 255 255 / .7) 50%, rgb(255 255 255 / .45) 53%, transparent 60%) no-repeat;
+    background-size: 250% 100%;
+    mix-blend-mode: screen;
+    animation: start-shine 3s ease-in-out infinite;
+  }
+  @media (prefers-reduced-motion: reduce) { .start-cta, .start-shine { animation: none; } }
+}
+@keyframes start-breathe {
+  0%, 100% { scale: 1; filter: drop-shadow(0 4px 6px rgb(6 10 28 / .5)) drop-shadow(0 0 4px rgb(90 230 255 / .35)); }
+  50% { scale: 1.045; filter: drop-shadow(0 4px 6px rgb(6 10 28 / .5)) drop-shadow(0 0 16px rgb(90 230 255 / .9)); }
+}
+@keyframes start-shine { 0%, 15% { background-position: 150% 0; } 55%, 100% { background-position: -50% 0; } }

@@ -1,0 +1,23 @@
+/* Bang ket qua lua chon (screens/play/Result.tsx). Lop gm-* dat thang tren markup (Tailwind 4 khong @apply lop tu dinh nghia) */
+@layer components {
+  .rs-row { @apply flex items-center gap-3 px-2 py-1.5 rs-sm:gap-1.5 rs-sm:px-1.5 rs-sm:py-1.5; }
+  .rs-plate { @apply grid size-11 rs-sm:size-8 shrink-0 place-items-center rounded-lg border-2 border-[#050b24] bg-[#0f1a45] shadow-[inset_0_-3px_0_#070f30]; }
+  .rs-bar { @apply h-3.5 rs-sm:h-2.5; }
+  .rs-bar > [data-base] { @apply rounded-l-full; }
+  .rs-bar > [data-delta] { @apply transition-[width] duration-700 ease-out; border-left: 2px solid #0a1438; }
+  .rs-row[data-tone="good"] .rs-bar > [data-delta] { --c: #1fbf73; --hi: #4ee39a; --lo: #0f8a4f; }
+  .rs-row[data-tone="bad"] .rs-bar > [data-delta] { --c: #f2432f; --hi: #ff7a5c; --lo: #b8261b; }
+  .rs-row[data-tone="same"] .rs-bar > [data-delta] { display: none; }
+  .rs-delta { @apply flex min-w-[3.4rem] shrink-0 items-center justify-center gap-0.5 px-1.5 pt-1 pb-1.5 text-lg leading-none font-extrabold tabular-nums rs-sm:min-w-[2.4rem] rs-sm:px-1 rs-sm:pt-0.5 rs-sm:pb-1 rs-sm:text-sm; }
+}
+/* Gon roi van khong vua (fitResult): 2 = chu mo ta nho lai, 3 = an mo ta (nhu man thap <= 560px), 4 = an them chip dem
+   tot/xau (trung voi the chi so). Ngoai @layer de thang utility tren markup.
+   data-measure: tat animation luc do (translateY lam sai scrollHeight) */
+#result[data-fit="2"] #rsText { margin-top: .5rem; font-size: .875rem; line-height: 1.4; }
+#result:is([data-fit="3"], [data-fit="4"]) #rsText, #result[data-fit="4"] #rsTally { display: none; }
+#result[data-measure], #result[data-measure] * { animation: none !important; }
+/* Dien thoai dung (< 480px): 2 cot chi con ~170px moi o, ten chi so bi cat ("Chất l…") -> 1 cot, moi dong du ten + the +/- */
+@media (orientation: portrait) and (width < 30rem) {
+  #rsList { grid-template-columns: 1fr; }
+  #rsList > li { grid-column: auto; }
+}

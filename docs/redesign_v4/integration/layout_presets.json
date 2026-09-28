@@ -1,0 +1,44 @@
+{
+  "pc": {
+    "start": {
+      "rolecraft_logo": { "left": "50%", "top": "3%", "width": "36%", "transform": "translateX(-50%)" },
+      "start_button": { "left": "50%", "bottom": "1.5%", "width": "34%", "transform": "translateX(-50%)" }
+    },
+    "banner": {
+      "rolecraft_logo": { "left": "18%", "top": "4%", "width": "32%" },
+      "cta": { "left": "20%", "bottom": "5%", "width": "28%" }
+    },
+    "loading": {
+      "rolecraft_logo": { "left": "50%", "top": "3%", "width": "32%", "transform": "translateX(-50%)" },
+      "loading_label": { "left": "50%", "bottom": "15%", "width": "30%", "transform": "translateX(-50%)" },
+      "progress": { "left": "50%", "bottom": "4%", "width": "60%", "transform": "translateX(-50%)" }
+    },
+    "qr_join": {
+      "qr_card": { "left": "29%", "top": "54%", "width": "30%", "transform": "translate(-50%, -50%)" }
+    },
+    "participants": {
+      "slots_region": { "left": "50%", "top": "61%", "width": "66%", "height": "38%", "transform": "translate(-50%, -50%)" }
+    }
+  },
+  "mobile": {
+    "start": {
+      "rolecraft_logo": { "left": "50%", "top": "2%", "width": "72%", "transform": "translateX(-50%)" },
+      "start_button": { "left": "50%", "bottom": "1.5%", "width": "78%", "transform": "translateX(-50%)" }
+    },
+    "banner": {
+      "rolecraft_logo": { "left": "50%", "top": "2%", "width": "72%", "transform": "translateX(-50%)" },
+      "cta": { "left": "50%", "bottom": "1.5%", "width": "76%", "transform": "translateX(-50%)" }
+    },
+    "loading": {
+      "rolecraft_logo": { "left": "50%", "top": "2%", "width": "68%", "transform": "translateX(-50%)" },
+      "loading_label": { "left": "50%", "bottom": "13%", "width": "62%", "transform": "translateX(-50%)" },
+      "progress": { "left": "50%", "bottom": "4%", "width": "86%", "transform": "translateX(-50%)" }
+    },
+    "qr_join": {
+      "qr_card": { "left": "50%", "top": "59%", "width": "78%", "transform": "translate(-50%, -50%)" }
+    },
+    "participants": {
+      "slots_region": { "left": "50%", "top": "63%", "width": "90%", "height": "46%", "transform": "translate(-50%, -50%)" }
+    }
+  }
+}

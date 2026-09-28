@@ -1,0 +1,13 @@
+{
+  // Sinh file kieu (.d.ts) cho ban nhung (npm run build:embed): web chu dung TypeScript co san kieu props / su kien.
+  "extends": "./tsconfig.json",
+  "compilerOptions": {
+    "noEmit": false,
+    "declaration": true,
+    "emitDeclarationOnly": true,
+    "rewriteRelativeImportExtensions": true,
+    "rootDir": "src",
+    "outDir": "dist/embed/types"
+  },
+  "include": ["src/index.ts", "src/vite-env.d.ts"]
+}
